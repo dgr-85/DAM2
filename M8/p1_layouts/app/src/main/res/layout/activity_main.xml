@@ -7,85 +7,6 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvOwnerEmailText"
-        android:layout_width="140dp"
-        android:layout_height="19dp"
-        android:text="tin.tin@gmail.com"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/tvOwnerEmail"
-        tools:layout_editor_absoluteY="141dp" />
-
-    <TextView
-        android:id="@+id/tvOwnerPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Phone:"
-        android:textAlignment="textEnd"
-        app:layout_constraintEnd_toEndOf="@+id/tvOwnerAge"
-        app:layout_constraintStart_toStartOf="@+id/tvOwnerAge"
-        app:layout_constraintTop_toBottomOf="@+id/tvOwnerAge" />
-
-    <TextView
-        android:id="@+id/tvOwnerPhoneText"
-        android:layout_width="140dp"
-        android:layout_height="19dp"
-        android:text=" (88) 699 86 89"
-        app:layout_constraintBottom_toBottomOf="@+id/tvOwnerPhone"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/tvOwnerPhone" />
-
-    <TextView
-        android:id="@+id/tvOwnerAgeText"
-        android:layout_width="140dp"
-        android:layout_height="19dp"
-        android:text="20"
-        app:layout_constraintBottom_toBottomOf="@+id/tvOwnerAge"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/tvOwnerAge" />
-
-    <TextView
-        android:id="@+id/tvOwnerNameText"
-        android:layout_width="140dp"
-        android:layout_height="19dp"
-        android:text="Tin Tin"
-        app:layout_constraintBottom_toBottomOf="@+id/tvOwnerName"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/tvOwnerName" />
-
-    <TextView
-        android:id="@+id/tvOwnerDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Description:"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/tvOwnerEmail"
-        app:layout_constraintTop_toBottomOf="@+id/tvOwnerEmail" />
-
-    <TextView
-        android:id="@+id/tvOwnerEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="E-mail:"
-        android:textAlignment="textEnd"
-        app:layout_constraintEnd_toEndOf="@+id/tvOwnerPhone"
-        app:layout_constraintStart_toStartOf="@+id/tvOwnerPhone"
-        app:layout_constraintTop_toBottomOf="@+id/tvOwnerPhone" />
-
-    <TextView
-        android:id="@+id/tvOwnerAge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Age:"
-        android:textAlignment="textEnd"
-        app:layout_constraintEnd_toEndOf="@+id/tvOwnerName"
-        app:layout_constraintStart_toStartOf="@+id/tvOwnerName"
-        app:layout_constraintTop_toBottomOf="@+id/tvOwnerName" />
-
-    <TextView
         android:id="@+id/tvOwnerTitle"
         android:layout_width="78dp"
         android:layout_height="27dp"
@@ -96,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvOwnerName"
+        android:id="@+id/tvOwnNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -105,22 +26,206 @@
         app:layout_constraintStart_toStartOf="@+id/tvOwnerTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvOwnerTitle" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvOwnerNameText"
-        tools:srcCompat="@tools:sample/avatars[5]" />
+    <TextView
+        android:id="@+id/tvOwnNameText"
+        android:layout_width="140dp"
+        android:layout_height="19dp"
+        android:text="Tin Tin"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOwnNameLabel"
+        app:layout_constraintEnd_toStartOf="@+id/ivOwner"
+        app:layout_constraintStart_toEndOf="@+id/tvOwnNameLabel" />
 
     <TextView
-        android:id="@+id/tvOwnerDescriptionText"
+        android:id="@+id/tvOwnAgeLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Age:"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/tvOwnNameLabel"
+        app:layout_constraintStart_toStartOf="@+id/tvOwnNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnNameLabel" />
+
+    <TextView
+        android:id="@+id/tvOwnAgeText"
+        android:layout_width="140dp"
+        android:layout_height="19dp"
+        android:text="20"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOwnAgeLabel"
+        app:layout_constraintEnd_toStartOf="@+id/ivOwner"
+        app:layout_constraintStart_toEndOf="@+id/tvOwnAgeLabel" />
+
+    <TextView
+        android:id="@+id/tvOwnPhoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Phone:"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/tvOwnAgeLabel"
+        app:layout_constraintStart_toStartOf="@+id/tvOwnAgeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnAgeLabel" />
+
+    <TextView
+        android:id="@+id/tvOwnPhoneText"
+        android:layout_width="140dp"
+        android:layout_height="19dp"
+        android:text=" (88) 699 86 89"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOwnPhoneLabel"
+        app:layout_constraintEnd_toStartOf="@+id/ivOwner"
+        app:layout_constraintStart_toEndOf="@+id/tvOwnPhoneLabel" />
+
+    <TextView
+        android:id="@+id/tvOwnEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="E-mail:"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/tvOwnPhoneLabel"
+        app:layout_constraintStart_toStartOf="@+id/tvOwnPhoneLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnPhoneLabel" />
+
+    <TextView
+        android:id="@+id/tvOwnEmailText"
+        android:layout_width="140dp"
+        android:layout_height="19dp"
+        android:text="tin.tin@gmail.com"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOwnEmailLabel"
+        app:layout_constraintEnd_toStartOf="@+id/ivOwner"
+        app:layout_constraintStart_toEndOf="@+id/tvOwnEmailLabel" />
+
+    <TextView
+        android:id="@+id/tvOwnDescLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Description:"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOwner"
+        app:layout_constraintStart_toStartOf="@+id/tvOwnEmailLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnEmailLabel" />
+
+    <TextView
+        android:id="@+id/tvOwnDescText"
         android:layout_width="345dp"
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
         android:text="Reporter and adventurer. 20 years old. Sharp intellect, honest, decent, compassionate and kind."
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/tvOwnerDescription"
-        app:layout_constraintTop_toBottomOf="@+id/tvOwnerDescription" />
+        app:layout_constraintEnd_toEndOf="@+id/ivOwner"
+        app:layout_constraintStart_toStartOf="@+id/tvOwnerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnEmailLabel" />
+
+    <ImageView
+        android:id="@+id/ivOwner"
+        android:layout_width="103dp"
+        android:layout_height="94dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvOwnEmailLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvOwnNameText"
+        android:src="@drawable/tintin" />
+
+    <TextView
+        android:id="@+id/tvPetTitle"
+        android:layout_width="78dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:text="Pet"
+        app:layout_constraintStart_toStartOf="@+id/tvOwnerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnDescText" />
+
+    <TextView
+        android:id="@+id/tvPetNameLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Name:"
+        android:textAlignment="textEnd"
+        app:layout_constraintStart_toEndOf="@+id/ivPet"
+        app:layout_constraintTop_toTopOf="@+id/ivPet" />
+
+    <TextView
+        android:id="@+id/tvPetNameText"
+        android:layout_width="140dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="21dp"
+        android:text="Milou"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPetNameLabel"
+        app:layout_constraintEnd_toEndOf="@+id/tvOwnDescText"
+        app:layout_constraintStart_toEndOf="@+id/tvPetNameLabel" />
+
+    <TextView
+        android:id="@+id/tvPetAgeLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Age:"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/tvPetNameLabel"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="@+id/tvPetNameLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvPetNameLabel" />
+
+    <TextView
+        android:id="@+id/tvPetAgeText"
+        android:layout_width="140dp"
+        android:layout_height="19dp"
+        android:text="4"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPetAgeLabel"
+        app:layout_constraintEnd_toEndOf="@+id/tvOwnDescText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvPetAgeLabel" />
+
+    <TextView
+        android:id="@+id/tvPetBreedLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Breed:"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="@+id/tvPetAgeLabel"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="@+id/tvPetAgeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvPetAgeLabel" />
+
+    <TextView
+        android:id="@+id/tvPetBreedText"
+        android:layout_width="140dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="8dp"
+        android:text="White Wire Fox Terrier"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPetBreedLabel"
+        app:layout_constraintEnd_toEndOf="@+id/tvOwnDescText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvPetBreedLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvPetAgeText" />
+
+    <TextView
+        android:id="@+id/tvPetDescLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description:"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPet"
+        app:layout_constraintStart_toStartOf="@+id/tvPetBreedLabel" />
+
+    <TextView
+        android:id="@+id/tvPetDescText"
+        android:layout_width="345dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:text="Brave and fearless. Loyal friend, likes whiskey and has biggest lust for bones."
+        app:layout_constraintEnd_toEndOf="@+id/tvOwnDescText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tvOwnDescText"
+        app:layout_constraintTop_toBottomOf="@+id/ivPet" />
+
+    <ImageView
+        android:id="@+id/ivPet"
+        android:layout_width="129dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/tvPetTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvPetTitle"
+        android:src="@drawable/milou" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
