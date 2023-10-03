@@ -6,59 +6,63 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/tvLandPetBreedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/tvLandPetAgeLabel"
         tools:layout_editor_absoluteY="139dp" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tvLandPetDescLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        tools:layout_editor_absoluteY="191dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivLandscapePet"
+        app:layout_constraintStart_toStartOf="@+id/tvLandPetBreedLabel" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/tvLandPetNameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Milou"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvLandPetNameLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLandPetNameLabel" />
+
+    <TextView
+        android:id="@+id/tvLandPetAgeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
+        android:text="4"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvLandPetAgeLabel"
         tools:layout_editor_absoluteX="636dp" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/tvLandPetBreedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvLandPetBreedLabel"
         tools:layout_editor_absoluteX="636dp" />
 
     <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
-        tools:layout_editor_absoluteX="636dp" />
+        android:id="@+id/tvLandPetDescText"
+        android:layout_width="256dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="8dp"
+        android:text="Brave and fearless. Loyal friend, likes whiskey and has biggest lust for bones."
+        app:layout_constraintStart_toStartOf="@+id/ivLandscapePet"
+        app:layout_constraintTop_toBottomOf="@+id/tvLandPetDescLabel" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tvLandPetAgeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
-        tools:layout_editor_absoluteX="636dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/tvLandPetNameLabel"
         tools:layout_editor_absoluteY="101dp" />
 
     <TextView
@@ -186,11 +190,31 @@
         app:layout_constraintTop_toBottomOf="@+id/tvLandOwnerTitle" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvLandPetNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="TextView"
+        android:text="Name:"
         app:layout_constraintStart_toEndOf="@+id/ivLandscapePet"
         tools:layout_editor_absoluteY="69dp" />
+
+    <TextView
+        android:id="@+id/tvLandOwnDescLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/ivLandscapeOwner"
+        app:layout_constraintStart_toStartOf="@+id/tvLandOwnEmailLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvLandOwnEmailLabel" />
+
+    <TextView
+        android:id="@+id/tvLandOwnDescText"
+        android:layout_width="345dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:text="Reporter and adventurer. 20 years old. Sharp intellect, honest, decent, compassionate and kind."
+        app:layout_constraintEnd_toEndOf="@+id/ivLandscapeOwner"
+        app:layout_constraintStart_toStartOf="@+id/tvLandOwnDescLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvLandOwnDescLabel" />
 </androidx.constraintlayout.widget.ConstraintLayout>
