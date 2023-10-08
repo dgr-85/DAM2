@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvAppTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#673AB7"
+        android:gravity="center"
+        android:text="IKEA Bill"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tblList"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAppTitle">
+
+        <TableRow
+            android:id="@+id/trTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTitleProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#009688"
+                android:text="Product"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTitleQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#009688"
+                android:text="Quantity"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTitleSubtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#009688"
+                android:text="Subtotal"
+                android:textAlignment="textEnd"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trArticles00"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvProduct00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LERHAMN Table" />
+
+            <TextView
+                android:id="@+id/tvQuantity00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/tvSubtotal00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="49,58€"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trArticles01"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvProduct01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LERHAMN Console" />
+
+            <TextView
+                android:id="@+id/tvQuantity01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4" />
+
+            <TextView
+                android:id="@+id/tvSubtotal01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="99,16€"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trArticles03"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvProduct03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LERHAMN Table" />
+
+            <TextView
+                android:id="@+id/tvQuantity03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/tvSubtotal03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123,14€"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trArticles04"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvProduct04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KIVIK Two Seater Sofa" />
+
+            <TextView
+                android:id="@+id/tvQuantity04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <TextView
+                android:id="@+id/tvSubtotal04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="329,75€"
+                android:textAlignment="textEnd" />
+
+        </TableRow>
+    </TableLayout>
+
+    <ImageView
+        android:id="@+id/tableSeparator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#040303"
+        android:paddingLeft="5dp"
+        android:paddingTop="2dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="2dp"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/divider_horizontal_dark"
+        app:layout_constraintEnd_toEndOf="@+id/tblList"
+        app:layout_constraintStart_toStartOf="@+id/tblList"
+        app:layout_constraintTop_toBottomOf="@+id/tblList" />
+
+    <TableLayout
+        android:id="@+id/tblPrices"
+        android:layout_width="190dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:stretchColumns="*"
+        app:layout_constraintEnd_toEndOf="@+id/tableSeparator"
+        app:layout_constraintTop_toBottomOf="@+id/tableSeparator">
+
+        <TableRow
+            android:id="@+id/trSubtotal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvSubtotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subtotal"
+                android:textColor="@color/design_default_color_secondary" />
+
+            <TextView
+                android:id="@+id/tvSubtotalValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="601,63€"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trVAT"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvVATLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VAT"
+                android:textColor="@color/design_default_color_secondary" />
+
+            <TextView
+                android:id="@+id/tvVATValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="126,34€"
+                android:textAlignment="textEnd" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/trTotal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total"
+                android:textColor="@color/design_default_color_secondary" />
+
+            <TextView
+                android:id="@+id/tvTotalValues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="727,97€"
+                android:textAlignment="textEnd" />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
