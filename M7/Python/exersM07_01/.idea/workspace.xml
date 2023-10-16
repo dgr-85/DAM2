@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBC_Alumnes/src/tutorial/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBC_Alumnes/src/tutorial/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBC_Alumnes/src/tutorial/ModificacionsJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBC_Alumnes/src/tutorial/ModificacionsJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/exersM07_01.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/exersM07_01.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/M7P5.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
@@ -29,7 +23,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/M7P5_2.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -229,15 +223,15 @@
     </option>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/M7P5_2.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/M7P5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/M7P5_2.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
