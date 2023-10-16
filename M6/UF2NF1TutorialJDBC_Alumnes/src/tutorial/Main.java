@@ -24,13 +24,15 @@ public class Main {
 			}
 
 			FuncionsJDBC gestor = new FuncionsJDBC();
+			ModificacionsJDBC modificador =new ModificacionsJDBC();
 			sc=new Scanner(System.in);
 			// Consulta Departaments
-			gestor.consultaDepartaments(conexio);
+			/*gestor.consultaDepartaments(conexio);
 			gestor.consultaEmpleats(conexio);
 			gestor.empleatsPerDepartament(conexio);
 			gestor.empleatsPerCognom(conexio);
-			gestor.empleatsPerOfici(conexio);
+			gestor.empleatsPerOfici(conexio);*/
+			modificador.afegirEmpleat(conexio);
 
 			sc.close();
 			conexio.close();
