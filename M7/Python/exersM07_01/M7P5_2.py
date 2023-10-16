@@ -1,12 +1,12 @@
 def dec_a_hex(txt_dec):
-    dec = int(txt_dec)
+    dec = abs(int(txt_dec))
     if dec < 16:
-        return txt_dec
+        return str(dec)
     else:
         res = []
         while dec >= 16:
             res.insert(0, str(dec % 16))
-            dec = dec//16
+            dec = dec // 16
         res.insert(0, str(dec))
         for i in range(len(res)):
             match res[i]:
@@ -27,5 +27,5 @@ def dec_a_hex(txt_dec):
         return ''.join(res)
 
 
-numString = "11"
-print("El número " + numString + " passat a hexadecimal és: " + dec_a_hex(numString))
+numString = "-14467"
+print("El valor absolut del número " + numString + " passat a hexadecimal és: " + dec_a_hex(numString))
