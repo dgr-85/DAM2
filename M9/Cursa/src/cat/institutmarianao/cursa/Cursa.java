@@ -20,23 +20,28 @@ public class Cursa {
 			corredors[i].setName(NOMS_CORREDORS[i]);
 		}
 
-		// TODO començar cursa (els corredors comencen a córrer) == start();
-		corredors[0].start();
-		corredors[1].start();
-		corredors[2].start();
+		// Començar cursa (els corredors comencen a córrer) == start();
 		
-		
-		// TODO esperar que tots els corredors acabin la carrera == join();
-		
-		try {
-			corredors[0].join();
-			corredors[1].join();
-			corredors[2].join();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		for (Thread t:corredors){
+			t.start();
 		}
 		
-		// TODO pintar marcador
+		
+		// Esperar que tots els corredors acabin la carrera == join();
+		
+		for (Thread t:corredors){
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		
+		// Pintar marcador
+		for(Corredor c:marcador.getCorredors()) {
+			System.out.println("Corredor: "+c.getNom()+" || Velocitat: "+c.getMetresPerSegon()+" m/s || Temps: "+c.getTemps());
+		}
 	}
 }

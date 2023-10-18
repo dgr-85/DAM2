@@ -10,7 +10,7 @@ public class Corredor implements Runnable {
 	public Corredor(String nom, Marcador marcador) {
 		this.nom = nom;
 		this.marcador = marcador;
-		this.metresPerSegon = (int) (Math.random() * 3) + 6;
+		this.metresPerSegon = (int) ((Math.random() * 4) + (Math.random() * 7) + 1);
 	}
 
 	@Override
@@ -24,8 +24,16 @@ public class Corredor implements Runnable {
 		}
 	}
 
+	public String getNom() {
+		return nom;
+	}
+
 	public int getMetresPerSegon() {
 		return metresPerSegon;
+	}
+	
+	public int getTemps() {
+		return temps;
 	}
 
 }
