@@ -1,31 +1,15 @@
 def dec_a_hex(txt_dec):
     dec = abs(int(txt_dec))
-    if dec < 16:
-        return str(dec)
-    else:
-        res = []
-        while dec >= 16:
-            res.insert(0, str(dec % 16))
-            dec = dec // 16
-        res.insert(0, str(dec))
-        for i in range(len(res)):
-            match res[i]:
-                case '10':
-                    res[i] = 'A'
-                case '11':
-                    res[i] = 'B'
-                case '12':
-                    res[i] = 'C'
-                case '13':
-                    res[i] = 'D'
-                case '14':
-                    res[i] = 'E'
-                case '15':
-                    res[i] = 'F'
-                case _:
-                    pass
-        return ''.join(res)
+    digits = "0123456789abcdef"
+    base_hex = 16
+    res = []
+
+    while dec >= base_hex:
+        res.insert(0, str(digits[dec % 16]))
+        dec = dec // 16
+    res.insert(0, str(digits[dec]))
+    return ''.join(res)
 
 
-numString = "-14467"
+numString = "1995"
 print("El valor absolut del número " + numString + " passat a hexadecimal és: " + dec_a_hex(numString))
