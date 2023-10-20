@@ -8,14 +8,12 @@ import android.widget.Button;
 
 public class AuthorInfo extends AppCompatActivity {
 
-    Button btnClose;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_author_info);
 
-        btnClose=findViewById(R.id.infoButton);
+        Button btnClose=findViewById(R.id.infoButton);
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
