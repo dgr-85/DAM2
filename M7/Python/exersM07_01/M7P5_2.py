@@ -5,8 +5,8 @@ def dec_a_hex(txt_dec):
     res = ''
 
     while dec >= base_hex:
-        res = str(digits[dec % 16]) + res
-        dec = dec // 16
+        res = str(digits[dec % base_hex]) + res
+        dec = dec // base_hex
     res = str(digits[dec]) + res
     return res
 

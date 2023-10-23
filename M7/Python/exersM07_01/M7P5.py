@@ -11,4 +11,3 @@ def dec_a_bin(txt_dec):
 
 numString = "77"
 print("El valor absolut del número " + numString + " passat a binari és: " + dec_a_bin(numString))
-
