@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:weightSum="10"
+    tools:context=".DisplayName">
 
     <TextView
         android:id="@+id/tvLordRingsTitle"
@@ -23,38 +24,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:fontFamily="monospace"
-        android:text="SAY MY FRIEND WHO YOU ARE"
-        android:textSize="14dp"
-        android:textStyle="italic" />
+        android:layout_weight="2"
+        android:fontFamily="cursive"
+        android:text="Welcome, my Lord "
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/tvLore2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:fontFamily="monospace"
-        android:text="AND I WILL TELL YOU THE SCORE YOU HAVE"
-        android:textSize="14dp"
-        android:textStyle="italic" />
-
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:ems="10"
+        android:layout_weight="2"
         android:fontFamily="cursive"
-        android:hint="Name:"
-        android:inputType="text"
-        android:textSize="20dp" />
+        android:text="Your score is "
+        android:textSize="24dp" />
 
     <Button
-        android:id="@+id/btnCheckName"
+        android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="BUTTON DOOM"
+        android:layout_weight="0"
+        android:text="BACK AGAIN"
         android:textStyle="italic" />
 
 </LinearLayout>
