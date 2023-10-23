@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Departament;
@@ -13,8 +14,7 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 	@Override
 	public int addDepartament(Departament d) {
 		Boolean isConnectionOpen = false;
-
-		String sql = "INSERT INTO departamentos(dept_no,dnombre,loc) VALUES (?,?,?)";
+		String sql = "insert into departamentos(dept_no,dnombre,loc) values (?,?,?)";
 		try {
 			isConnectionOpen = GestorConnexions.isConnected();
 			Connection conexio = GestorConnexions.obtenirConnexio();
@@ -61,30 +61,100 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		} finally {
 			if (!isConnectionOpen) {
 				GestorConnexions.tancarConnexio();
 			}
 		}
-		return null;
 	}
 
 	@Override
 	public int updateDepartament(Departament d) {
-		// TODO Auto-generated method stub
-		return 0;
+		Boolean isConnectionOpen = false;
+
+		String sql = "update departamentos set dnombre=?,loc=? where dept_no=?";
+		try {
+			isConnectionOpen = GestorConnexions.isConnected();
+			Connection conexio = GestorConnexions.obtenirConnexio();
+			PreparedStatement sentencia = conexio.prepareStatement(sql);
+			sentencia.setString(1, d.getNomDepartament());
+			sentencia.setString(2, d.getLlocDepartament());
+			sentencia.setInt(3, d.getCodiDepartament());
+			int resultat = sentencia.executeUpdate();
+			return resultat;
+		} catch (SQLException e) {
+			if (e.getErrorCode() == 1062) {
+				// PK repetida
+				return e.getErrorCode() * -1;
+			} else {
+				e.printStackTrace();
+				return -1;
+			}
+		} finally {
+			if (!isConnectionOpen) {
+				GestorConnexions.tancarConnexio();
+			}
+		}
 	}
 
 	@Override
 	public int deleteDepartament(Departament d, boolean cascade) {
-		// TODO Auto-generated method stub
-		return 0;
+		Boolean isConnectionOpen = false;
+
+		String sql = "delete from departamentos where dept_no=?)";
+		try {
+			isConnectionOpen = GestorConnexions.isConnected();
+			Connection conexio = GestorConnexions.obtenirConnexio();
+			PreparedStatement sentencia = conexio.prepareStatement(sql);
+			sentencia.setInt(1, d.getCodiDepartament());
+			int resultat = sentencia.executeUpdate();
+			return resultat;
+		} catch (SQLException e) {
+			if (e.getErrorCode() == 1062) {
+				// PK repetida
+				return e.getErrorCode() * -1;
+			} else {
+				e.printStackTrace();
+				return -1;
+			}
+		} finally {
+			if (!isConnectionOpen) {
+				GestorConnexions.tancarConnexio();
+			}
+		}
 	}
 
 	@Override
 	public ArrayList<Departament> listDepartaments() {
-		// TODO Auto-generated method stub
-		return null;
+
+		ArrayList<Departament> departaments = new ArrayList<>();
+		Boolean isConnectionOpen = false;
+		Statement sentencia;
+		String sql = "select * from departamentos";
+		try {
+			isConnectionOpen = GestorConnexions.isConnected();
+			Connection conexio = GestorConnexions.obtenirConnexio();
+			sentencia = conexio.createStatement();
+			ResultSet resultat = sentencia.executeQuery(sql);
+
+			while (resultat.next()) {
+				Departament dep = new Departament();
+				dep.setCodiDepartament(resultat.getInt(1));
+				dep.setNomDepartament(resultat.getString(2));
+				dep.setLlocDepartament(resultat.getString(3));
+				departaments.add(dep);
+			}
+			return departaments;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (!isConnectionOpen) {
+				GestorConnexions.tancarConnexio();
+			}
+		}
+
 	}
 
 	@Override

@@ -11,7 +11,10 @@ public class Empleat {
 	private float salari;
 	private float comissio;
 	private Departament departamentEmpleat;
-	
+
+	public Empleat() {
+	}
+
 	public Empleat(int codiEmpleat, String cognom, String ofici, Empleat director, Date dataAlta, float salari,
 			float comissio, Departament departamentEmpleat) {
 		this.codiEmpleat = codiEmpleat;
@@ -87,15 +90,14 @@ public class Empleat {
 	public void setDepartamentEmpleat(Departament departamentEmpleat) {
 		this.departamentEmpleat = departamentEmpleat;
 	}
-	
+
 	@Override
 	public String toString() {
-		String resultat = "Dades de l'Empleat: [Codi:" + codiEmpleat
-				+ ", Nom:" + cognom + ", Posició:"
-				+ ofici + ", Director:"+ director.getCognom()+", Data d'incorporació:"+dataAlta+", Salari:"+salari+", Comissió:"+comissio+", Departament:"+departamentEmpleat.getCodiDepartament()+"]";
-		
+		String resultat = "Dades de l'Empleat: [Codi:" + codiEmpleat + ", Nom:" + cognom + ", Posició:" + ofici
+				+ ", Director:" + director.getCognom() + ", Data d'incorporació:" + dataAlta + ", Salari:" + salari
+				+ ", Comissió:" + comissio + ", Departament:" + departamentEmpleat.getCodiDepartament() + "]";
+
 		return resultat;
 	}
-	
-	
+
 }

@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.Empleat;
@@ -43,8 +44,35 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 
 	@Override
 	public Empleat getEmpleatById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Boolean isConnectionOpen = false;
+
+		String sql = "select * from empleados where emp_no=?";
+		try {
+			isConnectionOpen = GestorConnexions.isConnected();
+			Connection conexio = GestorConnexions.obtenirConnexio();
+			PreparedStatement sentencia = conexio.prepareStatement(sql);
+			sentencia.setInt(1, id);
+			ResultSet rs = sentencia.executeQuery();
+			Empleat rsEmp = new Empleat();
+
+			while (rs.next()) {
+				rsEmp.setCodiEmpleat(rs.getInt(1));
+				rsEmp.setCognom(rs.getString(2));
+				rsEmp.setOfici(rs.getString(3));
+				// rsEmp.setDirector(rs.getObject(4));
+				// TODO invocació recursiva
+
+			}
+			return rsEmp;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (!isConnectionOpen) {
+				GestorConnexions.tancarConnexio();
+			}
+		}
 	}
 
 	@Override
