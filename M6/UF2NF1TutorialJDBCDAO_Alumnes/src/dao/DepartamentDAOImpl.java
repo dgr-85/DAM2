@@ -160,6 +160,7 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 	@Override
 	public ArrayList<Departament> listEmpleatsByDepartament() {
 		// TODO Auto-generated method stub
+		System.out.println("Aquest mètode encara no està implementat.");
 		return null;
 	}
 
