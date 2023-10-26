@@ -99,15 +99,14 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 	}
 
 	@Override
-	public int deleteDepartament(Departament d, boolean cascade) {
+	public int deleteDepartament(Integer id, boolean cascade) {
 		Boolean isConnectionOpen = false;
-
-		String sql = "delete from departamentos where dept_no=?)";
+		String sql = "delete from departamentos where dept_no=?";
 		try {
 			isConnectionOpen = GestorConnexions.isConnected();
 			Connection conexio = GestorConnexions.obtenirConnexio();
 			PreparedStatement sentencia = conexio.prepareStatement(sql);
-			sentencia.setInt(1, d.getCodiDepartament());
+			sentencia.setInt(1, id);
 			int resultat = sentencia.executeUpdate();
 			return resultat;
 		} catch (SQLException e) {
@@ -127,8 +126,6 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 
 	@Override
 	public ArrayList<Departament> listDepartaments() {
-
-		ArrayList<Departament> departaments = new ArrayList<>();
 		Boolean isConnectionOpen = false;
 		Statement sentencia;
 		String sql = "select * from departamentos";
@@ -138,6 +135,7 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 			sentencia = conexio.createStatement();
 			ResultSet resultat = sentencia.executeQuery(sql);
 
+			ArrayList<Departament> departaments = new ArrayList<>();
 			while (resultat.next()) {
 				Departament dep = new Departament();
 				dep.setCodiDepartament(resultat.getInt(1));

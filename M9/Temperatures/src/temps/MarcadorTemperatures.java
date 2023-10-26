@@ -9,7 +9,7 @@ public class MarcadorTemperatures {
 		this.proxima = 0;
 	}
 
-	public void afegirTemperaturaMaxima(int max) {
+	public synchronized void afegirTemperaturaMaxima(int max) {
 		decada[proxima++] = max;
 	}
 
