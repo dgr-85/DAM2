@@ -57,12 +57,18 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 			sentencia.setInt(1, id);
 			ResultSet rs = sentencia.executeQuery();
 			Empleat rsEmp = new Empleat();
+			Boolean invocacioRecursiva = false;
 
 			while (rs.next()) {
 				rsEmp.setCodiEmpleat(rs.getInt(1));
 				rsEmp.setCognom(rs.getString(2));
 				rsEmp.setOfici(rs.getString(3));
-				rsEmp.setDirector((Empleat) rs.getObject(4));
+				if (!invocacioRecursiva) {
+					rsEmp.setDirector((Empleat) rs.getObject(4));
+					invocacioRecursiva = false;
+				} else {
+					rsEmp.setDirector(null);
+				}
 				rsEmp.setDataAlta(rs.getDate(5));
 				rsEmp.setSalari(rs.getFloat(6));
 				rsEmp.setComissio(rs.getFloat(7));
