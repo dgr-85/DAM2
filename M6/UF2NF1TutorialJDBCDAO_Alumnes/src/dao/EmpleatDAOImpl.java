@@ -23,11 +23,11 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 			sentencia.setInt(1, e.getCodiEmpleat());
 			sentencia.setString(2, e.getCognom());
 			sentencia.setString(3, e.getOfici());
-			sentencia.setObject(4, e.getDirector());
+			sentencia.setInt(4, e.getDirector().getCodiEmpleat());
 			sentencia.setDate(5, e.getDataAlta());
 			sentencia.setFloat(6, e.getSalari());
 			sentencia.setFloat(7, e.getComissio());
-			sentencia.setObject(8, e.getDepartamentEmpleat());
+			sentencia.setInt(8, e.getDepartamentEmpleat().getCodiDepartament());
 			int resultat = sentencia.executeUpdate();
 			return resultat;
 		} catch (SQLException ex) {
@@ -63,12 +63,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 				rsEmp.setCodiEmpleat(rs.getInt(1));
 				rsEmp.setCognom(rs.getString(2));
 				rsEmp.setOfici(rs.getString(3));
-				if (!invocacioRecursiva) {
-					rsEmp.setDirector((Empleat) rs.getObject(4));
-					invocacioRecursiva = false;
-				} else {
-					rsEmp.setDirector(null);
-				}
+				rsEmp.setDirector((Empleat) rs.getObject(4));
 				rsEmp.setDataAlta(rs.getDate(5));
 				rsEmp.setSalari(rs.getFloat(6));
 				rsEmp.setComissio(rs.getFloat(7));
@@ -96,7 +91,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 			PreparedStatement sentencia = conexio.prepareStatement(sql);
 			sentencia.setString(1, e.getCognom());
 			sentencia.setString(2, e.getOfici());
-			sentencia.setObject(3, e.getDirector());
+			sentencia.setInt(3, e.getDirector().getCodiEmpleat());
 			sentencia.setDate(4, e.getDataAlta());
 			sentencia.setFloat(5, e.getSalari());
 			sentencia.setFloat(6, e.getComissio());

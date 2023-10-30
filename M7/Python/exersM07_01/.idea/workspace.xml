@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/M7P5_3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/M7P5_4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBCDAO_Alumnes/src/dao/DepartamentDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBCDAO_Alumnes/src/dao/DepartamentDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../correccions/.idea/correccions.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../correccions/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../correccions/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../correccions/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../correccions/M7P5P02.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../correccions/M7P5P05.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBCDAO_Alumnes/src/dao/EmpleatDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBCDAO_Alumnes/src/dao/EmpleatDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBCDAO_Alumnes/src/principal/TutorialMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/UF2NF1TutorialJDBCDAO_Alumnes/src/principal/TutorialMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/M7P5.py" beforeDir="false" afterPath="$PROJECT_DIR$/M7P5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/M7P5_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/M7P5_2.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/M7P5.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -34,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/M7P5_2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -42,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/M7P5_3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="72" lean-forward="true" selection-end-line="10" selection-end-column="72" />
+            <state relative-caret-position="225">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -51,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/M7P5_4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
-              <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+            <state relative-caret-position="210">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -92,7 +95,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -104,6 +106,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -112,6 +115,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../correccions" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -125,7 +129,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.M7P5_2">
+  <component name="RunManager" selected="Python.M7P5_4">
     <configuration name="M7P5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="exersM07_01" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -212,8 +216,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.M7P5_2" />
         <item itemvalue="Python.M7P5_4" />
+        <item itemvalue="Python.M7P5_2" />
         <item itemvalue="Python.M7P5_3" />
         <item itemvalue="Python.M7P5" />
       </list>
@@ -236,7 +240,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="852" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2181357" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2181357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -288,31 +292,31 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/M7P5_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="72" lean-forward="true" selection-end-line="10" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/M7P5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/M7P5_2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/M7P5_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/M7P5_4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        <state relative-caret-position="210">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
