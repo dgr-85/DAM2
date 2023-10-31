@@ -94,8 +94,9 @@ public class Empleat {
 	@Override
 	public String toString() {
 		String resultat = "Dades de l'Empleat: [Codi:" + codiEmpleat + ", Nom:" + cognom + ", Posició:" + ofici
-				+ ", Director:" + director.getCognom() + ", Data d'incorporació:" + dataAlta + ", Salari:" + salari
-				+ ", Comissió:" + comissio + ", Departament:" + departamentEmpleat.getCodiDepartament() + "]";
+				+ ", Director:" + director != null ? director.getCognom()
+						: "null" + ", Data d'incorporació:" + dataAlta + ", Salari:" + salari + ", Comissió:" + comissio
+								+ ", Departament:" + departamentEmpleat.getCodiDepartament() + "]";
 
 		return resultat;
 	}

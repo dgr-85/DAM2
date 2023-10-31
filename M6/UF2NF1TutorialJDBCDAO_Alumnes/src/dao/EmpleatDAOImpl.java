@@ -12,6 +12,8 @@ import model.Empleat;
 
 public class EmpleatDAOImpl implements EmpleatDAO {
 
+	DepartamentDAO depDAO = DAOManager.getDepDAO();
+
 	@Override
 	public int addEmpleat(Empleat e) {
 		Boolean isConnectionOpen = false;
@@ -63,11 +65,19 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 				rsEmp.setCodiEmpleat(rs.getInt(1));
 				rsEmp.setCognom(rs.getString(2));
 				rsEmp.setOfici(rs.getString(3));
-				rsEmp.setDirector((Empleat) rs.getObject(4));
+
+				if (!invocacioRecursiva) {
+					Empleat e = getEmpleatById(rs.getInt(4));
+					rsEmp.setDirector(e);
+					invocacioRecursiva = true;
+				}
+
 				rsEmp.setDataAlta(rs.getDate(5));
 				rsEmp.setSalari(rs.getFloat(6));
 				rsEmp.setComissio(rs.getFloat(7));
-				rsEmp.setDepartamentEmpleat((Departament) rs.getObject(8));
+
+				Departament d = depDAO.getDepartamentById(rs.getInt(8), false);
+				rsEmp.setDepartamentEmpleat(d);
 			}
 			return rsEmp;
 
@@ -95,7 +105,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 			sentencia.setDate(4, e.getDataAlta());
 			sentencia.setFloat(5, e.getSalari());
 			sentencia.setFloat(6, e.getComissio());
-			sentencia.setObject(7, e.getDepartamentEmpleat());
+			sentencia.setInt(7, e.getDepartamentEmpleat().getCodiDepartament());
 			sentencia.setInt(8, e.getCodiEmpleat());
 			int resultat = sentencia.executeUpdate();
 			return resultat;
@@ -152,17 +162,26 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 			Connection conexio = GestorConnexions.obtenirConnexio();
 			sentencia = conexio.createStatement();
 			ResultSet resultat = sentencia.executeQuery(sql);
+			Boolean invocacioRecursiva = false;
 
 			while (resultat.next()) {
 				Empleat emp = new Empleat();
 				emp.setCodiEmpleat(resultat.getInt(1));
 				emp.setCognom(resultat.getString(2));
 				emp.setOfici(resultat.getString(3));
-				emp.setDirector((Empleat) resultat.getObject(4));
+
+				if (!invocacioRecursiva) {
+					Empleat e = getEmpleatById(resultat.getInt(4));
+					emp.setDirector(e);
+					invocacioRecursiva = true;
+				}
 				emp.setDataAlta(resultat.getDate(5));
 				emp.setSalari(resultat.getFloat(6));
 				emp.setComissio(resultat.getFloat(7));
-				emp.setDepartamentEmpleat((Departament) resultat.getObject(8));
+
+				Departament d = depDAO.getDepartamentById(resultat.getInt(8), false);
+				emp.setDepartamentEmpleat(d);
+
 				empleats.add(emp);
 			}
 			return empleats;
