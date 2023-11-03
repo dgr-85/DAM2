@@ -22,16 +22,18 @@ public class TutorialMain {
 		EmpleatDAO empDAO = DAOManager.getEmpDAO();
 
 		// Afegir un Departament
+		System.out.println("==================================================");
 		System.out.println("Afegir un Departament");
 		Departament newDep = new Departament(77, "NouDep1", "BARCELONA");
 		int resAddDep = depDAO.addDepartament(newDep);
 		if (resAddDep > 0) {
-			System.out.println("Departament Afegit");
+			System.out.println(resAddDep + " Departament Afegit");
 		} else {
 			System.out.println(GestorErrors.getMissatge(resAddDep, "Departament"));
 		}
 
 		// Buscar un Departament a partir de la seva Id
+		System.out.println("==================================================");
 		System.out.println("Buscar un Departament a partir de la seva Id");
 		int idReadDep = 77;
 		Departament searchDep = depDAO.getDepartamentById(idReadDep, false);
@@ -43,6 +45,7 @@ public class TutorialMain {
 		}
 
 		// Actualitzar un Departament
+		System.out.println("==================================================");
 		System.out.println("Actualitzar les dades d'un Departament");
 		Departament updateDep = new Departament(77, "NomActualitzat", "La Cochinchina");
 		int resUpdateDep = depDAO.updateDepartament(updateDep);
@@ -55,7 +58,7 @@ public class TutorialMain {
 		}
 
 		// Esborrar un Departament
-
+		System.out.println("==================================================");
 		System.out.println("Esborrar un Departament");
 		int idDeleteDep = 77;
 		int resDeleteDep = depDAO.deleteDepartament(idDeleteDep, false);
@@ -66,6 +69,7 @@ public class TutorialMain {
 		}
 
 		// Llista de tots els Departaments
+		System.out.println("==================================================");
 		System.out.println("Llista de tots els Departaments");
 		ArrayList<Departament> llistaDepartaments = depDAO.listDepartaments();
 		for (Departament dep : llistaDepartaments) {
@@ -73,22 +77,23 @@ public class TutorialMain {
 		}
 
 		// Afegir un Empleat
+		System.out.println("==================================================");
 		System.out.println("Afegir un Empleat");
-		Empleat exemple = empDAO.getEmpleatById(7698);
+		Empleat exemple = empDAO.getEmpleatById(7698, true);
 		Empleat newEmp = new Empleat(9999, "NouCognom", "DIRECTOR", exemple, Date.valueOf("2000-12-31"), (float) 5.2,
 				(float) 2.2, depDAO.getDepartamentById(10, false));
 		int resAddEmp = empDAO.addEmpleat(newEmp);
 		if (resAddEmp > 0) {
 			System.out.println(resAddEmp + " Empleat afegit");
 		} else {
-			System.out.println(GestorErrors.getMissatge(resAddDep, "Empleat"));
+			System.out.println(GestorErrors.getMissatge(resAddEmp, "Empleat"));
 		}
 
 		// Buscar un Empleat a partir de la seva Id
-
+		System.out.println("==================================================");
 		System.out.println("Buscar un Empleat a partir de la seva Id");
 		int idReadEmp = 9999;
-		Empleat searchEmp = empDAO.getEmpleatById(idReadEmp);
+		Empleat searchEmp = empDAO.getEmpleatById(idReadEmp, false);
 		if (searchEmp != null) {
 			System.out.println("Empleat Trobat");
 			System.out.println(searchEmp.toString());
@@ -97,19 +102,21 @@ public class TutorialMain {
 		}
 
 		// Actualitzar un Empleat
-		System.out.println("Actualitzar les dades d'un Departament");
-		Empleat updateEmp = new Empleat(9999, "NewSurname", "ANALISTA", empDAO.getEmpleatById(7900),
+		System.out.println("==================================================");
+		System.out.println("Actualitzar les dades d'un Empleat");
+		Empleat updateEmp = new Empleat(9999, "NewSurname", "ANALISTA", empDAO.getEmpleatById(7900, true),
 				Date.valueOf("1999-12-31"), (float) 3.7, (float) 79.8, depDAO.getDepartamentById(20, false));
 		int resUpdateEmp = empDAO.updateEmpleat(updateEmp);
 		if (resUpdateEmp > 0) {
 			System.out.println(resUpdateEmp + " Empleat actualitzat");
-			updateEmp = empDAO.getEmpleatById(9999);
+			updateEmp = empDAO.getEmpleatById(9999, false);
 			System.out.println(updateEmp.toString());
 		} else {
 			System.out.println(GestorErrors.getMissatge(resUpdateDep, "Empleat"));
 		}
 
 		// Esborrar un Empleat
+		System.out.println("==================================================");
 		System.out.println("Esborrar un Empleat");
 		int idDeleteEmp = 9999;
 		int resDeleteEmp = empDAO.deleteEmpleat(idDeleteEmp);
@@ -120,6 +127,7 @@ public class TutorialMain {
 		}
 
 		// Llista de tots els Empleats
+		System.out.println("==================================================");
 		System.out.println("Llista de tots els Empleats");
 		ArrayList<Empleat> llistaEmpleats = empDAO.listOfEmpleats();
 		for (Empleat emp : llistaEmpleats) {

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Departament;
+import model.Empleat;
 
 public class DepartamentDAOImpl implements DepartamentDAO {
 
@@ -156,7 +157,7 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 	}
 
 	@Override
-	public ArrayList<Departament> listEmpleatsByDepartament() {
+	public ArrayList<Empleat> listEmpleatsByDepartament() {
 		// TODO Auto-generated method stub
 		System.out.println("Aquest mètode encara no està implementat.");
 		return null;

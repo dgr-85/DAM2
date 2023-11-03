@@ -27,13 +27,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RadioGroup radioGroup=findViewById(R.id.rgOperations);
+
         EditText etFirstNumber=findViewById(R.id.etFirstNumber);
         EditText etSecondNumber=findViewById(R.id.etSecondNumber);
+
+        TextView result=findViewById(R.id.tvResult);
+
         Button btnAdd=findViewById(R.id.btnAdd);
+        Button btnClear=findViewById(R.id.btnClear);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                result.setText(null);
                 validateForm(radioGroup,etFirstNumber,etSecondNumber);
+            }
+        });
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                etFirstNumber.getText().clear();
+                etSecondNumber.getText().clear();
+                radioGroup.clearCheck();
+                result.setText(null);
             }
         });
     }
@@ -66,18 +82,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void performOperation(RadioGroup radioGroup,int num1,int num2){
-        int radioGroupCheckedId=radioGroup.getCheckedRadioButtonId();
-        RadioButton radioButtonChecked=null;
-        String strRadioButtonChecked="";
-
-        for(int i=0; i<radioGroup.getChildCount();i++){
-            if(radioGroup.getChildAt(i).getId()==radioGroupCheckedId){
-                radioButtonChecked=radioGroup.findViewById(radioGroupCheckedId);
-                strRadioButtonChecked=radioButtonChecked.getText().toString();
-            }
-        }
+        RadioButton radioButtonChecked=findViewById(radioGroup.getCheckedRadioButtonId());
         TextView result=findViewById(R.id.tvResult);
-        result.append(strRadioButtonChecked);
+
+        if(radioButtonChecked.equals(findViewById(R.id.rBtnSubtract))){
+            result.setText("Subtract = "+(num1-num2));
+        }else if(radioButtonChecked.equals(findViewById(R.id.rBtnAdd))){
+            result.setText("Add = "+(num1+num2));
+        }else{
+            result.setText("ERROR");
+        }
+
+
 
     }
 

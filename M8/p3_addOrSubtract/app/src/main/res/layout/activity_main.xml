@@ -33,7 +33,7 @@
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Number 1"
-                android:inputType="number" />
+                android:inputType="number|numberSigned" />
 
             <EditText
                 android:id="@+id/etSecondNumber"
@@ -42,7 +42,7 @@
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Number 2"
-                android:inputType="number" />
+                android:inputType="number|numberSigned" />
 
             <RadioGroup
                 android:id="@+id/rgOperations"
@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Result:"
+                android:hint="Result:"
                 android:textAlignment="textStart" />
 
             <Button

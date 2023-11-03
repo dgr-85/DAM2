@@ -48,7 +48,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 	}
 
 	@Override
-	public Empleat getEmpleatById(int id) {
+	public Empleat getEmpleatById(int id, Boolean invocacioRecursiva) {
 		Boolean isConnectionOpen = false;
 
 		String sql = "select * from empleados where emp_no=?";
@@ -59,7 +59,6 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 			sentencia.setInt(1, id);
 			ResultSet rs = sentencia.executeQuery();
 			Empleat rsEmp = new Empleat();
-			Boolean invocacioRecursiva = false;
 
 			while (rs.next()) {
 				rsEmp.setCodiEmpleat(rs.getInt(1));
@@ -67,9 +66,8 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 				rsEmp.setOfici(rs.getString(3));
 
 				if (!invocacioRecursiva) {
-					Empleat e = getEmpleatById(rs.getInt(4));
+					Empleat e = getEmpleatById(rs.getInt(4), true);
 					rsEmp.setDirector(e);
-					invocacioRecursiva = true;
 				}
 
 				rsEmp.setDataAlta(rs.getDate(5));
@@ -162,19 +160,14 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 			Connection conexio = GestorConnexions.obtenirConnexio();
 			sentencia = conexio.createStatement();
 			ResultSet resultat = sentencia.executeQuery(sql);
-			Boolean invocacioRecursiva = false;
 
 			while (resultat.next()) {
 				Empleat emp = new Empleat();
 				emp.setCodiEmpleat(resultat.getInt(1));
 				emp.setCognom(resultat.getString(2));
 				emp.setOfici(resultat.getString(3));
-
-				if (!invocacioRecursiva) {
-					Empleat e = getEmpleatById(resultat.getInt(4));
-					emp.setDirector(e);
-					invocacioRecursiva = true;
-				}
+				Empleat e = getEmpleatById(resultat.getInt(4), true);
+				emp.setDirector(e);
 				emp.setDataAlta(resultat.getDate(5));
 				emp.setSalari(resultat.getFloat(6));
 				emp.setComissio(resultat.getFloat(7));

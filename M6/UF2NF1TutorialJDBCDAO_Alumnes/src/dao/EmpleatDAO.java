@@ -11,7 +11,7 @@ public interface EmpleatDAO {
 	public int addEmpleat(Empleat e);
 
 	// Read
-	public Empleat getEmpleatById(int id);
+	public Empleat getEmpleatById(int id, Boolean invocacioRecursiva);
 
 	// Update
 	public int updateEmpleat(Empleat e);
