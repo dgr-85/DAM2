@@ -20,5 +20,5 @@ public interface EmpleatDAO {
 	public int deleteEmpleat(int id);
 
 	// Consultes
-	public ArrayList<Empleat> listOfEmpleats();
+	public ArrayList<Empleat> listEmpleats();
 }

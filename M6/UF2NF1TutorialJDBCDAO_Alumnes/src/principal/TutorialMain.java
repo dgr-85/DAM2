@@ -129,11 +129,17 @@ public class TutorialMain {
 		// Llista de tots els Empleats
 		System.out.println("==================================================");
 		System.out.println("Llista de tots els Empleats");
-		ArrayList<Empleat> llistaEmpleats = empDAO.listOfEmpleats();
+		ArrayList<Empleat> llistaEmpleats = empDAO.listEmpleats();
 		for (Empleat emp : llistaEmpleats) {
 			System.out.println(emp.toString());
 		}
 
+		// Buscar un Departament per Id i llistar-ne tots els Empleats
+
+		System.out.println("==================================================");
+		System.out.println("Buscar un Departament per Id i llistar-ne tots els Empleats");
+		int idListDep = 20;
+		ArrayList<Empleat> empleatsByDepartament = depDAO.getDepartamentById(idListDep, true).getEmpleats();
 	}
 
 }

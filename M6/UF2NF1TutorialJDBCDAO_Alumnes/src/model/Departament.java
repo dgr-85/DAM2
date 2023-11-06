@@ -1,9 +1,12 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Departament {
 	private Integer codiDepartament;
 	private String nomDepartament;
 	private String llocDepartament;
+	private ArrayList<Empleat> empleats;
 
 	/*
 	 * Aqu� podem escollir entre afegir la llista d'empleats (i per tant, quant
@@ -20,6 +23,7 @@ public class Departament {
 		this.codiDepartament = codiDepartament;
 		this.nomDepartament = nomDepartament;
 		this.llocDepartament = llocDepartament;
+		this.empleats = null;
 	}
 
 	public Integer getCodiDepartament() {
@@ -44,6 +48,14 @@ public class Departament {
 
 	public void setLlocDepartament(String llocDepartament) {
 		this.llocDepartament = llocDepartament;
+	}
+
+	public ArrayList<Empleat> getEmpleats() {
+		return empleats;
+	}
+
+	public void setEmpleats(ArrayList<Empleat> empleats) {
+		this.empleats = empleats;
 	}
 
 	@Override

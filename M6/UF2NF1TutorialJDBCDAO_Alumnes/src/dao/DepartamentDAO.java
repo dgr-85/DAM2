@@ -22,5 +22,5 @@ public interface DepartamentDAO {
 	/* Consultes a demanda */
 	public ArrayList<Departament> listDepartaments();
 
-	public ArrayList<Empleat> listEmpleatsByDepartament();
+	public ArrayList<Empleat> listEmpleatsByDepartament(Integer id);
 }

@@ -12,6 +12,8 @@ import model.Empleat;
 
 public class DepartamentDAOImpl implements DepartamentDAO {
 
+	EmpleatDAO empDAO = DAOManager.getEmpDAO();
+
 	@Override
 	public int addDepartament(Departament d) {
 		Boolean isConnectionOpen = false;
@@ -57,6 +59,9 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 				rsDep.setCodiDepartament(rs.getInt(1));
 				rsDep.setNomDepartament(rs.getString(2));
 				rsDep.setLlocDepartament(rs.getString(3));
+			}
+			if (ambEmpleats) {
+				rsDep.setEmpleats(listEmpleatsByDepartament(Id));
 			}
 			return rsDep;
 
@@ -157,10 +162,44 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 	}
 
 	@Override
-	public ArrayList<Empleat> listEmpleatsByDepartament() {
-		// TODO Auto-generated method stub
-		System.out.println("Aquest mètode encara no està implementat.");
-		return null;
+	public ArrayList<Empleat> listEmpleatsByDepartament(Integer id) {
+		ArrayList<Empleat> empleats = new ArrayList<>();
+		Boolean isConnectionOpen = false;
+		String sql = "select * from empleados where dept_no=?";
+		try {
+			isConnectionOpen = GestorConnexions.isConnected();
+			Connection conexio = GestorConnexions.obtenirConnexio();
+			PreparedStatement sentencia = conexio.prepareStatement(sql);
+			sentencia.setInt(1, id);
+			ResultSet resultat = sentencia.executeQuery(sql);
+
+			while (resultat.next()) {
+				Empleat emp = new Empleat();
+				emp.setCodiEmpleat(resultat.getInt(1));
+				emp.setCognom(resultat.getString(2));
+				emp.setOfici(resultat.getString(3));
+
+				Empleat e = empDAO.getEmpleatById(resultat.getInt(4), true);
+				emp.setDirector(e);
+
+				emp.setDataAlta(resultat.getDate(5));
+				emp.setSalari(resultat.getFloat(6));
+				emp.setComissio(resultat.getFloat(7));
+
+				Departament d = getDepartamentById(resultat.getInt(8), false);
+				emp.setDepartamentEmpleat(d);
+
+				empleats.add(emp);
+			}
+			return empleats;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if (!isConnectionOpen) {
+				GestorConnexions.tancarConnexio();
+			}
+		}
 	}
 
 }

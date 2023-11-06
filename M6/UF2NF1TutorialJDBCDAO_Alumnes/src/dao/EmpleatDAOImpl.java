@@ -150,7 +150,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 	}
 
 	@Override
-	public ArrayList<Empleat> listOfEmpleats() {
+	public ArrayList<Empleat> listEmpleats() {
 		ArrayList<Empleat> empleats = new ArrayList<>();
 		Boolean isConnectionOpen = false;
 		Statement sentencia;
