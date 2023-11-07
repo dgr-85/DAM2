@@ -12,8 +12,6 @@ import model.Empleat;
 
 public class EmpleatDAOImpl implements EmpleatDAO {
 
-	DepartamentDAO depDAO = DAOManager.getDepDAO();
-
 	@Override
 	public int addEmpleat(Empleat e) {
 		Boolean isConnectionOpen = false;
@@ -74,6 +72,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 				rsEmp.setSalari(rs.getFloat(6));
 				rsEmp.setComissio(rs.getFloat(7));
 
+				DepartamentDAO depDAO = DAOManager.getDepDAO();
 				Departament d = depDAO.getDepartamentById(rs.getInt(8), false);
 				rsEmp.setDepartamentEmpleat(d);
 			}
@@ -172,6 +171,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 				emp.setSalari(resultat.getFloat(6));
 				emp.setComissio(resultat.getFloat(7));
 
+				DepartamentDAO depDAO = DAOManager.getDepDAO();
 				Departament d = depDAO.getDepartamentById(resultat.getInt(8), false);
 				emp.setDepartamentEmpleat(d);
 

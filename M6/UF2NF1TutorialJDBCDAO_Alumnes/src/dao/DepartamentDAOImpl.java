@@ -12,8 +12,6 @@ import model.Empleat;
 
 public class DepartamentDAOImpl implements DepartamentDAO {
 
-	EmpleatDAO empDAO = DAOManager.getEmpDAO();
-
 	@Override
 	public int addDepartament(Departament d) {
 		Boolean isConnectionOpen = false;
@@ -62,6 +60,8 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 			}
 			if (ambEmpleats) {
 				rsDep.setEmpleats(listEmpleatsByDepartament(Id));
+			} else {
+				rsDep.setEmpleats(null);
 			}
 			return rsDep;
 
@@ -171,7 +171,7 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 			Connection conexio = GestorConnexions.obtenirConnexio();
 			PreparedStatement sentencia = conexio.prepareStatement(sql);
 			sentencia.setInt(1, id);
-			ResultSet resultat = sentencia.executeQuery(sql);
+			ResultSet resultat = sentencia.executeQuery();
 
 			while (resultat.next()) {
 				Empleat emp = new Empleat();
@@ -179,6 +179,7 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 				emp.setCognom(resultat.getString(2));
 				emp.setOfici(resultat.getString(3));
 
+				EmpleatDAO empDAO = DAOManager.getEmpDAO();
 				Empleat e = empDAO.getEmpleatById(resultat.getInt(4), true);
 				emp.setDirector(e);
 

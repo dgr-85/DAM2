@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <color name="main_olive_300">#b3cc8d</color>
+    <color name="triadic_green_200">#8dcca6</color>
+    <color name="triadic_blue_300">#8db3cc</color>
+    <color name="darker_olive_700">#729548</color>
+    <color name="complementary_purple_200">#a68dcc</color>
+
+    <style name="Base.Theme.P4_menus" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/main_olive_300</item>
+        <item name="colorOnPrimary">@color/complementary_purple_200</item>
+        <item name="colorSurface">@color/triadic_green_200</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/darker_olive_700</item>
+        <item name="android:windowBackground">@color/triadic_blue_300</item>
+        <item name="android:navigationBarColor">@color/black</item>
+
+
+    </style>
+
+    <style name="Theme.P4_menus" parent="Base.Theme.P4_menus" />
+</resources>

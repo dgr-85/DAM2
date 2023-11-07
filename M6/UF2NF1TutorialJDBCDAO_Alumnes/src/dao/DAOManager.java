@@ -1,6 +1,6 @@
 package dao;
 
-public class DAOManager {
+public abstract class DAOManager {
 	private static DepartamentDAO depDAO;
 	private static EmpleatDAO empDAO;
 

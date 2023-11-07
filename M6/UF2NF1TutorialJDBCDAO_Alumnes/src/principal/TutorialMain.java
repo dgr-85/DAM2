@@ -139,7 +139,11 @@ public class TutorialMain {
 		System.out.println("==================================================");
 		System.out.println("Buscar un Departament per Id i llistar-ne tots els Empleats");
 		int idListDep = 20;
+		System.out.println("S'ha triat el Departament " + idListDep + ". Els seus empleats són:");
 		ArrayList<Empleat> empleatsByDepartament = depDAO.getDepartamentById(idListDep, true).getEmpleats();
+		for (Empleat emp : empleatsByDepartament) {
+			System.out.println(emp.toString());
+		}
 	}
 
 }
