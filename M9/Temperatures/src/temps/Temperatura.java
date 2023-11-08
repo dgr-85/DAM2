@@ -4,7 +4,9 @@ public class Temperatura {
 
 	private static final int SALT = 365;
 	private static final int NUM_FILS = 10;
+	private static final int TOTAL_DIES = 3650;
 	private MarcadorTemperatures marcadorTemperatures;
+	private static int[] temperatures;
 
 	public static void main(String[] args) {
 
@@ -12,9 +14,9 @@ public class Temperatura {
 		MarcadorTemperatures marcadorTemperatures = new MarcadorTemperatures(NUM_FILS);
 
 		// Crear array de temperatures
-		int[] temperatures = new int[3650];
+		determinarEstacio();
 		for (int i = 0; i < temperatures.length; i++) {
-			temperatures[i] = (int) (Math.random() * 20) + (int) (Math.random() * 40);
+			System.out.println(temperatures[i]);
 		}
 
 		// Crear fils
@@ -41,8 +43,27 @@ public class Temperatura {
 		}
 		int j = 1;
 		for (int i : marcadorTemperatures.obtenirTemperaturesMaximes()) {
-			System.out.println("Temperatura " + j + ": " + i);
-			j++;
+			System.out.println("Temperatura " + (j++) + ": " + i);
+		}
+	}
+
+	private static void determinarEstacio() {
+		temperatures = new int[TOTAL_DIES];
+
+		for (int any = 0; any < NUM_FILS; any++) {
+
+			for (int dia = 0; dia < TOTAL_DIES; dia++) {
+
+				if ((any * dia >= any * 1 && any * dia <= any * 81)
+						|| (any * dia >= any * 356 && any * dia <= any * SALT)) { // Hivern
+					temperatures[dia] = (int) (Math.random() * (15 - 5 + 1)) - 5;
+				} else if ((any * dia >= any * 82 && any * dia <= any * 173)
+						|| (any * dia >= any * 265 && any * dia <= any * 355)) { // Primavera i Tardor
+					temperatures[dia] = (int) (Math.random() * (25 - 10 + 1)) + 10;
+				} else if (any * dia >= any * 174 && any * dia <= any * 264) { // Estiu
+					temperatures[dia] = (int) (Math.random() * (40 - 20 + 1)) + 20;
+				}
+			}
 		}
 	}
 }
