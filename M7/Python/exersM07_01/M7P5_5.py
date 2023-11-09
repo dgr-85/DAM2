@@ -1,5 +1,6 @@
 import random
 
+
 def matriu(m, n):
     matriu = []
     fila = []

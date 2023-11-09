@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../M10/VirtualBox/Configuració d'arrencada/Arrencada.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M10/VirtualBox/Configuració d'arrencada/Arrencada.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Temperatures/src/temps/Temperatura.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Temperatures/src/temps/Temperatura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/VirtualBox/Configuració d'arrencada/a5_00.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M10/VirtualBox/Configuració d'arrencada/a5_00.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M7P5_5.py" beforeDir="false" afterPath="$PROJECT_DIR$/M7P5_5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M7P5_6.py" beforeDir="false" afterPath="$PROJECT_DIR$/M7P5_6.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/M7P5_5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="270">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -66,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/M7P5_6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+            <state relative-caret-position="544">
+              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -143,7 +144,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.M7P5_5">
+  <component name="RunManager" selected="Python.M7P5_6">
     <configuration name="M7P5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="exersM07_01" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,27 +179,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/M7P5_2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="M7P5_3" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="exersM07_01" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/M7P5_3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -249,13 +229,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="M7P5_6" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exersM07_01" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/M7P5_6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.M7P5_6" />
         <item itemvalue="Python.M7P5_5" />
         <item itemvalue="Python.M7P5" />
         <item itemvalue="Python.M7P5_4" />
         <item itemvalue="Python.M7P5_2" />
-        <item itemvalue="Python.M7P5_3" />
       </list>
     </recent_temporary>
   </component>
@@ -389,15 +390,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/M7P5_5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="270">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/M7P5_6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        <state relative-caret-position="544">
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
         </state>
       </provider>
     </entry>
