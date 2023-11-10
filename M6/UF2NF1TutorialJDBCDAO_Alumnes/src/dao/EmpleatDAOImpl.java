@@ -46,7 +46,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 	}
 
 	@Override
-	public Empleat getEmpleatById(int id, Boolean invocacioRecursiva) {
+	public Empleat getEmpleatById(int id, Boolean buscarDirector) {
 		Boolean isConnectionOpen = false;
 
 		String sql = "select * from empleados where emp_no=?";
@@ -63,8 +63,8 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 				rsEmp.setCognom(rs.getString(2));
 				rsEmp.setOfici(rs.getString(3));
 
-				if (!invocacioRecursiva) {
-					Empleat e = getEmpleatById(rs.getInt(4), true);
+				if (buscarDirector) {
+					Empleat e = getEmpleatById(rs.getInt(4), false);
 					rsEmp.setDirector(e);
 				}
 
@@ -165,7 +165,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 				emp.setCodiEmpleat(resultat.getInt(1));
 				emp.setCognom(resultat.getString(2));
 				emp.setOfici(resultat.getString(3));
-				Empleat e = getEmpleatById(resultat.getInt(4), true);
+				Empleat e = getEmpleatById(resultat.getInt(4), false);
 				emp.setDirector(e);
 				emp.setDataAlta(resultat.getDate(5));
 				emp.setSalari(resultat.getFloat(6));

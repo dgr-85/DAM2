@@ -57,7 +57,7 @@ public class TutorialMain {
 			System.out.println(GestorErrors.getMissatge(resUpdateDep, "Departament"));
 		}
 
-		// Esborrar un Departament
+		// Esborrar un Departament buit
 		System.out.println("==================================================");
 		System.out.println("Esborrar un Departament");
 		int idDeleteDep = 77;
@@ -79,7 +79,7 @@ public class TutorialMain {
 		// Afegir un Empleat
 		System.out.println("==================================================");
 		System.out.println("Afegir un Empleat");
-		Empleat exemple = empDAO.getEmpleatById(7698, true);
+		Empleat exemple = empDAO.getEmpleatById(7698, false);
 		Empleat newEmp = new Empleat(9999, "NouCognom", "DIRECTOR", exemple, Date.valueOf("2000-12-31"), (float) 5.2,
 				(float) 2.2, depDAO.getDepartamentById(10, false));
 		int resAddEmp = empDAO.addEmpleat(newEmp);
@@ -143,6 +143,19 @@ public class TutorialMain {
 		ArrayList<Empleat> empleatsByDepartament = depDAO.getDepartamentById(idListDep, true).getEmpleats();
 		for (Empleat emp : empleatsByDepartament) {
 			System.out.println(emp.toString());
+		}
+
+		// Esborrar un Departament ple junt amb tots els seus Empleats
+
+		System.out.println("==================================================");
+		System.out.println("Esborrar un Departament ple junt amb tots els seus Empleats");
+		int idDelDepCascade = 40;
+		System.out.println("S'ha triat el Departament " + idDelDepCascade + ". Esborrant...");
+		int resDelDepCascade = depDAO.deleteDepartament(idDelDepCascade, true);
+		if (resDelDepCascade > 0) {
+			System.out.println(resDelDepCascade + " Departament esborrat.");
+		} else {
+			System.out.println(GestorErrors.getMissatge(0, "Departament"));
 		}
 	}
 

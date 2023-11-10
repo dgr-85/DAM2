@@ -113,6 +113,22 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 			Connection conexio = GestorConnexions.obtenirConnexio();
 			PreparedStatement sentencia = conexio.prepareStatement(sql);
 			sentencia.setInt(1, id);
+
+			try {
+				if (cascade) {
+					conexio.setAutoCommit(false);
+					String sqlCascade = "delete from empleados where dept_no=?";
+					PreparedStatement esborrarEmpleats = conexio.prepareStatement(sqlCascade);
+					esborrarEmpleats.setInt(1, id);
+					esborrarEmpleats.executeUpdate();
+					conexio.commit();
+					conexio.setAutoCommit(true);
+				}
+			} catch (SQLException e) {
+				System.out.println("S'ha produït un error esborrant els empleats. Executant rollback.");
+				conexio.rollback();
+			}
+
 			int resultat = sentencia.executeUpdate();
 			return resultat;
 		} catch (SQLException e) {
