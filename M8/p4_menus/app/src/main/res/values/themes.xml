@@ -9,7 +9,7 @@
 
     <style name="Base.Theme.P4_menus" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/main_olive_300</item>
-        <item name="colorOnPrimary">@color/complementary_purple_200</item>
+        <item name="colorOnPrimary">@color/white</item>
         <item name="colorSurface">@color/triadic_green_200</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/darker_olive_700</item>

@@ -16,4 +16,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="ToolBar" />
+
+    <Button
+        android:id="@+id/btnHideToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="HIDE TOOLBAR"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_constraintVertical_bias="0.65" />
+
+    <Button
+        android:id="@+id/btnShowToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHOW TOOLBAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnHideToolbar"
+        app:layout_constraintVertical_bias="0.07999998" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
