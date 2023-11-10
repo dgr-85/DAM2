@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,17 +25,23 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnCheckClick(){
         EditText etNameInput=findViewById(R.id.etName);
         String nameInput=etNameInput.getText().toString().toLowerCase().trim();
-        int score=0;
-
-        for(int i=0;i<users.length;i++){
-            if(nameInput.equals(users[i])){
-                score=points[i];
-            }
+        if(nameInput.isEmpty()){
+            Toast toast=Toast.makeText(this,"You must enter your name", Toast.LENGTH_SHORT);
+            toast.show();
         }
+        else {
+            int score = 0;
 
-        Intent intent=new Intent(this, DisplayName.class);
-        intent.putExtra("username",nameInput);
-        intent.putExtra("score",score);
-        startActivity(intent);
+            for (int i = 0; i < users.length; i++) {
+                if (nameInput.equals(users[i])) {
+                    score = points[i];
+                }
+            }
+
+            Intent intent = new Intent(this, DisplayNameActivity.class);
+            intent.putExtra("username", nameInput);
+            intent.putExtra("score", score);
+            startActivity(intent);
+        }
     }
 }

@@ -21,7 +21,7 @@ def sum_mat(mat_a, mat_b):
 def matriu(m, n, k):
     max_k = int(m * n * 0.1)
     if k > max_k:
-        raise ValueError("Aquesta matriu pot tenir un màxim de " + str(max_k) + " valors iguals a 1.")
+        raise ValueError("Aquesta matriu pot tenir un màxim de " + str(max_k) + " valors diferents de 0.")
 
     matriu_resultant = {}
 
@@ -41,22 +41,14 @@ def matriu(m, n, k):
 
 def distancies(dic_pos):
     dic_resultant = {}
-
+    
     for ciutat_1 in dic_pos:
         dic_resultant[ciutat_1] = {}
         (x1, y1) = dic_pos[ciutat_1]
-
+        
         for ciutat_2 in dic_pos:
             if ciutat_1 != ciutat_2:
                 (x2, y2) = dic_pos[ciutat_2]
                 dic_resultant[ciutat_1][ciutat_2] = int(math.sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)))
-
+                
     return dic_resultant
-
-
-pos = {'Brana': (172, 167), 'Griva': (225, 104), 'Levira': (44, 141), 'Tarsos': (95, 198)}
-dist = distancies(pos)
-print(dist['Brana']['Griva']) # hauria d’imprimir 82
-print(dist['Griva']['Brana']) # hauria d’imprimir 82
-print(dist['Brana']['Levira'])
-print(dist['Griva']['Tarsos'])
