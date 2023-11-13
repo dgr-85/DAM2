@@ -21,20 +21,15 @@ def sum_mat(mat_a, mat_b):
 def matriu(m, n, k):
     max_k = int(m * n * 0.1)
     if k > max_k:
-        raise ValueError("Aquesta matriu pot tenir un màxim de " + str(max_k) + " valors iguals a 1.")
+        raise ValueError("Aquesta matriu pot tenir un màxim de " + str(max_k) + " valors diferents de 0.")
 
     matriu_resultant = {}
-
-    for x in range(m):
-        for y in range(n):
-            matriu_resultant[(x, y)] = 0
 
     i = 0
     while i < k:
         posicio = ((random.randint(0, m-1)), (random.randint(0, n-1)))
-        if matriu_resultant[posicio] != 1:
-            matriu_resultant[posicio] = 1
-            i += 1
+        matriu_resultant[posicio] = 1
+        i += 1
 
     return matriu_resultant
 
@@ -54,9 +49,5 @@ def distancies(dic_pos):
     return dic_resultant
 
 
-pos = {'Brana': (172, 167), 'Griva': (225, 104), 'Levira': (44, 141), 'Tarsos': (95, 198)}
-dist = distancies(pos)
-print(dist['Brana']['Griva']) # hauria d’imprimir 82
-print(dist['Griva']['Brana']) # hauria d’imprimir 82
-print(dist['Brana']['Levira'])
-print(dist['Griva']['Tarsos'])
+
+

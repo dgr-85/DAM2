@@ -25,30 +25,29 @@ def matriu(m, n, k):
 
     matriu_resultant = {}
 
-    for x in range(m):
-        for y in range(n):
-            matriu_resultant[(x, y)] = 0
-
     i = 0
     while i < k:
         posicio = ((random.randint(0, m-1)), (random.randint(0, n-1)))
-        if matriu_resultant[posicio] != 1:
-            matriu_resultant[posicio] = 1
-            i += 1
+        matriu_resultant[posicio] = 1
+        i += 1
 
     return matriu_resultant
 
 
 def distancies(dic_pos):
     dic_resultant = {}
-    
+
     for ciutat_1 in dic_pos:
         dic_resultant[ciutat_1] = {}
         (x1, y1) = dic_pos[ciutat_1]
-        
+
         for ciutat_2 in dic_pos:
             if ciutat_1 != ciutat_2:
                 (x2, y2) = dic_pos[ciutat_2]
                 dic_resultant[ciutat_1][ciutat_2] = int(math.sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)))
-                
+
     return dic_resultant
+
+
+
+

@@ -117,8 +117,13 @@ public class DepartamentDAOImpl implements DepartamentDAO {
 			try {
 				if (cascade) {
 					conexio.setAutoCommit(false);
-					String sqlCascade = "delete from empleados where dept_no=?";
+					String sqlCascade = "update empleados set dir=null where dept_no=?";
 					PreparedStatement esborrarEmpleats = conexio.prepareStatement(sqlCascade);
+					esborrarEmpleats.setInt(1, id);
+					esborrarEmpleats.executeUpdate();
+
+					sqlCascade = "delete from empleados where dept_no=?";
+					esborrarEmpleats = conexio.prepareStatement(sqlCascade);
 					esborrarEmpleats.setInt(1, id);
 					esborrarEmpleats.executeUpdate();
 					conexio.commit();
