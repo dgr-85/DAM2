@@ -59,4 +59,11 @@ public class Candidate {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	@Override
+	public String toString() {
+		return "Candidate [candidateId=" + candidateId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
+	}
+
 }

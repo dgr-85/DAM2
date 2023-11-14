@@ -1,4 +1,4 @@
-package dao_impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -127,6 +127,10 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		} finally {
+			if (isConnectionOpen) {
+				ConnectionManager.closeConnection();
+			}
 		}
 	}
 

@@ -9,7 +9,7 @@ public interface PrizeDAO {
 
 	public Prize getPrizeById(int id);
 
-	public Integer updatePrize(Prize d);
+	public Integer updatePrize(Prize p);
 
 	public Integer deletePrize(int id);
 

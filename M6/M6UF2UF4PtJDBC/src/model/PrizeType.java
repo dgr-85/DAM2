@@ -50,4 +50,10 @@ public class PrizeType {
 		this.prizeValue = prizeValue;
 	}
 
+	@Override
+	public String toString() {
+		return "PrizeType [prizeTypeId=" + prizeTypeId + ", prizeName=" + prizeName + ", prizeDescription="
+				+ prizeDescription + ", prizeValue=" + prizeValue + "]";
+	}
+
 }

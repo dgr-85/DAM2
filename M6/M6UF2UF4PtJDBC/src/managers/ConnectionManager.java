@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionManager {
-	private static String url = "jdbc:mysql://localhost/empleats";
+	private static String url = "jdbc:mysql://localhost/bdpremis";
 	private static String user = "cfgs";
 	private static String pwd = "ira491";
 	private static Connection con = null;

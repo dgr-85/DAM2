@@ -3,9 +3,9 @@ package managers;
 import dao.CandidateDAO;
 import dao.PrizeDAO;
 import dao.PrizeTypeDAO;
-import dao_impl.CandidateDAOImpl;
-import dao_impl.PrizeDAOImpl;
-import dao_impl.PrizeTypeDAOImpl;
+import dao.impl.CandidateDAOImpl;
+import dao.impl.PrizeDAOImpl;
+import dao.impl.PrizeTypeDAOImpl;
 
 public abstract class DAOManager {
 	private static CandidateDAO cDAO;

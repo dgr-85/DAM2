@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">p4_menus</string>
+    <string name="action_favorite">Favorito</string>
+    <string name="action_settings">Configuración</string>
+    <string name="option_selected">Has elegido</string>
+    <string name="hide_toolbar">ESCONDER BARRA DE HERRAMIENTAS</string>
+    <string name="show_toolbar">MOSTRAR BARRA DE HERRAMIENTAS</string>
+</resources>
