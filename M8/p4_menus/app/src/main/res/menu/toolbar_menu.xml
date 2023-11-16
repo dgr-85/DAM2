@@ -2,12 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/action_home"
         app:showAsAction="ifRoom"
+        android:icon="@drawable/home_24"
+        android:title="Marianao" />
+    <item
+        android:id="@+id/action_code"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/code_24"
+        android:title="CodeWars" />
+    <item
+        android:id="@+id/action_favorite"
+        app:showAsAction="never"
         android:icon="@drawable/ic_baseline_favorite_24"
         android:title="@string/action_favorite" />
 
-    <!-- Settings, should always be in the overflow -->
     <item
         android:id="@+id/action_settings"
         app:showAsAction="never"

@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
 
-    <color name="main_olive_300">#b3cc8d</color>
+    <color name="main_olive_300">#839c5d</color>
     <color name="triadic_green_200">#8dcca6</color>
     <color name="triadic_blue_300">#8db3cc</color>
     <color name="darker_olive_700">#729548</color>
