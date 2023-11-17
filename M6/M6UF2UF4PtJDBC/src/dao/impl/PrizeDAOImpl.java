@@ -22,9 +22,13 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 
 			prepStmt.setInt(1, p.getPrizeId());
-			prepStmt.setInt(2, p.getCandidateId().getCandidateId());
-			prepStmt.setInt(3, p.getPrizeTypeId().getPrizeTypeId());
+			prepStmt.setInt(2, p.getPrizeCandidate().getCandidateId());
+			prepStmt.setInt(3, p.getTypeOfPrize().getPrizeTypeId());
 			prepStmt.setInt(4, p.getYear());
+
+			if (getCandidateDAO().getCandidateById(p.getPrizeCandidate().getCandidateId(), false) == null) {
+				getCandidateDAO().addCandidate(p.getPrizeCandidate());
+			}
 
 			return prepStmt.executeUpdate();
 		} catch (SQLException e) {
@@ -56,8 +60,8 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 
-			prepStmt.setInt(1, p.getCandidateId().getCandidateId());
-			prepStmt.setInt(2, p.getPrizeTypeId().getPrizeTypeId());
+			prepStmt.setInt(1, p.getPrizeCandidate().getCandidateId());
+			prepStmt.setInt(2, p.getTypeOfPrize().getPrizeTypeId());
 			prepStmt.setInt(3, p.getYear());
 			prepStmt.setInt(4, p.getPrizeId());
 

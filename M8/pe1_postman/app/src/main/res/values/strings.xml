@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">pe1_postman</string>
+    <string name="tvRegistration">Registration</string>
+    <string name="etName">Name</string>
+    <string name="etSurname">Surname</string>
+    <string name="etAddress">Address</string>
+    <string name="spProvince">Province</string>
+    <string name="spCity">City</string>
+    <string name="etZipCode">Zip Code</string>
+    <string name="etEmail">Email</string>
+    <string name="etPhone">Phone</string>
+    <string name="btnSubmit">Submit</string>
+    <string name="errorField">This field cannot be empty</string>
+    <string name="badForm">Please correct the wrong fields</string>
+    <string name="goodForm">Registration completed successfully</string>
+    <string name="goBack">Go Back</string>
+</resources>

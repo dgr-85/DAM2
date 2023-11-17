@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Pe1_postman" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPostman</item>
+        <item name="colorPrimaryDark">@color/colorPostmanDark</item>
+    </style>
+
+    <style name="Theme.Pe1_postman" parent="Base.Theme.Pe1_postman" />
+</resources>

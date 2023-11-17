@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                result.setText(AmericanCountries.COUNTRIES.get(i)+" extension is "+AmericanCountries.AREAS.get(i)+" km2");
+                result.setText(AmericanCountries.COUNTRIES.get(i)+" extension is "+AmericanCountries.AREAS.get(i)+" km²");
 
             }
 

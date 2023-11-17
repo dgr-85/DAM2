@@ -3,18 +3,18 @@ package model;
 public class Prize {
 	private Integer prizeId;
 	private Candidate prizeCandidate;
-	private PrizeType prizeTypeId;
+	private PrizeType typeOfPrize;
 	private Integer year;
 
 	public Prize() {
 
 	}
 
-	public Prize(Integer prizeId, Candidate candidateId, PrizeType prizeTypeId, Integer year) {
+	public Prize(Integer prizeId, Candidate prizeCandidate, PrizeType prizeTypeId, Integer year) {
 		super();
 		this.prizeId = prizeId;
-		this.prizeCandidate = candidateId;
-		this.prizeTypeId = prizeTypeId;
+		this.prizeCandidate = prizeCandidate;
+		this.typeOfPrize = prizeTypeId;
 		this.year = year;
 	}
 
@@ -26,20 +26,20 @@ public class Prize {
 		this.prizeId = prizeId;
 	}
 
-	public Candidate getCandidateId() {
+	public Candidate getPrizeCandidate() {
 		return prizeCandidate;
 	}
 
-	public void setCandidateId(Candidate candidateId) {
-		this.prizeCandidate = candidateId;
+	public void setPrizeCandidate(Candidate prizeCandidate) {
+		this.prizeCandidate = prizeCandidate;
 	}
 
-	public PrizeType getPrizeTypeId() {
-		return prizeTypeId;
+	public PrizeType getTypeOfPrize() {
+		return typeOfPrize;
 	}
 
-	public void setPrizeTypeId(PrizeType prizeTypeId) {
-		this.prizeTypeId = prizeTypeId;
+	public void setTypeOfPrize(PrizeType typeOfPrize) {
+		this.typeOfPrize = typeOfPrize;
 	}
 
 	public Integer getYear() {
@@ -52,8 +52,8 @@ public class Prize {
 
 	@Override
 	public String toString() {
-		return "Prize [prizeId=" + prizeId + ", candidateId=" + prizeCandidate + ", prizeTypeId=" + prizeTypeId + ", year="
-				+ year + "]";
+		return "Prize [prizeId=" + prizeId + ", candidateId=" + prizeCandidate + ", prizeTypeId=" + typeOfPrize
+				+ ", year=" + year + "]";
 	}
 
 }

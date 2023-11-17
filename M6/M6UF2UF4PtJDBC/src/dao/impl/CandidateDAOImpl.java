@@ -62,6 +62,13 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 				candidate.setLastName(rs.getString(3));
 				candidate.setPhoneNumber(rs.getString(4));
 				candidate.setEmail(rs.getString(5));
+				if (includePrizes) {
+					sql = "select * from prizetype where lower(prizetypeid) in (select lower(prizetypeid) from prizes where candidateid=?)";
+					prepStmt = con.prepareStatement(sql);
+					prepStmt.setInt(1, id);
+					ResultSet rsPrizes = prepStmt.executeQuery();
+
+				}
 			}
 			return candidate;
 		} catch (SQLException e) {

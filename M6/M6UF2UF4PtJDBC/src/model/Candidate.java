@@ -1,11 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Candidate {
 	private Integer candidateId;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
 	private String email;
+	ArrayList<Prize> prizes;
 
 	public Candidate() {
 
@@ -18,6 +21,7 @@ public class Candidate {
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
+		this.prizes = null;
 	}
 
 	public Integer getCandidateId() {
@@ -58,6 +62,14 @@ public class Candidate {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public ArrayList<Prize> getPrizes() {
+		return prizes;
+	}
+
+	public void setPrizes(ArrayList<Prize> prizes) {
+		this.prizes = prizes;
 	}
 
 	@Override
