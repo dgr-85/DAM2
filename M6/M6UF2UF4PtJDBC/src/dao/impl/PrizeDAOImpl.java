@@ -54,7 +54,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 	@Override
 	public Integer updatePrize(Prize p) {
 		Boolean isConnectionOpen = false;
-		String sql = "update prizes set lower(candidateid)=?,lower(prizetypeid)=?,lower(year)=? where lower(prizeid)=?";
+		String sql = "update prizes set candidateid=?,prizetypeid=?,year=? where prizeid=?";
 		try {
 			isConnectionOpen = ConnectionManager.isConnected();
 			Connection con = ConnectionManager.getConnection();

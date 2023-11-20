@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+
 public class PrizeType {
 	private Integer prizeTypeId;
 	private String prizeName;
 	private String prizeDescription;
 	private double prizeValue;
+	ArrayList<Prize> prizes;
 
 	public PrizeType() {
 
@@ -16,6 +19,7 @@ public class PrizeType {
 		this.prizeName = prizeName;
 		this.prizeDescription = prizeDescription;
 		this.prizeValue = prizeValue;
+		this.prizes = null;
 	}
 
 	public Integer getPrizeTypeId() {
@@ -50,10 +54,18 @@ public class PrizeType {
 		this.prizeValue = prizeValue;
 	}
 
+	public ArrayList<Prize> getPrizes() {
+		return prizes;
+	}
+
+	public void setPrizes(ArrayList<Prize> prizes) {
+		this.prizes = prizes;
+	}
+
 	@Override
 	public String toString() {
-		return "PrizeType [prizeTypeId=" + prizeTypeId + ", prizeName=" + prizeName + ", prizeDescription="
-				+ prizeDescription + ", prizeValue=" + prizeValue + "]";
+		return "PrizeType [Id=" + prizeTypeId + ", Name=" + prizeName + ", Description=" + prizeDescription + ", Value="
+				+ prizeValue + ", Prizes=" + prizes + "]";
 	}
 
 }

@@ -6,7 +6,7 @@ def sum_mat(mat_a, mat_b):
     matriu_resultant = {}
 
     for posicio in mat_a:
-        if posicio in mat_b:
+        if posicio in mat_b and mat_a[posicio] + mat_b[posicio] != 0:
             matriu_resultant[posicio] = mat_a[posicio] + mat_b[posicio]
         else:
             matriu_resultant[posicio] = mat_a[posicio]
@@ -28,8 +28,9 @@ def matriu(m, n, k):
     i = 0
     while i < k:
         posicio = ((random.randint(0, m-1)), (random.randint(0, n-1)))
-        matriu_resultant[posicio] = 1
-        i += 1
+        if posicio not in matriu:
+            matriu_resultant[posicio] = 1
+            i += 1
 
     return matriu_resultant
 
@@ -44,10 +45,16 @@ def distancies(dic_pos):
         for ciutat_2 in dic_pos:
             if ciutat_1 != ciutat_2:
                 (x2, y2) = dic_pos[ciutat_2]
-                dic_resultant[ciutat_1][ciutat_2] = int(math.sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2)))
+                dic_resultant[ciutat_1][ciutat_2] = round(((x2 - x1)**2 + (y2 - y1)**2)**0.5)
 
     return dic_resultant
 
+
+pos = {'Brana': (172, 167), 'Griva': (225, 104), 'Levira': (44, 141), 'Tarsos': (95, 198)}
+dist = distancies(pos)
+print(dist['Brana']['Griva'])
+print(dist['Griva']['Brana'])
+print(dist['Brana']['Brana'])
 
 
 

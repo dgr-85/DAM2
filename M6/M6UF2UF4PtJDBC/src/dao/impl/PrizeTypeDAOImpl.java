@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import dao.PrizeTypeDAO;
 import managers.ConnectionManager;
 import managers.DAOManager;
+import model.Prize;
 import model.PrizeType;
 
 public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
@@ -36,6 +37,26 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 				prizeType.setPrizeName(rs.getString(2));
 				prizeType.setPrizeDescription(rs.getString(3));
 				prizeType.setPrizeValue(rs.getDouble(4));
+				prizeType.setPrizes(null);
+
+				if (includePrizes) {
+					sql = "select * from prizes where prizetypeid=?";
+					prepStmt = con.prepareStatement(sql);
+					prepStmt.setInt(1, id);
+
+					ResultSet rsPrizes = prepStmt.executeQuery();
+
+					ArrayList<Prize> prizes = new ArrayList<>();
+					while (rsPrizes.next()) {
+						Prize p = new Prize();
+						p.setPrizeId(rsPrizes.getInt(1));
+						p.setPrizeCandidate(getCandidateDAO().getCandidateById(rsPrizes.getInt(2), false));
+						p.setTypeOfPrize(getPrizeTypeDAO().getPrizetypeById(rsPrizes.getInt(3), false));
+						p.setYear(rsPrizes.getInt(4));
+						prizes.add(p);
+					}
+					prizeType.setPrizes(prizes);
+				}
 			}
 			return prizeType;
 		} catch (SQLException e) {

@@ -11,6 +11,7 @@ import dao.CandidateDAO;
 import managers.ConnectionManager;
 import managers.DAOManager;
 import model.Candidate;
+import model.Prize;
 
 public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 
@@ -47,7 +48,7 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 	@Override
 	public Candidate getCandidateById(int id, Boolean includePrizes) {
 		Boolean isConnectionOpen = false;
-		String sql = "select * from candidates where lower('candidateid')=?";
+		String sql = "select * from candidates where candidateid=?";
 		try {
 			isConnectionOpen = ConnectionManager.isConnected();
 			Connection con = ConnectionManager.getConnection();
@@ -62,12 +63,25 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 				candidate.setLastName(rs.getString(3));
 				candidate.setPhoneNumber(rs.getString(4));
 				candidate.setEmail(rs.getString(5));
+				candidate.setPrizes(null);
+
 				if (includePrizes) {
-					sql = "select * from prizetype where lower(prizetypeid) in (select lower(prizetypeid) from prizes where candidateid=?)";
+					sql = "select * from prizes where candidateid=?";
 					prepStmt = con.prepareStatement(sql);
 					prepStmt.setInt(1, id);
+
 					ResultSet rsPrizes = prepStmt.executeQuery();
 
+					ArrayList<Prize> prizes = new ArrayList<>();
+					while (rsPrizes.next()) {
+						Prize p = new Prize();
+						p.setPrizeId(rsPrizes.getInt(1));
+						p.setPrizeCandidate(getCandidateDAO().getCandidateById(rsPrizes.getInt(2), false));
+						p.setTypeOfPrize(getPrizeTypeDAO().getPrizetypeById(rsPrizes.getInt(3), false));
+						p.setYear(rsPrizes.getInt(4));
+						prizes.add(p);
+					}
+					candidate.setPrizes(prizes);
 				}
 			}
 			return candidate;
@@ -91,12 +105,27 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 	@Override
 	public Integer deleteCandidate(int id) {
 		Boolean isConnectionOpen = false;
-		String sql = "delete from candidates where lower('candidateid')=?";
+		String sql = "delete from candidates where candidateid=?";
 		try {
 			isConnectionOpen = ConnectionManager.isConnected();
 			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
+
+			try {
+				con.setAutoCommit(false);
+				String sqlCascade = "delete from prizes where candidateid=?";
+				PreparedStatement deletePrizes = con.prepareStatement(sqlCascade);
+				deletePrizes.setInt(1, id);
+				deletePrizes.executeUpdate();
+
+				con.commit();
+				con.setAutoCommit(true);
+
+			} catch (SQLException e) {
+				System.out.println("An error has occurred while deleting the candidate. Rolling back.");
+				con.rollback();
+			}
 
 			return prepStmt.executeUpdate();
 		} catch (SQLException e) {

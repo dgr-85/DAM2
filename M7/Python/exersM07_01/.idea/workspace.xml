@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="" />
+    <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/model/Candidate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/model/Candidate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/model/Prize.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/model/Prize.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/model/PrizeType.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/model/PrizeType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/CandidateDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/CandidateDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeTypeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeTypeDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/model/Candidate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/model/Candidate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/model/Prize.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/model/Prize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/model/PrizeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/model/PrizeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/M7P5_6.py" beforeDir="false" afterPath="$PROJECT_DIR$/M7P5_6.py" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/venv/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +57,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/M7P5_4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
+            <state relative-caret-position="-232">
               <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
@@ -57,14 +72,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/M7P5_6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="363">
+              <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Entrenament.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-296">
+              <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -90,6 +114,8 @@
         <option value="$PROJECT_DIR$/M7P5_4.py" />
         <option value="$PROJECT_DIR$/M7P5_5.py" />
         <option value="$PROJECT_DIR$/M7P5_6.py" />
+        <option value="$PROJECT_DIR$/venv/Entrenament.py" />
+        <option value="$PROJECT_DIR$/Entrenament.py" />
       </list>
     </option>
   </component>
@@ -124,12 +150,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "master"
-  }
-}]]></component>
-  <component name="RunManager" selected="Python.M7P5_6">
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.Entrenament">
+    <configuration name="Entrenament" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="exersM07_01" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Entrenament.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="M7P5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="exersM07_01" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,27 +205,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/M7P5.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="M7P5_2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="exersM07_01" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/M7P5_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -237,15 +278,15 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Entrenament" />
         <item itemvalue="Python.M7P5_6" />
         <item itemvalue="Python.M7P5_5" />
         <item itemvalue="Python.M7P5" />
         <item itemvalue="Python.M7P5_4" />
-        <item itemvalue="Python.M7P5_2" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -267,14 +308,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32960895" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49968293" weight="0.32960895" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39944133" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50031704" side_tool="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -282,6 +323,22 @@
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -292,15 +349,6 @@
         <entry key="User">
           <value>
             <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
           </value>
         </entry>
       </map>
@@ -361,7 +409,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/M7P5_4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
+        <state relative-caret-position="-232">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
@@ -375,11 +423,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/M7P5_6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="363">
+          <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Entrenament.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-296">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
         </state>
       </provider>
     </entry>

@@ -52,8 +52,8 @@ public class Prize {
 
 	@Override
 	public String toString() {
-		return "Prize [prizeId=" + prizeId + ", candidateId=" + prizeCandidate + ", prizeTypeId=" + typeOfPrize
-				+ ", year=" + year + "]";
+		return "Prize [Id=" + prizeId + ", Candidate=" + prizeCandidate + ", Type=" + typeOfPrize + ", Year=" + year
+				+ "]";
 	}
 
 }
