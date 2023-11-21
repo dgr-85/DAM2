@@ -23,7 +23,7 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 	@Override
 	public PrizeType getPrizetypeById(int id, Boolean includePrizes) {
 		Boolean isConnectionOpen = false;
-		String sql = "select * from prizetype where lower('prizetypeid')=?";
+		String sql = "select * from prizetype where prizetypeid=?";
 		try {
 			isConnectionOpen = ConnectionManager.isConnected();
 			Connection con = ConnectionManager.getConnection();
@@ -78,7 +78,7 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 	@Override
 	public Integer deletePrizeType(int id) {
 		Boolean isConnectionOpen = false;
-		String sql = "delete from prizetype where lower('prizetypeid')=?";
+		String sql = "delete from prizetype where prizetypeid=?";
 		try {
 			isConnectionOpen = ConnectionManager.isConnected();
 			Connection con = ConnectionManager.getConnection();

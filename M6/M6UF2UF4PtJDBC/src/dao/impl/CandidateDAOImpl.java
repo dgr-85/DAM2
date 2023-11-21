@@ -157,6 +157,26 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 				candidate.setLastName(rs.getString(3));
 				candidate.setPhoneNumber(rs.getString(4));
 				candidate.setEmail(rs.getString(5));
+				candidate.setPrizes(null);
+
+				if (includePrizes) {
+					sql = "select * from prizes where candidateid=?";
+					PreparedStatement prepStmt = con.prepareStatement(sql);
+					prepStmt.setInt(1, candidate.getCandidateId());
+
+					ResultSet rsPrizes = prepStmt.executeQuery();
+
+					ArrayList<Prize> prizes = new ArrayList<>();
+					while (rsPrizes.next()) {
+						Prize p = new Prize();
+						p.setPrizeId(rsPrizes.getInt(1));
+						p.setPrizeCandidate(getCandidateDAO().getCandidateById(rsPrizes.getInt(2), false));
+						p.setTypeOfPrize(getPrizeTypeDAO().getPrizetypeById(rsPrizes.getInt(3), false));
+						p.setYear(rsPrizes.getInt(4));
+						prizes.add(p);
+					}
+					candidate.setPrizes(prizes);
+				}
 				candidates.add(candidate);
 			}
 			return candidates;
