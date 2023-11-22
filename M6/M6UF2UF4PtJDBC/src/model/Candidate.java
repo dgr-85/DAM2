@@ -15,7 +15,6 @@ public class Candidate {
 	}
 
 	public Candidate(Integer candidateId, String firstName, String lastName, String phoneNumber, String email) {
-		super();
 		this.candidateId = candidateId;
 		this.firstName = firstName;
 		this.lastName = lastName;

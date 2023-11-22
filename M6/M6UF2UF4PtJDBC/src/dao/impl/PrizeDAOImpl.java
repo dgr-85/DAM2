@@ -32,17 +32,20 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			if (getCandidateDAO().getCandidateById(p.getPrizeCandidate().getCandidateId(), false) == null) {
 				getCandidateDAO().addCandidate(p.getPrizeCandidate());
 			}
-
-			return prepStmt.executeUpdate();
+			int result = prepStmt.executeUpdate();
+			return result;
 		} catch (SQLException e) {
 			if (e.getErrorCode() == 1062) {
 				return e.getErrorCode() * -1;
+			} else if (e.getErrorCode() == 1452) {
+				return e.getErrorCode() * -1;
 			} else {
 				e.printStackTrace();
+				System.out.println("Error: " + e.getErrorCode());
 				return -1;
 			}
 		} finally {
-			if (isConnectionOpen) {
+			if (!isConnectionOpen) {
 				ConnectionManager.closeConnection();
 			}
 		}
@@ -103,9 +106,10 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			return prize;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Error: " + e.getErrorCode());
 			return null;
 		} finally {
-			if (isConnectionOpen) {
+			if (!isConnectionOpen) {
 				ConnectionManager.closeConnection();
 			}
 		}
@@ -131,6 +135,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 				return e.getErrorCode() * -1;
 			} else {
 				e.printStackTrace();
+				System.out.println("Error: " + e.getErrorCode());
 				return -1;
 			}
 		} finally {
