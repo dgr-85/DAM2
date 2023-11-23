@@ -1,35 +1,43 @@
 import random
 
-# P1
+# P1 (corregit)
 
 
 def zeros_seguits(txt):
     num = 0
     maxim = 0
 
-    for i in range(len(txt)):
-        if txt[i] == '0':
+    for car in txt:
+        if car == '0':
             maxim += 1
-        else:
             if num < maxim:
                 num = maxim
+        else:
             maxim = 0
 
     return num
 
 
-# P2
+# P2 (corregit)
 
 
 def moviment():
     punts_cardinals = ('N', 'S', 'E', 'O')
-    punt_cardinal = input("Introdueix una direcció.").upper()
-    passes = int(input("Introdueix el número de passes."))
-
-    if punt_cardinal in punts_cardinals and passes in range(1, 50):
-        txt_num = punt_cardinal + str(passes)
-        return txt_num
-    else:
+    txt_mov = input("Introdueix una direcció i un número de passes.").upper()
+    punt_cardinal = ""
+    passes = ""
+    for car in txt_mov:
+        if punt_cardinal == "":
+            punt_cardinal = car
+        else:
+            passes += car
+    try:
+        passes = int(passes)
+        if passes in range(1, 50) and punt_cardinal in punts_cardinals:
+            return txt_mov
+        else:
+            return None
+    except ValueError:
         return None
 
 

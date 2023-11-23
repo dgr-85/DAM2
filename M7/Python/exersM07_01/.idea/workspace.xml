@@ -5,54 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/androidTest/java/com/example/p5_sharedpreferences/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/java/com/example/p5_sharedpreferences/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/app/src/test/java/com/example/p5_sharedpreferences/ExampleUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../M8/p5_sharedPreferences/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/VirtualBox/Docker/Docker.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M10/VirtualBox/Docker/Docker.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/CandidateDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/CandidateDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeTypeDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/src/dao/impl/PrizeTypeDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M8/pe1_postman/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M8/pe1_postman/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M8/pe1_postman/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M8/pe1_postman/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entrenament.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entrenament.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/M7P5_6.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
+            <state relative-caret-position="825">
               <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -123,8 +77,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Entrenament.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+            <state relative-caret-position="300">
+              <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -459,7 +413,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/M7P5_6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
+        <state relative-caret-position="825">
           <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
@@ -469,8 +423,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Entrenament.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+        <state relative-caret-position="300">
+          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
         </state>
       </provider>
     </entry>
