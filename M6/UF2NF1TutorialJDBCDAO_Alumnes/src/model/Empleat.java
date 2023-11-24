@@ -3,7 +3,7 @@ package model;
 import java.sql.Date;
 
 public class Empleat {
-	private int codiEmpleat;
+	private Integer codiEmpleat;
 	private String cognom;
 	private String ofici;
 	private Empleat director;
@@ -15,7 +15,7 @@ public class Empleat {
 	public Empleat() {
 	}
 
-	public Empleat(int codiEmpleat, String cognom, String ofici, Empleat director, Date dataAlta, float salari,
+	public Empleat(Integer codiEmpleat, String cognom, String ofici, Empleat director, Date dataAlta, float salari,
 			float comissio, Departament departamentEmpleat) {
 		this.codiEmpleat = codiEmpleat;
 		this.cognom = cognom;
@@ -27,11 +27,11 @@ public class Empleat {
 		this.departamentEmpleat = departamentEmpleat;
 	}
 
-	public int getCodiEmpleat() {
+	public Integer getCodiEmpleat() {
 		return codiEmpleat;
 	}
 
-	public void setCodiEmpleat(int codiEmpleat) {
+	public void setCodiEmpleat(Integer codiEmpleat) {
 		this.codiEmpleat = codiEmpleat;
 	}
 

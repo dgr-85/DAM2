@@ -37,7 +37,7 @@ public class TutorialMain {
 		System.out.println("Buscar un Departament a partir de la seva Id");
 		int idReadDep = 77;
 		Departament searchDep = depDAO.getDepartamentById(idReadDep, false);
-		if (searchDep != null) {
+		if (searchDep.getCodiDepartament() != null) {
 			System.out.println("Departament Trobat");
 			System.out.println(searchDep.toString());
 		} else {
@@ -92,9 +92,9 @@ public class TutorialMain {
 		// Buscar un Empleat a partir de la seva Id
 		System.out.println("==================================================");
 		System.out.println("Buscar un Empleat a partir de la seva Id");
-		int idReadEmp = 9999;
+		Integer idReadEmp = 9999;
 		Empleat searchEmp = empDAO.getEmpleatById(idReadEmp, false);
-		if (searchEmp != null) {
+		if (searchEmp.getCodiEmpleat() != null) {
 			System.out.println("Empleat Trobat");
 			System.out.println(searchEmp.toString());
 		} else {

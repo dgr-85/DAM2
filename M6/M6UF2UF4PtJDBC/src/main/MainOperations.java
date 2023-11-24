@@ -56,10 +56,73 @@ public class MainOperations {
 
 		// Get candidate by id (prizes not included)
 		System.out.println("==============================================");
-		System.out.println("Retrieving Candidate...");
 		int idReadingCandidate = 99;
+		System.out.println("Retrieving Candidate " + idReadingCandidate + "...");
+		Candidate readingCandidate = cDAO.getCandidateById(idReadingCandidate, false);
+		if (readingCandidate.getCandidateId() != null) {
+			System.out.println("Candidate found. (Prizes not included)");
+			System.out.println(readingCandidate.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, "This Candidate"));
+		}
 
-		// TODO Get prize type by id (includePrizes true/false)
+		// Get candidate by id (prizes included)
+		System.out.println("==============================================");
+		System.out.println("Retrieving Candidate " + idReadingCandidate + "...");
+		readingCandidate = cDAO.getCandidateById(idReadingCandidate, true);
+		if (readingCandidate.getCandidateId() != null) {
+			System.out.println("Candidate found. (Prizes included)");
+			System.out.println(readingCandidate.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, "This Candidate"));
+		}
+
+		// Get candidate by non-existing id (causes error)
+		System.out.println("==============================================");
+		int errorCandidate = 5454;
+		System.out.println("Retrieving Candidate " + errorCandidate + "...");
+		readingCandidate = cDAO.getCandidateById(errorCandidate, false);
+		if (readingCandidate.getCandidateId() != null) {
+			System.out.println("Candidate found. (Prizes not included)");
+			System.out.println(readingCandidate.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, "This Candidate"));
+		}
+
+		// Get prize type by id (prizes not included)
+		System.out.println("==============================================");
+		int idReadingPrizeType = 3;
+		System.out.println("Retrieving Prize Type " + idReadingPrizeType + "...");
+		PrizeType readingPrizeType = ptDAO.getPrizetypeById(idReadingPrizeType, false);
+		if (readingPrizeType.getPrizeTypeId() != null) {
+			System.out.println("Prize Type found. (Prizes not included)");
+			System.out.println(readingPrizeType.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, "This Prize Type"));
+		}
+
+		// Get prize type by id (prizes included)
+		System.out.println("==============================================");
+		System.out.println("Retrieving Prize Type " + idReadingPrizeType + "...");
+		readingPrizeType = ptDAO.getPrizetypeById(idReadingPrizeType, true);
+		if (readingPrizeType.getPrizeTypeId() != null) {
+			System.out.println("Prize Type found. (Prizes included)");
+			System.out.println(readingPrizeType.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, "This Prize Type"));
+		}
+
+		// Get prize type by non-existing id (causes error)
+		System.out.println("==============================================");
+		int errorPrizeType = 6767;
+		System.out.println("Retrieving Prize Type " + errorPrizeType + "...");
+		readingPrizeType = ptDAO.getPrizetypeById(errorPrizeType, false);
+		if (readingPrizeType.getPrizeTypeId() != null) {
+			System.out.println("Prize Type found. (Prizes not included)");
+			System.out.println(readingPrizeType.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, "This Prize Type"));
+		}
 		// TODO List all candidates (includePrizes true/false)
 		// TODO Update prize
 		// TODO Delete candidate

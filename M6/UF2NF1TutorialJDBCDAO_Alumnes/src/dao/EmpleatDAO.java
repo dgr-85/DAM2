@@ -8,16 +8,16 @@ public interface EmpleatDAO {
 	// CRUD
 
 	// Create
-	public int addEmpleat(Empleat e);
+	public Integer addEmpleat(Empleat e);
 
 	// Read
-	public Empleat getEmpleatById(int id, Boolean invocacioRecursiva);
+	public Empleat getEmpleatById(Integer id, Boolean invocacioRecursiva);
 
 	// Update
 	public int updateEmpleat(Empleat e);
 
 	// Delete
-	public int deleteEmpleat(int id);
+	public int deleteEmpleat(Integer id);
 
 	// Consultes
 	public ArrayList<Empleat> listEmpleats();

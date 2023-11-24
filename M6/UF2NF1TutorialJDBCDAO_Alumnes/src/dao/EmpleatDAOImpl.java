@@ -13,7 +13,7 @@ import model.Empleat;
 public class EmpleatDAOImpl implements EmpleatDAO {
 
 	@Override
-	public int addEmpleat(Empleat e) {
+	public Integer addEmpleat(Empleat e) {
 		Boolean isConnectionOpen = false;
 		String sql = "insert into empleados values(?,?,?,?,?,?,?,?)";
 		try {
@@ -46,7 +46,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 	}
 
 	@Override
-	public Empleat getEmpleatById(int id, Boolean buscarDirector) {
+	public Empleat getEmpleatById(Integer id, Boolean buscarDirector) {
 		Boolean isConnectionOpen = false;
 
 		String sql = "select * from empleados where emp_no=?";
@@ -122,7 +122,7 @@ public class EmpleatDAOImpl implements EmpleatDAO {
 	}
 
 	@Override
-	public int deleteEmpleat(int id) {
+	public int deleteEmpleat(Integer id) {
 		Boolean isConnectionOpen = false;
 
 		String sql = "delete from empleados where emp_no=?";
