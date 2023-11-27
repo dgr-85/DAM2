@@ -73,7 +73,6 @@ public class Candidate {
 
 	@Override
 	public String toString() {
-
 		return "Candidate [Id=" + candidateId + ", First Name=" + firstName + ", Last Name=" + lastName
 				+ ", Phone Number=" + phoneNumber + ", E-mail=" + email + ", Prizes=" + prizes + "]";
 	}

@@ -54,7 +54,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 	@Override
 	public Prize getPrizeById(int id) {
 		Boolean isConnectionOpen = false;
-		String sql = "select * from prizes where prizetypeid=?";
+		String sql = "select * from prizes where prizeid=?";
 		try {
 			isConnectionOpen = ConnectionManager.isConnected();
 			Connection con = ConnectionManager.getConnection();
@@ -67,7 +67,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 
 				prize.setPrizeId(rs.getInt(1));
 
-				/* ========= Search and Add Candidate ========= */
+				/* ========= Search and Retrieve Candidate ========= */
 				sql = "select * from candidates where candidateid=?";
 				prepStmt = con.prepareStatement(sql);
 				prepStmt.setInt(1, rs.getInt(2));
@@ -84,7 +84,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 				}
 				prize.setPrizeCandidate(c);
 
-				/* ========= Search and Add Prize Type ========= */
+				/* ========= Search and Retrieve Prize Type ========= */
 				sql = "select * from prizetype where prizetypeid=?";
 				prepStmt = con.prepareStatement(sql);
 				prepStmt.setInt(1, rs.getInt(3));
