@@ -29,12 +29,34 @@ public class MainOperations {
 			System.out.println(ErrorManager.getMessage(resAddCandidate, "This Candidate"));
 		}
 
+		// Add existing candidate (causes error)
+		System.out.println("==============================================");
+		System.out.println("Adding new Candidate...");
+		addingCandidate = new Candidate(99, "Newer", "RepeatedCandidate", "934444444", "newercandidate@gmail.com");
+		resAddCandidate = cDAO.addCandidate(addingCandidate);
+		if (resAddCandidate > 0) {
+			System.out.println(resAddCandidate + " Candidate added.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resAddCandidate, "This Candidate"));
+		}
+
 		// Add prize with existing type
 		System.out.println("==============================================");
 		System.out.println("Adding new Prize...");
 		PrizeType existingPrizeType = ptDAO.getPrizetypeById(2, false);
 		Prize addingOkPrize = new Prize(10, addingCandidate, existingPrizeType, 2140);
 		int resAddOkPrize = pDAO.addPrize(addingOkPrize);
+		if (resAddOkPrize > 0) {
+			System.out.println(resAddOkPrize + " Prize added.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resAddOkPrize, "This Prize"));
+		}
+
+		// Add existing prize with existing type (causes error)
+		System.out.println("==============================================");
+		System.out.println("Adding new Prize...");
+		addingOkPrize = new Prize(10, addingCandidate, existingPrizeType, 2590);
+		resAddOkPrize = pDAO.addPrize(addingOkPrize);
 		if (resAddOkPrize > 0) {
 			System.out.println(resAddOkPrize + " Prize added.");
 		} else {
@@ -159,7 +181,7 @@ public class MainOperations {
 		Prize updatingPrize = pDAO.getPrizeById(idUpdatingPrize);
 		if (updatingPrize.getPrizeId() != null) {
 			updatingPrize.setPrizeCandidate(cDAO.getCandidateById(4, false));
-			updatingPrize.setTypeOfPrize(ptDAO.getPrizetypeById(4, false));
+			updatingPrize.setTypeOfPrize(ptDAO.getPrizetypeById(3, false));
 			updatingPrize.setYear(2030);
 			int resUpdatePrize = pDAO.updatePrize(updatingPrize);
 			if (resUpdatePrize > 0) {
@@ -198,7 +220,7 @@ public class MainOperations {
 		if (resDeleteCandidate > 0) {
 			System.out.println(resDeleteCandidate + " Candidate deleted.");
 		} else {
-			System.out.println(ErrorManager.getMessage(-1, "This Candidate"));
+			System.out.println(ErrorManager.getMessage(resDeleteCandidate, "This Candidate"));
 		}
 
 		// Delete non-existing candidate (Causes error)
@@ -209,29 +231,40 @@ public class MainOperations {
 		if (resDeleteCandidate > 0) {
 			System.out.println(resDeleteCandidate + " Candidate deleted.");
 		} else {
-			System.out.println(ErrorManager.getMessage(-1, "This Candidate"));
+			System.out.println(ErrorManager.getMessage(resDeleteCandidate, "This Candidate"));
 		}
 
 		// Delete prize type
 		System.out.println("==============================================");
-		int idDeletingPrizeType = 5;
-		System.out.println("Deleting Candidate " + idDeletingPrizeType + "...");
+		int idDeletingPrizeType = 4;
+		System.out.println("Deleting Prize Type " + idDeletingPrizeType + "...");
 		int resDeletePrizeType = ptDAO.deletePrizeType(idDeletingPrizeType);
 		if (resDeletePrizeType > 0) {
 			System.out.println(resDeletePrizeType + " Prize Type deleted.");
 		} else {
-			System.out.println(ErrorManager.getMessage(-1, "This Prize Type"));
+			System.out.println(ErrorManager.getMessage(resDeletePrizeType, "This Prize Type"));
+		}
+
+		// Delete prize type with foreign references (causes error)
+		System.out.println("==============================================");
+		idDeletingPrizeType = 1;
+		System.out.println("Deleting Prize Type " + idDeletingPrizeType + "...");
+		resDeletePrizeType = ptDAO.deletePrizeType(idDeletingPrizeType);
+		if (resDeletePrizeType > 0) {
+			System.out.println(resDeletePrizeType + " Prize Type deleted.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resDeletePrizeType, "This Prize Type"));
 		}
 
 		// Delete non-existing prize type (causes error)
 		System.out.println("==============================================");
 		idDeletingPrizeType = 1010;
-		System.out.println("Deleting Candidate " + idDeletingPrizeType + "...");
+		System.out.println("Deleting Prize Type " + idDeletingPrizeType + "...");
 		resDeletePrizeType = ptDAO.deletePrizeType(idDeletingPrizeType);
 		if (resDeletePrizeType > 0) {
 			System.out.println(resDeletePrizeType + " Prize Type deleted.");
 		} else {
-			System.out.println(ErrorManager.getMessage(-1, "This Prize Type"));
+			System.out.println(ErrorManager.getMessage(resDeletePrizeType, "This Prize Type"));
 		}
 	}
 }

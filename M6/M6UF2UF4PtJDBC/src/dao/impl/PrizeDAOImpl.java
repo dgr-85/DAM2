@@ -32,8 +32,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			if (getCandidateDAO().getCandidateById(p.getPrizeCandidate().getCandidateId(), false) == null) {
 				getCandidateDAO().addCandidate(p.getPrizeCandidate());
 			}
-			int result = prepStmt.executeUpdate();
-			return result;
+			return prepStmt.executeUpdate();
 		} catch (SQLException e) {
 			if (e.getErrorCode() == 1062) {
 				return e.getErrorCode() * -1;

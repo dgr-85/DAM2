@@ -88,9 +88,13 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 
 			return prepStmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Error: " + e.getErrorCode());
-			return null;
+			if (e.getErrorCode() == 1451) {
+				return e.getErrorCode() * -1;
+			} else {
+				e.printStackTrace();
+				System.out.println("Error: " + e.getErrorCode());
+				return null;
+			}
 		} finally {
 			if (!isConnectionOpen) {
 				ConnectionManager.closeConnection();

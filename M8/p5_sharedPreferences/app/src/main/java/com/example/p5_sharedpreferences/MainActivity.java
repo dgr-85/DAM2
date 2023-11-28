@@ -12,6 +12,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor=prefs.edit();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnClear = findViewById(R.id.btnClear);
 
         Button btnSave = findViewById(R.id.btnSave);
+        Button btnPhone=findViewById(R.id.btnPhone);
         EditText etName = findViewById(R.id.etName);
         EditText etPhone = findViewById(R.id.etPhone);
 
@@ -29,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
         btnSave.setOnClickListener(view -> {
             validateForm(etName.getText().toString(), etPhone.getText().toString());
+        });
+
+        btnPhone.setOnClickListener(view -> {
+            getPhoneNumber();
         });
     }
 
@@ -47,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle(title);
         builder.setMessage(message);
+        builder.setCancelable(false);
         if (!asksForConfirmation) {
             builder.setPositiveButton(getString(R.string.alertButtonOK), (DialogInterface.OnClickListener) (dialog, which) -> {
                 dialog.cancel();
@@ -64,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveNewEntry(String name, String phone) {
-        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=prefs.edit();
 
         if(!prefs.getString(name,"none").equals("none")){
             createAlertDialog(getString(R.string.alertTitleWarning),getString(R.string.alertTextOverwriteUser),true);
@@ -74,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
 
         createAlertDialog(getString(R.string.alertTitleEntrySaved),getString(R.string.alertTextNewEntrySaved),false);
+
+    }
+
+    private void getPhoneNumber(){
 
     }
 }
