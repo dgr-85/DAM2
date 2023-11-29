@@ -223,7 +223,7 @@ public class MainOperations {
 			System.out.println(ErrorManager.getMessage(resDeleteCandidate, "This Candidate"));
 		}
 
-		// Delete non-existing candidate (Causes error)
+		// Delete non-existing candidate (causes error)
 		System.out.println("==============================================");
 		idDeletingCandidate = 2626;
 		System.out.println("Deleting Candidate " + idDeletingCandidate + "...");
