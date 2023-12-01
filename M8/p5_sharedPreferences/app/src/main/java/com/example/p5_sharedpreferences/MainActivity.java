@@ -27,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         EditText etName = findViewById(R.id.etName);
         EditText etPhone = findViewById(R.id.etPhone);
 
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
         btnClear.setOnClickListener(view -> {
             etName.setText(null);
         });
 
         btnSave.setOnClickListener(view -> {
-            validateForm(etName.getText().toString(), etPhone.getText().toString());
+            validateForm(etName.getText().toString(), etPhone.getText().toString(),builder);
         });
 
         btnPhone.setOnClickListener(view -> {
@@ -40,47 +42,85 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void validateForm(String name, String phone) {
+    private void validateForm(String name, String phone,AlertDialog.Builder builder) {
 
+        //El camp per al nom és buit
         if (name.equals(null) || name.length() == 0) {
-            createAlertDialog(getString(R.string.alertTitleCantSavePhone), getString(R.string.alertTextEmptyName, getString(R.string.etName)), false);
+            builder.setTitle(getString(R.string.alertTitleCantSavePhone));
+            builder.setMessage(getString(R.string.alertTextEmptyField, getString(R.string.etName)));
+            builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builder.show();
+
+            //El camp per al telèfon és buit
         } else if (phone.equals(null) || phone.length() == 0) {
-            createAlertDialog(getString(R.string.alertTitleWarning), getString(R.string.alertTextDeleteEntry, name), true);
+
+            //El nom introduït no existeix a l'agenda -> no hi ha res a guardar
+            if(prefs.getString(name,"none").equals("none")){
+                builder.setTitle(getString(R.string.alertTitleCantDeletePhone));
+                builder.setMessage(getString(R.string.alertTextNonExistingEntry, name));
+                builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+
+            //El nom existeix -> esborrar entrada
+            }else {
+                builder.setTitle(getString(R.string.alertTitleWarning));
+                builder.setMessage(getString(R.string.alertTextDeleteEntry, name));
+                builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteEntry();
+                    }
+                });
+                builder.setNegativeButton(getString(R.string.alertButtonCancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+            }
+
+            //Nom i telèfon estan emplenats
         } else {
-            saveNewEntry(name,phone);
+            //El nom introduït ja existeix -> sobrescriure telèfon?
+            if(!prefs.getString(name,"none").equals("none")){
+                builder.setTitle(getString(R.string.alertTitleWarning));
+                builder.setMessage(getString(R.string.alertTextOverwriteUser));
+                builder.setPositiveButton(getString(R.string.alertTitleWarning), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        saveNewEntry(name,phone,builder);
+                    }
+                });
+
+            //El nom no existeix a l'agenda -> gravar entrada nova
+            }else {
+                saveNewEntry(name, phone, builder);
+            }
         }
     }
+    private void saveNewEntry(String name, String phone,AlertDialog.Builder builder) {
 
-    private void createAlertDialog(String title, String message, Boolean asksForConfirmation) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.setCancelable(false);
-        if (!asksForConfirmation) {
-            builder.setPositiveButton(getString(R.string.alertButtonOK), (DialogInterface.OnClickListener) (dialog, which) -> {
-                dialog.cancel();
-            });
-        } else {
-            builder.setPositiveButton(getString(R.string.alertButtonOK), (DialogInterface.OnClickListener) (dialog, which) -> {
-                dialog.dismiss();
-            });
-            builder.setNegativeButton(getString(R.string.alertButtonCancel), (DialogInterface.OnClickListener) (dialog, which) -> {
-                dialog.cancel();
-            });
-        }
 
-        builder.create().show();
-    }
-
-    private void saveNewEntry(String name, String phone) {
-
-        if(!prefs.getString(name,"none").equals("none")){
-            createAlertDialog(getString(R.string.alertTitleWarning),getString(R.string.alertTextOverwriteUser),true);
-        }
         editor.putString(name,phone);
-        editor.commit();
+        editor.apply();
 
-        createAlertDialog(getString(R.string.alertTitleEntrySaved),getString(R.string.alertTextNewEntrySaved),false);
+        builder.setTitle(getString(R.string.alertTitleEntrySaved));
+        builder.setMessage(getString(R.string.alertTextNewEntrySaved));
+
+    }
+
+    private void deleteEntry(){
 
     }
 

@@ -7,7 +7,7 @@ import model.PrizeType;
 public interface PrizeTypeDAO {
 	public int addPrizeType(PrizeType pt);
 
-	public PrizeType getPrizetypeById(int id, Boolean includePrizes);
+	public PrizeType getPrizeTypeById(int id, Boolean includePrizes);
 
 	public Integer updatePrizeType(PrizeType pt);
 

@@ -7,11 +7,13 @@
     <string name="btnSave">SAVE</string>
     <string name="btnPhone">GET PHONE</string>
     <string name="alertTitleCantSavePhone">Unable to save the Phone Number</string>
+    <string name="alertTitleCantDeletePhone">Unable to delete the Phone Number</string>
     <string name="alertTitleWarning">WARNING</string>
     <string name="alertTitleEntrySaved">Success</string>
-    <string name="alertTextEmptyName">The %1$s field cannot be empty.</string>
-    <string name="alertTextDeleteEntry">Entry with name %1$s will be deleted. Proceed?</string>
-    <string name="alertTextOverwriteUser">There is already an entry with name %1$s. Overwrite?</string>
+    <string name="alertTextNonExistingEntry">The entry with name %1$s does not exist.</string>
+    <string name="alertTextEmptyField">The %1$s field cannot be empty.</string>
+    <string name="alertTextDeleteEntry">The entry with name %1$s will be deleted. Proceed?</string>
+    <string name="alertTextOverwriteUser">The entry with name %1$s already exists. Overwrite?</string>
     <string name="alertTextNewEntrySaved">New entry registered successfully.</string>
     <string name="alertTextEntryUpdated">Entry with name %1$s updated successfully.</string>
     <string name="alertButtonOK">OK</string>

@@ -78,7 +78,7 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 						Prize p = new Prize();
 						p.setPrizeId(rsPrizes.getInt(1));
 						p.setPrizeCandidate(getCandidateDAO().getCandidateById(rsPrizes.getInt(2), false));
-						p.setTypeOfPrize(getPrizeTypeDAO().getPrizetypeById(rsPrizes.getInt(3), false));
+						p.setTypeOfPrize(getPrizeTypeDAO().getPrizeTypeById(rsPrizes.getInt(3), false));
 						p.setYear(rsPrizes.getInt(4));
 						prizes.add(p);
 					}
@@ -174,7 +174,7 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 						Prize p = new Prize();
 						p.setPrizeId(rsPrizes.getInt(1));
 						p.setPrizeCandidate(getCandidateDAO().getCandidateById(rsPrizes.getInt(2), false));
-						p.setTypeOfPrize(getPrizeTypeDAO().getPrizetypeById(rsPrizes.getInt(3), false));
+						p.setTypeOfPrize(getPrizeTypeDAO().getPrizeTypeById(rsPrizes.getInt(3), false));
 						p.setYear(rsPrizes.getInt(4));
 						prizes.add(p);
 					}

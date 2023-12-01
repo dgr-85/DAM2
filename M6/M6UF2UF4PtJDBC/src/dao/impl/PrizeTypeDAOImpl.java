@@ -21,7 +21,7 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 	}
 
 	@Override
-	public PrizeType getPrizetypeById(int id, Boolean includePrizes) {
+	public PrizeType getPrizeTypeById(int id, Boolean includePrizes) {
 		Boolean isConnectionOpen = false;
 		String sql = "select * from prizetype where prizetypeid=?";
 		try {
@@ -51,7 +51,7 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 						Prize p = new Prize();
 						p.setPrizeId(rsPrizes.getInt(1));
 						p.setPrizeCandidate(getCandidateDAO().getCandidateById(rsPrizes.getInt(2), false));
-						p.setTypeOfPrize(getPrizeTypeDAO().getPrizetypeById(rsPrizes.getInt(3), false));
+						p.setTypeOfPrize(getPrizeTypeDAO().getPrizeTypeById(rsPrizes.getInt(3), false));
 						p.setYear(rsPrizes.getInt(4));
 						prizes.add(p);
 					}

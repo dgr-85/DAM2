@@ -43,7 +43,7 @@ public class MainOperations {
 		// Add prize with existing type
 		System.out.println("==============================================");
 		System.out.println("Adding new Prize...");
-		PrizeType existingPrizeType = ptDAO.getPrizetypeById(2, false);
+		PrizeType existingPrizeType = ptDAO.getPrizeTypeById(2, false);
 		Prize addingOkPrize = new Prize(10, addingCandidate, existingPrizeType, 2140);
 		int resAddOkPrize = pDAO.addPrize(addingOkPrize);
 		if (resAddOkPrize > 0) {
@@ -117,7 +117,7 @@ public class MainOperations {
 		System.out.println("==============================================");
 		int idReadingPrizeType = 3;
 		System.out.println("Retrieving Prize Type " + idReadingPrizeType + "...");
-		PrizeType readingPrizeType = ptDAO.getPrizetypeById(idReadingPrizeType, false);
+		PrizeType readingPrizeType = ptDAO.getPrizeTypeById(idReadingPrizeType, false);
 		if (readingPrizeType.getPrizeTypeId() != null) {
 			System.out.println("Prize Type found. (Prizes not included)");
 			System.out.println(readingPrizeType.toString());
@@ -128,7 +128,7 @@ public class MainOperations {
 		// Get prize type by id (prizes included)
 		System.out.println("==============================================");
 		System.out.println("Retrieving Prize Type " + idReadingPrizeType + "...");
-		readingPrizeType = ptDAO.getPrizetypeById(idReadingPrizeType, true);
+		readingPrizeType = ptDAO.getPrizeTypeById(idReadingPrizeType, true);
 		if (readingPrizeType.getPrizeTypeId() != null) {
 			System.out.println("Prize Type found. (Prizes included)");
 			System.out.println(readingPrizeType.toString());
@@ -140,7 +140,7 @@ public class MainOperations {
 		System.out.println("==============================================");
 		int errorPrizeType = 6767;
 		System.out.println("Retrieving Prize Type " + errorPrizeType + "...");
-		readingPrizeType = ptDAO.getPrizetypeById(errorPrizeType, false);
+		readingPrizeType = ptDAO.getPrizeTypeById(errorPrizeType, false);
 		if (readingPrizeType.getPrizeTypeId() != null) {
 			System.out.println("Prize Type found. (Prizes not included)");
 			System.out.println(readingPrizeType.toString());
@@ -179,9 +179,10 @@ public class MainOperations {
 		int idUpdatingPrize = 10;
 		System.out.println("Updating Prize " + idUpdatingPrize + "...");
 		Prize updatingPrize = pDAO.getPrizeById(idUpdatingPrize);
-		if (updatingPrize.getPrizeId() != null) {
+		PrizeType typeOfUpdatingPrize = ptDAO.getPrizeTypeById(3, false);
+		if (updatingPrize.getPrizeId() != null && typeOfUpdatingPrize.getPrizeTypeId() != null) {
 			updatingPrize.setPrizeCandidate(cDAO.getCandidateById(4, false));
-			updatingPrize.setTypeOfPrize(ptDAO.getPrizetypeById(3, false));
+			updatingPrize.setTypeOfPrize(ptDAO.getPrizeTypeById(typeOfUpdatingPrize.getPrizeTypeId(), false));
 			updatingPrize.setYear(2030);
 			int resUpdatePrize = pDAO.updatePrize(updatingPrize);
 			if (resUpdatePrize > 0) {
@@ -189,6 +190,30 @@ public class MainOperations {
 			} else {
 				System.out.println(ErrorManager.getMessage(0, "This Prize"));
 			}
+		} else if (typeOfUpdatingPrize.getPrizeTypeId() == null) {
+			System.out.println(ErrorManager.getMessage(-1452, "This Prize"));
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, "This Prize"));
+		}
+
+		// Update prize with non-existing prize type (causes error)
+		System.out.println("==============================================");
+		idUpdatingPrize = 10;
+		System.out.println("Updating Prize " + idUpdatingPrize + "...");
+		updatingPrize = pDAO.getPrizeById(idUpdatingPrize);
+		typeOfUpdatingPrize = ptDAO.getPrizeTypeById(5353, false);
+		if (updatingPrize.getPrizeId() != null && typeOfUpdatingPrize.getPrizeTypeId() != null) {
+			updatingPrize.setPrizeCandidate(cDAO.getCandidateById(4, false));
+			updatingPrize.setTypeOfPrize(ptDAO.getPrizeTypeById(typeOfUpdatingPrize.getPrizeTypeId(), false));
+			updatingPrize.setYear(2030);
+			int resUpdatePrize = pDAO.updatePrize(updatingPrize);
+			if (resUpdatePrize > 0) {
+				System.out.println(resUpdatePrize + " Prize updated.");
+			} else {
+				System.out.println(ErrorManager.getMessage(0, "This Prize"));
+			}
+		} else if (typeOfUpdatingPrize.getPrizeTypeId() == null) {
+			System.out.println(ErrorManager.getMessage(-1452, "This Prize"));
 		} else {
 			System.out.println(ErrorManager.getMessage(-1, "This Prize"));
 		}
@@ -200,7 +225,7 @@ public class MainOperations {
 		updatingPrize = pDAO.getPrizeById(idUpdatingPrize);
 		if (updatingPrize.getPrizeId() != null) {
 			updatingPrize.setPrizeCandidate(cDAO.getCandidateById(4, false));
-			updatingPrize.setTypeOfPrize(ptDAO.getPrizetypeById(4, false));
+			updatingPrize.setTypeOfPrize(ptDAO.getPrizeTypeById(4, false));
 			updatingPrize.setYear(2030);
 			int resUpdatePrize = pDAO.updatePrize(updatingPrize);
 			if (resUpdatePrize > 0) {
