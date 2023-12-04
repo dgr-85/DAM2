@@ -78,4 +78,3 @@ def mes_repetits(llista):
             llista_mes_repetits.append(clau)
 
     return llista_mes_repetits
-
