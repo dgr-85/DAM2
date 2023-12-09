@@ -5,7 +5,6 @@ public class Temperatura {
 	private static final int SALT = 365;
 	private static final int NUM_FILS = 10;
 	private static final int TOTAL_DIES = 3650;
-	private MarcadorTemperatures marcadorTemperatures;
 	private static int[] temperatures;
 
 	public static void main(String[] args) {
