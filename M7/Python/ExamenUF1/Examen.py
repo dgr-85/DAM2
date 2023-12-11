@@ -5,18 +5,14 @@ import random
 
 
 def moviment():
-    punts_cardinals = ('N', 'S', 'E', 'O')
+    punts_cardinals = "NSEO"
     txt_mov = input("Introdueix una direcció i un número de passes.").upper()
-    punt_cardinal = ""
-    passes = ""
-    for car in txt_mov:
-        if punt_cardinal == "":
-            punt_cardinal = car
-        else:
-            passes += car
+    punt_cardinal = txt_mov[0:1]
+    passes = txt_mov[1:]
+
     try:
         passes = float(passes)
-        if passes >= -50 and passes <=  50 and punt_cardinal in punts_cardinals:
+        if -50 <= passes <= 50 and len(punt_cardinal) > 0 and punt_cardinal in punts_cardinals:
             return txt_mov
         else:
             return None
@@ -29,18 +25,18 @@ def moviment():
 
 def abreujar(txt):
     txt_resultant = ""
-    vocals = ('a', 'e', 'i', 'o', 'u')
+    vocals = "aeiou"
     primera = True
 
     for lletra in txt:
 
-        if lletra.lower() in vocals and primera is False:
+        if lletra.lower() in vocals and not primera:
             lletra = ''
 
-        if lletra.lower() in vocals and primera is True:
+        elif lletra.lower() in vocals and primera:
             primera = False
 
-        if lletra == ' ':
+        elif lletra == ' ':
             primera = True
 
         txt_resultant += lletra
@@ -90,17 +86,18 @@ def ronda(parelles_ronda):
 
 
 def triangle(n):
-    llista_de_llistes = [[1], [1, 1]]
+    llista_de_llistes = []
 
     for fil in range(n):
-        proxim = [[1]]
-        for col in llista_de_llistes:
-            ultim = llista_de_llistes[-1]
-            for num in range(1, len(ultim)):
-                proxim.append(ultim[num])
-            proxim.append(1)
+        proxim = []
+        for col in range(fil+1):
+            if col == 0 or col >= fil:
+                proxim.append(1)
+            else:
+                proxim.append(llista_de_llistes[fil-1][col-1] + llista_de_llistes[fil-1][col])
+
         llista_de_llistes.append(proxim)
 
     return llista_de_llistes
 
-print(triangle(3))
+

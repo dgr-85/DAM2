@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5841d49c-3f5f-4ed0-8ab7-39e084c1ae4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ExamenUF1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Examen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/M6UF2UF4PtJDBC/bin/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/Docker_Vendes/GómezDavidM10P09.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M10/Docker_Vendes/GómezDavidM10P09.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen.py" beforeDir="false" afterPath="$PROJECT_DIR$/Examen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../exersM07_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../exersM07_01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../exersM07_01/Entrenament.py" beforeDir="false" afterPath="$PROJECT_DIR$/../exersM07_01/Entrenament.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M9/AgenciaViatges/bin/cat/institutmarianao/viatges/AgenciaViatges.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/AgenciaViatges/bin/cat/institutmarianao/viatges/AgenciaViatges.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M9/Comandes/bin/cat/institutmarianao/comandes/TaulerComandes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Comandes/bin/cat/institutmarianao/comandes/TaulerComandes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M9/Cursa/bin/cat/institutmarianao/cursa/Cursa.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Cursa/bin/cat/institutmarianao/cursa/Cursa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,12 +18,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Examen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="574">
-              <caret line="105" column="18" lean-forward="true" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+            <state relative-caret-position="559">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
             </state>
           </provider>
         </entry>
@@ -76,6 +76,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -132,15 +133,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="852" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32960895" />
@@ -148,16 +144,27 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file:///usr/lib/python3.8/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="324" selection-start-line="324" selection-end-line="324" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Examen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="105" column="18" lean-forward="true" selection-start-line="105" selection-start-column="18" selection-end-line="105" selection-end-column="18" />
+        <state relative-caret-position="559">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
         </state>
       </provider>
     </entry>
