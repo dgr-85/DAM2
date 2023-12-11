@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">p5_ghostBusters</string>
+    <string name="title">Ghost Busters</string>
+    <string name="etUsername">Enter your name</string>
+    <string name="btnStart">START GAME</string>
+    <string name="infoPlayerTag">Player: </string>
+    <string name="infoScore">Score: </string>
+    <string name="infoBestScore">Best: </string>
+    <string name="infoTopScore">Top Score: </string>
+    <string name="infoTopPlayer">By: </string>
+</resources>
