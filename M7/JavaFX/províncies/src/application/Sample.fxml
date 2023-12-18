@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="application.SampleController">
+   <center>
+      <AnchorPane prefHeight="414.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <ComboBox fx:id="selectComunitat" layoutX="75.0" layoutY="136.0" onAction="#canviaProvincies" prefWidth="150.0" />
+            <ChoiceBox fx:id="selectProvincia" layoutX="75.0" layoutY="260.0" prefWidth="150.0" />
+            <Label layoutX="75.0" layoutY="120.0" text="Comunitat:" />
+            <Label layoutX="75.0" layoutY="236.0" text="Provincia:" />
+            <Button fx:id="bSortir" layoutX="119.0" layoutY="345.0" mnemonicParsing="false" onAction="#sortirAplicacio" text="Sortir" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
