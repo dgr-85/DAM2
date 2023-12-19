@@ -27,18 +27,39 @@ public class MainActivity extends AppCompatActivity {
         try {
             InputStream streamRaw = getResources().openRawResource(R.raw.datos_coches);
             BufferedReader reader = new BufferedReader(new InputStreamReader(streamRaw));
-            String str;
+            String s;
             List<String> series=new ArrayList<>();
-            Map<String,List<String>> cars = new HashMap<>();
-            while(!((str = reader.readLine()).equals("end"))){
-                series.add(str);
+            while(!((s = reader.readLine()).equals("end"))){
+                series.add(s);
             }
-            while((str=reader.readLine())!=null){
+            Map<String,List<String>> modelMap=new HashMap<>();
+            Map<String,List<Integer>> priceMap=new HashMap<>();
+            Map<String,List<String>> imageMap=new HashMap<>();
 
+            for(String serie:series){
+
+                if(!modelMap.containsKey(serie)){
+                    modelMap.put(serie,new ArrayList<>());
+                }
+
+                if(!priceMap.containsKey(serie)){
+                    priceMap.put(serie,new ArrayList<>());
+                }
+
+                if(!imageMap.containsKey(serie)){
+                    imageMap.put(serie,new ArrayList<>());
+                }
+
+                while(!((s = reader.readLine()).equals("end"))){
+                    modelMap.get(serie).add(s);
+                    priceMap.get(serie).add(Integer.parseInt(s));
+                    imageMap.get(serie).add(s);
+                }
             }
+
             streamRaw.close();
-        } catch (Exception ex) {
-            Log.e("Files", " Error reading file from raw resource.");
+        } catch (Exception e) {
+            Log.e(getString(R.string.tagReadFile), getString(R.string.errorReadFile));
         }
     }
 }
