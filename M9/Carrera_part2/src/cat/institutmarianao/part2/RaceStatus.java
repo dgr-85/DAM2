@@ -1,4 +1,4 @@
-package cat.institutmarianao.part1;
+package cat.institutmarianao.part2;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -18,9 +18,6 @@ public class RaceStatus {
 	}
 
 	public synchronized void lap(Pilot pilot) {
-		System.out.println("Pilot: [" + pilot.getName() + ", laps=" + pilot.getLaps() + "]");
-
-		// synchronized (this) {
 		if (!finish && pilot.getLaps() <= 0) {
 			finish = true;
 			winnerTime = pilot.getTotalTimeMillis();
@@ -34,7 +31,6 @@ public class RaceStatus {
 			pilot.setTotalTimeMillis(Integer.MAX_VALUE);
 			score.add(pilot);
 		}
-		// }
 	}
 
 	public boolean isFinish() {
