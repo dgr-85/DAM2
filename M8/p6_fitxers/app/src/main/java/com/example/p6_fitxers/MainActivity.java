@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                     imageMap.get(serie).add(s);
                 }
             }
-
             streamRaw.close();
         } catch (Exception e) {
             Log.e(getString(R.string.tagReadFile), getString(R.string.errorReadFile));

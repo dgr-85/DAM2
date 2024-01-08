@@ -7,7 +7,7 @@ public abstract class DAOManager {
 	private static UsuarisDAO uDAO;
 
 	public static UsuarisDAO getUsuarisDAO() {
-		if (uDAO != null) {
+		if (uDAO == null) {
 			uDAO = new UsuarisDAOImpl();
 		}
 		return uDAO;

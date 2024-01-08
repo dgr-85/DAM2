@@ -9,7 +9,7 @@ public interface UsuarisDAO {
 
 	public Usuaris getUsuarisById(int id);
 
-	public Integer updateUsuaris(Usuaris usuaris);
+	public void updateUsuaris(Usuaris usuaris);
 
 	public Integer deleteUsuaris(int id);
 
