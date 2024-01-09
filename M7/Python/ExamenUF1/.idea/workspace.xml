@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5841d49c-3f5f-4ed0-8ab7-39e084c1ae4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../M10/Docker_Vendes/GómezDavidM10P09.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M10/Docker_Vendes/GómezDavidM10P09.odt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Examen.py" beforeDir="false" afterPath="$PROJECT_DIR$/Examen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../exersM07_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../exersM07_01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/AgenciaViatges/bin/cat/institutmarianao/viatges/AgenciaViatges.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/AgenciaViatges/bin/cat/institutmarianao/viatges/AgenciaViatges.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Comandes/bin/cat/institutmarianao/comandes/TaulerComandes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Comandes/bin/cat/institutmarianao/comandes/TaulerComandes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Cursa/bin/cat/institutmarianao/cursa/Cursa.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Cursa/bin/cat/institutmarianao/cursa/Cursa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" afterDir="false" />
-    </list>
+    <list default="true" id="5841d49c-3f5f-4ed0-8ab7-39e084c1ae4d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +13,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Examen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
+            <state relative-caret-position="561">
               <caret line="102" selection-start-line="102" selection-end-line="102" />
             </state>
           </provider>
@@ -59,6 +50,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -70,7 +62,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -163,7 +154,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Examen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
+        <state relative-caret-position="561">
           <caret line="102" selection-start-line="102" selection-end-line="102" />
         </state>
       </provider>

@@ -11,7 +11,7 @@ public interface UsuarisDAO {
 
 	public void updateUsuaris(Usuaris usuaris);
 
-	public Integer deleteUsuaris(int id);
+	public void deleteUsuaris(int id);
 
 	public ArrayList<Usuaris> listAllUsuaris();
 }

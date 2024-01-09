@@ -3,4 +3,11 @@
     <string name="toolbarTitle">BMW Configurator</string>
     <string name="tagReadFile">Files</string>
     <string name="errorReadFile">Error reading file from raw resource.</string>
+    <string name="gsManual">Manual Gear Shift</string>
+    <string name="gsAuto">Automatic Gear Shift</string>
+    <string name="fGasoline">Gasoline</string>
+    <string name="fDiesel">Diesel</string>
+    <string name="cbPaint">Metallic paint</string>
+    <string name="cbSeats">Leather Seating</string>
+    <string name="cbGPS">Navigation system</string>
 </resources>

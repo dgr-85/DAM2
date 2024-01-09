@@ -73,15 +73,41 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 	}
 
 	@Override
-	public Integer deleteUsuaris(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteUsuaris(int id) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			session.delete(id);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public ArrayList<Usuaris> listAllUsuaris() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = factory.openSession();
+		Transaction tx = null;
+		ArrayList<Usuaris> users = new ArrayList<Usuaris>();
+		try {
+			tx = session.beginTransaction();
+			users = (ArrayList<Usuaris>) session.createQuery("from usuaris").list();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return users;
 	}
 
 }

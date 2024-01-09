@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Spinner;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -57,8 +58,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             streamRaw.close();
+
+            setSpinners(series,modelMap,priceMap,imageMap);
         } catch (Exception e) {
             Log.e(getString(R.string.tagReadFile), getString(R.string.errorReadFile));
         }
+    }
+
+    public void setSpinners(List<String> series,Map<String,List<String>> model,Map<String,List<Integer>> price,Map<String,List<String>> image){
+        Spinner spSeries=findViewById(R.id.spSeries);
+        Spinner spDetails=findViewById(R.id.spModel);
     }
 }

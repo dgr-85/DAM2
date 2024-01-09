@@ -10,22 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
+                android:background="@color/material_dynamic_primary50"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
-                app:title="@string/toolbarTitle" />
+                app:title="@string/toolbarTitle"
+                app:titleTextColor="@color/white" />
 
             <Spinner
                 android:id="@+id/spSeries"
@@ -34,6 +34,83 @@
 
             <Spinner
                 android:id="@+id/spModel"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <ImageView
+                android:id="@+id/images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <RadioGroup
+                android:id="@+id/gearShift"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/gsManual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gsManual" />
+
+                <RadioButton
+                    android:id="@+id/gsAuto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gsAuto" />
+            </RadioGroup>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <RadioGroup
+                android:id="@+id/fuel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/fGasoline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fGasoline" />
+
+                <RadioButton
+                    android:id="@+id/fDiesel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fDiesel" />
+            </RadioGroup>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <CheckBox
+                android:id="@+id/cbPaint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cbPaint" />
+
+            <CheckBox
+                android:id="@+id/cbSeats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cbSeats" />
+
+            <CheckBox
+                android:id="@+id/cbGPS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cbGPS" />
+
+            <TextView
+                android:id="@+id/tvPrice"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" />
         </LinearLayout>
