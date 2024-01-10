@@ -19,7 +19,7 @@ public class Box implements Runnable {
 		return pilotInBox == null;
 	}
 
-	public synchronized void setPilotOut() {
+	public void setPilotOut() {
 		pilotInBox = null;
 	}
 
@@ -55,7 +55,7 @@ public class Box implements Runnable {
 				}
 				pilotInBox.refuel();
 				synchronized (pilotInBox) {
-					System.out.println(boxName() + " waiting for " + pilotInBox.currentState() + " to leave");
+					System.out.println(boxName() + " waiting for " + pilotInBox.currentState() + " to leave.");
 					pilotInBox.notify();
 				}
 			}

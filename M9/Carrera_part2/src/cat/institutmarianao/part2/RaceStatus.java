@@ -23,13 +23,10 @@ public class RaceStatus {
 			winnerTime = pilot.getTotalTimeMillis();
 			score.add(pilot);
 
-		} else if (finish && pilot.getLaps() <= 0) {
+		} else if (finish) {
 			pilot.setTotalTimeMillis(pilot.getTotalTimeMillis() - winnerTime);
 			score.add(pilot);
 
-		} else if (finish) {
-			pilot.setTotalTimeMillis(Integer.MAX_VALUE);
-			score.add(pilot);
 		}
 	}
 
@@ -67,13 +64,13 @@ public class RaceStatus {
 		sb.append(StringUtils.leftPad((parsePilotTime(score.get(0).getTotalTimeMillis(), true) + "s\n"), 15));
 
 		score.remove(0);
-		score.sort(Comparator.comparing(Pilot::getTotalTimeMillis).thenComparing(Pilot::getLaps));
+		score.sort(Comparator.comparing(Pilot::getLaps).thenComparing(Pilot::getTotalTimeMillis));
 
 		for (Pilot p : score) {
 			sb.append(StringUtils.rightPad((i++) + ". " + p.getName(), 15) + "|");
-			sb.append(StringUtils.leftPad(p.getTotalTimeMillis() != Integer.MAX_VALUE
-					? "+" + (parsePilotTime(p.getTotalTimeMillis(), false) + "s\n")
-					: "+" + (p.getLaps() + " lap" + (p.getLaps() > 1 ? "s" : "") + "\n"), 15));
+			sb.append(
+					StringUtils.leftPad(p.getLaps() <= 0 ? "+" + (parsePilotTime(p.getTotalTimeMillis(), false) + "s\n")
+							: "+" + (p.getLaps() + " lap" + (p.getLaps() > 1 ? "s" : "") + "\n"), 15));
 		}
 		return sb.toString();
 	}

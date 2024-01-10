@@ -41,7 +41,7 @@ public class Pilot implements Runnable {
 	public void run() {
 		while (!raceStatus.isFinish()) {
 			try {
-				int lapTime = 23 + (int) (Math.random() * 5);
+				int lapTime = 80 + (int) (Math.random() * 30);
 				totalTimeMillis += lapTime;
 				Thread.sleep(lapTime);
 				laps--;
