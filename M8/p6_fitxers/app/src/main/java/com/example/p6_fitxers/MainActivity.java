@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.io.BufferedReader;
@@ -68,5 +71,21 @@ public class MainActivity extends AppCompatActivity {
     public void setSpinners(List<String> series,Map<String,List<String>> model,Map<String,List<Integer>> price,Map<String,List<String>> image){
         Spinner spSeries=findViewById(R.id.spSeries);
         Spinner spDetails=findViewById(R.id.spModel);
+
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,series);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spSeries.setAdapter(adapter);
+
+        spSeries.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }

@@ -29,12 +29,12 @@
 
             <Spinner
                 android:id="@+id/spSeries"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp" />
 
             <Spinner
                 android:id="@+id/spModel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp" />
 
             <ImageView
