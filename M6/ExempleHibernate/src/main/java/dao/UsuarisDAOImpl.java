@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -27,7 +28,8 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 			if (tx != null) {
 				tx.rollback();
 			}
-			e.printStackTrace();
+			System.out.println(e.getCause());
+			// e.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -94,10 +96,10 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 	public ArrayList<Usuaris> listAllUsuaris() {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		ArrayList<Usuaris> users = new ArrayList<Usuaris>();
+		List<Usuaris> users = new ArrayList<Usuaris>();
 		try {
 			tx = session.beginTransaction();
-			users = (ArrayList<Usuaris>) session.createQuery("from usuaris").list();
+			users = session.createQuery("select * from usuaris", Usuaris.class).getResultList();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {
@@ -107,7 +109,7 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 		} finally {
 			session.close();
 		}
-		return users;
+		return (ArrayList<Usuaris>) users;
 	}
 
 }
