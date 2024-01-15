@@ -43,7 +43,7 @@
                               <Label layoutX="45.0" layoutY="149.0" prefHeight="16.0" prefWidth="142.0" text="Data de naixement" />
                               <Label layoutX="324.0" layoutY="237.0" prefHeight="16.0" prefWidth="214.0" text="Taxa metabòlica basal (kcal/dia)" />
                               <TextField fx:id="tfTMB" layoutX="324.0" layoutY="253.0" />
-                              <Button id="btnCalcular" layoutX="95.0" layoutY="253.0" mnemonicParsing="false" text="Calcular" />
+                              <Button id="btnCalcular" layoutX="95.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#calcularResultat" text="Calcular" />
                               <Label layoutX="201.0" layoutY="96.0" prefHeight="16.0" prefWidth="31.0" text="150" />
                               <Label layoutX="538.0" layoutY="96.0" prefHeight="16.0" prefWidth="31.0" text="200" />
                            </children>
