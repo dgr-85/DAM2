@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +29,14 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 			if (tx != null) {
 				tx.rollback();
 			}
-			System.out.println(e.getCause());
-			// e.printStackTrace();
+			if (e.getCause() instanceof SQLException) {
+				SQLException sqlEx = (SQLException) e.getCause();
+				if (sqlEx.getErrorCode() == 1062) {
+					return sqlEx.getErrorCode() * -1;
+				}
+			} else {
+				e.printStackTrace();
+			}
 		} finally {
 			session.close();
 		}
