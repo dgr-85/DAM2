@@ -74,35 +74,36 @@ public class Pilot implements Runnable {
 				e.printStackTrace();
 			}
 
-			laps--;
-			fuelTank--;
-			raceStatus.lap(this);
-
-			String state = currentState();
-			if (fuelTank < 5) {
-				if (team.getBox().isFree()) {
-					state += " needs refuelling.";
-				} else {
-					state += " BOX BUSY!!";
-				}
+			synchronized (raceStatus) {
+				laps--;
+				fuelTank--;
+				raceStatus.lap(this);
 			}
-			System.out.println(state);
 
-			synchronized (this) {
-				if (fuelTank < 5 && team != null && team.getBox().isFree()) {
+			if (fuelTank >= 5) {
+				System.out.println(currentState());
+			}
+
+			if (fuelTank < 5) {
+				System.out.println(currentState() + " needs refuelling.");
+				if (!team.getBox().isFree()) {
+					System.out.println(currentState() + " BOX BUSY!!");
+				} else {
 					System.out.println(currentState() + " entering box.");
-					team.getBox().setPilot(this);
 					synchronized (team.getBox()) {
+						team.getBox().setPilot(this);
 						System.out.println(currentState() + " waiting in box.");
 						team.getBox().notify();
 					}
-					try {
-						wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+					synchronized (this) {
+						try {
+							wait();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						System.out.println(currentState() + " refuelled! Leaving box.");
+						team.getBox().setPilotOut();
 					}
-					System.out.println(currentState() + " refuelled! Leaving box.");
-					team.getBox().setPilotOut();
 				}
 			}
 

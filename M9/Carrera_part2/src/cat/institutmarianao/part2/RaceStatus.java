@@ -17,7 +17,7 @@ public class RaceStatus {
 		winnerTime = -1;
 	}
 
-	public synchronized void lap(Pilot pilot) {
+	public void lap(Pilot pilot) {
 		if (!finish && pilot.getLaps() <= 0) {
 			finish = true;
 			winnerTime = pilot.getTotalTimeMillis();

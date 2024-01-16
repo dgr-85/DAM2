@@ -1,8 +1,10 @@
 package dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityExistsException;
+import javax.persistence.PersistenceException;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -25,17 +27,16 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 			tx = session.beginTransaction();
 			idUsuari = (Integer) session.save(usuaris);
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (PersistenceException e) {
 			if (tx != null) {
 				tx.rollback();
 			}
-			if (e.getCause() instanceof SQLException) {
-				SQLException sqlEx = (SQLException) e.getCause();
-				if (sqlEx.getErrorCode() == 1062) {
-					return sqlEx.getErrorCode() * -1;
-				}
+			if (e.getCause() instanceof EntityExistsException) {
+				System.out.println("Duplicate entry");
 			} else {
-				e.printStackTrace();
+				System.out.println(e.getCause());
+				System.out.println(e.getCause().getCause());
+				System.out.println(e.getCause().getCause().getCause());
 			}
 		} finally {
 			session.close();

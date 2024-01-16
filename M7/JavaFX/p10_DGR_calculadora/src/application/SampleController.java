@@ -70,7 +70,7 @@ public class SampleController {
 		Period periode = Period.between(dataEscollida, LocalDate.now());
 		int edat = periode.getYears();
 		if (edat < 20 || edat > 70) {
-			mostrarAlerta("Edat no vàlida", "L'edat ha d'estar compresa entre 20 i 70 anys, ambós inclosos.");
+			mostrarAlerta("L'edat ha d'estar compresa entre 20 i 70 anys, ambós inclosos.");
 			return null;
 		}
 		return edat;
@@ -78,9 +78,15 @@ public class SampleController {
 
 	@FXML
 	Integer calcularPes(String pesEscollit) {
-		int pes = Integer.parseInt(pesEscollit);
+		int pes;
+		try {
+			pes = Integer.parseInt(pesEscollit);
+		} catch (Exception e) {
+			mostrarAlerta("El valor per al pes ha de ser un número enter.");
+			return null;
+		}
 		if (pes < 25 || pes > 125) {
-			mostrarAlerta("Pes invàlid", "El pes ha de tenir un valor entre 25 i 125, ambdós inclosos.");
+			mostrarAlerta("El pes ha de tenir un valor entre 25 i 125, ambdós inclosos.");
 			return null;
 		}
 		return pes;
@@ -105,9 +111,8 @@ public class SampleController {
 	}
 
 	@FXML
-	void mostrarAlerta(String titol, String text) {
+	void mostrarAlerta(String text) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
-		alert.setTitle(titol);
 		alert.setContentText(text);
 		alert.showAndWait();
 	}

@@ -2,6 +2,7 @@ package com.example.p6_fitxers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.opengl.EGLExt;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,21 +55,23 @@ public class MainActivity extends AppCompatActivity {
                     imageMap.put(serie,new ArrayList<>());
                 }
 
-                while(!((s = reader.readLine()).equals("end"))){
+                while(!(s = reader.readLine()).equals("end")){
                     modelMap.get(serie).add(s);
+                    s = reader.readLine();
                     priceMap.get(serie).add(Integer.parseInt(s));
+                    s = reader.readLine();
                     imageMap.get(serie).add(s);
                 }
             }
             streamRaw.close();
 
-            setSpinners(series,modelMap,priceMap,imageMap);
+            setSpinners((ArrayList<String>) series,modelMap,priceMap,imageMap);
         } catch (Exception e) {
             Log.e(getString(R.string.tagReadFile), getString(R.string.errorReadFile));
         }
     }
 
-    public void setSpinners(List<String> series,Map<String,List<String>> model,Map<String,List<Integer>> price,Map<String,List<String>> image){
+    public void setSpinners(ArrayList<String> series,Map<String,List<String>> model,Map<String,List<Integer>> price,Map<String,List<String>> image){
         Spinner spSeries=findViewById(R.id.spSeries);
         Spinner spDetails=findViewById(R.id.spModel);
 
@@ -79,9 +82,23 @@ public class MainActivity extends AppCompatActivity {
         spSeries.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                ArrayAdapter seriesAdapter=new ArrayAdapter(MainActivity.this, android.R.layout.simple_spinner_item,model.get(parent.getItemAtPosition(position)));
+                seriesAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
+                spDetails.setAdapter(seriesAdapter);
             }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spDetails.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                List<String> listModels=model.get(parent.getItemAtPosition(position));
+                //int imageId=getResources().getIdentifier(listModels.get(indexOf(Integer.parseInt(String.valueOf(id)))),"drawable",getPackageName());
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
