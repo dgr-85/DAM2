@@ -66,15 +66,14 @@ public class Pilot implements Runnable {
 	@Override
 	public void run() {
 		while (!raceStatus.isFinish()) {
+			int lapTime = 180 + (int) (Math.random() * 70);
 			try {
-				int lapTime = 180 + (int) (Math.random() * 70);
-				totalTimeMillis += lapTime;
 				Thread.sleep(lapTime);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
 			synchronized (raceStatus) {
+				totalTimeMillis += lapTime;
 				laps--;
 				fuelTank--;
 				raceStatus.lap(this);
@@ -89,21 +88,27 @@ public class Pilot implements Runnable {
 				if (!team.getBox().isFree()) {
 					System.out.println(currentState() + " BOX BUSY!!");
 				} else {
-					System.out.println(currentState() + " entering box.");
 					synchronized (team.getBox()) {
+						System.out.println(currentState() + " entering box.");
 						team.getBox().setPilot(this);
 						System.out.println(currentState() + " waiting in box.");
 						team.getBox().notify();
 					}
 					synchronized (this) {
-						try {
-							wait();
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+						if (fuelTank != MAX_TANK) {
+							try {
+								wait();
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
 						}
-						System.out.println(currentState() + " refuelled! Leaving box.");
-						team.getBox().setPilotOut();
 					}
+					System.out.println(currentState() + " refuelled! Leaving box.");
+					team.getBox().setPilotOut();
+					synchronized (team.getBox()) {
+						team.getBox().notify();
+					}
+
 				}
 			}
 

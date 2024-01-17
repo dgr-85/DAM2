@@ -17,16 +17,13 @@ public class RaceStatus {
 		winnerTime = -1;
 	}
 
-	public synchronized void lap(Pilot pilot) {
+	public void lap(Pilot pilot) {
 		System.out.println("Pilot: [" + pilot.getName() + ", laps=" + pilot.getLaps() + "]");
 
 		if (!finish && pilot.getLaps() <= 0) {
 			finish = true;
-			winnerTime = pilot.getTotalTimeMillis();
-			score.add(pilot);
-
-		} else if (finish) {
-			pilot.setTotalTimeMillis(pilot.getTotalTimeMillis() - winnerTime);
+		}
+		if (finish) {
 			score.add(pilot);
 
 		}
@@ -61,14 +58,19 @@ public class RaceStatus {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[RACE RESULTS]\n");
 
+		score.sort(Comparator.comparing(Pilot::getLaps).thenComparing(Pilot::getTotalTimeMillis));
+		winnerTime = score.get(0).getTotalTimeMillis();
+
 		int i = 1;
 		sb.append(StringUtils.rightPad((i++) + ". " + score.get(0).getName(), 15) + "|");
 		sb.append(StringUtils.leftPad((parsePilotTime(score.get(0).getTotalTimeMillis(), true) + "s\n"), 15));
 
 		score.remove(0);
-		score.sort(Comparator.comparing(Pilot::getLaps).thenComparing(Pilot::getTotalTimeMillis));
 
 		for (Pilot p : score) {
+			if (p.getLaps() <= 0) {
+				p.setTotalTimeMillis(p.getTotalTimeMillis() - winnerTime);
+			}
 			sb.append(StringUtils.rightPad((i++) + ". " + p.getName(), 15) + "|");
 			sb.append(
 					StringUtils.leftPad(p.getLaps() <= 0 ? "+" + (parsePilotTime(p.getTotalTimeMillis(), false) + "s\n")

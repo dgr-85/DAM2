@@ -40,14 +40,16 @@ public class Pilot implements Runnable {
 	@Override
 	public void run() {
 		while (!raceStatus.isFinish()) {
+			int lapTime = 80 + (int) (Math.random() * 30);
 			try {
-				int lapTime = 80 + (int) (Math.random() * 30);
-				totalTimeMillis += lapTime;
 				Thread.sleep(lapTime);
-				laps--;
-				raceStatus.lap(this);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			}
+			synchronized (raceStatus) {
+				totalTimeMillis += lapTime;
+				laps--;
+				raceStatus.lap(this);
 			}
 		}
 	}

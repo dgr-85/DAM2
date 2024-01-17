@@ -20,13 +20,9 @@ public class RaceStatus {
 	public void lap(Pilot pilot) {
 		if (!finish && pilot.getLaps() <= 0) {
 			finish = true;
-			winnerTime = pilot.getTotalTimeMillis();
+		}
+		if (finish) {
 			score.add(pilot);
-
-		} else if (finish) {
-			pilot.setTotalTimeMillis(pilot.getTotalTimeMillis() - winnerTime);
-			score.add(pilot);
-
 		}
 	}
 
@@ -34,7 +30,7 @@ public class RaceStatus {
 		return finish;
 	}
 
-	public String parsePilotTime(int milliseconds, boolean firstPlace) {
+	private String parsePilotTime(int milliseconds, boolean firstPlace) {
 		DecimalFormat df = new DecimalFormat("00.000");
 		float seconds = (float) milliseconds / 1000;
 		int minutes = 0;
@@ -59,14 +55,19 @@ public class RaceStatus {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[RACE RESULTS]\n");
 
+		score.sort(Comparator.comparing(Pilot::getLaps).thenComparing(Pilot::getTotalTimeMillis));
+		winnerTime = score.get(0).getTotalTimeMillis();
+
 		int i = 1;
 		sb.append(StringUtils.rightPad((i++) + ". " + score.get(0).getName(), 15) + "|");
 		sb.append(StringUtils.leftPad((parsePilotTime(score.get(0).getTotalTimeMillis(), true) + "s\n"), 15));
 
 		score.remove(0);
-		score.sort(Comparator.comparing(Pilot::getLaps).thenComparing(Pilot::getTotalTimeMillis));
 
 		for (Pilot p : score) {
+			if (p.getLaps() <= 0) {
+				p.setTotalTimeMillis(p.getTotalTimeMillis() - winnerTime);
+			}
 			sb.append(StringUtils.rightPad((i++) + ". " + p.getName(), 15) + "|");
 			sb.append(
 					StringUtils.leftPad(p.getLaps() <= 0 ? "+" + (parsePilotTime(p.getTotalTimeMillis(), false) + "s\n")

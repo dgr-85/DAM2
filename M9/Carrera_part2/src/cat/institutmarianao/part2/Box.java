@@ -38,12 +38,14 @@ public class Box implements Runnable {
 	@Override
 	public void run() {
 		while (!raceStatus.isFinish()) {
-			System.out.println(boxName() + " is free.");
-			synchronized (this) {
-				try {
-					wait();
-				} catch (Exception e) {
-					e.printStackTrace();
+			if (isFree()) {
+				System.out.println(boxName() + " is free.");
+				synchronized (this) {
+					try {
+						wait();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			if (pilotInBox != null) {
@@ -57,6 +59,13 @@ public class Box implements Runnable {
 				synchronized (pilotInBox) {
 					System.out.println(boxName() + " waiting for " + pilotInBox.currentState() + " to leave.");
 					pilotInBox.notify();
+				}
+				synchronized (this) {
+					try {
+						wait();
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}
