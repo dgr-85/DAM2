@@ -2,15 +2,22 @@ package com.example.p6_fitxers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.opengl.EGLExt;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -20,10 +27,30 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    int gearShift;
+    int fuelType;
+    int metallicPaint;
+    int leatherSeating;
+    int navigationSystem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView imageView=findViewById(R.id.images);
+        imageView.setImageResource(R.drawable.logobmw);
+
+        Context context=getApplicationContext();
+
+        if(fileExists(context)){
+
+        }
+
+        RadioButton rbGsManual=findViewById(R.id.rbGsManual);
+        RadioButton rbFGasoline=findViewById(R.id.rbFGasoline);
+        rbGsManual.setChecked(true);
+        rbFGasoline.setChecked(true);
 
         readFile();
     }
@@ -63,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
                     imageMap.get(serie).add(s);
                 }
             }
+
+            gearShift=Integer.parseInt(reader.readLine());
+            fuelType=Integer.parseInt(reader.readLine());
+            metallicPaint=Integer.parseInt(reader.readLine());
+            leatherSeating=Integer.parseInt(reader.readLine());
+            navigationSystem=Integer.parseInt(reader.readLine());
+
             streamRaw.close();
 
             setSpinners((ArrayList<String>) series,modelMap,priceMap,imageMap);
@@ -96,13 +130,66 @@ public class MainActivity extends AppCompatActivity {
         spDetails.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                List<String> listModels=model.get(parent.getItemAtPosition(position));
-                //int imageId=getResources().getIdentifier(listModels.get(indexOf(Integer.parseInt(String.valueOf(id)))),"drawable",getPackageName());
+                String strModel=spSeries.getSelectedItem().toString();
+                String strImage=image.get(strModel).get(position);
+                int imageId=getResources().getIdentifier(strImage,"drawable",getPackageName());
+                ImageView imageView=findViewById(R.id.images);
+                imageView.setImageResource(imageId);
+
+                int modelPrice=price.get(strModel).get(position);
+
+                calculatePrice(modelPrice);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+    }
+
+    public void calculatePrice(int basePrice){
+        RadioButton rbGsAuto=findViewById(R.id.rbGsAuto);
+        RadioButton rbFDiesel=findViewById(R.id.rbFDiesel);
+        int totalPrice=basePrice;
+
+        if(rbGsAuto.isChecked()){
+            totalPrice+=gearShift;
+        }
+        if(rbFDiesel.isChecked()){
+            totalPrice+=fuelType;
+        }
+
+        CheckBox cbPaint=findViewById(R.id.cbPaint);
+        CheckBox cbSeats=findViewById(R.id.cbSeats);
+        CheckBox cbGPS=findViewById(R.id.cbGPS);
+
+        if(cbPaint.isChecked()){
+            totalPrice+=metallicPaint;
+        }
+        if(cbSeats.isChecked()){
+            totalPrice+=leatherSeating;
+        }
+        if(cbGPS.isChecked()){
+            totalPrice+=navigationSystem;
+        }
+
+        TextView tvPrice=findViewById(R.id.tvPrice);
+        tvPrice.setText(String.valueOf(totalPrice));
+    }
+
+    public boolean fileExists(Context context){
+        try{
+            FileOutputStream p5File=context.openFileOutput("p5File",Context.MODE_PRIVATE);
+            p5File.close();
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
     }
 }

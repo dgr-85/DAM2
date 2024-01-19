@@ -44,18 +44,18 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <RadioGroup
-                android:id="@+id/gearShift"
+                android:id="@+id/rgGearShift"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <RadioButton
-                    android:id="@+id/gsManual"
+                    android:id="@+id/rbGsManual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/gsManual" />
 
                 <RadioButton
-                    android:id="@+id/gsAuto"
+                    android:id="@+id/rbGsAuto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/gsAuto" />
@@ -68,18 +68,18 @@
                 android:background="?android:attr/listDivider" />
 
             <RadioGroup
-                android:id="@+id/fuel"
+                android:id="@+id/rgFuel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <RadioButton
-                    android:id="@+id/fGasoline"
+                    android:id="@+id/rbFGasoline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/fGasoline" />
 
                 <RadioButton
-                    android:id="@+id/fDiesel"
+                    android:id="@+id/rbFDiesel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/fDiesel" />
@@ -111,8 +111,9 @@
 
             <TextView
                 android:id="@+id/tvPrice"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/id_card_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/id_card" />
+
+            <EditText
+                android:id="@+id/id_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/enter_the_id_card"
+                android:inputType="text"
+                android:minHeight="48dp"
+                tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/personal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/personal_data" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:autofillHints=""
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <EditText
+                android:id="@+id/surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/surname"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:autofillHints=""
+                tools:ignore="VisualLintTextFieldSize" />
+
+            <TextView
+                android:id="@+id/cycleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cycle" />
+
+            <Spinner
+                android:id="@+id/cycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/courseText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/course" />
+
+            <RadioGroup
+                android:id="@+id/course"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first"
+                    tools:ignore="VisualLintButtonSize" />
+
+                <RadioButton
+                    android:id="@+id/second"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/second"
+                    tools:ignore="VisualLintButtonSize" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add"
+                    tools:layout_editor_absoluteX="42dp"
+                    tools:layout_editor_absoluteY="594dp"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/remove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remove"
+                    tools:layout_editor_absoluteX="160dp"
+                    tools:layout_editor_absoluteY="594dp"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/update"
+                    tools:layout_editor_absoluteX="280dp"
+                    tools:layout_editor_absoluteY="594dp"
+                    tools:ignore="ButtonStyle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/findDNI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/find_by_dni"
+                    tools:layout_editor_absoluteX="160dp"
+                    tools:layout_editor_absoluteY="652dp"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/findCycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/find_by_cycle"
+                    tools:ignore="ButtonStyle"
+                    tools:layout_editor_absoluteX="42dp"
+                    tools:layout_editor_absoluteY="652dp" />
+
+                <Button
+                    android:id="@+id/findCourse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/find_by_course"
+                    tools:layout_editor_absoluteX="280dp"
+                    tools:layout_editor_absoluteY="652dp"
+                    tools:ignore="ButtonStyle" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/clear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clear"
+                tools:ignore="VisualLintButtonSize" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

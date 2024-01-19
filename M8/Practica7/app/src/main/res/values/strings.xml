@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Databases</string>
+    <string name="find_by_course">Find by Course</string>
+    <string name="id_card">Id card</string>
+    <string name="enter_the_id_card">Enter the id card</string>
+    <string name="personal_data">Personal data</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="cycle">Cycle</string>
+    <string name="course">Course</string>
+    <string name="first">First</string>
+    <string name="second">Second</string>
+    <string name="add">Add</string>
+    <string name="remove">Remove</string>
+    <string name="update">Update</string>
+    <string name="find_by_cicle">Find by Cicle</string>
+    <string name="find_by_dni">Find by DNI</string>
+    <string name="find_by_cycle">Find by cycle</string>
+    <string name="clear">Clear</string>
+</resources>
