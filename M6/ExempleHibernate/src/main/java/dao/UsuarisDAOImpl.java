@@ -3,13 +3,11 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.PersistenceException;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 
 import managers.SessionFactoryUtil;
 import pojos.Usuaris;
@@ -27,17 +25,11 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 			tx = session.beginTransaction();
 			idUsuari = (Integer) session.save(usuaris);
 			tx.commit();
-		} catch (PersistenceException e) {
+		} catch (ConstraintViolationException e) {
 			if (tx != null) {
 				tx.rollback();
 			}
-			if (e.getCause() instanceof EntityExistsException) {
-				System.out.println("Duplicate entry");
-			} else {
-				System.out.println(e.getCause());
-				System.out.println(e.getCause().getCause());
-				System.out.println(e.getCause().getCause().getCause());
-			}
+			// System.out.println(e.getMessage());
 		} finally {
 			session.close();
 		}

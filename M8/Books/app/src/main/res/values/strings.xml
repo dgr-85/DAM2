@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Books</string>
+    <string name="isbn">ISBN</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="clear">CLEAR</string>
+    <string name="add">ADD</string>
+    <string name="remove">REMOVE</string>
+    <string name="modify">MODIFY</string>
+    <string name="catalog">Catalog</string>
+</resources>
