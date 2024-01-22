@@ -6,6 +6,7 @@ package pojos;
  */
 public class Usuaris implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private int userid;
 	private String pwd;
 	private String nom;
@@ -61,6 +62,12 @@ public class Usuaris implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "[userid=" + userid + ", pwd=" + pwd + ", nom=" + nom + ", cognoms=" + cognoms + ", email=" + email
+				+ "]";
 	}
 
 }

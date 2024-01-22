@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.exception.ConstraintViolationException;
 
 import managers.SessionFactoryUtil;
 import pojos.Usuaris;
@@ -25,11 +25,15 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 			tx = session.beginTransaction();
 			idUsuari = (Integer) session.save(usuaris);
 			tx.commit();
-		} catch (ConstraintViolationException e) {
+		} catch (Exception e) {
 			if (tx != null) {
 				tx.rollback();
 			}
-			// System.out.println(e.getMessage());
+			if (e.getCause().getCause() instanceof SQLIntegrityConstraintViolationException) {
+				SQLIntegrityConstraintViolationException ex = (SQLIntegrityConstraintViolationException) e.getCause()
+						.getCause();
+				return ex.getErrorCode() * -1;
+			}
 		} finally {
 			session.close();
 		}
@@ -43,12 +47,15 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 		Usuaris getUsuari = null;
 		try {
 			tx = session.beginTransaction();
-			getUsuari = (Usuaris) session.byId(String.valueOf(id));
+			getUsuari = session.get(Usuaris.class, id);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {
 				tx.rollback();
 			}
+			// session.get no llença excepcions, si la id no existeix retorna null
+			// session.load retorna un placeholder i no llença la query fins que busques una
+			// propietat; llença ObjectNotFoundException si la id no existeix
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -96,7 +103,7 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 	public ArrayList<Usuaris> listAllUsuaris() {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<Usuaris> users = new ArrayList<Usuaris>();
+		List<Usuaris> users = new ArrayList<>();
 		try {
 			tx = session.beginTransaction();
 			users = session.createQuery("select * from usuaris", Usuaris.class).getResultList();
