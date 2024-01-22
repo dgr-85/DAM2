@@ -54,7 +54,8 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 				tx.rollback();
 			}
 			// session.get no llença excepcions, si la id no existeix retorna null
-			// session.load retorna un placeholder i no llença la query fins que busques una
+			// session.load retorna un placeholder i no llença la query fins que es busca
+			// una
 			// propietat; llença ObjectNotFoundException si la id no existeix
 			e.printStackTrace();
 		} finally {
@@ -64,39 +65,50 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 	}
 
 	@Override
-	public void updateUsuaris(Usuaris usuaris) {
+	public Integer updateUsuaris(Usuaris usuaris) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.update(usuaris);
+			session.update(usuaris); // a Hibernate, update és void
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {
 				tx.rollback();
 			}
-			e.printStackTrace();
+			if (e.getCause().getCause() instanceof SQLIntegrityConstraintViolationException) {
+				SQLIntegrityConstraintViolationException ex = (SQLIntegrityConstraintViolationException) e.getCause()
+						.getCause();
+				return ex.getErrorCode() * -1;
+			}
 		} finally {
 			session.close();
 		}
+		return usuaris.getUserid();
 	}
 
 	@Override
-	public void deleteUsuaris(int id) {
+	public Integer deleteUsuaris(int id) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.delete(id);
+			Usuaris doomedUsuari = getUsuarisById(id);
+			// delete amb una id que no existeix només esborra l'objecte de la caché, no
+			// llença excepcions
+			// l'única forma de provocar-ne és que tot l'objecte sigui null (getById amb id
+			// inexistent -> null)
+			session.delete(doomedUsuari); // a Hibernate, delete és void
 			tx.commit();
-		} catch (HibernateException e) {
+		} catch (IllegalArgumentException e) {
 			if (tx != null) {
 				tx.rollback();
 			}
-			e.printStackTrace();
+			return -1;
 		} finally {
 			session.close();
 		}
+		return id;
 	}
 
 	@Override
@@ -106,7 +118,9 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 		List<Usuaris> users = new ArrayList<>();
 		try {
 			tx = session.beginTransaction();
-			users = session.createQuery("select * from usuaris", Usuaris.class).getResultList();
+			// a Hibernate, 'select' només s'escriu quan es volen certes columnes; no hi ha
+			// 'select *'
+			users = session.createQuery("from Usuaris", Usuaris.class).getResultList();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {

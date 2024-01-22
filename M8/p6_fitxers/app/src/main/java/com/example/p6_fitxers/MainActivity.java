@@ -16,8 +16,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -41,18 +44,26 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView=findViewById(R.id.images);
         imageView.setImageResource(R.drawable.logobmw);
 
-        Context context=getApplicationContext();
-
-        if(fileExists(context)){
-
-        }
-
         RadioButton rbGsManual=findViewById(R.id.rbGsManual);
         RadioButton rbFGasoline=findViewById(R.id.rbFGasoline);
         rbGsManual.setChecked(true);
         rbFGasoline.setChecked(true);
 
         readFile();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        File p5File=new File(getApplicationContext().getFilesDir(),"p5File.txt");
+        if(p5File.exists()){
+            try {
+                InputStream inStream=getApplicationContext().openFileInput((p5File.getName()));
+
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public void readFile(){
@@ -177,19 +188,36 @@ public class MainActivity extends AppCompatActivity {
         tvPrice.setText(String.valueOf(totalPrice));
     }
 
-    public boolean fileExists(Context context){
-        try{
-            FileOutputStream p5File=context.openFileOutput("p5File",Context.MODE_PRIVATE);
-            p5File.close();
-            return true;
-        }catch(Exception e){
-            return false;
-        }
-    }
-
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
+        File p5File=new File(getApplicationContext().getFilesDir(),"p5File.txt");
+        try(FileOutputStream outStream=getApplicationContext().openFileOutput(p5File.getName(), Context.MODE_PRIVATE)){
 
+            Spinner spSeries=findViewById(R.id.spSeries);
+            outStream.write((spSeries.getSelectedItem().toString()+"\n").getBytes());
+
+            Spinner spModel=findViewById(R.id.spModel);
+            outStream.write((spModel.getSelectedItem().toString()+"\n").getBytes());
+
+            RadioButton rbGsManual=findViewById(R.id.rbGsManual);
+            RadioButton rbFGasoline=findViewById(R.id.rbFGasoline);
+
+            outStream.write((rbGsManual.isChecked()+"\n").getBytes());
+            outStream.write((rbFGasoline.isChecked()+"\n").getBytes());
+
+            CheckBox cbPaint=findViewById(R.id.cbPaint);
+            CheckBox cbSeats=findViewById(R.id.cbSeats);
+            CheckBox cbGPS=findViewById(R.id.cbGPS);
+
+            outStream.write(((cbPaint.isChecked()) + "\n").getBytes());
+            outStream.write(((cbSeats.isChecked()) + "\n").getBytes());
+            outStream.write(((cbGPS.isChecked()) + "\n").getBytes());
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -9,9 +9,9 @@ public interface UsuarisDAO {
 
 	public Usuaris getUsuarisById(int id);
 
-	public void updateUsuaris(Usuaris usuaris);
+	public Integer updateUsuaris(Usuaris usuaris);
 
-	public void deleteUsuaris(int id);
+	public Integer deleteUsuaris(int id);
 
 	public ArrayList<Usuaris> listAllUsuaris();
 }
