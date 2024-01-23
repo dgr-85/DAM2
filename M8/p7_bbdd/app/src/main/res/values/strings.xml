@@ -19,4 +19,11 @@
     <string name="findByDni">FIND BY DNI</string>
     <string name="findByCycle">FIND BY CYCLE</string>
     <string name="findByCourse">FIND BY COURSE</string>
+    <string name="warningEmptyFields">You must fill all the fields.</string>
+    <string name="warningDuplicateStudent">This student already exists.</string>
+    <string name="studentAdded">Student added successfully.</string>
+    <string name="unknownError">Unknown error.</string>
+    <string name="introId">You must introduce a card Id.</string>
+    <string name="noStudentFound">No such student found.</string>
+    <string name="studentDeleted">Student deleted successfully.</string>
 </resources>
