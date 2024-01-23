@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">p7_bbdd</string>
+    <string name="title">Register</string>
+    <string name="idcard">Id Card</string>
+    <string name="persData">Personal Data</string>
+    <string name="enterId">Enter the Id Card here</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="cycle">Cycle</string>
+    <string name="course">Course</string>
+    <string name="asix">ASIX</string>
+    <string name="dam">DAM</string>
+    <string name="daw">DAW</string>
+    <string name="first">First</string>
+    <string name="second">Second</string>
+    <string name="add">ADD</string>
+    <string name="remove">REMOVE</string>
+    <string name="update">UPDATE</string>
+    <string name="findByDni">FIND BY DNI</string>
+    <string name="findByCycle">FIND BY CYCLE</string>
+    <string name="findByCourse">FIND BY COURSE</string>
 </resources>

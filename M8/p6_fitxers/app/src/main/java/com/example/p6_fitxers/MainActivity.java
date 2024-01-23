@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -35,7 +37,17 @@ public class MainActivity extends AppCompatActivity {
     int metallicPaint;
     int leatherSeating;
     int navigationSystem;
-
+    int modelPrice;
+    Spinner spSeries;
+    Spinner spModel;
+    RadioButton rbGsManual;
+    RadioButton rbGsAuto;
+    RadioButton rbFGasoline;
+    RadioButton rbFDiesel;
+    CheckBox cbPaint;
+    CheckBox cbSeats;
+    CheckBox cbGPS;
+    boolean onStartHasBeenCalled;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +56,31 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView=findViewById(R.id.images);
         imageView.setImageResource(R.drawable.logobmw);
 
-        RadioButton rbGsManual=findViewById(R.id.rbGsManual);
-        RadioButton rbFGasoline=findViewById(R.id.rbFGasoline);
-        rbGsManual.setChecked(true);
-        rbFGasoline.setChecked(true);
+        cbPaint=findViewById(R.id.cbPaint);
+        cbSeats=findViewById(R.id.cbSeats);
+        cbGPS=findViewById(R.id.cbGPS);
+
+        CheckBox[] cbs={cbPaint,cbSeats,cbGPS};
+        for(CheckBox cb:cbs){
+            cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    calculatePrice(modelPrice);
+                }
+            });
+        }
+
+        RadioGroup rgGearShift=findViewById(R.id.rgGearShift);
+        RadioGroup rgFuel=findViewById(R.id.rgFuel);
+
+        rgGearShift.setOnCheckedChangeListener((radioGroup, i) -> calculatePrice(modelPrice));
+
+        rgFuel.setOnCheckedChangeListener((radioGroup, i) -> calculatePrice(modelPrice));
+
+        rbGsManual=findViewById(R.id.rbGsManual);
+        rbFGasoline=findViewById(R.id.rbFGasoline);
+
+        onStartHasBeenCalled=false;
 
         readFile();
     }
@@ -59,10 +92,30 @@ public class MainActivity extends AppCompatActivity {
         if(p5File.exists()){
             try {
                 InputStream inStream=getApplicationContext().openFileInput((p5File.getName()));
-
+                BufferedReader reader=new BufferedReader(new InputStreamReader(inStream));
+                spSeries.setSelection(((ArrayAdapter)spSeries.getAdapter()).getPosition(reader.readLine()));
+                spModel.setSelection(Integer.parseInt(reader.readLine()));
+                rbGsManual.setChecked(Boolean.parseBoolean(reader.readLine()));
+                if(!rbGsManual.isChecked()){
+                    RadioButton rbGsAuto=findViewById(R.id.rbGsAuto);
+                    rbGsAuto.setChecked(true);
+                }
+                rbFGasoline.setChecked(Boolean.parseBoolean(reader.readLine()));
+                if(!rbFGasoline.isChecked()){
+                    RadioButton rbFDiesel=findViewById(R.id.rbFDiesel);
+                    rbFDiesel.setChecked(true);
+                }
+                cbPaint.setChecked(Boolean.parseBoolean(reader.readLine()));
+                cbSeats.setChecked(Boolean.parseBoolean(reader.readLine()));
+                cbGPS.setChecked(Boolean.parseBoolean(reader.readLine()));
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
+        }else{
+            rbGsManual.setChecked(true);
+            rbFGasoline.setChecked(true);
         }
     }
 
@@ -111,14 +164,15 @@ public class MainActivity extends AppCompatActivity {
             streamRaw.close();
 
             setSpinners((ArrayList<String>) series,modelMap,priceMap,imageMap);
+
         } catch (Exception e) {
             Log.e(getString(R.string.tagReadFile), getString(R.string.errorReadFile));
         }
     }
 
     public void setSpinners(ArrayList<String> series,Map<String,List<String>> model,Map<String,List<Integer>> price,Map<String,List<String>> image){
-        Spinner spSeries=findViewById(R.id.spSeries);
-        Spinner spDetails=findViewById(R.id.spModel);
+        spSeries=findViewById(R.id.spSeries);
+        spModel=findViewById(R.id.spModel);
 
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,series);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -129,8 +183,14 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ArrayAdapter seriesAdapter=new ArrayAdapter(MainActivity.this, android.R.layout.simple_spinner_item,model.get(parent.getItemAtPosition(position)));
                 seriesAdapter.setDropDownViewResource((android.R.layout.simple_spinner_dropdown_item));
-                spDetails.setAdapter(seriesAdapter);
+                spModel.setAdapter(seriesAdapter);
+
+                if(!onStartHasBeenCalled){
+                    onStart();
+                    onStartHasBeenCalled=true;
+                }
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -138,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        spDetails.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spModel.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String strModel=spSeries.getSelectedItem().toString();
@@ -147,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
                 ImageView imageView=findViewById(R.id.images);
                 imageView.setImageResource(imageId);
 
-                int modelPrice=price.get(strModel).get(position);
+                modelPrice=price.get(strModel).get(position);
 
                 calculatePrice(modelPrice);
             }
@@ -159,8 +219,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculatePrice(int basePrice){
-        RadioButton rbGsAuto=findViewById(R.id.rbGsAuto);
-        RadioButton rbFDiesel=findViewById(R.id.rbFDiesel);
+        rbGsAuto=findViewById(R.id.rbGsAuto);
+        rbFDiesel=findViewById(R.id.rbFDiesel);
         int totalPrice=basePrice;
 
         if(rbGsAuto.isChecked()){
@@ -194,21 +254,11 @@ public class MainActivity extends AppCompatActivity {
         File p5File=new File(getApplicationContext().getFilesDir(),"p5File.txt");
         try(FileOutputStream outStream=getApplicationContext().openFileOutput(p5File.getName(), Context.MODE_PRIVATE)){
 
-            Spinner spSeries=findViewById(R.id.spSeries);
             outStream.write((spSeries.getSelectedItem().toString()+"\n").getBytes());
-
-            Spinner spModel=findViewById(R.id.spModel);
-            outStream.write((spModel.getSelectedItem().toString()+"\n").getBytes());
-
-            RadioButton rbGsManual=findViewById(R.id.rbGsManual);
-            RadioButton rbFGasoline=findViewById(R.id.rbFGasoline);
+            outStream.write((spModel.getSelectedItemPosition()+"\n").getBytes());
 
             outStream.write((rbGsManual.isChecked()+"\n").getBytes());
             outStream.write((rbFGasoline.isChecked()+"\n").getBytes());
-
-            CheckBox cbPaint=findViewById(R.id.cbPaint);
-            CheckBox cbSeats=findViewById(R.id.cbSeats);
-            CheckBox cbGPS=findViewById(R.id.cbGPS);
 
             outStream.write(((cbPaint.isChecked()) + "\n").getBytes());
             outStream.write(((cbSeats.isChecked()) + "\n").getBytes());

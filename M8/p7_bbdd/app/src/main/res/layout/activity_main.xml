@@ -6,13 +6,148 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:title="@string/title" />
+
+            <TextView
+                android:id="@+id/tvIdCard"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/idcard" />
+
+            <EditText
+                android:id="@+id/etIdCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/enterId"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tvPersData"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/persData" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/etSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/surname"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/tvCycle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/cycle" />
+
+            <Spinner
+                android:id="@+id/spCycles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvCourse"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/course" />
+
+            <RadioGroup
+                android:id="@+id/rgCourses"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbFirst"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first" />
+
+                <RadioButton
+                    android:id="@+id/rbSecond"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/second" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/add" />
+
+                <Button
+                    android:id="@+id/btnRemove"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/remove" />
+
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/update" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnFindDNI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/findByDni" />
+
+                <Button
+                    android:id="@+id/btnFindCycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/findByCycle" />
+
+                <Button
+                    android:id="@+id/btnFindCourse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/findByCourse" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
