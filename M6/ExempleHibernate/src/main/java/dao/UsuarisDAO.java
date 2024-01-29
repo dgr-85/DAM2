@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import pojos.Usuaris;
 
 public interface UsuarisDAO {
+
 	public Integer addUsuari(Usuaris usuaris);
 
 	public Usuaris getUsuarisById(int id);

@@ -10,16 +10,16 @@
     -fx-padding: 5px;
 }
 
-#vistaHolder {
-    -fx-background-color: lightgrey;
-}
-
 #vista1 {
-    -fx-background-color: aliceblue;
+    -fx-background-color: lightgrey;
 }
 
 #vista2 {
     -fx-background-color: coral;
+}
+
+#quantA {
+    -fx-background-color: lightgreen;
 }
 
 .button {

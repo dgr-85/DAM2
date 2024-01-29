@@ -55,8 +55,7 @@ public class UsuarisDAOImpl implements UsuarisDAO {
 			}
 			// session.get no llença excepcions, si la id no existeix retorna null
 			// session.load retorna un placeholder i no llença la query fins que es busca
-			// una
-			// propietat; llença ObjectNotFoundException si la id no existeix
+			// una propietat; llença ObjectNotFoundException si la id no existeix
 			e.printStackTrace();
 		} finally {
 			session.close();

@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 
 /**
  * Utility class for controlling navigation between vistas.
@@ -49,7 +50,13 @@ public class VistaNavigator {
 	 */
 	public static void loadVista(String fxml) {
 		try {
-			mainController.setVista(FXMLLoader.load(VistaNavigator.class.getResource(fxml)));
+			Node view = mainController.getView(fxml);
+			if (view != null) {
+				view.toFront();
+			} else {
+				mainController.setVista(FXMLLoader.load(VistaNavigator.class.getResource(fxml)));
+			}
+			mainController.llistarVistes();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
