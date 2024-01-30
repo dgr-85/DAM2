@@ -19,7 +19,7 @@ public class VistaNavigator {
 	public static final String MAIN = "main.fxml";
 	public static final String VISTA_1 = "vista1.fxml";
 	public static final String VISTA_2 = "vista2.fxml";
-	public static final String VISTA_3 = "vista3.fxml";
+	public static final String VISTA_3 = "quantA.fxml";
 
 	/** The main application layout controller. */
 	private static MainController mainController;

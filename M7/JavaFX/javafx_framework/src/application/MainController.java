@@ -48,7 +48,7 @@ public class MainController {
 
 	public Node getView(String fxml) {
 		for (Node view : vistaHolder.getChildren()) {
-			if (view.getId().equals(fxml)) {
+			if (fxml.contains(view.getId())) {
 				return view;
 			}
 		}
