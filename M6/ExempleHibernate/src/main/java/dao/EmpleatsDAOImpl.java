@@ -10,23 +10,21 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import managers.SessionFactoryUtil;
-import pojos.Departaments;
+import pojos.Empleats;
 
-public class DepartamentsDAOImpl implements DepartamentsDAO {
+public class EmpleatsDAOImpl implements EmpleatsDAO {
 
 	SessionFactory factory = SessionFactoryUtil.getSessionFactory();
 
 	@Override
-	public Integer addDepartament(Departaments departaments, Boolean incloureEmpleats) {
+	public Integer addEmpleat(Empleats empleats) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Integer idDepartament = null;
+		Integer idEmpleat = null;
 		try {
 			tx = session.beginTransaction();
-			if (incloureEmpleats) {
 
-			}
-			idDepartament = (Integer) session.save(departaments);
+			idEmpleat = (Integer) session.save(empleats);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null) {
@@ -40,17 +38,17 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 		} finally {
 			session.close();
 		}
-		return idDepartament;
+		return idEmpleat;
 	}
 
 	@Override
-	public Departaments getDepartamentById(int id) {
+	public Empleats getEmpleatById(int id) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Departaments getDepartament = null;
+		Empleats getEmpleat = null;
 		try {
 			tx = session.beginTransaction();
-			getDepartament = session.get(Departaments.class, id);
+			getEmpleat = session.get(Empleats.class, id);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {
@@ -60,16 +58,16 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 		} finally {
 			session.close();
 		}
-		return getDepartament;
+		return getEmpleat;
 	}
 
 	@Override
-	public Integer updateDepartament(Departaments departaments) {
+	public Integer updateEmpleat(Empleats empleats) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			session.update(departaments);
+			session.update(empleats);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {
@@ -83,17 +81,17 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 		} finally {
 			session.close();
 		}
-		return departaments.getDeptNo();
+		return empleats.getEmpNo();
 	}
 
 	@Override
-	public Integer deleteDepartament(int id) {
+	public Integer deleteEmpleat(int id) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			Departaments doomedDepartament = getDepartamentById(id);
-			session.delete(doomedDepartament);
+			Empleats doomedEmpleat = getEmpleatById(id);
+			session.delete(doomedEmpleat);
 			tx.commit();
 		} catch (IllegalArgumentException e) {
 			if (tx != null) {
@@ -107,13 +105,13 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 	}
 
 	@Override
-	public ArrayList<Departaments> listAllDepartaments() {
+	public ArrayList<Empleats> listAllEmpleats() {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List<Departaments> deps = new ArrayList<>();
+		List<Empleats> emps = new ArrayList<>();
 		try {
 			tx = session.beginTransaction();
-			deps = session.createQuery("from Departaments", Departaments.class).getResultList();
+			emps = session.createQuery("from Empleats", Empleats.class).getResultList();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {
@@ -123,7 +121,7 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 		} finally {
 			session.close();
 		}
-		return (ArrayList<Departaments>) deps;
+		return (ArrayList<Empleats>) emps;
 	}
 
 }

@@ -6,7 +6,7 @@ import pojos.Departaments;
 
 public interface DepartamentsDAO {
 
-	public Integer addDepartament(Departaments departaments);
+	public Integer addDepartament(Departaments departaments, Boolean incloureEmpleats);
 
 	public Departaments getDepartamentById(int id);
 

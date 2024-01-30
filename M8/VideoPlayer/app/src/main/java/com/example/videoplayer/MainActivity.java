@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mediaPlayer.isPlaying()){
-                    mediaPlayer.reset();
-                }else{
-                    mediaPlayer.start();
+                    mediaPlayer.stop();
                 }
+                    mediaPlayer.start();
+
                 tvPlay.setText("Playing...");
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
