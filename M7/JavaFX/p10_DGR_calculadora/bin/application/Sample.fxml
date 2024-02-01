@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <center>
       <AnchorPane prefHeight="401.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -34,7 +34,7 @@
                                     <Label layoutX="44.0" layoutY="41.0" prefHeight="16.0" prefWidth="49.0" text="Gènere" />
                                  </children>
                               </AnchorPane>
-                              <Slider fx:id="sAltura" blockIncrement="1.0" layoutX="175.0" layoutY="78.0" max="200.0" min="150.0" prefHeight="16.0" prefWidth="345.0" value="150.0" />
+                              <Slider fx:id="sAltura" blockIncrement="1.0" layoutX="175.0" layoutY="78.0" majorTickUnit="10.0" max="200.0" min="150.0" minorTickCount="4" prefHeight="16.0" prefWidth="345.0" showTickLabels="true" showTickMarks="true" value="150.0" />
                               <Label layoutX="181.0" layoutY="55.0" prefHeight="16.0" prefWidth="84.0" text="Alçada(cm)" />
                               <Label layoutX="324.0" layoutY="149.0" prefHeight="16.0" prefWidth="84.0" text="Pes(kg)" />
                               <Label fx:id="valorAltura" layoutX="526.0" layoutY="78.0" prefHeight="16.0" prefWidth="63.0" />
@@ -44,15 +44,13 @@
                               <Label layoutX="324.0" layoutY="237.0" prefHeight="16.0" prefWidth="214.0" text="Taxa metabòlica basal (kcal/dia)" />
                               <TextField fx:id="tfTMB" layoutX="324.0" layoutY="253.0" />
                               <Button id="btnCalcular" layoutX="95.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#calcularResultat" text="Calcular" />
-                              <Label layoutX="181.0" layoutY="96.0" prefHeight="16.0" prefWidth="31.0" text="150" />
-                              <Label layoutX="495.0" layoutY="96.0" prefHeight="16.0" prefWidth="31.0" text="200" />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
                 <Tab text="Equacio de Harris-Benedict">
                      <content>
-                        <TextArea editable="false" prefHeight="409.0" prefWidth="697.0" text="L'equació de Harris-Benedict és una equació empírica per estimar el metabolisme basal&#10;d'una persona en funció del seu pes corporal, estatura i edat, i és utilitzat conjuntament&#10;amb factors d'activitat física per calcular la recomanació de consum diari de calories per&#10;a un individu. L'equació suposa una composició corporal normal, amb una relació&#10;mitjana entre la massa muscular i la massa greixosa, per això que pot ser inexacta per a&#10;les persones que són molt musculoses (la fórmula subestima les necessitats reals) o per&#10;a les persones amb sobrepès (l'equació sobreestima les necessitats reals).&#10;&#10;Les equacions de Harris-Benedict revisades per Mifflin i St Jeor el 1990 i utilitzades&#10;actualment són:&#10;&#10;Homes TMB = (10 x pes en kg) + (6,25 × alçada en cm) - (5 × edat en anys) + 5&#10;Dones TMB = (10 x pes en kg) + (6,25 × alçada en cm) - (5 × edat en anys) - 161" />
+                        <TextArea editable="false" prefHeight="409.0" prefWidth="697.0" text="L'equació de Harris-Benedict és una equació empírica per estimar el metabolisme basal&#10;d'una persona en funció del seu pes corporal, estatura i edat, i és utilitzat conjuntament&#10;amb factors d'activitat física per calcular la recomanació de consum diari de calories per&#10;a un individu. L'equació suposa una composició corporal normal, amb una relació&#10;mitjana entre la massa muscular i la massa greixosa, per això que pot ser inexacta per a&#10;les persones que són molt musculoses (la fórmula subestima les necessitats reals) o per&#10;a les persones amb sobrepès (l'equació sobreestima les necessitats reals).&#10;&#10;Les equacions de Harris-Benedict revisades per Mifflin i St Jeor el 1990 i utilitzades&#10;actualment són:&#10;&#10;Homes TMB = (10 x pes en kg) + (6,25 × alçada en cm) - (5 × edat en anys) + 5&#10;Dones TMB = (10 x pes en kg) + (6,25 × alçada en cm) - (5 × edat en anys) - 161" wrapText="true" />
                      </content></Tab>
               </tabs>
             </TabPane>

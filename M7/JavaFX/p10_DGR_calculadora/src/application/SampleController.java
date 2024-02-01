@@ -51,6 +51,9 @@ public class SampleController {
 		tfTMB.setText("0");
 		dpNaixement.setValue(LocalDate.now().minus(Period.ofYears(20)));
 
+		valorAltura.setText("165 cm");
+		tfPes.setText("0");
+
 		sAltura.setMin(150);
 		sAltura.setMax(200);
 		sAltura.setValue(165);
@@ -113,6 +116,8 @@ public class SampleController {
 	@FXML
 	void mostrarAlerta(String text) {
 		Alert alert = new Alert(Alert.AlertType.WARNING);
+		alert.setTitle("Advertència");
+		alert.setHeaderText("");
 		alert.setContentText(text);
 		alert.showAndWait();
 	}

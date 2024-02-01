@@ -35,7 +35,7 @@ public class MainController {
 
 	@FXML
 	void setQuantA(ActionEvent event) {
-		VistaNavigator.loadVista(VistaNavigator.VISTA_3);
+		VistaNavigator.loadVista(VistaNavigator.VISTA_QUANT_A);
 	}
 
 	public void llistarVistes() {
