@@ -5,7 +5,7 @@ public class ErrorManager {
 	private static final String DUPLICATE_KEY = " ja existeix.";
 	private static final String NO_REFERENCED_TYPE = "'s type doesn't exist. Please create it first or select a valid type.";
 	private static final String UNDELETABLE = " cannot be deleted;";
-	private static final String NON_EXISTING_ELEMENT = "No existeix cap usuari amb Id ";
+	private static final String NON_EXISTING_ELEMENT = "No existeix cap element amb Id ";
 	private static final String FOREIGN_REFERENCES = " one or more prizes are referencing it.";
 
 	public static String getMessage(int code, String model) {

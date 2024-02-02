@@ -2,15 +2,21 @@ package main;
 
 import java.util.ArrayList;
 
+import dao.DepartamentsDAO;
+import dao.EmpleatsDAO;
 import dao.UsuarisDAO;
 import managers.DAOManager;
 import managers.ErrorManager;
+import pojos.Departaments;
+import pojos.Empleats;
 import pojos.Usuaris;
 
 public class MainOperations {
 	public static void main(String[] args) {
 
 		UsuarisDAO uDAO = DAOManager.getUsuarisDAO();
+		EmpleatsDAO eDAO = DAOManager.getEmpleatsDAO();
+		DepartamentsDAO dDAO = DAOManager.getDepartamentsDAO();
 
 		// Afegir usuari
 		System.out.println("===============================================");
@@ -128,6 +134,252 @@ public class MainOperations {
 			System.out.println("Se n'han trobat " + listUsuaris.size() + ":");
 			for (Usuaris u : listUsuaris) {
 				System.out.println(u.toString());
+			}
+		}
+
+		// ===========================================================================
+		// ===========================================================================
+		// ===========================================================================
+
+		// Afegir empleat
+		System.out.println("===============================================");
+		System.out.println("Afegint empleat...");
+		Empleats nouEmpleat = new Empleats(); // TODO el constructor conté una classe Departament
+		Integer resIdAddEmpleat = uDAO.addUsuari(nouEmpleat);
+		if (resIdAddEmpleat > 0) {
+			System.out.println("Usuari amb Id " + resIdAddEmpleat + " afegit.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resIdAddEmpleat, "Aquest usuari"));
+		}
+
+		// Afegir empleat ja existent (causa error)
+		System.out.println("===============================================");
+		System.out.println("Afegint empleat...");
+		nouEmpleat = new Usuaris(2533, "pwd1999", "Josefina", "Puigplujós Puigvermell", "jopupu@gmail.com");
+		resIdAddEmpleat = uDAO.addUsuari(nouEmpleat);
+		if (resIdAddEmpleat > 0) {
+			System.out.println("Usuari amb Id " + resIdAddEmpleat + " afegit.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resIdAddEmpleat, "Aquest usuari"));
+		}
+
+		// Buscar empleat per Id
+		System.out.println("===============================================");
+		Integer idEmpleatBuscat = 2533;
+		System.out.println("Buscant empleat amb Id " + idEmpleatBuscat + "...");
+		Usuaris resIdEmpleatBuscat = uDAO.getUsuarisById(idEmpleatBuscat);
+		if (resIdEmpleatBuscat != null) {
+			System.out.println("Usuari trobat: " + resIdEmpleatBuscat.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatBuscat)));
+		}
+
+		// Buscar empleat per Id inexistent (retorna null)
+		System.out.println("===============================================");
+		idEmpleatBuscat = 7999;
+		System.out.println("Buscant empleat amb Id " + idEmpleatBuscat + "...");
+		resIdEmpleatBuscat = uDAO.getUsuarisById(idEmpleatBuscat);
+		if (resIdEmpleatBuscat != null) {
+			System.out.println("Usuari trobat: " + resIdEmpleatBuscat.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatBuscat)));
+		}
+
+		// Actualizar empleat
+		System.out.println("===============================================");
+		Integer idEmpleatActualizat = 2533;
+		System.out.println("Actualitzant empleat amb Id " + idEmpleatActualizat + "...");
+		Usuaris empleatActualitzat = uDAO.getUsuarisById(idEmpleatActualizat);
+		if (empleatActualitzat != null) {
+			empleatActualitzat.setNom("Pepeta");
+			empleatActualitzat.setCognoms("Puigsolet Puiggrogós");
+			empleatActualitzat.setPwd("pwd6444");
+			empleatActualitzat.setEmail("pepupu2@gmail.com");
+			idEmpleatActualizat = uDAO.updateUsuaris(empleatActualitzat);
+			if (idEmpleatActualizat == empleatActualitzat.getUserid()) {
+				System.out.println("Usuari amb Id " + empleatActualitzat.getUserid() + " actualitzat amb èxit.");
+			} else {
+				System.out.println(
+						ErrorManager.getMessage(idEmpleatActualizat, String.valueOf(empleatActualitzat.getUserid())));
+			}
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatActualizat)));
+		}
+
+		// Actualizar empleat inexistent (causa error)
+		System.out.println("===============================================");
+		idEmpleatActualizat = 9227;
+		System.out.println("Actualitzant empleat amb Id " + idEmpleatActualizat + "...");
+		empleatActualitzat = uDAO.getUsuarisById(idEmpleatActualizat);
+		if (empleatActualitzat != null) {
+			empleatActualitzat.setNom("Pepeta");
+			empleatActualitzat.setCognoms("Puigsolet Puiggrogós");
+			empleatActualitzat.setPwd("pwd6444");
+			empleatActualitzat.setEmail("pepupu2@gmail.com");
+			idEmpleatActualizat = uDAO.updateUsuaris(empleatActualitzat);
+			if (idEmpleatActualizat == empleatActualitzat.getUserid()) {
+				System.out.println("Usuari amb Id " + empleatActualitzat.getUserid() + " actualitzat amb èxit.");
+			} else {
+				System.out.println(
+						ErrorManager.getMessage(idEmpleatActualizat, String.valueOf(empleatActualitzat.getUserid())));
+			}
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatActualizat)));
+		}
+
+		// Esborrar empleat per Id
+		System.out.println("===============================================");
+		Integer idEmpleatEsborrat = 2533;
+		System.out.println("Esborrant empleat amb Id " + idEmpleatEsborrat + "...");
+		Integer resIdEmpleatEsborrat = uDAO.deleteUsuaris(idEmpleatEsborrat);
+		if (resIdEmpleatEsborrat.equals(idEmpleatEsborrat)) {
+			System.out.println("Usuari amb Id " + resIdEmpleatEsborrat + " esborrat amb èxit.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resIdEmpleatEsborrat, String.valueOf(idEmpleatEsborrat)));
+		}
+
+		// Esborrar empleat inexistent per Id (causa error)
+		System.out.println("===============================================");
+		idEmpleatEsborrat = 4533;
+		System.out.println("Esborrant empleat amb Id " + idEmpleatEsborrat + "...");
+		resIdEmpleatEsborrat = uDAO.deleteUsuaris(idEmpleatEsborrat);
+		if (resIdEmpleatEsborrat.equals(idEmpleatEsborrat)) {
+			System.out.println("Usuari amb Id " + resIdEmpleatEsborrat + " esborrat amb èxit.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resIdEmpleatEsborrat, String.valueOf(idEmpleatEsborrat)));
+		}
+
+		// Llistar tots els empleats
+		System.out.println("===============================================");
+		System.out.println("Llistant tots els empleats...");
+		ArrayList<Empleats> listEmpleats = uDAO.listAllUsuaris();
+		if (listEmpleats != null) {
+			System.out.println("Se n'han trobat " + listEmpleats.size() + ":");
+			for (Empleats u : listEmpleats) {
+				System.out.println(u.toString());
+			}
+		}
+
+		// ===========================================================================
+		// ===========================================================================
+		// ===========================================================================
+
+		// Afegir departament
+		System.out.println("===============================================");
+		System.out.println("Afegint departament...");
+		Departaments nouDepartament = new Departaments(50, "RECURSOS HUMANS", "MORDOR", null);
+		Integer resIdAddDepartament = dDAO.addDepartament(nouDepartament, false);
+		if (resIdAddDepartament > 0) {
+			System.out.println("Departament amb Id " + resIdAddDepartament + " afegit.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resIdAddDepartament, "Aquest departament"));
+		}
+
+		// Afegir departament ja existent (causa error)
+		System.out.println("===============================================");
+		System.out.println("Afegint departament...");
+		nouDepartament = new Departaments(50, "DE RELLENO", "SANT MORDOR", null);
+		resIdAddDepartament = dDAO.addDepartament(nouDepartament, false);
+		if (resIdAddDepartament > 0) {
+			System.out.println("Departament amb Id " + resIdAddDepartament + " afegit.");
+		} else {
+			System.out.println(ErrorManager.getMessage(resIdAddDepartament, "Aquest departament"));
+		}
+
+		// Buscar departament per Id
+		System.out.println("===============================================");
+		Integer idDepartamentBuscat = 50;
+		System.out.println("Buscant departament amb Id " + idDepartamentBuscat + "...");
+		Departaments resIdDepartamentBuscat = dDAO.getDepartamentById(idDepartamentBuscat);
+		if (resIdDepartamentBuscat != null) {
+			System.out.println("Departament trobat: " + resIdDepartamentBuscat.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idDepartamentBuscat)));
+		}
+
+		// Buscar departament per Id inexistent (retorna null)
+		System.out.println("===============================================");
+		idDepartamentBuscat = 99;
+		System.out.println("Buscant departament amb Id " + idDepartamentBuscat + "...");
+		resIdDepartamentBuscat = dDAO.getDepartamentById(idDepartamentBuscat);
+		if (resIdDepartamentBuscat != null) {
+			System.out.println("Departament trobat: " + resIdDepartamentBuscat.toString());
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idDepartamentBuscat)));
+		}
+
+		// Actualizar departament
+		System.out.println("===============================================");
+		Integer idDepartamentActualizat = 50;
+		System.out.println("Actualitzant departament amb Id " + idDepartamentActualizat + "...");
+		Departaments departamentActualitzat = dDAO.getDepartamentById(idDepartamentActualizat);
+		if (departamentActualitzat != null) {
+			departamentActualitzat.setDeptNom("CÀTERING");
+			departamentActualitzat.setDeptCiutat("CÁCERES");
+			idDepartamentActualizat = dDAO.updateDepartament(departamentActualitzat);
+			if (idDepartamentActualizat == departamentActualitzat.getDeptNo()) {
+				System.out
+						.println("Departament amb Id " + departamentActualitzat.getDeptNo() + " actualitzat amb èxit.");
+			} else {
+				System.out.println(ErrorManager.getMessage(idDepartamentActualizat,
+						String.valueOf(departamentActualitzat.getDeptNo())));
+			}
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idDepartamentActualizat)));
+		}
+
+		// Actualizar departament inexistent (causa error)
+		System.out.println("===============================================");
+		idDepartamentActualizat = 99;
+		System.out.println("Actualitzant departament amb Id " + idDepartamentActualizat + "...");
+		departamentActualitzat = dDAO.getDepartamentById(idDepartamentActualizat);
+		if (departamentActualitzat != null) {
+			departamentActualitzat.setDeptNom("CÀTERING");
+			departamentActualitzat.setDeptCiutat("CÁCERES");
+			idDepartamentActualizat = dDAO.updateDepartament(departamentActualitzat);
+			if (idDepartamentActualizat == departamentActualitzat.getDeptNo()) {
+				System.out
+						.println("Departament amb Id " + departamentActualitzat.getDeptNo() + " actualitzat amb èxit.");
+			} else {
+				System.out.println(ErrorManager.getMessage(idDepartamentActualizat,
+						String.valueOf(departamentActualitzat.getDeptNo())));
+			}
+		} else {
+			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idDepartamentActualizat)));
+		}
+
+		// Esborrar departament per Id
+		System.out.println("===============================================");
+		Integer idDepartamentEsborrat = 50;
+		System.out.println("Esborrant departament amb Id " + idDepartamentEsborrat + "...");
+		Integer resIdDepartamentEsborrat = dDAO.deleteDepartament(idDepartamentEsborrat);
+		if (resIdDepartamentEsborrat.equals(idDepartamentEsborrat)) {
+			System.out.println("Departament amb Id " + resIdDepartamentEsborrat + " esborrat amb èxit.");
+		} else {
+			System.out
+					.println(ErrorManager.getMessage(resIdDepartamentEsborrat, String.valueOf(idDepartamentEsborrat)));
+		}
+
+		// Esborrar departament inexistent per Id (causa error)
+		System.out.println("===============================================");
+		idDepartamentEsborrat = 99;
+		System.out.println("Esborrant departament amb Id " + idDepartamentEsborrat + "...");
+		resIdDepartamentEsborrat = dDAO.deleteDepartament(idDepartamentEsborrat);
+		if (resIdDepartamentEsborrat.equals(idDepartamentEsborrat)) {
+			System.out.println("Departament amb Id " + resIdDepartamentEsborrat + " esborrat amb èxit.");
+		} else {
+			System.out
+					.println(ErrorManager.getMessage(resIdDepartamentEsborrat, String.valueOf(idDepartamentEsborrat)));
+		}
+
+		// Llistar tots els departaments
+		System.out.println("===============================================");
+		System.out.println("Llistant tots els departaments...");
+		ArrayList<Departaments> listDepartaments = dDAO.listAllDepartaments();
+		if (listDepartaments != null) {
+			System.out.println("Se n'han trobat " + listDepartaments.size() + ":");
+			for (Departaments d : listDepartaments) {
+				System.out.println(d.toString());
 			}
 		}
 	}

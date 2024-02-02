@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnPlay;
@@ -27,11 +29,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mediaPlayer.isPlaying()){
+                    tvPlay.setText("Stopped.");
                     mediaPlayer.stop();
-                }
+                    try {
+                        mediaPlayer.prepare();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }else{
                     mediaPlayer.start();
+                    tvPlay.setText("Playing...");
+                }
 
-                tvPlay.setText("Playing...");
                 mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
