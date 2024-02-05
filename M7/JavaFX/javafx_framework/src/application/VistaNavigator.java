@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * Utility class for controlling navigation between vistas.
@@ -52,11 +53,30 @@ public class VistaNavigator {
 	 */
 	public static void loadVista(String fxml) {
 		try {
+			FXMLLoader loader = new FXMLLoader();
+			AnchorPane childPane = (AnchorPane) loader.load(VistaNavigator.class.getResourceAsStream(fxml));
+			Object childController = loader.getController();
+
 			Node view = mainController.getView(fxml);
 			if (view != null) {
 				view.toFront();
 			} else {
-				mainController.setVista(FXMLLoader.load(VistaNavigator.class.getResource(fxml)));
+				mainController.setVista(childPane);
+				switch (fxml) {
+				case VISTA_1:
+					vista1Controller = (Vista1Controller) childController;
+					break;
+				case VISTA_2:
+					vista2Controller = (Vista2Controller) childController;
+					break;
+				}
+			}
+			if (fxml.equals(VISTA_1)) {
+				if (vista2Controller != null) {
+					vista1Controller.setSalutacio(vista2Controller.getNom());
+				} else {
+					vista1Controller.setSalutacio(null);
+				}
 			}
 			mainController.llistarVistes();
 		} catch (IOException e) {

@@ -6,6 +6,6 @@
 
 <AnchorPane fx:id="vista1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Vista1Controller">
    <children>
-      <TextField fx:id="vistaText1" layoutX="165.0" layoutY="28.0" />
+      <TextField fx:id="vistaText1" layoutX="113.0" layoutY="28.0" prefHeight="24.0" prefWidth="275.0" />
    </children>
 </AnchorPane>

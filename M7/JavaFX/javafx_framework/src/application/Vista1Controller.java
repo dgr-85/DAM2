@@ -9,9 +9,16 @@ import javafx.scene.control.TextField;
 public class Vista1Controller {
 
 	@FXML
-	private TextField text1;
+	private TextField vistaText1;
 
 	void setSalutacio(String nom) {
-		text1.setText("Hola " + nom + "!!");
+		if (nom != null) {
+			if (!nom.isBlank()) {
+				vistaText1.setText("Hola " + nom + "!!");
+			}
+		} else {
+			vistaText1.setText("Escriu un nom a la Vista 2.");
+		}
+
 	}
 }

@@ -9,9 +9,9 @@ import javafx.scene.control.TextField;
 public class Vista2Controller {
 
 	@FXML
-	private TextField text2;
+	private TextField vistaText2;
 
 	String getNom() {
-		return text2.getText();
+		return vistaText2.getText();
 	}
 }

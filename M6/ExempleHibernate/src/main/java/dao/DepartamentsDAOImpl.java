@@ -8,6 +8,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.mapping.Set;
 
 import managers.SessionFactoryUtil;
 import pojos.Departaments;
@@ -24,7 +25,8 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 		try {
 			tx = session.beginTransaction();
 			if (incloureEmpleats) {
-
+				Set empleats = (Set) departaments.getEmpleatses();
+				session.save(empleats);
 			}
 			idDepartament = (Integer) session.save(departaments);
 			tx.commit();

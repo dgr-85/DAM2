@@ -12,7 +12,7 @@
         <property name="deptCiutat" type="string">
             <column length="15" name="deptCiutat"/>
         </property>
-        <set fetch="select" inverse="true" lazy="true" name="empleatses" table="empleats">
+        <set fetch="select" inverse="true" lazy="true" name="empleatses" table="empleats" cascade="save-update, delete">
             <key>
                 <column name="deptNo" not-null="true"/>
             </key>

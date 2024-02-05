@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5841d49c-3f5f-4ed0-8ab7-39e084c1ae4d" name="Default Changelist" comment="" />
+    <list default="true" id="5841d49c-3f5f-4ed0-8ab7-39e084c1ae4d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/dao/DepartamentsDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/dao/DepartamentsDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/main/MainOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/main/MainOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Departaments.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Departaments.hbm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Empleats.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Empleats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista1Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista1Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista2Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista2Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/VistaNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/VistaNavigator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista1Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista2Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/VistaNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/VistaNavigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista1.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaFX/p11_DGR_vistes.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/p11_DGR_vistes.zip" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +30,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Examen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
+            <state relative-caret-position="1530">
               <caret line="102" selection-start-line="102" selection-end-line="102" />
             </state>
           </provider>
@@ -154,7 +171,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Examen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
+        <state relative-caret-position="1530">
           <caret line="102" selection-start-line="102" selection-end-line="102" />
         </state>
       </provider>

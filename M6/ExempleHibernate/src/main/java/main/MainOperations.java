@@ -1,6 +1,9 @@
 package main;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import dao.DepartamentsDAO;
 import dao.EmpleatsDAO;
@@ -144,63 +147,69 @@ public class MainOperations {
 		// Afegir empleat
 		System.out.println("===============================================");
 		System.out.println("Afegint empleat...");
-		Empleats nouEmpleat = new Empleats(); // TODO el constructor conté una classe Departament
-		Integer resIdAddEmpleat = uDAO.addUsuari(nouEmpleat);
+		Departaments exempleDep = dDAO.getDepartamentById(10);
+		Empleats nouEmpleat = new Empleats(8877, exempleDep, "MORENETA", "MONTSE", Date.valueOf("1993-04-30"),
+				(long) 4300, (long) 0);
+		Integer resIdAddEmpleat = eDAO.addEmpleat(nouEmpleat);
 		if (resIdAddEmpleat > 0) {
-			System.out.println("Usuari amb Id " + resIdAddEmpleat + " afegit.");
+			System.out.println("Empleat amb Id " + resIdAddEmpleat + " afegit.");
 		} else {
-			System.out.println(ErrorManager.getMessage(resIdAddEmpleat, "Aquest usuari"));
+			System.out.println(ErrorManager.getMessage(resIdAddEmpleat, "Aquest empleat"));
 		}
 
 		// Afegir empleat ja existent (causa error)
 		System.out.println("===============================================");
 		System.out.println("Afegint empleat...");
-		nouEmpleat = new Usuaris(2533, "pwd1999", "Josefina", "Puigplujós Puigvermell", "jopupu@gmail.com");
-		resIdAddEmpleat = uDAO.addUsuari(nouEmpleat);
+		nouEmpleat = new Empleats(8877, exempleDep, "ROSSETA", "ROSA", Date.valueOf("1996-07-10"), (long) 7300,
+				(long) 40);
+		;
+		resIdAddEmpleat = eDAO.addEmpleat(nouEmpleat);
 		if (resIdAddEmpleat > 0) {
-			System.out.println("Usuari amb Id " + resIdAddEmpleat + " afegit.");
+			System.out.println("Empleat amb Id " + resIdAddEmpleat + " afegit.");
 		} else {
-			System.out.println(ErrorManager.getMessage(resIdAddEmpleat, "Aquest usuari"));
+			System.out.println(ErrorManager.getMessage(resIdAddEmpleat, "Aquest empleat"));
 		}
 
 		// Buscar empleat per Id
 		System.out.println("===============================================");
-		Integer idEmpleatBuscat = 2533;
+		Integer idEmpleatBuscat = 8877;
 		System.out.println("Buscant empleat amb Id " + idEmpleatBuscat + "...");
-		Usuaris resIdEmpleatBuscat = uDAO.getUsuarisById(idEmpleatBuscat);
+		Empleats resIdEmpleatBuscat = eDAO.getEmpleatById(idEmpleatBuscat);
 		if (resIdEmpleatBuscat != null) {
-			System.out.println("Usuari trobat: " + resIdEmpleatBuscat.toString());
+			System.out.println("Empleat trobat: " + resIdEmpleatBuscat.toString());
 		} else {
 			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatBuscat)));
 		}
 
 		// Buscar empleat per Id inexistent (retorna null)
 		System.out.println("===============================================");
-		idEmpleatBuscat = 7999;
+		idEmpleatBuscat = 9292;
 		System.out.println("Buscant empleat amb Id " + idEmpleatBuscat + "...");
-		resIdEmpleatBuscat = uDAO.getUsuarisById(idEmpleatBuscat);
+		resIdEmpleatBuscat = eDAO.getEmpleatById(idEmpleatBuscat);
 		if (resIdEmpleatBuscat != null) {
-			System.out.println("Usuari trobat: " + resIdEmpleatBuscat.toString());
+			System.out.println("Empleat trobat: " + resIdEmpleatBuscat.toString());
 		} else {
 			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatBuscat)));
 		}
 
 		// Actualizar empleat
 		System.out.println("===============================================");
-		Integer idEmpleatActualizat = 2533;
+		Integer idEmpleatActualizat = 8877;
 		System.out.println("Actualitzant empleat amb Id " + idEmpleatActualizat + "...");
-		Usuaris empleatActualitzat = uDAO.getUsuarisById(idEmpleatActualizat);
+		Empleats empleatActualitzat = eDAO.getEmpleatById(idEmpleatActualizat);
 		if (empleatActualitzat != null) {
-			empleatActualitzat.setNom("Pepeta");
-			empleatActualitzat.setCognoms("Puigsolet Puiggrogós");
-			empleatActualitzat.setPwd("pwd6444");
-			empleatActualitzat.setEmail("pepupu2@gmail.com");
-			idEmpleatActualizat = uDAO.updateUsuaris(empleatActualitzat);
-			if (idEmpleatActualizat == empleatActualitzat.getUserid()) {
-				System.out.println("Usuari amb Id " + empleatActualitzat.getUserid() + " actualitzat amb èxit.");
+			empleatActualitzat.setCognoms("CASTANYETA");
+			empleatActualitzat.setNom("ANNA MARIA");
+			empleatActualitzat.setDataAlta(Date.valueOf("1992-11-18"));
+			empleatActualitzat.setSou((long) 9001);
+			empleatActualitzat.setComissio(null);
+			empleatActualitzat.setDepartaments(dDAO.getDepartamentById(20));
+			idEmpleatActualizat = eDAO.updateEmpleat(empleatActualitzat);
+			if (idEmpleatActualizat == empleatActualitzat.getEmpNo()) {
+				System.out.println("Empleat amb Id " + empleatActualitzat.getEmpNo() + " actualitzat amb èxit.");
 			} else {
 				System.out.println(
-						ErrorManager.getMessage(idEmpleatActualizat, String.valueOf(empleatActualitzat.getUserid())));
+						ErrorManager.getMessage(idEmpleatActualizat, String.valueOf(empleatActualitzat.getEmpNo())));
 			}
 		} else {
 			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatActualizat)));
@@ -210,18 +219,20 @@ public class MainOperations {
 		System.out.println("===============================================");
 		idEmpleatActualizat = 9227;
 		System.out.println("Actualitzant empleat amb Id " + idEmpleatActualizat + "...");
-		empleatActualitzat = uDAO.getUsuarisById(idEmpleatActualizat);
+		empleatActualitzat = eDAO.getEmpleatById(idEmpleatActualizat);
 		if (empleatActualitzat != null) {
-			empleatActualitzat.setNom("Pepeta");
-			empleatActualitzat.setCognoms("Puigsolet Puiggrogós");
-			empleatActualitzat.setPwd("pwd6444");
-			empleatActualitzat.setEmail("pepupu2@gmail.com");
-			idEmpleatActualizat = uDAO.updateUsuaris(empleatActualitzat);
-			if (idEmpleatActualizat == empleatActualitzat.getUserid()) {
-				System.out.println("Usuari amb Id " + empleatActualitzat.getUserid() + " actualitzat amb èxit.");
+			empleatActualitzat.setCognoms("CASTANYETA");
+			empleatActualitzat.setNom("ANNA MARIA");
+			empleatActualitzat.setDataAlta(Date.valueOf("1992-11-18"));
+			empleatActualitzat.setSou((long) 9001);
+			empleatActualitzat.setComissio(null);
+			empleatActualitzat.setDepartaments(dDAO.getDepartamentById(20));
+			idEmpleatActualizat = eDAO.updateEmpleat(empleatActualitzat);
+			if (idEmpleatActualizat == empleatActualitzat.getEmpNo()) {
+				System.out.println("Empleat amb Id " + empleatActualitzat.getEmpNo() + " actualitzat amb èxit.");
 			} else {
 				System.out.println(
-						ErrorManager.getMessage(idEmpleatActualizat, String.valueOf(empleatActualitzat.getUserid())));
+						ErrorManager.getMessage(idEmpleatActualizat, String.valueOf(empleatActualitzat.getEmpNo())));
 			}
 		} else {
 			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idEmpleatActualizat)));
@@ -229,22 +240,22 @@ public class MainOperations {
 
 		// Esborrar empleat per Id
 		System.out.println("===============================================");
-		Integer idEmpleatEsborrat = 2533;
+		Integer idEmpleatEsborrat = 8877;
 		System.out.println("Esborrant empleat amb Id " + idEmpleatEsborrat + "...");
-		Integer resIdEmpleatEsborrat = uDAO.deleteUsuaris(idEmpleatEsborrat);
+		Integer resIdEmpleatEsborrat = eDAO.deleteEmpleat(idEmpleatEsborrat);
 		if (resIdEmpleatEsborrat.equals(idEmpleatEsborrat)) {
-			System.out.println("Usuari amb Id " + resIdEmpleatEsborrat + " esborrat amb èxit.");
+			System.out.println("Empleat amb Id " + resIdEmpleatEsborrat + " esborrat amb èxit.");
 		} else {
 			System.out.println(ErrorManager.getMessage(resIdEmpleatEsborrat, String.valueOf(idEmpleatEsborrat)));
 		}
 
 		// Esborrar empleat inexistent per Id (causa error)
 		System.out.println("===============================================");
-		idEmpleatEsborrat = 4533;
+		idEmpleatEsborrat = 9020;
 		System.out.println("Esborrant empleat amb Id " + idEmpleatEsborrat + "...");
-		resIdEmpleatEsborrat = uDAO.deleteUsuaris(idEmpleatEsborrat);
+		resIdEmpleatEsborrat = eDAO.deleteEmpleat(idEmpleatEsborrat);
 		if (resIdEmpleatEsborrat.equals(idEmpleatEsborrat)) {
-			System.out.println("Usuari amb Id " + resIdEmpleatEsborrat + " esborrat amb èxit.");
+			System.out.println("Empleat amb Id " + resIdEmpleatEsborrat + " esborrat amb èxit.");
 		} else {
 			System.out.println(ErrorManager.getMessage(resIdEmpleatEsborrat, String.valueOf(idEmpleatEsborrat)));
 		}
@@ -252,11 +263,11 @@ public class MainOperations {
 		// Llistar tots els empleats
 		System.out.println("===============================================");
 		System.out.println("Llistant tots els empleats...");
-		ArrayList<Empleats> listEmpleats = uDAO.listAllUsuaris();
+		ArrayList<Empleats> listEmpleats = eDAO.listAllEmpleats();
 		if (listEmpleats != null) {
 			System.out.println("Se n'han trobat " + listEmpleats.size() + ":");
-			for (Empleats u : listEmpleats) {
-				System.out.println(u.toString());
+			for (Empleats e : listEmpleats) {
+				System.out.println(e.toString());
 			}
 		}
 
@@ -268,7 +279,9 @@ public class MainOperations {
 		System.out.println("===============================================");
 		System.out.println("Afegint departament...");
 		Departaments nouDepartament = new Departaments(50, "RECURSOS HUMANS", "MORDOR", null);
-		Integer resIdAddDepartament = dDAO.addDepartament(nouDepartament, false);
+		Set emps = new HashSet<>();
+		emps.add(new Empleats(0, nouDepartament, null, null, null, null, null)); // TODO configurar
+		Integer resIdAddDepartament = dDAO.addDepartament(nouDepartament, true);
 		if (resIdAddDepartament > 0) {
 			System.out.println("Departament amb Id " + resIdAddDepartament + " afegit.");
 		} else {

@@ -8,6 +8,7 @@ import java.sql.Date;
  */
 public class Empleats implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private int empNo;
 	private Departaments departaments;
 	private String cognoms;
@@ -84,6 +85,12 @@ public class Empleats implements java.io.Serializable {
 
 	public void setComissio(Long comissio) {
 		this.comissio = comissio;
+	}
+
+	@Override
+	public String toString() {
+		return "[empNo=" + empNo + ", cognoms=" + cognoms + ", nom=" + nom + ", dataAlta=" + dataAlta + ", sou=" + sou
+				+ ", comissio=" + comissio + "]";
 	}
 
 }
