@@ -4,11 +4,11 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.mapping.Set;
 
 import managers.SessionFactoryUtil;
 import pojos.Departaments;
@@ -18,16 +18,12 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 	SessionFactory factory = SessionFactoryUtil.getSessionFactory();
 
 	@Override
-	public Integer addDepartament(Departaments departaments, Boolean incloureEmpleats) {
+	public Integer addDepartament(Departaments departaments) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Integer idDepartament = null;
 		try {
 			tx = session.beginTransaction();
-			if (incloureEmpleats) {
-				Set empleats = (Set) departaments.getEmpleatses();
-				session.save(empleats);
-			}
 			idDepartament = (Integer) session.save(departaments);
 			tx.commit();
 		} catch (Exception e) {
@@ -38,6 +34,8 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 				SQLIntegrityConstraintViolationException ex = (SQLIntegrityConstraintViolationException) e.getCause()
 						.getCause();
 				return ex.getErrorCode() * -1;
+			} else {
+				e.printStackTrace();
 			}
 		} finally {
 			session.close();
@@ -53,6 +51,9 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 		try {
 			tx = session.beginTransaction();
 			getDepartament = session.get(Departaments.class, id);
+			if (getDepartament != null) {
+				Hibernate.initialize(getDepartament.getEmpleatses());
+			}
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {
@@ -116,6 +117,9 @@ public class DepartamentsDAOImpl implements DepartamentsDAO {
 		try {
 			tx = session.beginTransaction();
 			deps = session.createQuery("from Departaments", Departaments.class).getResultList();
+			for (Departaments d : deps) {
+				Hibernate.initialize(d.getEmpleatses());
+			}
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null) {

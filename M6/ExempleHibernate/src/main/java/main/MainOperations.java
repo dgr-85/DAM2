@@ -153,6 +153,8 @@ public class MainOperations {
 		Integer resIdAddEmpleat = eDAO.addEmpleat(nouEmpleat);
 		if (resIdAddEmpleat > 0) {
 			System.out.println("Empleat amb Id " + resIdAddEmpleat + " afegit.");
+			System.out.println(nouEmpleat.toString());
+			System.out.println(nouEmpleat.getDepartaments().toString());
 		} else {
 			System.out.println(ErrorManager.getMessage(resIdAddEmpleat, "Aquest empleat"));
 		}
@@ -207,6 +209,8 @@ public class MainOperations {
 			idEmpleatActualizat = eDAO.updateEmpleat(empleatActualitzat);
 			if (idEmpleatActualizat == empleatActualitzat.getEmpNo()) {
 				System.out.println("Empleat amb Id " + empleatActualitzat.getEmpNo() + " actualitzat amb èxit.");
+				System.out.println(empleatActualitzat.toString());
+				System.out.println(empleatActualitzat.getDepartaments().toString());
 			} else {
 				System.out.println(
 						ErrorManager.getMessage(idEmpleatActualizat, String.valueOf(empleatActualitzat.getEmpNo())));
@@ -280,10 +284,15 @@ public class MainOperations {
 		System.out.println("Afegint departament...");
 		Departaments nouDepartament = new Departaments(50, "RECURSOS HUMANS", "MORDOR", null);
 		Set emps = new HashSet<>();
-		emps.add(new Empleats(0, nouDepartament, null, null, null, null, null)); // TODO configurar
-		Integer resIdAddDepartament = dDAO.addDepartament(nouDepartament, true);
+		emps.add(new Empleats(6578, nouDepartament, "FERNANDEZ", "VISITACION", Date.valueOf("1990-12-05"), (long) 2000,
+				(long) 10));
+		nouDepartament.setEmpleatses(emps);
+		Integer resIdAddDepartament = dDAO.addDepartament(nouDepartament);
 		if (resIdAddDepartament > 0) {
 			System.out.println("Departament amb Id " + resIdAddDepartament + " afegit.");
+			if (emps.size() > 0) {
+				System.out.println("Incloent " + emps.size() + " empleats.");
+			}
 		} else {
 			System.out.println(ErrorManager.getMessage(resIdAddDepartament, "Aquest departament"));
 		}
@@ -292,7 +301,7 @@ public class MainOperations {
 		System.out.println("===============================================");
 		System.out.println("Afegint departament...");
 		nouDepartament = new Departaments(50, "DE RELLENO", "SANT MORDOR", null);
-		resIdAddDepartament = dDAO.addDepartament(nouDepartament, false);
+		resIdAddDepartament = dDAO.addDepartament(nouDepartament);
 		if (resIdAddDepartament > 0) {
 			System.out.println("Departament amb Id " + resIdAddDepartament + " afegit.");
 		} else {
@@ -306,6 +315,11 @@ public class MainOperations {
 		Departaments resIdDepartamentBuscat = dDAO.getDepartamentById(idDepartamentBuscat);
 		if (resIdDepartamentBuscat != null) {
 			System.out.println("Departament trobat: " + resIdDepartamentBuscat.toString());
+			if (resIdDepartamentBuscat.getEmpleatses().size() > 0) {
+				System.out.println(
+						"Aquest departament conté " + resIdDepartamentBuscat.getEmpleatses().size() + " empleats:");
+				System.out.println(resIdDepartamentBuscat.getEmpleatses().toString());
+			}
 		} else {
 			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idDepartamentBuscat)));
 		}
@@ -317,6 +331,11 @@ public class MainOperations {
 		resIdDepartamentBuscat = dDAO.getDepartamentById(idDepartamentBuscat);
 		if (resIdDepartamentBuscat != null) {
 			System.out.println("Departament trobat: " + resIdDepartamentBuscat.toString());
+			if (resIdDepartamentBuscat.getEmpleatses().size() > 0) {
+				System.out.println(
+						"Aquest departament conté " + resIdDepartamentBuscat.getEmpleatses().size() + " empleats:");
+				System.out.println(resIdDepartamentBuscat.getEmpleatses().toString());
+			}
 		} else {
 			System.out.println(ErrorManager.getMessage(-1, String.valueOf(idDepartamentBuscat)));
 		}
@@ -393,6 +412,10 @@ public class MainOperations {
 			System.out.println("Se n'han trobat " + listDepartaments.size() + ":");
 			for (Departaments d : listDepartaments) {
 				System.out.println(d.toString());
+				if (d.getEmpleatses().size() > 0) {
+					System.out.println("Aquest departament conté " + d.getEmpleatses().size() + " empleats:");
+					System.out.println(d.getEmpleatses().toString());
+				}
 			}
 		}
 	}
