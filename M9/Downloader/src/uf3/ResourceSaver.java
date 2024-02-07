@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
@@ -13,44 +14,48 @@ import java.util.regex.Pattern;
 
 public class ResourceSaver {
 
-	Map<String, String> folders;
+	Map<Pattern, String> folders;
 
 	public ResourceSaver() {
 		this.folders = new HashMap<>();
 	}
 
 	public void addResourceType(String regex, String folder) {
-		if (!folders.containsKey(regex)) {
-			folders.put(regex, folder);
+		Pattern p = Pattern.compile(regex);
+		if (!folders.containsKey(p)) {
+			folders.put(p, folder);
 		}
 	}
 
-	public void createFolderTree() {
+	public void createFolderTree() throws IOException {
 		for (String str : folders.values()) {
 			File f = new File(str);
-			if (!f.exists() && f.isDirectory()) {
-				f.mkdir();
+			if (!f.exists() && !f.mkdirs()) {
+				throw new IOException("Error creating folder " + str + ".");
 			}
 		}
 	}
 
-	public void saveResource(URL resource) {
+	public void saveResource(String resource) throws MalformedURLException, IOException {
 		try {
-			URLConnection con = resource.openConnection();
+			URL url = new URL(resource);
+			URLConnection con = url.openConnection();
 			String contentType = con.getContentType();
-			byte[] buffer = new byte[512];
+			char[] buffer = new char[512];
 			int currentChars;
 
-			for (String regex : folders.keySet()) {
-				if (Pattern.matches(regex, contentType)) {
+			for (Pattern regex : folders.keySet()) {
+				if (Pattern.matches(regex.toString(), contentType)) {
 					File f = new File(folders.get(regex));
 					if (!f.exists()) {
-						InputStream inStream = resource.openStream();
+						InputStream inStream = url.openStream();
 						InputStreamReader reader = new InputStreamReader(inStream);
 						FileOutputStream outStream = new FileOutputStream(f);
 						while ((currentChars = reader.read()) != -1) {
-							outStream.write(buffer);
+							String str = String.copyValueOf(buffer, 0, currentChars);
+							outStream.write(str.length());
 						}
+						outStream.close();
 					}
 				}
 			}

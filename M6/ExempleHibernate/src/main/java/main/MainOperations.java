@@ -310,7 +310,7 @@ public class MainOperations {
 
 		// Buscar departament per Id
 		System.out.println("===============================================");
-		Integer idDepartamentBuscat = 50;
+		Integer idDepartamentBuscat = 40;
 		System.out.println("Buscant departament amb Id " + idDepartamentBuscat + "...");
 		Departaments resIdDepartamentBuscat = dDAO.getDepartamentById(idDepartamentBuscat);
 		if (resIdDepartamentBuscat != null) {
