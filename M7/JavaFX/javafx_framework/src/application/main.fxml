@@ -19,10 +19,10 @@
               <MenuItem mnemonicParsing="false" text="Sortir" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Editar">
+          <Menu mnemonicParsing="false" text="Jugar">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#setVista1" text="Vista 1" />
-                  <MenuItem mnemonicParsing="false" onAction="#setVista2" text="Vista 2" />
+              <MenuItem mnemonicParsing="false" onAction="#setVista1" text="Jugar" />
+                  <MenuItem mnemonicParsing="false" onAction="#setVista2" text="Configurar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ajuda">

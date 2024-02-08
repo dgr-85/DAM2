@@ -21,8 +21,3 @@
 #quantA {
     -fx-background-color: lightgreen;
 }
-
-.button {
-    -fx-base: lightblue;
-    -fx-font-size: 20px;
-}

@@ -1,7 +1,8 @@
 package application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * Controller class for the first vista.
@@ -9,16 +10,12 @@ import javafx.scene.control.TextField;
 public class Vista1Controller {
 
 	@FXML
-	private TextField vistaText1;
+	private ImageView cardImg;
 
-	void setSalutacio(String nom) {
-		if (nom != null) {
-			if (!nom.isBlank()) {
-				vistaText1.setText("Hola " + nom + "!!");
-			}
-		} else {
-			vistaText1.setText("Escriu un nom a la Vista 2.");
-		}
+	Image img = new Image(getClass().getResourceAsStream("imgs/carta_12.jpg"));
 
+	public void loadCard() {
+		cardImg.setImage(img);
 	}
+
 }

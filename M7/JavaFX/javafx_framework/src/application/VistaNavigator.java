@@ -71,14 +71,7 @@ public class VistaNavigator {
 					break;
 				}
 			}
-			if (fxml.equals(VISTA_1)) {
-				if (vista2Controller != null) {
-					vista1Controller.setSalutacio(vista2Controller.getNom());
-				} else {
-					vista1Controller.setSalutacio(null);
-				}
-			}
-			mainController.llistarVistes();
+			vista1Controller.loadCard();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
