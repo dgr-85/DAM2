@@ -9,15 +9,16 @@ import java.util.Set;
  */
 public class Departaments implements java.io.Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private int deptNo;
 	private String deptNom;
 	private String deptCiutat;
-	private Set empleatses = new HashSet(0);
+	private Set<Empleats> empleatses = new HashSet<>(0);
 
 	public Departaments() {
 	}
 
-	public Departaments(int deptNo, String deptNom, String deptCiutat, Set empleatses) {
+	public Departaments(int deptNo, String deptNom, String deptCiutat, Set<Empleats> empleatses) {
 		this.deptNo = deptNo;
 		this.deptNom = deptNom;
 		this.deptCiutat = deptCiutat;
@@ -48,11 +49,11 @@ public class Departaments implements java.io.Serializable {
 		this.deptCiutat = deptCiutat;
 	}
 
-	public Set getEmpleatses() {
+	public Set<Empleats> getEmpleatses() {
 		return this.empleatses;
 	}
 
-	public void setEmpleatses(Set empleatses) {
+	public void setEmpleatses(Set<Empleats> empleatses) {
 		this.empleatses = empleatses;
 	}
 

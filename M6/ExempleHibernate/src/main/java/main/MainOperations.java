@@ -283,7 +283,7 @@ public class MainOperations {
 		System.out.println("===============================================");
 		System.out.println("Afegint departament...");
 		Departaments nouDepartament = new Departaments(50, "RECURSOS HUMANS", "MORDOR", null);
-		Set emps = new HashSet<>();
+		Set<Empleats> emps = new HashSet<>();
 		emps.add(new Empleats(6578, nouDepartament, "FERNANDEZ", "VISITACION", Date.valueOf("1990-12-05"), (long) 2000,
 				(long) 10));
 		nouDepartament.setEmpleatses(emps);
@@ -310,7 +310,7 @@ public class MainOperations {
 
 		// Buscar departament per Id
 		System.out.println("===============================================");
-		Integer idDepartamentBuscat = 40;
+		Integer idDepartamentBuscat = 50;
 		System.out.println("Buscant departament amb Id " + idDepartamentBuscat + "...");
 		Departaments resIdDepartamentBuscat = dDAO.getDepartamentById(idDepartamentBuscat);
 		if (resIdDepartamentBuscat != null) {

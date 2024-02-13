@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.PrizeDAO;
-import managers.ConnectionManager;
+import managers.ConnectionManagerJDBC;
 import managers.DAOManager;
 import model.Prize;
 
@@ -18,8 +18,8 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "insert into prizes values(?,?,?,?)";
 		try {
-			isConnectionOpen = ConnectionManager.isConnected();
-			Connection con = ConnectionManager.getConnection();
+			isConnectionOpen = ConnectionManagerJDBC.isConnected();
+			Connection con = ConnectionManagerJDBC.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 
 			prepStmt.setInt(1, p.getPrizeId());
@@ -43,7 +43,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			}
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManager.closeConnection();
+				ConnectionManagerJDBC.closeConnection();
 			}
 		}
 	}
@@ -53,8 +53,8 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "select * from prizes where prizeid=?";
 		try {
-			isConnectionOpen = ConnectionManager.isConnected();
-			Connection con = ConnectionManager.getConnection();
+			isConnectionOpen = ConnectionManagerJDBC.isConnected();
+			Connection con = ConnectionManagerJDBC.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
 			ResultSet rs = prepStmt.executeQuery();
@@ -73,7 +73,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManager.closeConnection();
+				ConnectionManagerJDBC.closeConnection();
 			}
 		}
 	}
@@ -83,8 +83,8 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "update prizes set candidateid=?,prizetypeid=?,year=? where prizeid=?";
 		try {
-			isConnectionOpen = ConnectionManager.isConnected();
-			Connection con = ConnectionManager.getConnection();
+			isConnectionOpen = ConnectionManagerJDBC.isConnected();
+			Connection con = ConnectionManagerJDBC.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 
 			prepStmt.setInt(1, p.getPrizeCandidate().getCandidateId());
@@ -103,7 +103,7 @@ public class PrizeDAOImpl extends DAOManager implements PrizeDAO {
 			}
 		} finally {
 			if (isConnectionOpen) {
-				ConnectionManager.closeConnection();
+				ConnectionManagerJDBC.closeConnection();
 			}
 		}
 	}

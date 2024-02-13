@@ -10,11 +10,11 @@ public class Prize {
 
 	}
 
-	public Prize(Integer prizeId, Candidate prizeCandidate, PrizeType prizeTypeId, Integer year) {
+	public Prize(Integer prizeId, Candidate prizeCandidate, PrizeType typeOfPrize, Integer year) {
 		super();
 		this.prizeId = prizeId;
 		this.prizeCandidate = prizeCandidate;
-		this.typeOfPrize = prizeTypeId;
+		this.typeOfPrize = typeOfPrize;
 		this.year = year;
 	}
 

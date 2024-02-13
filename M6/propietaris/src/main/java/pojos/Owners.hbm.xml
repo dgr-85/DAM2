@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 10 feb 2024 20:26:02 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojos.Owners" optimistic-lock="none" table="owners">
+        <id name="ownerId" type="int">
+            <column name="ownerId"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="firstName" type="string">
+            <column length="50" name="firstName" not-null="true"/>
+        </property>
+        <property name="lastName" type="string">
+            <column length="50" name="lastName" not-null="true"/>
+        </property>
+        <property name="phoneNumber" type="string">
+            <column length="20" name="phoneNumber"/>
+        </property>
+        <property name="email" type="string">
+            <column length="50" name="email" unique="true"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" name="vehicleses" table="vehicles" cascade="save-update, delete">
+            <key>
+                <column name="ownerId" not-null="true"/>
+            </key>
+            <one-to-many class="pojos.Vehicles"/>
+        </set>
+    </class>
+</hibernate-mapping>
