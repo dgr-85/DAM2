@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 import dao.BrandsDAO;
-import managers.ConnectionManagerJDBC;
+import managers.ConnectionManager;
 import managers.DAOManager;
 import pojos.Brands;
 import pojos.Vehicles;
@@ -23,8 +23,8 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "insert into brands values(?,?,?)";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 
 			prepStmt.setInt(1, brand.getBrandId());
@@ -47,7 +47,7 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 			}
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
@@ -57,8 +57,8 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "select * from brands where brandid=?";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
 			ResultSet rs = prepStmt.executeQuery();
@@ -97,7 +97,7 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
@@ -108,8 +108,8 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 		String sqlcheckBrand = "select brandid from brands where brandid=?";
 		String sql = "update brands set brandname=?, country=? where brandid=?";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 
 			// If the provided brand isn't found in the database, the method stops with an
 			// exception
@@ -141,7 +141,7 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 			}
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
@@ -151,8 +151,8 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "delete from brands where brandid=?";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
 			try {
@@ -174,7 +174,7 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
@@ -186,8 +186,8 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 		String sql = "select * from brands";
 		Statement statement;
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 
@@ -226,7 +226,7 @@ public class BrandsDAOImpl extends DAOManager implements BrandsDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}

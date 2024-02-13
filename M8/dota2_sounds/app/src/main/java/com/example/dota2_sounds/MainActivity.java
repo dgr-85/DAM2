@@ -2,6 +2,7 @@ package com.example.dota2_sounds;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -66,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         Field[] listElements = R.raw.class.getFields();
         int totalElements = listElements.length;
-        Field[] listImages = R.drawable.class.getFields();
         int randomNumber = (int) (Math.random() * totalElements);
 
         for (int i = 0; i < imgs.length; i++) {
