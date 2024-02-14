@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -34,35 +33,44 @@ public class ResourceSaver {
 				throw new IOException("Error creating folder " + str + ".");
 			}
 		}
+		File f = new File("unknown");
+		f.mkdirs();
 	}
 
 	public void saveResource(String resource) throws MalformedURLException, IOException {
-		try {
-			URL url = new URL(resource);
-			URLConnection con = url.openConnection();
-			String contentType = con.getContentType();
-			char[] buffer = new char[512];
-			int currentChars;
+		URL url = new URL(resource);
+		URLConnection con = url.openConnection();
+		String contentType = con.getContentType();
 
-			for (Pattern regex : folders.keySet()) {
-				if (Pattern.matches(regex.toString(), contentType)) {
-					File f = new File(folders.get(regex));
-					if (!f.exists()) {
-						InputStream inStream = url.openStream();
-						InputStreamReader reader = new InputStreamReader(inStream);
-						FileOutputStream outStream = new FileOutputStream(f);
-						while ((currentChars = reader.read()) != -1) {
-							String str = String.copyValueOf(buffer, 0, currentChars);
-							outStream.write(str.length());
-						}
-						outStream.close();
+		for (Map.Entry<Pattern, String> entry : folders.entrySet()) {
+			Pattern key = entry.getKey();
+			String value = entry.getValue();
+
+			if (key.matcher(contentType).matches()) {
+				File newFolder = new File(value);
+				if (!newFolder.exists() && !newFolder.mkdirs()) {
+					throw new IOException("Error creating folder " + value + ".");
+				}
+
+				String path = url.getPath();
+				path = path.substring(path.lastIndexOf('/') + 1);
+				String completePath = value + File.separator + path;
+
+				try (InputStream inStream = url.openStream();
+						FileOutputStream outStream = new FileOutputStream(completePath)) {
+					byte[] buffer = new byte[8192];
+					int currentBytes = 0;
+					int totalBytes = 0;
+					while ((currentBytes = inStream.read(buffer)) != -1) {
+						outStream.write(buffer, 0, currentBytes);
+						totalBytes += currentBytes;
 					}
+					System.out.println(totalBytes + " bytes read.");
+					System.out.println("Resource saved in " + completePath + ".");
+					return;
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
-
 	}
 
 }

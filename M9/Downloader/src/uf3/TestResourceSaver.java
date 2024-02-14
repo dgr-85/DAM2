@@ -45,6 +45,7 @@ public class TestResourceSaver {
 			System.out.println("Error en baixar el recurs");
 		} catch (Exception ex) {
 			System.out.println("Error de tipus desconegut");
+			ex.printStackTrace();
 		}
 	}
 
