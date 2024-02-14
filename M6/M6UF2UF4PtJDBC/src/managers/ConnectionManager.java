@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConnectionManagerJDBC {
+public class ConnectionManager {
 	private static String url = "jdbc:mysql://localhost/bdpremis";
 	private static String user = "cfgs";
 	private static String pwd = "ira491";

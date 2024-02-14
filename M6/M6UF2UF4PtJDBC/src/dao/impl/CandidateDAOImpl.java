@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import dao.CandidateDAO;
-import managers.ConnectionManagerJDBC;
+import managers.ConnectionManager;
 import managers.DAOManager;
 import model.Candidate;
 import model.Prize;
@@ -20,8 +20,8 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "insert into candidates values(?,?,?,?,?)";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 
 			prepStmt.setInt(1, c.getCandidateId());
@@ -41,7 +41,7 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 			}
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
@@ -51,8 +51,8 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "select * from candidates where candidateid=?";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
 			ResultSet rs = prepStmt.executeQuery();
@@ -92,7 +92,7 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 
@@ -109,8 +109,8 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "delete from candidates where candidateid=?";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
 
@@ -136,7 +136,7 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
@@ -148,8 +148,8 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 		String sql = "select * from candidates";
 		Statement statement;
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 
@@ -189,7 +189,7 @@ public class CandidateDAOImpl extends DAOManager implements CandidateDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}

@@ -21,13 +21,13 @@ public class TestResourceSaver {
 		try {
 			saver.createFolderTree();
 			save("ftp://mirror.vexxhost.com/apache/activemq/apache-nms/1.6.0/Apache.NMS-1.6.0-src.zip", saver);
-			save("http://mirror.team-cymru.org/ubuntu/indices/override.breezy-backports.extra.main", saver);
-			save("http://www.nic.funet.fi/pub/gnu/ftp.gnu.org/pub/gnu/Licenses/lgpl-2.1.txt", saver);
+			save("https://mirror.team-cymru.org/ubuntu/indices/override.breezy-backports.extra.main", saver);
+			save("https://www.nic.funet.fi/pub/gnu/ftp.gnu.org/pub/gnu/Licenses/lgpl-2.1.txt", saver);
 			save("ftp://ftp.man.lodz.pl/pub/security/README.html", saver);
-			save("http://www.uscis.gov/files/form/i-9.pdf", saver);
-			save("http://farm8.staticflickr.com/7076/7301495298_ee121d2013_s_d.jpg", saver);
-			save("http://www.mediacollege.com/downloads/sound-effects/city/traffic-02.mp3", saver);
-			save("http://archive.org/download/TheCaseOfTheKangarooKid1963/TheKangarooKid.mp4", saver);
+			save("https://www.uscis.gov/files/form/i-9.pdf", saver);
+			save("https://farm8.staticflickr.com/7076/7301495298_ee121d2013_s_d.jpg", saver);
+			save("https://www.mediacollege.com/downloads/sound-effects/city/traffic-02.mp3", saver);
+			save("https://archive.org/download/TheCaseOfTheKangarooKid1963/TheKangarooKid.mp4", saver);
 		} catch (MalformedURLException ex) {
 			Logger.getLogger(TestResourceSaver.class.getName()).log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {

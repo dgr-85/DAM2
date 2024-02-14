@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.PrizeTypeDAO;
-import managers.ConnectionManagerJDBC;
+import managers.ConnectionManager;
 import managers.DAOManager;
 import model.Prize;
 import model.PrizeType;
@@ -25,8 +25,8 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "select * from prizetype where prizetypeid=?";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
 			ResultSet rs = prepStmt.executeQuery();
@@ -65,7 +65,7 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 			return null;
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
@@ -81,8 +81,8 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 		Boolean isConnectionOpen = false;
 		String sql = "delete from prizetype where prizetypeid=?";
 		try {
-			isConnectionOpen = ConnectionManagerJDBC.isConnected();
-			Connection con = ConnectionManagerJDBC.getConnection();
+			isConnectionOpen = ConnectionManager.isConnected();
+			Connection con = ConnectionManager.getConnection();
 			PreparedStatement prepStmt = con.prepareStatement(sql);
 			prepStmt.setInt(1, id);
 
@@ -97,7 +97,7 @@ public class PrizeTypeDAOImpl extends DAOManager implements PrizeTypeDAO {
 			}
 		} finally {
 			if (!isConnectionOpen) {
-				ConnectionManagerJDBC.closeConnection();
+				ConnectionManager.closeConnection();
 			}
 		}
 	}
