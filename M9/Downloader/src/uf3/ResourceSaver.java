@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -20,21 +22,22 @@ public class ResourceSaver {
 	}
 
 	public void addResourceType(String regex, String folder) {
-		Pattern p = Pattern.compile(regex);
-		if (!folders.containsKey(p)) {
-			folders.put(p, folder);
+		if (!folders.containsKey(Pattern.compile(regex))) {
+			folders.put(Pattern.compile(regex), folder);
 		}
 	}
 
 	public void createFolderTree() throws IOException {
 		for (String str : folders.values()) {
 			File f = new File(str);
-			if (!f.exists() && !f.mkdirs()) {
+			if (f.exists()) {
+				System.out.println("Folder '" + str + "' already exists.");
+			} else if (!f.exists() && !f.mkdirs()) {
 				throw new IOException("Error creating folder " + str + ".");
+			} else {
+				System.out.println("Folder '" + str + "' created.");
 			}
 		}
-		File f = new File("unknown");
-		f.mkdirs();
 	}
 
 	public void saveResource(String resource) throws MalformedURLException, IOException {
@@ -47,28 +50,28 @@ public class ResourceSaver {
 			String value = entry.getValue();
 
 			if (key.matcher(contentType).matches()) {
-				File newFolder = new File(value);
-				if (!newFolder.exists() && !newFolder.mkdirs()) {
-					throw new IOException("Error creating folder " + value + ".");
-				}
-
 				String path = url.getPath();
 				path = path.substring(path.lastIndexOf('/') + 1);
 				String completePath = value + File.separator + path;
 
-				try (InputStream inStream = url.openStream();
-						FileOutputStream outStream = new FileOutputStream(completePath)) {
-					byte[] buffer = new byte[8192];
-					int currentBytes = 0;
-					int totalBytes = 0;
-					while ((currentBytes = inStream.read(buffer)) != -1) {
-						outStream.write(buffer, 0, currentBytes);
-						totalBytes += currentBytes;
+				if (Files.exists(Paths.get(value).resolve(path))) {
+					System.out.println("Resource '" + path + "' found in " + completePath + ". Download cancelled.");
+				} else {
+					try (InputStream inStream = url.openStream();
+							FileOutputStream outStream = new FileOutputStream(completePath)) {
+						byte[] buffer = new byte[8192];
+						int currentBytes = 0;
+						int totalBytes = 0;
+
+						while ((currentBytes = inStream.read(buffer)) != -1) {
+							outStream.write(buffer, 0, currentBytes);
+							totalBytes += currentBytes;
+						}
+						System.out.println(totalBytes + " bytes read.");
+						System.out.println("Resource saved in " + completePath + ".");
 					}
-					System.out.println(totalBytes + " bytes read.");
-					System.out.println("Resource saved in " + completePath + ".");
-					return;
 				}
+				return;
 			}
 		}
 	}
