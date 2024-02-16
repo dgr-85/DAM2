@@ -40,11 +40,11 @@
 
                     <ImageView
                         android:id="@+id/img1"
-                        android:src="@drawable/freezing_field"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5px"
                         android:layout_weight="1"
+                        android:src="@drawable/freezing_field"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
@@ -64,11 +64,11 @@
 
                     <ImageView
                         android:id="@+id/img2"
-                        android:src="@drawable/lucent_beam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5px"
                         android:layout_weight="1"
+                        android:src="@drawable/lucent_beam"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
@@ -88,11 +88,11 @@
 
                     <ImageView
                         android:id="@+id/img3"
-                        android:src="@drawable/blood_rite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="5px"
                         android:layout_weight="1"
+                        android:src="@drawable/blood_rite"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
@@ -105,12 +105,19 @@
 
             </LinearLayout>
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnPlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80px"
+                android:contentDescription="@string/desc"
+                android:src="@drawable/play_icon" />
+
+            <Button
+                android:id="@+id/btnRetry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Button" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
