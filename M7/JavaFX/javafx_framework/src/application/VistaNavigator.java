@@ -71,7 +71,7 @@ public class VistaNavigator {
 					break;
 				}
 			}
-			vista1Controller.loadCard();
+			vista1Controller.init();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

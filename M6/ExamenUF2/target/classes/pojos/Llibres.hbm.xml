@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 19 de febr. 2024, 15:45:50 by Hibernate Tools 6.3.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="pojos.Llibres" optimistic-lock="none" table="llibres">
+        <id name="codiLlibre" type="int">
+            <column name="codiLlibre"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="pojos.Autors" fetch="join" name="autors">
+            <column name="autor" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="pojos.Idiomes" fetch="join" name="idiomes">
+            <column name="idioma" not-null="true"/>
+        </many-to-one>
+        <property name="titol" type="string">
+            <column length="50" name="titol" not-null="true"/>
+        </property>
+        <property name="pagines" type="java.lang.Integer">
+            <column name="pagines"/>
+        </property>
+    </class>
+</hibernate-mapping>
