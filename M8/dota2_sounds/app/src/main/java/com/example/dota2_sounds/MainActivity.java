@@ -2,6 +2,7 @@ package com.example.dota2_sounds;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    List<Integer> selectedElements = new ArrayList<>();
+    List<Integer> selectedElements;
+    Field[] listElements;
     Button btnRetry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView img2 = findViewById(R.id.img2);
         ImageView img3 = findViewById(R.id.img3);
 
+        selectedElements = new ArrayList<>();
         ImageView[] imgs = {img1, img2, img3};
         TextView[] texts = {tv1, tv2, tv3};
+        listElements = R.raw.class.getFields();
 
         newRound(imgs, texts, btnPlay);
     }
@@ -50,17 +54,17 @@ public class MainActivity extends AppCompatActivity {
          (los sonidos de win y fail están en una subcarpeta). Por otro lado, para cada fichero de
          sonido, su imagen (de drawable) y su texto (de strings.xml) tienen exactamente el mismo nombre.
 
-         Por tanto, si se crea un array de Fields a partir de raw, se puede obtener el nombre de cualquier
-         fichero de sonido, y por ende, de cualquier imagen y cualquier string asociados.
+         Por tanto, si se crea un array de Fields a partir de los contenidos de raw, éste contendrá únicamente
+         los sonidos del juego, pudiendo obtener el nombre de cualquiera de ellos, y por ende,
+         de cualquier imagen y string asociados.
 
          Todas las búsquedas se hacen por nombre a partir de los nombres obtenidos de raw.*/
 
-        Field[] listElements = R.raw.class.getFields();
-        setImages(listElements,imgs,texts);
-        selectSound(listElements,btnPlay,imgs,texts);
+        setImages(imgs,texts);
+        selectSound(btnPlay,imgs,texts);
     }
 
-    public void setImages(Field[] listElements, ImageView[] imgs, TextView[] texts){
+    public void setImages(ImageView[] imgs, TextView[] texts){
         int totalElements = listElements.length;
         int randomNumber = (int) (Math.random() * totalElements);
 
@@ -78,17 +82,16 @@ public class MainActivity extends AppCompatActivity {
             String elemName = numberElem.getName();
 
             int id = getResources().getIdentifier(elemName, "string", getPackageName());
-            String str = String.valueOf(getString(id));
-            texts[i].setText(str);
+            texts[i].setText(String.valueOf(getString(id)));
 
+            imgs[i].setTag(elemName);
             imgs[i].setImageDrawable(getDrawable(getResources().getIdentifier(elemName, "drawable", getPackageName())));
         }
     }
-    public void selectSound(Field[] listElements,ImageButton btnPlay,ImageView[] imgs, TextView[] texts){
+    public void selectSound(ImageButton btnPlay,ImageView[] imgs, TextView[] texts){
         int randomSound=(int)(Math.random()*selectedElements.size());
         randomSound=selectedElements.get(randomSound);
-        Field soundFile=listElements[randomSound];
-        String soundName=soundFile.getName();
+        String soundName=listElements[randomSound].getName();
         MediaPlayer mp=MediaPlayer.create(getApplicationContext(),getResources().getIdentifier(soundName,"raw",getPackageName()));
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,5 +115,28 @@ public class MainActivity extends AppCompatActivity {
                 newRound(imgs,texts,btnPlay);
             }
         });
+        mapSoundResult(soundName,imgs);
+    }
+
+    public void mapSoundResult(String soundName, ImageView[] imgs){
+        for(ImageView iv:imgs){
+            iv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(iv.getTag().equals(soundName)){
+                        guessOk();
+                    }else{
+                        guessWrong();
+                    }
+                }
+            });
+        }
+    }
+
+    public void guessOk(){
+
+    }
+    public void guessWrong(){
+
     }
 }
