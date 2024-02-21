@@ -2,6 +2,10 @@
     <string name="app_name">dota2_sounds</string>
     <string name="title">Dota 2 Sound Quiz</string>
     <string name="desc">Play sound</string>
+    <string name="correct">Correct!!</string>
+    <string name="wrong">Wrong!!</string>
+    <string name="no_sound_played">You haven\'t played the sound yet!!</string>
+    <string name="ok">Ok, sorry</string>
     <string name="arena_of_blood">Arena of Blood</string>
     <string name="assassinate">Assassinate</string>
     <string name="avalanche">Avalanche</string>

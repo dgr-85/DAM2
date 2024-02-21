@@ -44,7 +44,6 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5px"
                         android:layout_weight="1"
-                        android:src="@drawable/freezing_field"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
@@ -68,7 +67,6 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5px"
                         android:layout_weight="1"
-                        android:src="@drawable/lucent_beam"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
@@ -92,7 +90,6 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5px"
                         android:layout_weight="1"
-                        android:src="@drawable/blood_rite"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
@@ -111,12 +108,6 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/desc"
                 android:src="@drawable/play_icon" />
-
-            <Button
-                android:id="@+id/btnRetry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
 
         </LinearLayout>
     </ScrollView>
