@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
 
          VARIABLES GLOBALES:
 
-         selectedElements: almacena las posiciones de 3 elementos elegidos al azar para cada ronda.
-         listElements: contiene los Fields de todos los ficheros de sonido, excepto "win" y "fail".
-         btnPlay: reproduce el sonido de cada ronda cada vez que se pulsa.
-         imgs: contiene las ImageView donde pintar las imágenes.
-         texts: contiene los TextView asociados a las imágenes.
-         toastIsShowing: bloquea todos los onClickListeners durante la aparición de cualquier Toast.
-         soundHasBeenPlayed: bloquea los onClickListeners de las ImageView hasta que se pulsa btnPlay
+         - selectedElements: almacena las posiciones de 3 elementos elegidos al azar para cada ronda.
+         - listElements: contiene los Fields de todos los ficheros de sonido, excepto "win" y "fail".
+         - btnPlay: reproduce el sonido de cada ronda cada vez que se pulsa.
+         - imgs: contiene las ImageView donde pintar las imágenes.
+         - texts: contiene los TextView asociados a las imágenes.
+         - toastIsShowing: bloquea todos los onClickListeners durante la aparición de cualquier Toast.
+         - soundHasBeenPlayed: bloquea los onClickListeners de las ImageView hasta que se pulsa btnPlay
                              por primera vez. Este efecto se reinicia en cada ronda.
      */
     List<Integer> selectedElements;
