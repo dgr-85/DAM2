@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Prova_UF2_M8</string>
+    <string name="btnGuitarra">GUITARRA</string>
+    <string name="btnFlauta">FLAUTA</string>
+    <string name="btnSaxofon">SAXOFON</string>
+    <string name="btnStop">STOP</string>
+</resources>
