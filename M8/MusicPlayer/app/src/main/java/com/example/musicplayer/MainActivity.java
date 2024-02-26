@@ -1,22 +1,36 @@
 package com.example.musicplayer;
 
 import android.Manifest;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CursorAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST=1;
+    private static final int MY_PERMISSIONS_REQUEST = 1;
+    ListView songList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        songList = findViewById(R.id.songList);
 
         checkPermissions();
     }
@@ -49,7 +63,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void updateSongList(){
+    public void updateSongList() {
 
+        ContentResolver contentResolver = getContentResolver();
+        Uri musicUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+
+        // Projection (columns to fetch)
+        String[] projection = {
+                MediaStore.Audio.Media.TITLE,
+                MediaStore.Audio.Media.ARTIST,
+                MediaStore.Audio.Media.DATA  // File path
+        };
+        // Query the MediaStore
+        Cursor cursor = contentResolver.query(
+                musicUri,
+                projection,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String title = cursor.getString(0);
+                String artist = cursor.getString(1);
+                String path = cursor.getString(2);
+            }
+            cursor.close();
+        }
+
+        SongRowAdapter adapter = new SongRowAdapter(this, cursor, 0);
+
+        songList.setAdapter(adapter);
     }
 }

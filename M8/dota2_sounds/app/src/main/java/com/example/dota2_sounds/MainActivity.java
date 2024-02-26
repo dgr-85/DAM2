@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
          tienen exactamente el mismo nombre.
 
          Por tanto, si se crea una lista de Fields a partir de los contenidos de raw, se podrá
-         obtener el nombre de cualquier sonido del juego, y por ende, de su imagen y string asociados.
+         obtener el nombre de cualquier sonido del juego, y por ende, el de su imagen y string asociados.
 
          Todas las búsquedas se hacen por nombre a partir de los nombres obtenidos de raw.
 
@@ -34,17 +34,20 @@ public class MainActivity extends AppCompatActivity {
 
          VARIABLES GLOBALES:
 
-         - selectedElements: almacena las posiciones de 3 elementos elegidos al azar para cada ronda.
-         - listElements: contiene los Fields de todos los ficheros de sonido, excepto "win" y "fail".
-         - btnPlay: reproduce el sonido de cada ronda cada vez que se pulsa.
-         - imgs: contiene las ImageView donde pintar las imágenes.
-         - texts: contiene los TextView asociados a las imágenes.
-         - toastIsShowing: bloquea todos los onClickListeners durante la aparición de cualquier Toast.
-         - soundHasBeenPlayed: bloquea los onClickListeners de las ImageView hasta que se pulsa btnPlay
-                             por primera vez. Este efecto se reinicia en cada ronda.
+         - selectedElements:    almacena las posiciones de 3 elementos elegidos al azar para cada ronda.
+         - listElements:        contiene los Fields de todos los ficheros de sonido, excepto "win" y "fail".
+         - elementCooldowns:    garantiza que los elementos de cada ronda no se repetirán hasta pasado
+                                un cierto número de turnos.
+         - btnPlay:             reproduce el sonido de cada ronda cada vez que se pulsa.
+         - imgs:                contiene las ImageView donde pintar las imágenes.
+         - texts:               contiene los TextView asociados a las imágenes.
+         - toastIsShowing:      bloquea todos los onClickListeners durante la aparición de cualquier Toast.
+         - soundHasBeenPlayed:  bloquea los onClickListeners de las ImageView hasta que se pulsa btnPlay
+                                por primera vez. Este efecto se reinicia en cada ronda.
      */
     List<Integer> selectedElements;
     List<Field> listElements;
+    int[] elementCooldowns;
     ImageButton btnPlay;
     ImageView[] imgs;
     TextView[] texts;
@@ -74,22 +77,31 @@ public class MainActivity extends AppCompatActivity {
                 listElements.add(f);
             }
         }
-
+        elementCooldowns =new int[listElements.size()];
+        for(int i = 0; i < elementCooldowns.length; i++){
+            elementCooldowns[i] = 0;
+        }
         newRound();
     }
 
     public void newRound() {
+        for(int i = 0; i < elementCooldowns.length; i++){
+            if(elementCooldowns[i] > 0){
+                elementCooldowns[i]--;
+            }
+        }
         soundHasBeenPlayed=false;
         setImages();
         selectSound(btnPlay);
     }
 
+    //Elige 3 nombres al azar entre los ficheros raw y asigna sus imágenes y textos a sus respectivas views
     public void setImages(){
         int totalElements = listElements.size();
         int randomNumber = (int) (Math.random() * totalElements);
 
         for (int i = 0; i < imgs.length; i++) {
-            while (selectedElements.contains(randomNumber)) {
+            while (elementCooldowns[randomNumber] > 0) {
                 randomNumber = (int) (Math.random() * totalElements);
             }
             if (selectedElements.size() < 3) {
@@ -97,6 +109,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 selectedElements.set(i, randomNumber);
             }
+            //Número de turnos en que este elemento no volverá a salir
+            elementCooldowns[randomNumber]=21;
 
             Field numberElem = listElements.get(randomNumber);
             String elemName = numberElem.getName();
@@ -108,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             imgs[i].setImageDrawable(getDrawable(getResources().getIdentifier(elemName, "drawable", getPackageName())));
         }
     }
+    //Elige un elemento al azar de entre los 3 elegidos y asigna su sonido a btnPlay
     public void selectSound(ImageButton btnPlay){
         int randomSound=(int)(Math.random()*selectedElements.size());
         randomSound=selectedElements.get(randomSound);
@@ -125,13 +140,14 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }else{
+            }else {
                 mp.start();
             }
         });
         mapSoundResult(soundName,mp);
     }
 
+    //Asigna guessCorrect o guessWrong a cada ImageView según el sonido asignado a btnPlay
     public void mapSoundResult(String soundName, MediaPlayer mpSelected){
         for(ImageView iv:imgs){
             iv.setOnClickListener(v -> {

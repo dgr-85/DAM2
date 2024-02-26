@@ -6,10 +6,12 @@
     <string name="wrong">Wrong!!</string>
     <string name="no_sound_played">You haven\'t played the sound yet!!</string>
     <string name="ok">Ok, sorry</string>
+    <string name="ancient_seal">Ancient Seal</string>
     <string name="arena_of_blood">Arena of Blood</string>
     <string name="assassinate">Assassinate</string>
     <string name="avalanche">Avalanche</string>
     <string name="battle_trance">Battle Trance</string>
+    <string name="black_hole">Black Hole</string>
     <string name="blood_rite">Blood Rite</string>
     <string name="boundless_strike">Boundless Strike</string>
     <string name="breathe_fire">Breathe Fire</string>
@@ -20,6 +22,7 @@
     <string name="cold_embrace">Cold Embrace</string>
     <string name="conjure_image">Conjure Image</string>
     <string name="crypt_swarm">Crypt Swarm</string>
+    <string name="culling_blade">Culling Blade</string>
     <string name="deafening_blast">Deafening Blast</string>
     <string name="death_ward">Death Ward</string>
     <string name="demonic_purge">Demonic Purge</string>
@@ -28,6 +31,7 @@
     <string name="earthshock">Earthshock</string>
     <string name="echo_slam">Echo Slam</string>
     <string name="echo_stomp">Echo Stomp</string>
+    <string name="eclipse">Eclipse</string>
     <string name="emp">E.M.P</string>
     <string name="enrage">Enrage</string>
     <string name="ensnare">Ensnare</string>
@@ -49,12 +53,15 @@
     <string name="kinetic_field">Kinetic Field</string>
     <string name="living_armor">Living Armor</string>
     <string name="lucent_beam">Lucent Beam</string>
+    <string name="multishot">Multishot</string>
     <string name="natures_attendants">Nature\'s Attendants</string>
     <string name="overgrowth">Overgrowth</string>
+    <string name="phantasm">Phantasm</string>
     <string name="power_cogs">Power Cogs</string>
     <string name="powershot">Powershot</string>
     <string name="primal_roar">Primal Roar</string>
     <string name="psionic_trap">Psionic Trap</string>
+    <string name="reincarnation">Reincarnation</string>
     <string name="requiem_of_souls">Requiem of Souls</string>
     <string name="rocket_barrage">Rocket Barrage</string>
     <string name="rupture">Rupture</string>
