@@ -1,7 +1,9 @@
 package application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Spinner;
 
 /**
  * Controller class for the second vista.
@@ -9,9 +11,24 @@ import javafx.scene.control.TextField;
 public class Vista2Controller {
 
 	@FXML
-	private TextField vistaText2;
+	Spinner<Integer> spLives;
 
-	String getNom() {
-		return vistaText2.getText();
+	@FXML
+	CheckBox cbFailedLetters;
+
+	@FXML
+	CheckBox cbRepeatError;
+
+	@FXML
+	Button btnReturn;
+
+	GameManager manager = GameManager.getManager();
+
+	public void setRules() {
+		manager.setLives(spLives.getValue());
+		manager.setShowFailedLetters(cbFailedLetters.isSelected());
+		manager.setCountRepetitionsAsErrors(cbRepeatError.isSelected());
+		VistaNavigator.loadVista(VistaNavigator.VISTA_1);
 	}
+
 }

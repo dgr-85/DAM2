@@ -29,12 +29,19 @@ public class Vista1Controller {
 	private Label lblUnderlines;
 
 	@FXML
-	private TextField tfLletra;
+	private TextField tfLetter;
+
+	@FXML
+	private Label lblFailedLetters;
 
 	Image[] images = new Image[13];
 	String[] possibleWords = { "AGNÒSTIQUES", "ESCURÇÓ", "FRUÏCIÓ", "GALVANOTÈCNIA", "PASTANAGA", "MASSÍS" };
 	String hiddenWord;
 	String revealedWord;
+	String validLetters = "AÀBCÇDEÈÉFGHIÍÏJKLMNOÒÓPQRSTUÚÜVWXYZ";
+	String formattedValidLetters = "AABCÇDEEEFGHIIIJKLMNOOOPQRSTUUUVWXYZ";
+	String startGame = "Iniciar partida";
+	String restartGame = "Reiniciar partida";
 
 	boolean loaded = false;
 	int count = 12;
@@ -44,8 +51,9 @@ public class Vista1Controller {
 			instantiateImages();
 			loaded = true;
 		}
+		lblFailedLetters.setVisible(false);
 		loadCard();
-		tfLletra.setTextFormatter(new TextFormatter<TextField>(modifyChange));
+		tfLetter.setTextFormatter(new TextFormatter<TextField>(modifyChange));
 	}
 
 	public void instantiateImages() {
@@ -58,19 +66,21 @@ public class Vista1Controller {
 		}
 	}
 
-	public void loadWord() {
+	public void gameStart() {
 		int randomWord = (int) (Math.random() * possibleWords.length);
 		hiddenWord = possibleWords[randomWord];
 		revealedWord = " ".repeat(hiddenWord.length());
+		lblWord.setText("");
 		lblUnderlines.setText("_".repeat(hiddenWord.length()));
-		tfLletra.setDisable(false);
-		btnPlay.setText("Reiniciar partida");
+		tfLetter.setDisable(false);
+		cardImg.setImage(images[12]);
+		btnPlay.setText(restartGame);
 	}
 
 	public void loadCard() {
 		cardImg.setImage(images[count--]);
-		if (count < 0) {
-			count = 12;
+		if (count <= 0) {
+			gameEnd();
 		}
 	}
 
@@ -81,28 +91,42 @@ public class Vista1Controller {
 				return null; // descarta el canvi
 			}
 		}
-
 		return change;
 	};
 
 	public void checkWord() {
-		tfLletra.setOnKeyPressed(event -> {
-			if (event.getCode() == KeyCode.ENTER) {
-				if (hiddenWord.contains(tfLletra.getText())) {
-					Character lletra = tfLletra.getText().charAt(0);
+		tfLetter.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER && !tfLetter.getText().isBlank()) {
+				char fixedLetter = formatWord(tfLetter.getText()).charAt(0);
+				if (formatWord(hiddenWord).indexOf(fixedLetter) != -1) {
 					char[] revealedArray = revealedWord.toCharArray();
+					char[] hiddenArray = formatWord(hiddenWord).toCharArray();
+					char[] defaultHiddenArray = hiddenWord.toCharArray();
 					for (int i = 0; i < revealedArray.length; i++) {
-						if (hiddenWord.charAt(i) == lletra) {
-							revealedArray[i] = lletra;
+						if (hiddenArray[i] == fixedLetter) {
+							revealedArray[i] = defaultHiddenArray[i];
 						}
 					}
 					revealedWord = String.valueOf(revealedArray);
 					lblWord.setText(revealedWord);
+					if (revealedWord.equals(hiddenWord)) {
+						gameEnd();
+					}
 				} else {
 					loadCard();
 				}
 
 			}
 		});
+	}
+
+	public String formatWord(String word) {
+		return word.toUpperCase().replace('À', 'A').replace('È', 'E').replace('É', 'E').replace('Í', 'I')
+				.replace('Ï', 'I').replace('Ò', 'O').replace('Ó', 'O').replace('Ú', 'U').replace('Ü', 'U');
+	}
+
+	public void gameEnd() {
+		tfLetter.setDisable(true);
+		btnPlay.setText(startGame);
 	}
 }

@@ -8,29 +8,42 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.content.ContentResolver;
-import android.content.Context;
+import android.content.ContentUris;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CursorAdapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST = 1;
-    ListView songList;
+    ListView lvSongs;
+    List<IndividualSong> allSongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        songList = findViewById(R.id.songList);
+        lvSongs = findViewById(R.id.songList);
+        allSongs = new ArrayList<>();
+        ArrayAdapter<IndividualSong> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, allSongs);
+        lvSongs.setAdapter(adapter);
+
+        lvSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
 
         checkPermissions();
     }
@@ -45,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 // MY_PERMISSIONS_REQUEST is an app-defined int constant. The callback method gets the result of the request.
             }
         } else {
-            updateSongList();
+            loadSongs();
         }
     }
 
@@ -58,42 +71,50 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == MY_PERMISSIONS_REQUEST) {// If request is cancelled, the result arrays are empty.
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) { // permission was granted, yay! Do the external storage task you need to do.
-                updateSongList();
+                loadSongs();
             }
         }
     }
 
-    public void updateSongList() {
-
+    public void loadSongs() {
         ContentResolver contentResolver = getContentResolver();
         Uri musicUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+        List<IndividualSong> songsList = new ArrayList<>();
 
-        // Projection (columns to fetch)
         String[] projection = {
+                MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.ARTIST,
-                MediaStore.Audio.Media.DATA  // File path
+                MediaStore.Audio.Media.RELATIVE_PATH,
+                MediaStore.Audio.Media.DURATION
         };
-        // Query the MediaStore
-        Cursor cursor = contentResolver.query(
+        try (Cursor cursor = getApplicationContext().getContentResolver().query(
                 musicUri,
                 projection,
                 null,
                 null,
                 null
-        );
+        )) {
+            int colId=cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID);
+            int colTitle=cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE);
+            int colArtist=cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST);
+            int colPath=cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.RELATIVE_PATH);
+            int colDuration=cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION);
 
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                String title = cursor.getString(0);
-                String artist = cursor.getString(1);
-                String path = cursor.getString(2);
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    long id=cursor.getLong(colId);
+                    String title = cursor.getString(colTitle);
+                    String artist = cursor.getString(colArtist);
+                    String path = cursor.getString(colPath);
+                    int duration=cursor.getInt(colDuration);
+
+                    Uri contentUri= ContentUris.withAppendedId(musicUri,id);
+                    allSongs.add(new IndividualSong(contentUri,title,artist,path,duration));
+                }
+
             }
-            cursor.close();
         }
 
-        SongRowAdapter adapter = new SongRowAdapter(this, cursor, 0);
-
-        songList.setAdapter(adapter);
     }
 }
