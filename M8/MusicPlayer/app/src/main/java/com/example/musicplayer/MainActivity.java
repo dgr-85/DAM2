@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SeekBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST = 1;
     ListView lvSongs;
     List<IndividualSong> allSongs;
+
+    SeekBar seekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 // permission was granted, yay! Do the external storage task you need to do.
             } else {
                 // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},MY_PERMISSIONS_REQUEST);
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_MEDIA_AUDIO}, MY_PERMISSIONS_REQUEST);
                 // MY_PERMISSIONS_REQUEST is an app-defined int constant. The callback method gets the result of the request.
             }
@@ -112,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
                     Uri contentUri= ContentUris.withAppendedId(musicUri,id);
                     allSongs.add(new IndividualSong(contentUri,title,artist,path,duration));
                 }
-
             }
         }
 

@@ -2,6 +2,8 @@ package com.example.musicplayer;
 
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
 public class IndividualSong {
     private Uri uri;
     private String title;
@@ -59,6 +61,7 @@ public class IndividualSong {
     }
 
     @Override
+    @NonNull
     public String toString() {
         int seconds = duration / 1000;
         int minutes = seconds / 60;

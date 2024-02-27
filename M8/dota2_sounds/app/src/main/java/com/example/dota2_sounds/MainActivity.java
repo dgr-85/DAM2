@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
          - toastIsShowing:      bloquea todos los onClickListeners durante la aparición de cualquier Toast.
          - soundHasBeenPlayed:  bloquea los onClickListeners de las ImageView hasta que se pulsa btnPlay
                                 por primera vez. Este efecto se reinicia en cada ronda.
+         - mp:                  objeto MediaPlayer asignado a btnPlay.
      */
     List<Integer> selectedElements;
     List<Field> listElements;
@@ -53,6 +54,21 @@ public class MainActivity extends AppCompatActivity {
     TextView[] texts;
     boolean toastIsShowing=false;
     boolean soundHasBeenPlayed=false;
+    MediaPlayer mp;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(mp!=null && mp.isPlaying()){
+            mp.stop();
+            try {
+                mp.prepare();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         int randomSound=(int)(Math.random()*selectedElements.size());
         randomSound=selectedElements.get(randomSound);
         String soundName=listElements.get(randomSound).getName();
-        MediaPlayer mp=MediaPlayer.create(getApplicationContext(),getResources().getIdentifier(soundName,"raw",getPackageName()));
+        mp=MediaPlayer.create(getApplicationContext(),getResources().getIdentifier(soundName,"raw",getPackageName()));
         btnPlay.setOnClickListener(v -> {
             if(toastIsShowing){
                 return;
