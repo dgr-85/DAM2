@@ -126,6 +126,7 @@ public class Vista1Controller {
 	}
 
 	public void gameEnd() {
+		tfLetter.setText("");
 		tfLetter.setDisable(true);
 		btnPlay.setText(startGame);
 	}

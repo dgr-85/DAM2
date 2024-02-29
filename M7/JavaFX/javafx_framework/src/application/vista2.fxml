@@ -11,8 +11,8 @@
    <children>
       <Spinner fx:id="spLives" editable="true" layoutX="197.0" layoutY="103.0" prefHeight="24.0" prefWidth="60.0" />
       <Label layoutX="152.0" layoutY="107.0" text="Vides: " />
-      <CheckBox fx:id="cbRepeatError" layoutX="152.0" layoutY="179.0" mnemonicParsing="false" text="Comptar repeticions com a errors" />
-      <CheckBox fx:id="cbFailedLetters" layoutX="152.0" layoutY="144.0" mnemonicParsing="false" text="Mostrar lletres fallades" />
-      <Button fx:id="btnReturn" layoutX="396.0" layoutY="242.0" mnemonicParsing="false" onAction="#setRules" text="Tornar al joc" />
+      <CheckBox fx:id="cbRepeatError" layoutX="152.0" layoutY="179.0" mnemonicParsing="false" onAction="#setRules" text="Comptar repeticions com a errors" />
+      <CheckBox fx:id="cbFailedLetters" layoutX="152.0" layoutY="144.0" mnemonicParsing="false" onAction="#setRules" text="Mostrar lletres fallades" />
+      <Button fx:id="btnReturn" layoutX="396.0" layoutY="242.0" mnemonicParsing="false" text="Tornar al joc" />
    </children>
 </AnchorPane>

@@ -24,11 +24,19 @@ public class Vista2Controller {
 
 	GameManager manager = GameManager.getManager();
 
+	public void init() {
+		spLives.getValueFactory().setValue(manager.getLives());
+		cbFailedLetters.setSelected(manager.getShowFailedLetters());
+		cbRepeatError.setSelected(manager.getCountRepetitionsAsErrors());
+	}
+
 	public void setRules() {
-		manager.setLives(spLives.getValue());
+		spLives.valueProperty().addListener((arg0, arg1, arg2) -> {
+			manager.setLives(arg2);
+		});
 		manager.setShowFailedLetters(cbFailedLetters.isSelected());
 		manager.setCountRepetitionsAsErrors(cbRepeatError.isSelected());
-		VistaNavigator.loadVista(VistaNavigator.VISTA_1);
+		init();
 	}
 
 }
