@@ -2,7 +2,6 @@ package application;
 
 import java.io.IOException;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -75,11 +74,6 @@ public class VistaNavigator {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@FXML
-	public void initialize() {
-
 	}
 
 }

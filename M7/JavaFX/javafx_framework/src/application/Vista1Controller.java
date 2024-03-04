@@ -1,8 +1,11 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -14,7 +17,7 @@ import javafx.scene.input.KeyCode;
 /**
  * Controller class for the first vista.
  */
-public class Vista1Controller {
+public class Vista1Controller implements Initializable {
 
 	@FXML
 	private ImageView cardImg;
@@ -34,6 +37,11 @@ public class Vista1Controller {
 	@FXML
 	private Label lblFailedLetters;
 
+	@FXML
+	private TextField tfFailedLetters;
+
+	GameManager manager = GameManager.getManager();
+
 	Image[] images = new Image[13];
 	String[] possibleWords = { "AGNÒSTIQUES", "ESCURÇÓ", "FRUÏCIÓ", "GALVANOTÈCNIA", "PASTANAGA", "MASSÍS" };
 	String hiddenWord;
@@ -51,7 +59,8 @@ public class Vista1Controller {
 			instantiateImages();
 			loaded = true;
 		}
-		lblFailedLetters.setVisible(false);
+		lblFailedLetters.setVisible(manager.getShowFailedLetters());
+		tfFailedLetters.setVisible(manager.getShowFailedLetters());
 		loadCard();
 		tfLetter.setTextFormatter(new TextFormatter<TextField>(modifyChange));
 	}
@@ -67,13 +76,16 @@ public class Vista1Controller {
 	}
 
 	public void gameStart() {
+		count = manager.getLives();
 		int randomWord = (int) (Math.random() * possibleWords.length);
 		hiddenWord = possibleWords[randomWord];
 		revealedWord = " ".repeat(hiddenWord.length());
 		lblWord.setText("");
 		lblUnderlines.setText("_".repeat(hiddenWord.length()));
 		tfLetter.setDisable(false);
-		cardImg.setImage(images[12]);
+		lblFailedLetters.setVisible(manager.getShowFailedLetters());
+		tfFailedLetters.setVisible(manager.getShowFailedLetters());
+		cardImg.setImage(images[manager.getLives()]);
 		btnPlay.setText(restartGame);
 	}
 
@@ -129,5 +141,10 @@ public class Vista1Controller {
 		tfLetter.setText("");
 		tfLetter.setDisable(true);
 		btnPlay.setText(startGame);
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		init();
 	}
 }

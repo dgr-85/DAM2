@@ -1,14 +1,21 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 
 /**
  * Controller class for the second vista.
  */
-public class Vista2Controller {
+public class Vista2Controller implements Initializable {
 
 	@FXML
 	Spinner<Integer> spLives;
@@ -25,6 +32,8 @@ public class Vista2Controller {
 	GameManager manager = GameManager.getManager();
 
 	public void init() {
+		SpinnerValueFactory<Integer> spValue = new SpinnerValueFactory.IntegerSpinnerValueFactory(6, 12);
+		spLives.setValueFactory(spValue);
 		spLives.getValueFactory().setValue(manager.getLives());
 		cbFailedLetters.setSelected(manager.getShowFailedLetters());
 		cbRepeatError.setSelected(manager.getCountRepetitionsAsErrors());
@@ -36,6 +45,16 @@ public class Vista2Controller {
 		});
 		manager.setShowFailedLetters(cbFailedLetters.isSelected());
 		manager.setCountRepetitionsAsErrors(cbRepeatError.isSelected());
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		btnReturn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				VistaNavigator.loadVista(VistaNavigator.VISTA_1);
+			}
+		});
 		init();
 	}
 
