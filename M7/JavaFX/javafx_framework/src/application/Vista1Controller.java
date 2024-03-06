@@ -85,12 +85,12 @@ public class Vista1Controller implements Initializable {
 		tfLetter.setDisable(false);
 		lblFailedLetters.setVisible(manager.getShowFailedLetters());
 		tfFailedLetters.setVisible(manager.getShowFailedLetters());
-		cardImg.setImage(images[manager.getLives()]);
+		cardImg.setImage(images[count]);
 		btnPlay.setText(restartGame);
 	}
 
 	public void loadCard() {
-		cardImg.setImage(images[count--]);
+		cardImg.setImage(images[--count]);
 		if (count <= 0) {
 			gameEnd();
 		}
@@ -109,17 +109,17 @@ public class Vista1Controller implements Initializable {
 	public void checkWord() {
 		tfLetter.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ENTER && !tfLetter.getText().isBlank()) {
-				char fixedLetter = formatWord(tfLetter.getText()).charAt(0);
-				if (formatWord(hiddenWord).indexOf(fixedLetter) != -1) {
-					char[] revealedArray = revealedWord.toCharArray();
-					char[] hiddenArray = formatWord(hiddenWord).toCharArray();
-					char[] defaultHiddenArray = hiddenWord.toCharArray();
-					for (int i = 0; i < revealedArray.length; i++) {
-						if (hiddenArray[i] == fixedLetter) {
-							revealedArray[i] = defaultHiddenArray[i];
+				char formattedLetter = formatWord(tfLetter.getText()).charAt(0);
+				if (formatWord(hiddenWord).indexOf(formattedLetter) != -1) {
+					char[] revealedWordToArray = revealedWord.toCharArray();
+					char[] formattedHiddenWordToArray = formatWord(hiddenWord).toCharArray();
+					char[] defaultHiddenWordToArray = hiddenWord.toCharArray();
+					for (int i = 0; i < revealedWordToArray.length; i++) {
+						if (formattedHiddenWordToArray[i] == formattedLetter) {
+							revealedWordToArray[i] = defaultHiddenWordToArray[i];
 						}
 					}
-					revealedWord = String.valueOf(revealedArray);
+					revealedWord = String.valueOf(revealedWordToArray);
 					lblWord.setText(revealedWord);
 					if (revealedWord.equals(hiddenWord)) {
 						gameEnd();

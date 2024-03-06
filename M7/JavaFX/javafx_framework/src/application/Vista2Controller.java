@@ -38,12 +38,13 @@ public class Vista2Controller implements Initializable {
 		spLives.getValueFactory().setValue(manager.getLives());
 		cbFailedLetters.setSelected(manager.getShowFailedLetters());
 		cbRepeatError.setSelected(manager.getCountRepetitionsAsErrors());
-	}
-
-	public void setRules() {
 		spLives.valueProperty().addListener((arg0, arg1, arg2) -> {
 			manager.setLives(arg2);
 		});
+	}
+
+	public void setRules() {
+		manager.setLives(spLives.getValue());
 		manager.setShowFailedLetters(cbFailedLetters.isSelected());
 		manager.setCountRepetitionsAsErrors(cbRepeatError.isSelected());
 	}
