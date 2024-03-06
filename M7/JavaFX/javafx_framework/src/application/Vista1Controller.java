@@ -61,7 +61,7 @@ public class Vista1Controller implements Initializable {
 		}
 		lblFailedLetters.setVisible(manager.getShowFailedLetters());
 		tfFailedLetters.setVisible(manager.getShowFailedLetters());
-		loadCard();
+		cardImg.setImage(images[manager.getLives()]);
 		tfLetter.setTextFormatter(new TextFormatter<TextField>(modifyChange));
 	}
 

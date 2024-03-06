@@ -32,8 +32,9 @@ public class Vista2Controller implements Initializable {
 	GameManager manager = GameManager.getManager();
 
 	public void init() {
-		SpinnerValueFactory<Integer> spValue = new SpinnerValueFactory.IntegerSpinnerValueFactory(6, 12);
-		spLives.setValueFactory(spValue);
+		if (spLives.getValueFactory() == null) {
+			spLives.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(6, 12));
+		}
 		spLives.getValueFactory().setValue(manager.getLives());
 		cbFailedLetters.setSelected(manager.getShowFailedLetters());
 		cbRepeatError.setSelected(manager.getCountRepetitionsAsErrors());
@@ -49,13 +50,15 @@ public class Vista2Controller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		init();
 		btnReturn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
+				setRules();
+				init();
 				VistaNavigator.loadVista(VistaNavigator.VISTA_1);
 			}
 		});
-		init();
 	}
 
 }
