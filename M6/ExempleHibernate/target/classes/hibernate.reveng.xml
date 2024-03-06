@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name="alumne"
+		match-catalog="exemple_hibernate">
+	</table-filter>
+	<table-filter match-name="assignatura"
+		match-catalog="exemple_hibernate">
+	</table-filter>
+	<table-filter match-name="departaments"
+		match-catalog="exemple_hibernate">
+	</table-filter>
+	<table-filter match-name="empleats"
+		match-catalog="exemple_hibernate">
+	</table-filter>
+	<table-filter match-name="matricula"
+		match-catalog="exemple_hibernate">
+	</table-filter>
+	<table-filter match-name="usuaris"
+		match-catalog="exemple_hibernate">
+	</table-filter>
+</hibernate-reverse-engineering>
