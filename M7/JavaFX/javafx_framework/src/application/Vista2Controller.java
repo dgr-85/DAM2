@@ -30,6 +30,7 @@ public class Vista2Controller implements Initializable {
 	Button btnReturn;
 
 	GameManager manager = GameManager.getManager();
+	boolean hasListener = false;
 
 	public void init() {
 		if (spLives.getValueFactory() == null) {
@@ -38,9 +39,13 @@ public class Vista2Controller implements Initializable {
 		spLives.getValueFactory().setValue(manager.getLives());
 		cbFailedLetters.setSelected(manager.getShowFailedLetters());
 		cbRepeatError.setSelected(manager.getCountRepetitionsAsErrors());
-		spLives.valueProperty().addListener((arg0, arg1, arg2) -> {
-			manager.setLives(arg2);
-		});
+		if (!hasListener) {
+			spLives.valueProperty().addListener((arg0, arg1, arg2) -> {
+				manager.setLives(arg2);
+			});
+			hasListener = true;
+		}
+
 	}
 
 	public void setRules() {

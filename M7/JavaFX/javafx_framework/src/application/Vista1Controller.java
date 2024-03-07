@@ -51,6 +51,8 @@ public class Vista1Controller implements Initializable {
 	String startGame = "Iniciar partida";
 	String restartGame = "Reiniciar partida";
 
+	boolean showFailedLetters;
+	boolean countRepetitionsAsErrors;
 	boolean loaded = false;
 	int count = 12;
 
@@ -83,8 +85,11 @@ public class Vista1Controller implements Initializable {
 		lblWord.setText("");
 		lblUnderlines.setText("_".repeat(hiddenWord.length()));
 		tfLetter.setDisable(false);
+		tfLetter.setText("");
 		lblFailedLetters.setVisible(manager.getShowFailedLetters());
 		tfFailedLetters.setVisible(manager.getShowFailedLetters());
+		showFailedLetters = manager.getShowFailedLetters();
+		countRepetitionsAsErrors = manager.getCountRepetitionsAsErrors();
 		cardImg.setImage(images[count]);
 		btnPlay.setText(restartGame);
 	}
@@ -114,6 +119,10 @@ public class Vista1Controller implements Initializable {
 					char[] revealedWordToArray = revealedWord.toCharArray();
 					char[] formattedHiddenWordToArray = formatWord(hiddenWord).toCharArray();
 					char[] defaultHiddenWordToArray = hiddenWord.toCharArray();
+					if (countRepetitionsAsErrors
+							&& String.valueOf(revealedWordToArray).contains(String.valueOf(formattedLetter))) {
+						loadCard();
+					}
 					for (int i = 0; i < revealedWordToArray.length; i++) {
 						if (formattedHiddenWordToArray[i] == formattedLetter) {
 							revealedWordToArray[i] = defaultHiddenWordToArray[i];
@@ -125,6 +134,9 @@ public class Vista1Controller implements Initializable {
 						gameEnd();
 					}
 				} else {
+					if (showFailedLetters) {
+						tfFailedLetters.appendText(formattedLetter + " ");
+					}
 					loadCard();
 				}
 
@@ -133,8 +145,15 @@ public class Vista1Controller implements Initializable {
 	}
 
 	public String formatWord(String word) {
-		return word.toUpperCase().replace('À', 'A').replace('È', 'E').replace('É', 'E').replace('Í', 'I')
-				.replace('Ï', 'I').replace('Ò', 'O').replace('Ó', 'O').replace('Ú', 'U').replace('Ü', 'U');
+		char[] wordToChars = word.toUpperCase().toCharArray();
+		int pos;
+		for (int i = 0; i < wordToChars.length; i++) {
+			pos = validLetters.indexOf(wordToChars[i]);
+			if (pos != -1 && wordToChars[i] != formattedValidLetters.charAt(pos)) {
+				wordToChars[i] = formattedValidLetters.charAt(pos);
+			}
+		}
+		return String.valueOf(wordToChars);
 	}
 
 	public void gameEnd() {
