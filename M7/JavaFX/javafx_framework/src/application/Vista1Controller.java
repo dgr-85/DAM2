@@ -157,8 +157,9 @@ public class Vista1Controller implements Initializable {
 	}
 
 	public void gameEnd() {
-		tfLetter.setText("");
+		tfLetter.clear();
 		tfLetter.setDisable(true);
+		tfFailedLetters.clear();
 		btnPlay.setText(startGame);
 	}
 
