@@ -1,5 +1,6 @@
 package mongo.proves;
 
+import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 
@@ -11,30 +12,23 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 public class MappingPOJOs {
-	ConnectionString connectionString = new ConnectionString(System.getProperty("mongodb.uri"));
 
-	CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
+	public static void main(String[] args) {
+		ConnectionString connectionString = new ConnectionString(System.getProperty("mongodb.uri"));
 
-	CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
+		CodecRegistry pojoCodecRegistry = CodecRegistries
+				.fromProviders(PojoCodecProvider.builder().automatic(true).build());
 
-	MongoClientSettings clientSettings = MongoClientSettings.builder().applyConnectionString(connectionString)
-			.codecRegistry(codecRegistry).build();
+		CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
+				pojoCodecRegistry);
 
-	try(
-	MongoClient mongoClient = MongoClients.create(clientSettings))
-	{
-		MongoDatabase db = mongoClient.getDatabase("grades");
-		MongoCollection<Grade> grades = db.getCollection("grades", Grade.class);
-	}
+		MongoClientSettings clientSettings = MongoClientSettings.builder().applyConnectionString(connectionString)
+				.codecRegistry(codecRegistry).build();
 
-	private CodecRegistry fromProviders(PojoCodecProvider pojoCodecProvider) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private CodecRegistry fromRegistries(CodecRegistry defaultCodecRegistry, CodecRegistry pojoCodecRegistry2) {
-		// TODO Auto-generated method stub
-		return null;
+		try (MongoClient mongoClient = MongoClients.create(clientSettings)) {
+			MongoDatabase db = mongoClient.getDatabase("grades");
+			MongoCollection<Grade> grades = db.getCollection("grades", Grade.class);
+		}
 	}
 
 }
