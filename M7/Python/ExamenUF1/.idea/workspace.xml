@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5841d49c-3f5f-4ed0-8ab7-39e084c1ae4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/dao/DepartamentsDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/dao/DepartamentsDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/main/MainOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/main/MainOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Departaments.hbm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Departaments.hbm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Empleats.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExempleHibernate/src/main/java/pojos/Empleats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/.project" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/.project" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista1Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista1Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista2Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/Vista2Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/VistaNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/VistaNavigator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/bin/application/vista2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista1Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista1Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/Vista2Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/VistaNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/VistaNavigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista1.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista1.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/javafx_framework/src/application/vista2.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaFX/p11_DGR_vistes.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaFX/p11_DGR_vistes.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Examen.py" beforeDir="false" afterPath="$PROJECT_DIR$/Examen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M8/uf3_circle/app/src/main/java/com/example/uf3_circle/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M8/uf3_circle/app/src/main/java/com/example/uf3_circle/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M8/uf3_p1_graphicsanimations/app/src/main/java/com/example/uf3_p1_graphicsanimations/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M8/uf3_p1_graphicsanimations/app/src/main/java/com/example/uf3_p1_graphicsanimations/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +18,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Examen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="102" selection-start-line="102" selection-end-line="102" />
+            <state relative-caret-position="338">
+              <caret line="119" selection-start-line="119" selection-end-line="119" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python3.8/codecs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="320" selection-start-line="320" selection-end-line="320" />
             </state>
           </provider>
         </entry>
@@ -147,32 +144,43 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32960895" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49968293" weight="0.32960895" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39944133" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.50031704" side_tool="true" visible="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Examen.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/lib/python3.8/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="324" selection-start-line="324" selection-end-line="324" />
+        <state relative-caret-position="126">
+          <caret line="320" selection-start-line="320" selection-end-line="320" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Examen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="338">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
         </state>
       </provider>
     </entry>

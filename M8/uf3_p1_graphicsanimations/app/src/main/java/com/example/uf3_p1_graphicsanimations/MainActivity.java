@@ -17,9 +17,10 @@ public class MainActivity extends AppCompatActivity {
          ConstraintLayout main= findViewById(R.id.cLayout);
          main.setOnTouchListener(new View.OnTouchListener() {
              @Override
-             public boolean onTouch(View v, MotionEvent event) {
-
-                 return false;
+             public boolean onTouch(View v, MotionEvent event){
+                int motionX= (int) event.getX();
+                int motionY=(int) event.getY();
+                 return true;
              }
          });
     }

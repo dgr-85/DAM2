@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onDraw(Canvas canvas) {
-            int posicionX = 10;
+            int posicionX = 100;
             int posicionY = 10;
             int ancho = 300;
             int alto = 300;
