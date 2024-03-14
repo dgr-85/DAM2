@@ -3,12 +3,14 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -46,6 +48,7 @@ public class Vista1Controller implements Initializable {
 			}
 		}
 		tfPoints.setText(String.valueOf(manager.getPoints() * 4));
+		ivReset.setImage(new Image(getClass().getResourceAsStream("resource/img_new.png")));
 	}
 
 	public void instantiateImages() {
@@ -55,7 +58,16 @@ public class Vista1Controller implements Initializable {
 	}
 
 	public void gameStart() {
+		for (Node node : gpMain.getChildren()) {
+			node.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
+				@Override
+				public void handle(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+		}
 	}
 
 	public void gameEnd() {

@@ -15,7 +15,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setTitle("Vista Viewer");
+		stage.setTitle("Joc d'emparellar");
 
 		stage.setScene(createScene(loadMainPane()));
 

@@ -6,6 +6,7 @@ import java.util.function.UnaryOperator;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -88,6 +89,7 @@ public class Vista1Controller implements Initializable {
 		tfLetter.setText("");
 		lblFailedLetters.setVisible(manager.getShowFailedLetters());
 		tfFailedLetters.setVisible(manager.getShowFailedLetters());
+		tfFailedLetters.clear();
 		showFailedLetters = manager.getShowFailedLetters();
 		countRepetitionsAsErrors = manager.getCountRepetitionsAsErrors();
 		cardImg.setImage(images[count]);
@@ -97,6 +99,7 @@ public class Vista1Controller implements Initializable {
 	public void loadCard() {
 		cardImg.setImage(images[--count]);
 		if (count <= 0) {
+			displayAlert("You lost", "The word was: " + hiddenWord);
 			gameEnd();
 		}
 	}
@@ -131,6 +134,7 @@ public class Vista1Controller implements Initializable {
 					revealedWord = String.valueOf(revealedWordToArray);
 					lblWord.setText(revealedWord);
 					if (revealedWord.equals(hiddenWord)) {
+						displayAlert("You won!", "Congratulations!");
 						gameEnd();
 					}
 				} else {
@@ -161,6 +165,14 @@ public class Vista1Controller implements Initializable {
 		tfLetter.setDisable(true);
 		tfFailedLetters.clear();
 		btnPlay.setText(startGame);
+	}
+
+	public void displayAlert(String title, String text) {
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION); // TODO confirmar si vols reiniciar
+		alert.setTitle(title);
+		alert.setHeaderText("");
+		alert.setContentText(text);
+		alert.showAndWait();
 	}
 
 	@Override
