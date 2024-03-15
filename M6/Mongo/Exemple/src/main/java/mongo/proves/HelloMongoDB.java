@@ -18,12 +18,12 @@ public class HelloMongoDB {
 		 * MongoClients.create(
 		 * "mongodb+srv://m001-student:m001-student@marianao.zmw5t.mongodb.net/?retryWrites=true&w=majority")
 		 */
-//		try (MongoClient mongoClient = MongoClients.create()) {
-//
-//			List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
-//			databases.forEach(db -> System.out.println(db.toJson()));
-//
-//		}
+		try (MongoClient mongoClient = MongoClients.create()) {
+
+			List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
+			databases.forEach(db -> System.out.println(db.toJson()));
+
+		}
 
 		String connectionString = System.getProperty("mongodb.uri");
 		try (MongoClient mongoClient = MongoClients.create(/* connectionString */)) {

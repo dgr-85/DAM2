@@ -8,13 +8,21 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
-public class MappingPOJOs {
+public class ConnectionManager {
 
-	public static void main(String[] args) {
-		ConnectionString connectionString = new ConnectionString(System.getProperty("mongodb.uri"));
+	private static MongoClient connection = null;
+
+	private static int connect() {
+
+		/*
+		 * Create sense paràmetres connecta a localhost. Si volem connectar a un altre
+		 * se li ha de passar per paràmetres el string de connexió.:
+		 * MongoClients.create(
+		 * "mongodb+srv://m001-student:m001-student@marianao.zmw5t.mongodb.net/?retryWrites=true&w=majority")
+		 */
+
+		ConnectionString connectionString = new ConnectionString(System.getProperty("mongodb://localhost:27017"));
 
 		CodecRegistry pojoCodecRegistry = CodecRegistries
 				.fromProviders(PojoCodecProvider.builder().automatic(true).build());
@@ -25,10 +33,9 @@ public class MappingPOJOs {
 		MongoClientSettings clientSettings = MongoClientSettings.builder().applyConnectionString(connectionString)
 				.codecRegistry(codecRegistry).build();
 
-		try (MongoClient mongoClient = MongoClients.create(clientSettings)) {
-			MongoDatabase db = mongoClient.getDatabase("grades");
-			MongoCollection<Grade> grades = db.getCollection("grades", Grade.class);
-		}
+		connection = MongoClients.create(clientSettings);
+
+		return 1;
 	}
 
 }
