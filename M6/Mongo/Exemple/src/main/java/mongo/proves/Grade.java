@@ -22,6 +22,9 @@ public class Grade {
 		this.scores = scores;
 	}
 
+	public Grade() {
+	}
+
 	public ObjectId getId() {
 		return id;
 	}

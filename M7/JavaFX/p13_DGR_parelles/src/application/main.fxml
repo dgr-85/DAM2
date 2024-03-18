@@ -16,7 +16,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Fitxer">
             <items>
-              <MenuItem mnemonicParsing="false" text="Sortir" />
+              <MenuItem fx:id="miExit" mnemonicParsing="false" onAction="#quitGame" text="Sortir" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Jugar">

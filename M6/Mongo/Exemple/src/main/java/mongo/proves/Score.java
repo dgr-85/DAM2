@@ -12,6 +12,9 @@ public class Score {
 		this.score = score;
 	}
 
+	public Score() {
+	}
+
 	public String getType() {
 		return type;
 	}

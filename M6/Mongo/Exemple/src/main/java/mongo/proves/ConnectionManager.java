@@ -38,4 +38,15 @@ public class ConnectionManager {
 		return 1;
 	}
 
+	public static MongoClient getConnection() {
+		if (connection == null) {
+			connect();
+		}
+		return connection;
+	}
+
+	public static void closeConnection() {
+		connection.close();
+	}
+
 }

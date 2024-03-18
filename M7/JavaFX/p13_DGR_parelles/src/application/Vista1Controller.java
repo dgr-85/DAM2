@@ -1,6 +1,8 @@
 package application;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import javafx.event.EventHandler;
@@ -28,43 +30,49 @@ public class Vista1Controller implements Initializable {
 	private GridPane gpMain;
 
 	GameManager manager = GameManager.getManager();
-
 	Image[] images = new Image[6];
-
-	boolean loaded = false;
+	Image[] imagesDoubled;
 
 	public void init() {
-		if (!loaded) {
-			instantiateImages();
-			loaded = true;
-		}
+		instantiateImages();
+		clearImageViews();
+		tfPoints.clear();
+		ivReset.setImage(new Image(getClass().getResourceAsStream("resource/img_new.png")));
+	}
+
+	public void clearImageViews() {
 		for (Node node : gpMain.getChildren()) {
 			if (node instanceof ImageView) {
-				Integer r = GridPane.getRowIndex(node);
-				Integer c = GridPane.getColumnIndex(node);
-				int row = r == null ? 0 : r;
-				int col = c == null ? 0 : c;
 				((ImageView) node).setImage(new Image(getClass().getResourceAsStream("resource/img_off.jpg")));
 			}
 		}
-		tfPoints.setText(String.valueOf(manager.getPoints() * 4));
-		ivReset.setImage(new Image(getClass().getResourceAsStream("resource/img_new.png")));
 	}
 
 	public void instantiateImages() {
 		for (int i = 0; i < images.length; i++) {
 			images[i] = new Image(getClass().getResourceAsStream("resource/img0" + (i + 1) + ".jpg"));
 		}
+		for (int i = 0; i < imagesDoubled.length; i += 2) {
+			int j = 0;
+			imagesDoubled[i] = images[j];
+			imagesDoubled[i + 1] = images[j];
+			j++;
+		}
+		Collections.shuffle(Arrays.asList(imagesDoubled));
 	}
 
 	public void gameStart() {
+		imagesDoubled = new Image[manager.getPoints() * 2];
+		clearImageViews();
+		tfPoints.setText(String.valueOf(manager.getPoints() * 4));
 		for (Node node : gpMain.getChildren()) {
 			node.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
 				@Override
 				public void handle(MouseEvent arg0) {
-					// TODO Auto-generated method stub
-
+					if (node instanceof ImageView) {
+						int num = (int) (Math.random() * images.length);
+						((ImageView) node).setImage(images[num]);
+					}
 				}
 			});
 		}
@@ -78,4 +86,13 @@ public class Vista1Controller implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		init();
 	}
+
+	/*
+	 * De GridPane a array: pos array = columna + (fila * num columnes) p.e. fila 1
+	 * columna 3, total columnes 4 pos array = 3 + (1 * 4) = 7
+	 * 
+	 * D'array a GridPane: pos array // num columnes = fila pos array % num columnes
+	 * = columna p.e. pos array 7 7 // 4 = 1 7 % 4 = 3
+	 */
+
 }

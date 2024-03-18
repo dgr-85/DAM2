@@ -3,12 +3,16 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 
 /**
  * Main controller class for the entire layout.
  */
 public class MainController {
+
+	@FXML
+	private MenuItem miExit;
 
 	/** Holder of a switchable vista. */
 	@FXML
@@ -53,6 +57,10 @@ public class MainController {
 			}
 		}
 		return null;
+	}
+
+	public void quitGame() {
+		System.exit(1);
 	}
 
 }

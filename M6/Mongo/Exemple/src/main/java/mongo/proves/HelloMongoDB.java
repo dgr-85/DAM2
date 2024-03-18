@@ -1,6 +1,7 @@
 package mongo.proves;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bson.Document;
@@ -31,6 +32,21 @@ public class HelloMongoDB {
 			System.out.println("=> Print list of databases:");
 			List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
 			databases.forEach(db -> System.out.println(db.toJson()));
+		}
+
+		MongoClient con = ConnectionManager.getConnection();
+		GradesDAO gDAO = DAOManager.getGradesDAO();
+		Grade newGrade = new Grade();
+		newGrade.setStudentId(10003d);
+		newGrade.setClassId(10d);
+		Score newScore = new Score();
+		newScore.setType("homework");
+		newScore.setScore(50d);
+		newGrade.setScores(Arrays.asList(newScore));
+
+		Grade retrievedGrade = gDAO.findGradeById(0);
+		if (retrievedGrade != null) {
+			System.out.println(retrievedGrade.toString());
 		}
 	}
 
