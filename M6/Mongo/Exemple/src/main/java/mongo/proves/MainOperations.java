@@ -9,8 +9,9 @@ import org.bson.json.JsonWriterSettings;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.result.InsertOneResult;
 
-public class HelloMongoDB {
+public class MainOperations {
 	public static void main(String[] args) {
 
 		/*
@@ -19,14 +20,8 @@ public class HelloMongoDB {
 		 * MongoClients.create(
 		 * "mongodb+srv://m001-student:m001-student@marianao.zmw5t.mongodb.net/?retryWrites=true&w=majority")
 		 */
-		try (MongoClient mongoClient = MongoClients.create()) {
 
-			List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
-			databases.forEach(db -> System.out.println(db.toJson()));
-
-		}
-
-		String connectionString = System.getProperty("mongodb.uri");
+		// String connectionString = System.getProperty("mongodb.uri");
 		try (MongoClient mongoClient = MongoClients.create(/* connectionString */)) {
 			System.out.println("=> Connection successful: " + preFlightChecks(mongoClient));
 			System.out.println("=> Print list of databases:");
@@ -34,7 +29,10 @@ public class HelloMongoDB {
 			databases.forEach(db -> System.out.println(db.toJson()));
 		}
 
-		MongoClient con = ConnectionManager.getConnection();
+		// MongoClient con = ConnectionManager.getConnection();
+
+		// Add new Grade
+		System.out.println("Adding new Grade...");
 		GradesDAO gDAO = DAOManager.getGradesDAO();
 		Grade newGrade = new Grade();
 		newGrade.setStudentId(10003d);
@@ -43,11 +41,22 @@ public class HelloMongoDB {
 		newScore.setType("homework");
 		newScore.setScore(50d);
 		newGrade.setScores(Arrays.asList(newScore));
-
-		Grade retrievedGrade = gDAO.findGradeById(0);
-		if (retrievedGrade != null) {
-			System.out.println(retrievedGrade.toString());
+		InsertOneResult addResult = gDAO.addGrade(newGrade);
+		if (addResult != null) {
+			System.out.println("Grade added successfully.");
 		}
+
+		Double idFindGrade = 10003d;
+		System.out.println("Retrieving Grade with id " + idFindGrade + "...");
+		Grade retrievedGrade = gDAO.findGradeById(idFindGrade);
+		if (retrievedGrade != null) {
+			System.out.println("Grade found.");
+			System.out.println(retrievedGrade.toString());
+		} else {
+			System.out.println("Grade not found.");
+		}
+
+		ConnectionManager.closeConnection();
 	}
 
 	static boolean preFlightChecks(MongoClient mongoClient) {

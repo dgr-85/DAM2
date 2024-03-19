@@ -1,11 +1,13 @@
 package mongo.proves;
 
-public interface GradesDAO {
-	public void addGrade(Grade grade);
+import com.mongodb.client.result.InsertOneResult;
 
-	public Grade findGradeById(Integer id);
+public interface GradesDAO {
+	public InsertOneResult addGrade(Grade grade);
+
+	public Grade findGradeById(Double id);
 
 	public Grade updateGrade(Grade grade);
 
-	public void deleteGrade(Integer id);
+	public void deleteGrade(Double id);
 }

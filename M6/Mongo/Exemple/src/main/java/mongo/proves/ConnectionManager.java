@@ -13,7 +13,7 @@ public class ConnectionManager {
 
 	private static MongoClient connection = null;
 
-	private static int connect() {
+	private static void connect() {
 
 		/*
 		 * Create sense paràmetres connecta a localhost. Si volem connectar a un altre
@@ -22,7 +22,7 @@ public class ConnectionManager {
 		 * "mongodb+srv://m001-student:m001-student@marianao.zmw5t.mongodb.net/?retryWrites=true&w=majority")
 		 */
 
-		ConnectionString connectionString = new ConnectionString(System.getProperty("mongodb://localhost:27017"));
+		ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
 
 		CodecRegistry pojoCodecRegistry = CodecRegistries
 				.fromProviders(PojoCodecProvider.builder().automatic(true).build());
@@ -34,8 +34,6 @@ public class ConnectionManager {
 				.codecRegistry(codecRegistry).build();
 
 		connection = MongoClients.create(clientSettings);
-
-		return 1;
 	}
 
 	public static MongoClient getConnection() {
@@ -46,7 +44,11 @@ public class ConnectionManager {
 	}
 
 	public static void closeConnection() {
-		connection.close();
+		try {
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

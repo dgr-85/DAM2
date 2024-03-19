@@ -32,6 +32,7 @@ public class Vista1Controller implements Initializable {
 	GameManager manager = GameManager.getManager();
 	Image[] images = new Image[6];
 	Image[] imagesDoubled;
+	Boolean[] areImagesShowing;
 
 	public void init() {
 		instantiateImages();
@@ -52,8 +53,11 @@ public class Vista1Controller implements Initializable {
 		for (int i = 0; i < images.length; i++) {
 			images[i] = new Image(getClass().getResourceAsStream("resource/img0" + (i + 1) + ".jpg"));
 		}
+	}
+
+	public void instantiateImagesDoubled() {
+		int j = 0;
 		for (int i = 0; i < imagesDoubled.length; i += 2) {
-			int j = 0;
 			imagesDoubled[i] = images[j];
 			imagesDoubled[i + 1] = images[j];
 			j++;
@@ -61,8 +65,21 @@ public class Vista1Controller implements Initializable {
 		Collections.shuffle(Arrays.asList(imagesDoubled));
 	}
 
+	public void instantiateImageBooleans() {
+		areImagesShowing = new Boolean[imagesDoubled.length];
+		for (int i = 0; i < areImagesShowing.length; i++) {
+			areImagesShowing[i] = false;
+		}
+	}
+
+	// TODO 2 variables que guardin posició d'imatges clicades, comparar-les amb
+	// equals fent servir imagesDoubled
+	// areImagesShowing serveix per a ignorar si es clica una imatge ja mostrada
+
 	public void gameStart() {
 		imagesDoubled = new Image[manager.getPoints() * 2];
+		instantiateImageBooleans();
+		instantiateImagesDoubled();
 		clearImageViews();
 		tfPoints.setText(String.valueOf(manager.getPoints() * 4));
 		for (Node node : gpMain.getChildren()) {
@@ -70,11 +87,23 @@ public class Vista1Controller implements Initializable {
 				@Override
 				public void handle(MouseEvent arg0) {
 					if (node instanceof ImageView) {
-						int num = (int) (Math.random() * images.length);
-						((ImageView) node).setImage(images[num]);
+						flipImageCard(node);
 					}
 				}
 			});
+		}
+	}
+
+	public void flipImageCard(Node node) {
+		Integer row = GridPane.getRowIndex(node);
+		Integer column = GridPane.getColumnIndex(node);
+		row = row == null ? 0 : row;
+		column = column == null ? 0 : column;
+		Integer gridPosToArrayPos = row * gpMain.getColumnCount() + column;
+		if (gridPosToArrayPos < imagesDoubled.length) {
+			((ImageView) node).setImage(imagesDoubled[gridPosToArrayPos]);
+			areImagesShowing[gridPosToArrayPos] = true;
+			((ImageView) node).getImage();
 		}
 	}
 
@@ -91,8 +120,8 @@ public class Vista1Controller implements Initializable {
 	 * De GridPane a array: pos array = columna + (fila * num columnes) p.e. fila 1
 	 * columna 3, total columnes 4 pos array = 3 + (1 * 4) = 7
 	 * 
-	 * D'array a GridPane: pos array // num columnes = fila pos array % num columnes
-	 * = columna p.e. pos array 7 7 // 4 = 1 7 % 4 = 3
+	 * D'array a GridPane: pos array // num columnes = fila, pos array % num
+	 * columnes = columna p.e. pos array 7, 7 // 4 = 1 7 % 4 = 3
 	 */
 
 }
