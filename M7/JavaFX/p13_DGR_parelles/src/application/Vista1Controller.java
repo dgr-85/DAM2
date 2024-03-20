@@ -30,12 +30,13 @@ public class Vista1Controller implements Initializable {
 	private GridPane gpMain;
 
 	GameManager manager = GameManager.getManager();
-	Image[] images = new Image[6];
-	Image[] imagesDoubled;
-	Boolean[] areImagesShowing;
+	Image[] stockImages = new Image[6];
+	Image[] imagePairs;
+	Integer[] imgPositions = new Integer[2];
+	Integer cardsRevealed = 0;
 
 	public void init() {
-		instantiateImages();
+		instantiateImagesFromStock();
 		clearImageViews();
 		tfPoints.clear();
 		ivReset.setImage(new Image(getClass().getResourceAsStream("resource/img_new.png")));
@@ -49,27 +50,20 @@ public class Vista1Controller implements Initializable {
 		}
 	}
 
-	public void instantiateImages() {
-		for (int i = 0; i < images.length; i++) {
-			images[i] = new Image(getClass().getResourceAsStream("resource/img0" + (i + 1) + ".jpg"));
+	public void instantiateImagesFromStock() {
+		for (int i = 0; i < stockImages.length; i++) {
+			stockImages[i] = new Image(getClass().getResourceAsStream("resource/img0" + (i + 1) + ".jpg"));
 		}
 	}
 
-	public void instantiateImagesDoubled() {
+	public void instantiateImagePairs() {
 		int j = 0;
-		for (int i = 0; i < imagesDoubled.length; i += 2) {
-			imagesDoubled[i] = images[j];
-			imagesDoubled[i + 1] = images[j];
+		for (int i = 0; i < imagePairs.length; i += 2) {
+			imagePairs[i] = stockImages[j];
+			imagePairs[i + 1] = stockImages[j];
 			j++;
 		}
-		Collections.shuffle(Arrays.asList(imagesDoubled));
-	}
-
-	public void instantiateImageBooleans() {
-		areImagesShowing = new Boolean[imagesDoubled.length];
-		for (int i = 0; i < areImagesShowing.length; i++) {
-			areImagesShowing[i] = false;
-		}
+		Collections.shuffle(Arrays.asList(imagePairs));
 	}
 
 	// TODO 2 variables que guardin posició d'imatges clicades, comparar-les amb
@@ -77,9 +71,8 @@ public class Vista1Controller implements Initializable {
 	// areImagesShowing serveix per a ignorar si es clica una imatge ja mostrada
 
 	public void gameStart() {
-		imagesDoubled = new Image[manager.getPoints() * 2];
-		instantiateImageBooleans();
-		instantiateImagesDoubled();
+		imagePairs = new Image[manager.getPoints() * 2];
+		instantiateImagePairs();
 		clearImageViews();
 		tfPoints.setText(String.valueOf(manager.getPoints() * 4));
 		for (Node node : gpMain.getChildren()) {
@@ -100,11 +93,21 @@ public class Vista1Controller implements Initializable {
 		row = row == null ? 0 : row;
 		column = column == null ? 0 : column;
 		Integer gridPosToArrayPos = row * gpMain.getColumnCount() + column;
-		if (gridPosToArrayPos < imagesDoubled.length) {
-			((ImageView) node).setImage(imagesDoubled[gridPosToArrayPos]);
-			areImagesShowing[gridPosToArrayPos] = true;
-			((ImageView) node).getImage();
+		if (gridPosToArrayPos < imagePairs.length) {
+			((ImageView) node).setImage(imagePairs[gridPosToArrayPos]);
+			checkPair(gridPosToArrayPos);
 		}
+	}
+
+	public void checkPair(Integer position) {
+		if (Arrays.asList(imgPositions).contains(position)) {
+			return;
+		}
+
+	}
+
+	public void resetWrongCards(Integer first, Integer second) {
+
 	}
 
 	public void gameEnd() {
@@ -117,11 +120,11 @@ public class Vista1Controller implements Initializable {
 	}
 
 	/*
-	 * De GridPane a array: pos array = columna + (fila * num columnes) p.e. fila 1
-	 * columna 3, total columnes 4 pos array = 3 + (1 * 4) = 7
+	 * De GridPane a array: pos array = columna + (fila * num columnes) || p.e. fila
+	 * 1 columna 3, total columnes 4 || pos array = 3 + (1 * 4) = 7
 	 * 
-	 * D'array a GridPane: pos array // num columnes = fila, pos array % num
-	 * columnes = columna p.e. pos array 7, 7 // 4 = 1 7 % 4 = 3
+	 * D'array a GridPane: pos array // nºcolumnes = fila || pos array % num
+	 * columnes = columna || p.e. pos array 7 || 7 // 4 = 1, 7 % 4 = 3
 	 */
 
 }
