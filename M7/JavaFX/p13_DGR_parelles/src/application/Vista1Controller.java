@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,10 +33,13 @@ public class Vista1Controller implements Initializable {
 	GameManager manager = GameManager.getManager();
 	Image[] stockImages = new Image[6];
 	Image[] imagePairs;
-	Integer[] imgPositions = new Integer[2];
-	Integer cardsRevealed = 0;
+	Boolean[] areImgsFaceUp;
+	Integer firstCard = null;
+	Integer secondCard = null;
+	Integer totalColumns;
 
 	public void init() {
+		totalColumns = gpMain.getColumnCount();
 		instantiateImagesFromStock();
 		clearImageViews();
 		tfPoints.clear();
@@ -44,9 +48,7 @@ public class Vista1Controller implements Initializable {
 
 	public void clearImageViews() {
 		for (Node node : gpMain.getChildren()) {
-			if (node instanceof ImageView) {
-				((ImageView) node).setImage(new Image(getClass().getResourceAsStream("resource/img_off.jpg")));
-			}
+			((ImageView) node).setImage(new Image(getClass().getResourceAsStream("resource/img_off.jpg")));
 		}
 	}
 
@@ -66,13 +68,17 @@ public class Vista1Controller implements Initializable {
 		Collections.shuffle(Arrays.asList(imagePairs));
 	}
 
-	// TODO 2 variables que guardin posició d'imatges clicades, comparar-les amb
-	// equals fent servir imagesDoubled
-	// areImagesShowing serveix per a ignorar si es clica una imatge ja mostrada
+	public void instantiateImageBooleans() {
+		for (int i = 0; i < areImgsFaceUp.length; i++) {
+			areImgsFaceUp[i] = false;
+		}
+	}
 
 	public void gameStart() {
 		imagePairs = new Image[manager.getPoints() * 2];
 		instantiateImagePairs();
+		areImgsFaceUp = new Boolean[imagePairs.length];
+		instantiateImageBooleans();
 		clearImageViews();
 		tfPoints.setText(String.valueOf(manager.getPoints() * 4));
 		for (Node node : gpMain.getChildren()) {
@@ -80,51 +86,77 @@ public class Vista1Controller implements Initializable {
 				@Override
 				public void handle(MouseEvent arg0) {
 					if (node instanceof ImageView) {
-						flipImageCard(node);
+						turnCardFaceUp(node);
 					}
 				}
 			});
 		}
 	}
 
-	public void flipImageCard(Node node) {
+	public void trackScore() {
+		Integer currentPoints = Integer.parseInt(tfPoints.getText());
+		currentPoints = currentPoints > 0 ? currentPoints - 1 : 0;
+		tfPoints.setText(String.valueOf(currentPoints));
+	}
+
+	public void turnCardFaceUp(Node node) {
 		Integer row = GridPane.getRowIndex(node);
 		Integer column = GridPane.getColumnIndex(node);
-		row = row == null ? 0 : row;
-		column = column == null ? 0 : column;
-		Integer gridPosToArrayPos = row * gpMain.getColumnCount() + column;
-		if (gridPosToArrayPos < imagePairs.length) {
+		Integer gridPosToArrayPos = row * totalColumns + column;
+		if (gridPosToArrayPos < imagePairs.length && !areImgsFaceUp[gridPosToArrayPos]) {
+			trackScore();
 			((ImageView) node).setImage(imagePairs[gridPosToArrayPos]);
-			checkPair(gridPosToArrayPos);
+			areImgsFaceUp[gridPosToArrayPos] = true;
+			if (!Arrays.asList(areImgsFaceUp).contains(false)) {
+				gameEnd();
+			}
+			checkPlay(gridPosToArrayPos);
 		}
 	}
 
-	public void checkPair(Integer position) {
-		if (Arrays.asList(imgPositions).contains(position)) {
-			return;
+	public void checkPlay(Integer position) {
+		if (firstCard == null) {
+			firstCard = position;
+		} else if (secondCard == null) {
+			secondCard = position;
+		} else {
+			if (imagePairs[firstCard].equals(imagePairs[secondCard])) {
+				firstCard = position;
+				secondCard = null;
+			} else {
+				resetWrongCards(position);
+			}
 		}
-
 	}
 
-	public void resetWrongCards(Integer first, Integer second) {
-
+	public void resetWrongCards(Integer position) {
+		areImgsFaceUp[firstCard] = false;
+		areImgsFaceUp[secondCard] = false;
+		Integer firstRow = firstCard / totalColumns;
+		Integer firstColumn = firstCard % totalColumns;
+		Integer secondRow = secondCard / totalColumns;
+		Integer secondColumn = secondCard % totalColumns;
+		for (Node node : gpMain.getChildren()) {
+			if ((GridPane.getRowIndex(node).equals(firstRow) && GridPane.getColumnIndex(node).equals(firstColumn))
+					|| (GridPane.getRowIndex(node).equals(secondRow)
+							&& GridPane.getColumnIndex(node).equals(secondColumn))) {
+				((ImageView) node).setImage(new Image(getClass().getResourceAsStream("resource/img_off.jpg")));
+			}
+		}
+		firstCard = position;
+		secondCard = null;
 	}
 
 	public void gameEnd() {
-
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setTitle("Has acabat la partida");
+		alert.setHeaderText("");
+		alert.setContentText("La teva puntuació final és: " + tfPoints.getText());
+		alert.showAndWait();
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		init();
 	}
-
-	/*
-	 * De GridPane a array: pos array = columna + (fila * num columnes) || p.e. fila
-	 * 1 columna 3, total columnes 4 || pos array = 3 + (1 * 4) = 7
-	 * 
-	 * D'array a GridPane: pos array // nºcolumnes = fila || pos array % num
-	 * columnes = columna || p.e. pos array 7 || 7 // 4 = 1, 7 % 4 = 3
-	 */
-
 }
