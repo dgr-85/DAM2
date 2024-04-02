@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">uf3_p1_graphics&amp;animations</string>
+    <string name="title">Graphics &amp; Animations</string>
+    <string name="act_draw_circle">Draw Circles</string>
 </resources>
