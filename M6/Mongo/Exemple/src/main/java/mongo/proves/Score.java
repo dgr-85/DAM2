@@ -50,6 +50,6 @@ public class Score {
 
 	@Override
 	public String toString() {
-		return "Score [type=" + type + ", score=" + score + "]";
+		return "[type=" + type + ", score=" + score + "]";
 	}
 }

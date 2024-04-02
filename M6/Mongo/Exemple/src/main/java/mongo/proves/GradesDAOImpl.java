@@ -15,8 +15,7 @@ import com.mongodb.client.result.InsertOneResult;
 
 public class GradesDAOImpl implements GradesDAO {
 
-	// Connexions a MongoDB són costoses, millor tancar-la 1 sol cop al final del
-	// main
+	// Connexions a MongoDB són costoses, millor tancar-la només al final del main
 
 	@Override
 	public InsertOneResult addGrade(Grade grade) {
@@ -37,8 +36,7 @@ public class GradesDAOImpl implements GradesDAO {
 			MongoClient mongoClient = ConnectionManager.getConnection();
 			MongoDatabase db = mongoClient.getDatabase("grades");
 			MongoCollection<Grade> grades = db.getCollection("grades", Grade.class);
-			Grade grade = grades.find(Filters.eq("student_id", id)).first();
-			return grade;
+			return grades.find(Filters.eq("student_id", id)).first();
 		} catch (Exception e) {
 			System.out.println("Error retrieving grade with id " + id + ".");
 			return null;
@@ -60,9 +58,7 @@ public class GradesDAOImpl implements GradesDAO {
 			Document filterByGradeId = new Document("_id", grade.getId());
 			FindOneAndReplaceOptions returnDocAfterReplace = new FindOneAndReplaceOptions()
 					.returnDocument(ReturnDocument.AFTER);
-			Grade updatedGrade = grades.findOneAndReplace(filterByGradeId, grade, returnDocAfterReplace);
-			System.out.println("Grade replaced:\t" + updatedGrade);
-			return updatedGrade;
+			return grades.findOneAndReplace(filterByGradeId, grade, returnDocAfterReplace);
 		} catch (Exception e) {
 			System.out.println("Error updating Grade " + grade);
 			return null;
@@ -75,7 +71,7 @@ public class GradesDAOImpl implements GradesDAO {
 			MongoClient mongoClient = ConnectionManager.getConnection();
 			MongoDatabase db = mongoClient.getDatabase("grades");
 			MongoCollection<Grade> grades = db.getCollection("grades", Grade.class);
-			Document filterByGradeId = new Document("_id", id);
+			Document filterByGradeId = new Document("student_id", id);
 			System.out.println(grades.deleteOne(filterByGradeId));
 		} catch (Exception e) {
 			System.out.println("Error deleting Grade with id " + id + ".");

@@ -46,15 +46,28 @@ public class MainOperations {
 			System.out.println("Grade added successfully.");
 		}
 
+		// Get Grade by Id
 		Double idFindGrade = 10003d;
 		System.out.println("Retrieving Grade with id " + idFindGrade + "...");
 		Grade retrievedGrade = gDAO.findGradeById(idFindGrade);
 		if (retrievedGrade != null) {
-			System.out.println("Grade found.");
-			System.out.println(retrievedGrade.toString());
+			System.out.println("Grade found: " + retrievedGrade.toString());
 		} else {
 			System.out.println("Grade not found.");
 		}
+
+		// Update Grade
+		System.out.println("Updating Grade with id " + idFindGrade + "...");
+		Grade updatedGrade = gDAO.updateGrade(retrievedGrade);
+		if (updatedGrade != null) {
+			System.out.println("Grade updated: " + updatedGrade.toString());
+		} else {
+			System.out.println("Error updating Grade.");
+		}
+
+		// Delete Grade
+		System.out.println("Deleting Grade with id " + idFindGrade + "...");
+		gDAO.deleteGrade(idFindGrade);
 
 		ConnectionManager.closeConnection();
 	}

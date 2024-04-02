@@ -77,7 +77,7 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		return "Grade [id=" + id + ", studentId=" + studentId + ", classId=" + classId + ", scores=" + scores + "]";
+		return "[id=" + id + ", studentId=" + studentId + ", classId=" + classId + ", scores=" + scores + "]";
 	}
 
 }
