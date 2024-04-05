@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">uf3_p1_graphics&amp;animations</string>
     <string name="title">Graphics &amp; Animations</string>
+    <string name="btn_go_back">Go Back</string>
     <string name="act_draw_circle">Draw Circles</string>
+    <string name="act_tween">Tween Animation</string>
+    <string name="act_sun_move">Sun Movement</string>
+    <string name="act_wheel_rotate">Wheel of Fortune</string>
 </resources>

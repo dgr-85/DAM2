@@ -35,22 +35,22 @@
                 android:text="@string/act_draw_circle" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
+                android:id="@+id/btnTween"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="@string/act_tween" />
 
             <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
+                android:id="@+id/btnSunMove"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="@string/act_sun_move" />
 
             <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
+                android:id="@+id/btnWheelRotate"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="@string/act_wheel_rotate" />
 
             <Button
                 android:id="@+id/button4"
