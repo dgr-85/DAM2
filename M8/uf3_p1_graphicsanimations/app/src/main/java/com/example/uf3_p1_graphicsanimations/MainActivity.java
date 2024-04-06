@@ -23,10 +23,12 @@ public class MainActivity extends AppCompatActivity{
             Button btnTween=findViewById(R.id.btnTween);
             Button btnSunMove=findViewById(R.id.btnSunMove);
             Button btnWheel=findViewById(R.id.btnWheelRotate);
+            Button btnSky=findViewById(R.id.btnSky);
 
             btnCircle.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), DrawCircleActivity.class)));
             btnTween.setOnClickListener(v -> v.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(),R.anim.tween)));
             btnSunMove.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SunMoveActivity.class)));
             btnWheel.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), WheelFortuneActivity.class)));
+            btnSky.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SkyColorActivity.class)));
         }
 }

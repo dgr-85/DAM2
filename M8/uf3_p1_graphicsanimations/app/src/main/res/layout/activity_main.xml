@@ -53,16 +53,11 @@
                 android:text="@string/act_wheel_rotate" />
 
             <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
+                android:id="@+id/btnSky"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="@string/act_sky_color" />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

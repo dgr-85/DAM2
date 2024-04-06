@@ -20,16 +20,27 @@ public class WheelFortuneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wheel_fortune);
 
-        wheel=findViewById(R.id.ivWheel);
-        wheelSet=new AnimatorSet();
+        wheel = findViewById(R.id.ivWheel);
+        wheelSet = new AnimatorSet();
         TimeInterpolator interpolator = new LinearInterpolator();
 
-        ValueAnimator wheelRotate= ObjectAnimator.ofFloat(wheel,"rotation",0,360);
-        wheelRotate.setDuration(7000).setRepeatCount(ValueAnimator.INFINITE);
+        ValueAnimator wheelRotate = ObjectAnimator.ofFloat(wheel, "rotation", 0, 360);
+        wheelRotate.setDuration(8000).setRepeatCount(ValueAnimator.INFINITE);
+        wheelRotate.setRepeatMode(ValueAnimator.REVERSE);
         wheelRotate.setInterpolator(interpolator);
-        wheelSet.play(wheelRotate);
 
-        ValueAnimator wheelVanish=ObjectAnimator.of
+        ValueAnimator wheelMove = ObjectAnimator.ofFloat(wheel, "y", -150, 150);
+        wheelMove.setDuration(8000).setRepeatCount(ValueAnimator.INFINITE);
+        wheelMove.setRepeatMode(ValueAnimator.REVERSE);
+        wheelMove.setInterpolator(interpolator);
+
+        ValueAnimator fadeAnim = ObjectAnimator.ofFloat(wheel, "alpha", 0f, 1f);
+        fadeAnim.setDuration(4000);
+        fadeAnim.setRepeatCount(ValueAnimator.INFINITE);
+        fadeAnim.setRepeatMode(ValueAnimator.REVERSE);
+
+        wheelSet.playTogether(wheelRotate, fadeAnim, wheelMove);
+
         wheelSet.start();
     }
 }

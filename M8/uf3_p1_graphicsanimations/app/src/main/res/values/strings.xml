@@ -6,4 +6,5 @@
     <string name="act_tween">Tween Animation</string>
     <string name="act_sun_move">Sun Movement</string>
     <string name="act_wheel_rotate">Wheel of Fortune</string>
+    <string name="act_sky_color">Multicolor Night Sky</string>
 </resources>
