@@ -1,14 +1,14 @@
 package models;
 
-public class Product {
+public class Competitor {
 	private String name;
 	private String permalink;
 
-	public Product() {
+	public Competitor() {
 		super();
 	}
 
-	public Product(String name, String permalink) {
+	public Competitor(String name, String permalink) {
 		super();
 		this.name = name;
 		this.permalink = permalink;
@@ -29,4 +29,5 @@ public class Product {
 	public void setPermalink(String permalink) {
 		this.permalink = permalink;
 	}
+
 }

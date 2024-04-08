@@ -1,5 +1,11 @@
 package dao.impl;
 
+import org.bson.Document;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 
 import dao.CompaniesDAO;
@@ -9,25 +15,53 @@ public class CompaniesDAOImpl implements CompaniesDAO {
 
 	@Override
 	public InsertOneResult addCompany(Company company) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			MongoClient mongoClient = managers.ConnectionManager.getConnection();
+			MongoDatabase db = mongoClient.getDatabase("companies");
+			MongoCollection<Company> companies = db.getCollection("companies", Company.class);
+			return companies.insertOne(company);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
 	public Company getCompanyByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			MongoClient mongoClient = managers.ConnectionManager.getConnection();
+			MongoDatabase db = mongoClient.getDatabase("companies");
+			MongoCollection<Company> companies = db.getCollection("companies", Company.class);
+			return companies.find(Filters.eq("name", name)).first();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
 	public Company upgradeCompany(Company company) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			MongoClient mongoClient = managers.ConnectionManager.getConnection();
+			MongoDatabase db = mongoClient.getDatabase("companies");
+			MongoCollection<Company> companies = db.getCollection("companies", Company.class);
+
+			Document filterByCompanyname = new Document("_id", company.getId());
+			return null;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override
 	public void deleteCompany(String name) {
-		// TODO Auto-generated method stub
+		try {
+			MongoClient mongoClient = managers.ConnectionManager.getConnection();
+			MongoDatabase db = mongoClient.getDatabase("companies");
+			MongoCollection<Company> companies = db.getCollection("companies", Company.class);
+			Document filterByCompanyName = new Document("name", name);
+			System.out.println(companies.deleteOne(filterByCompanyName));
+		} catch (Exception e) {
+			System.out.println("Error deleting Company " + name + ".");
+		}
 
 	}
 

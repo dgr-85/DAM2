@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PyQt_01.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PyQt_02.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ExamenUF1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenUF1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/dao/impl/CompaniesDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/dao/impl/CompaniesDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Competition.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Competition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Office.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Relationship.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Relationship.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/META-INF/maven/cat.institutmarianao/companies/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/META-INF/maven/cat.institutmarianao/companies/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/dao/impl/CompaniesDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/dao/impl/CompaniesDAOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Company.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Competition.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Competition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Office.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Office.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Relationship.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Relationship.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PyQt_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyQt_02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +25,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PyQt_01.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -26,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PyQt_02.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+            <state relative-caret-position="345">
+              <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -105,7 +117,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -191,26 +204,27 @@
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="852" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.50031704" side_tool="true" weight="0.32960895" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49968293" weight="0.32960895" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39944133" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32960895" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50031704" side_tool="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ui/PyQt_02.ui" />
     <entry file="file://$PROJECT_DIR$/PyQt_01.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -218,17 +232,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/PyQt_02.ui">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/venv/pyvenv.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/PyQt_02.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        <state relative-caret-position="345">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
