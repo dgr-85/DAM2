@@ -6,6 +6,8 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.FindOneAndReplaceOptions;
+import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.result.InsertOneResult;
 
 import dao.CompaniesDAO;
@@ -38,14 +40,16 @@ public class CompaniesDAOImpl implements CompaniesDAO {
 	}
 
 	@Override
-	public Company upgradeCompany(Company company) {
+	public Company updateCompany(Company company) {
 		try {
 			MongoClient mongoClient = managers.ConnectionManager.getConnection();
 			MongoDatabase db = mongoClient.getDatabase("companies");
 			MongoCollection<Company> companies = db.getCollection("companies", Company.class);
-
+			company.setOverview("We must find out if the updateCompany method works correctly.");
 			Document filterByCompanyname = new Document("_id", company.getId());
-			return null;
+			FindOneAndReplaceOptions returnDocAfterReplace = new FindOneAndReplaceOptions()
+					.returnDocument(ReturnDocument.AFTER);
+			return companies.findOneAndReplace(filterByCompanyname, company, returnDocAfterReplace);
 		} catch (Exception e) {
 			return null;
 		}

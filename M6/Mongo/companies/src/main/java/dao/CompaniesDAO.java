@@ -9,7 +9,7 @@ public interface CompaniesDAO {
 
 	public Company getCompanyByName(String name);
 
-	public Company upgradeCompany(Company company);
+	public Company updateCompany(Company company);
 
 	public void deleteCompany(String name);
 }

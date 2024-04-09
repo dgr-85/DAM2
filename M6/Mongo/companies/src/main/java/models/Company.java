@@ -262,4 +262,16 @@ public class Company {
 	public void setFoundedDay(Integer foundedDay) {
 		this.foundedDay = foundedDay;
 	}
+
+	@Override
+	public String toString() {
+		return "[id=" + id + ", name=" + name + ", permalink=" + permalink + ", homepageUrl=" + homepageUrl
+				+ ", blogUrl=" + blogUrl + ", blogFeedUrl=" + blogFeedUrl + ", twitterUsername=" + twitterUsername
+				+ ", categoryCode=" + categoryCode + ", numberOfEmployees=" + numberOfEmployees + ", foundedYear="
+				+ foundedYear + ", tagList=" + tagList + ", aliasList=" + aliasList + ", emailAddress=" + emailAddress
+				+ ", phoneNumber=" + phoneNumber + ", description=" + description + ", overview=" + overview
+				+ ", products=" + products + ", relationships=" + relationships + ", competitions=" + competitions
+				+ ", totalMoneyRaised=" + totalMoneyRaised + ", offices=" + offices + ", foundedMonth=" + foundedMonth
+				+ ", foundedDay=" + foundedDay + "]";
+	}
 }
