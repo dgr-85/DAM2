@@ -1,0 +1,15 @@
+lrwxrwxrwx    1 0        0               8 Aug 20  2004 CRYPTO.README -> .message
+-rw-r--r--    1 0        0           17864 Oct 23  2003 MISSING-FILES
+-rw-r--r--    1 0        0            4178 Aug 13  2003 MISSING-FILES.README
+-rw-r--r--    1 0        0            2748 May 23  2023 README
+-rw-r--r--    1 0        0          405121 Oct 23  2003 before-2003-08-01.md5sums.asc
+-rw-rw-r--    1 0        3003       250464 Apr 07 21:34 find.txt.gz
+drwxrwxr-x  323 0        3003        12288 Jan 23 22:28 gnu
+drwxrwxr-x    3 0        3003         4096 Mar 10  2011 gnu+linux-distros
+-rw-rw-r--    1 0        3003       482888 Apr 07 21:34 ls-lrRt.txt.gz
+drwxr-xr-x    3 0        0            4096 Apr 20  2005 mirrors
+lrwxrwxrwx    1 0        0              11 Apr 15  2004 non-gnu -> gnu/non-gnu
+drwxr-xr-x   99 0        0            4096 May 08  2023 old-gnu
+lrwxrwxrwx    1 0        0               1 Aug 05  2003 pub -> .
+drwxr-xr-x    2 0        0            4096 Nov 08  2007 savannah
+drwxr-xr-x    2 0     

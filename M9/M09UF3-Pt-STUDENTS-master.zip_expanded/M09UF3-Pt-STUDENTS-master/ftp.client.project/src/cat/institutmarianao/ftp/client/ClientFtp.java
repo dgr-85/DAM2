@@ -2,8 +2,10 @@ package cat.institutmarianao.ftp.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +30,7 @@ public class ClientFtp implements Runnable {
 
 	private DataChannelSynchronizer dataChannelSynchronizer;
 	private Socket controlChannelSocket;
-	private Socket datatChannelSocket = null;
+	private Socket dataChannelSocket = null;
 	private BufferedReader in = null;
 	private PrintWriter out = null;
 	private boolean end = false;
@@ -43,8 +45,13 @@ public class ClientFtp implements Runnable {
 	public void connectTo(String server, int port) throws IOException {
 		// TODO - initialise controlChannelSocket, in, out attributes from server and
 		// port parameters
+		controlChannelSocket = new Socket(server, port);
+		in = new BufferedReader(new InputStreamReader(controlChannelSocket.getInputStream()));
+		out = new PrintWriter(controlChannelSocket.getOutputStream());
 
 		// TODO - start the listener thread
+		Thread thread = new Thread(this);
+		thread.start();
 	}
 
 	public void authenticate(String user, String pass) {
@@ -54,49 +61,59 @@ public class ClientFtp implements Runnable {
 
 	public String sendPassv() {
 		// TODO send corresponding command
-		return "TODO return command sent";
+		send(PASV);
+		return "PASV sent";
 	}
 
 	public String sendList(OutputStream out, boolean closeOutput) throws IOException {
 		// TODO send corresponding command
 		// TODO print to out the response from the server
-		return "TODO return command sent";
+		send(LIST);
+		return "LIST sent";
 	}
 
 	public String sendCdup() {
 		// TODO send corresponding command
-		return "TODO return command sent";
+		send(CDUP);
+		return "CDUP sent";
 	}
 
 	public String sendCwd(String down) {
 		// TODO send corresponding command
-		return "TODO return command sent";
+		send(CWD + down);
+		return "CWD sent";
 	}
 
 	public String sendPwd() {
 		// TODO send corresponding command
-		return "TODO return command sent";
+		send(PWD);
+		return "PWD sent";
 	}
 
 	public String sendQuit() {
 		// TODO send corresponding command
-		return "TODO return command sent";
+		send(QUIT);
+		return "QUIT sent";
 	}
 
 	public String sendRetr(String remote, OutputStream out, boolean closeOutput) throws IOException {
 		// TODO send corresponding command
+		send(RETR);
 		// TODO print to out the response from the server
-		return "TODO return command sent";
+		processInputData(out, closeOutput);
+		return "RETR sent";
 	}
 
 	public String sendUser(String user) {
 		// TODO send corresponding command
-		return "TODO return command sent";
+		send(USER + user);
+		return "USER sent";
 	}
 
 	public String sendPass(String pass) {
 		// TODO send corresponding command
-		return "TODO return command sent";
+		send(PASS + pass);
+		return "PASS sent";
 	}
 
 	public void close() {
@@ -116,7 +133,7 @@ public class ClientFtp implements Runnable {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			close(controlChannelSocket);
-			close(datatChannelSocket);
+			close(dataChannelSocket);
 		}
 
 	}
@@ -162,14 +179,15 @@ public class ClientFtp implements Runnable {
 	/*
 	 * creates a data socket
 	 */
-	private void createDataSocket(byte[] addres, int port) {
-//		try {
-//			// TODO Create datatChannelSocket and uncomment the try/catch block
-//			passiveError = false;
-//		} catch (IOException ex) {
-//			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-//			passiveError = true;
-//		}
+	private void createDataSocket(byte[] address, int port) {
+		try {
+			// TODO Create datatChannelSocket and uncomment the try/catch block
+			dataChannelSocket = new Socket(InetAddress.getByAddress(address), port);
+			passiveError = false;
+		} catch (IOException ex) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+			passiveError = true;
+		}
 		// Data channel is ready
 		dataChannelSynchronizer.setReady();
 	}
@@ -180,6 +198,17 @@ public class ClientFtp implements Runnable {
 	private void processInputData(OutputStream out, boolean closeOutput) throws IOException {
 		// TODO - Wait for the data channel is ready. After that, check that there is
 		// no error (passiveError) and download the input data from the server
+		dataChannelSynchronizer.waitToReady();
+		if (!passiveError) {
+			byte[] buffer = new byte[1024];
+			int bytesToRead = dataChannelSocket.getInputStream().read(buffer);
+			if (bytesToRead != -1) {
+				out.write(buffer);
+			}
+			if (closeOutput) {
+				out.close();
+			}
+		}
 	}
 
 	private void send(String message) {
@@ -198,5 +227,18 @@ public class ClientFtp implements Runnable {
 
 	private void close(Socket socket) {
 		// TODO close properly all socket streams before closing the socket
+		try {
+			if (socket != null) {
+				socket.shutdownInput();
+			}
+			if (!socket.isOutputShutdown()) {
+				socket.shutdownInput();
+			}
+			if (!socket.isClosed()) {
+				socket.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
