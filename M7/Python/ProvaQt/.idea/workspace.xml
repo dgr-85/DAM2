@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/dao/impl/CompaniesDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/dao/impl/CompaniesDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Competition.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Competition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Office.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Office.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Relationship.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/models/Relationship.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/META-INF/maven/cat.institutmarianao/companies/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/META-INF/maven/cat.institutmarianao/companies/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/dao/impl/CompaniesDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/dao/impl/CompaniesDAOImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Competition.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Competition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Office.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Office.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Relationship.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/models/Relationship.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PyQt_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyQt_02.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/mainwindow.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PyQt_03.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,14 +21,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PyQt_02.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state relative-caret-position="255">
+              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PyQt_03.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -66,17 +61,7 @@
         <option value="$PROJECT_DIR$/ui/PyQt_02.py" />
         <option value="$PROJECT_DIR$/ui/PyQt_02.ui" />
         <option value="$PROJECT_DIR$/PyQt_02.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/ProvaQt.iml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+        <option value="$PROJECT_DIR$/PyQt_03.py" />
       </list>
     </option>
   </component>
@@ -138,7 +123,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyQt_02">
+  <component name="RunManager" selected="Python.PyQt_03">
     <configuration name="PyQt_01" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProvaQt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,8 +166,30 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="PyQt_03" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ProvaQt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyQt_03.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.PyQt_03" />
         <item itemvalue="Python.PyQt_02" />
         <item itemvalue="Python.PyQt_01" />
       </list>
@@ -225,6 +232,19 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ui/PyQt_02.ui" />
+    <entry file="file://$PROJECT_DIR$/venv/pyvenv.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PyQt_01.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -232,16 +252,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/pyvenv.cfg">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
+    <entry file="file://$PROJECT_DIR$/PyQt_03.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
         </state>
       </provider>
     </entry>

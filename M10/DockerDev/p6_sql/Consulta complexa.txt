@@ -1,0 +1,6 @@
+select cia.name company, emp.name employee, emp.function job, emp.email, emp.phone
+	from res_partner cia
+	left join res_partner emp on emp.parent_id = cia.id
+	where cia.is_company = true
+	and (emp.type = 'contact' or emp.type is null)
+	order by cia.name, emp.name;
