@@ -43,13 +43,10 @@ public class ClientFtp implements Runnable {
 	}
 
 	public void connectTo(String server, int port) throws IOException {
-		// TODO - initialise controlChannelSocket, in, out attributes from server and
-		// port parameters
 		controlChannelSocket = new Socket(server, port);
 		in = new BufferedReader(new InputStreamReader(controlChannelSocket.getInputStream()));
 		out = new PrintWriter(controlChannelSocket.getOutputStream());
 
-		// TODO - start the listener thread
 		Thread thread = new Thread(this);
 		thread.start();
 	}
@@ -60,58 +57,48 @@ public class ClientFtp implements Runnable {
 	}
 
 	public String sendPassv() {
-		// TODO send corresponding command
 		send(PASV);
 		return "PASV sent";
 	}
 
 	public String sendList(OutputStream out, boolean closeOutput) throws IOException {
-		// TODO send corresponding command
-		// TODO print to out the response from the server
 		send(LIST);
+		processInputData(out, closeOutput);
 		return "LIST sent";
 	}
 
 	public String sendCdup() {
-		// TODO send corresponding command
 		send(CDUP);
 		return "CDUP sent";
 	}
 
 	public String sendCwd(String down) {
-		// TODO send corresponding command
 		send(CWD + down);
 		return "CWD sent";
 	}
 
 	public String sendPwd() {
-		// TODO send corresponding command
 		send(PWD);
 		return "PWD sent";
 	}
 
 	public String sendQuit() {
-		// TODO send corresponding command
 		send(QUIT);
 		return "QUIT sent";
 	}
 
 	public String sendRetr(String remote, OutputStream out, boolean closeOutput) throws IOException {
-		// TODO send corresponding command
-		send(RETR);
-		// TODO print to out the response from the server
+		send(RETR + remote);
 		processInputData(out, closeOutput);
 		return "RETR sent";
 	}
 
 	public String sendUser(String user) {
-		// TODO send corresponding command
 		send(USER + user);
 		return "USER sent";
 	}
 
 	public String sendPass(String pass) {
-		// TODO send corresponding command
 		send(PASS + pass);
 		return "PASS sent";
 	}
@@ -165,15 +152,15 @@ public class ClientFtp implements Runnable {
 	 * Gets the ip and port from the byte string and creates a data socket
 	 */
 	private void passiveService(String str) throws IOException {
-		byte[] adress = new byte[4];
+		byte[] address = new byte[4];
 		String[] strBytes = str.split(",");
 		for (int i = 0; i < 4; i++) {
-			adress[i] = (byte) Integer.parseInt(strBytes[i]);
+			address[i] = (byte) Integer.parseInt(strBytes[i]);
 		}
 		int port = Integer.parseInt(strBytes[4]) * 256;
 		port += Integer.parseInt(strBytes[5]);
 
-		createDataSocket(adress, port);
+		createDataSocket(address, port);
 	}
 
 	/*
@@ -181,7 +168,6 @@ public class ClientFtp implements Runnable {
 	 */
 	private void createDataSocket(byte[] address, int port) {
 		try {
-			// TODO Create datatChannelSocket and uncomment the try/catch block
 			dataChannelSocket = new Socket(InetAddress.getByAddress(address), port);
 			passiveError = false;
 		} catch (IOException ex) {
@@ -196,13 +182,11 @@ public class ClientFtp implements Runnable {
 	 * Receive input data from data channel
 	 */
 	private void processInputData(OutputStream out, boolean closeOutput) throws IOException {
-		// TODO - Wait for the data channel is ready. After that, check that there is
-		// no error (passiveError) and download the input data from the server
 		dataChannelSynchronizer.waitToReady();
 		if (!passiveError) {
 			byte[] buffer = new byte[1024];
-			int bytesToRead = dataChannelSocket.getInputStream().read(buffer);
-			if (bytesToRead != -1) {
+			int readingBytes = dataChannelSocket.getInputStream().read(buffer);
+			if (readingBytes != -1) {
 				out.write(buffer);
 			}
 			if (closeOutput) {
@@ -226,13 +210,12 @@ public class ClientFtp implements Runnable {
 	}
 
 	private void close(Socket socket) {
-		// TODO close properly all socket streams before closing the socket
 		try {
 			if (socket != null) {
 				socket.shutdownInput();
 			}
 			if (!socket.isOutputShutdown()) {
-				socket.shutdownInput();
+				socket.shutdownOutput();
 			}
 			if (!socket.isClosed()) {
 				socket.close();
