@@ -22,4 +22,8 @@ public class Competition {
 		this.competitors = competitors;
 	}
 
+	@Override
+	public String toString() {
+		return "Competition [competitors=" + competitors + "]";
+	}
 }

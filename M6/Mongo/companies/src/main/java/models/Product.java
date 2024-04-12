@@ -29,4 +29,9 @@ public class Product {
 	public void setPermalink(String permalink) {
 		this.permalink = permalink;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [name=" + name + ", permalink=" + permalink + "]";
+	}
 }

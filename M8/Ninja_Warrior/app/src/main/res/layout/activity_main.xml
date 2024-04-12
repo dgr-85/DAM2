@@ -4,4 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    android:background="@drawable/wallpaper"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#9BC8FF"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:title="@string/title" />
+
+            <TextView
+                android:id="@+id/tvtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:fontFamily="@font/shojumaru"
+                android:text="@string/title"
+                android:textSize="34sp" />
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="#9BC8FF"
+                android:fontFamily="@font/shojumaru"
+                android:text="@string/main_play" />
+
+            <Button
+                android:id="@+id/btnScore"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="#9BC8FF"
+                android:fontFamily="@font/shojumaru"
+                android:text="@string/main_score" />
+
+            <Button
+                android:id="@+id/btnQuit"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:backgroundTint="#9BC8FF"
+                android:fontFamily="@font/shojumaru"
+                android:text="@string/main_quit" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

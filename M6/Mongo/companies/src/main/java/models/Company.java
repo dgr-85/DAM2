@@ -265,13 +265,19 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return "[id=" + id + ", name=" + name + ", permalink=" + permalink + ", homepageUrl=" + homepageUrl
-				+ ", blogUrl=" + blogUrl + ", blogFeedUrl=" + blogFeedUrl + ", twitterUsername=" + twitterUsername
-				+ ", categoryCode=" + categoryCode + ", numberOfEmployees=" + numberOfEmployees + ", foundedYear="
-				+ foundedYear + ", tagList=" + tagList + ", aliasList=" + aliasList + ", emailAddress=" + emailAddress
-				+ ", phoneNumber=" + phoneNumber + ", description=" + description + ", overview=" + overview
-				+ ", products=" + products + ", relationships=" + relationships + ", competitions=" + competitions
-				+ ", totalMoneyRaised=" + totalMoneyRaised + ", offices=" + offices + ", foundedMonth=" + foundedMonth
-				+ ", foundedDay=" + foundedDay + "]";
+		return System.lineSeparator() + "id=" + id + System.lineSeparator() + "name=" + name + System.lineSeparator()
+				+ "permalink=" + permalink + System.lineSeparator() + "homepageUrl=" + homepageUrl
+				+ System.lineSeparator() + "blogUrl=" + blogUrl + System.lineSeparator() + "blogFeedUrl=" + blogFeedUrl
+				+ System.lineSeparator() + "twitterUsername=" + twitterUsername + System.lineSeparator()
+				+ "categoryCode=" + categoryCode + System.lineSeparator() + "numberOfEmployees=" + numberOfEmployees
+				+ System.lineSeparator() + "foundedYear=" + foundedYear + System.lineSeparator() + "tagList=" + tagList
+				+ System.lineSeparator() + "aliasList=" + aliasList + System.lineSeparator() + "emailAddress="
+				+ emailAddress + System.lineSeparator() + "phoneNumber=" + phoneNumber + System.lineSeparator()
+				+ "description=" + description + System.lineSeparator() + "overview=" + overview
+				+ System.lineSeparator() + "products=" + products + System.lineSeparator() + "relationships="
+				+ relationships + System.lineSeparator() + "competitions=" + competitions + System.lineSeparator()
+				+ "totalMoneyRaised=" + totalMoneyRaised + System.lineSeparator() + "offices=" + offices
+				+ System.lineSeparator() + "foundedMonth=" + foundedMonth + System.lineSeparator() + "foundedDay="
+				+ foundedDay + System.lineSeparator();
 	}
 }

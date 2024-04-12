@@ -105,4 +105,11 @@ public class Office {
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
+
+	@Override
+	public String toString() {
+		return "Office [description=" + description + ", address1=" + address1 + ", address2=" + address2 + ", zipCode="
+				+ zipCode + ", city=" + city + ", stateCode=" + stateCode + ", countryCode=" + countryCode
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
+	}
 }

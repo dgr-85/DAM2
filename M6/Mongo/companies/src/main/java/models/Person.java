@@ -43,4 +43,9 @@ public class Person {
 	public void setPermalink(String permalink) {
 		this.permalink = permalink;
 	}
+
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", permalink=" + permalink + "]";
+	}
 }

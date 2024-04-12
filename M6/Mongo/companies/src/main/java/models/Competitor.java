@@ -30,4 +30,8 @@ public class Competitor {
 		this.permalink = permalink;
 	}
 
+	@Override
+	public String toString() {
+		return "Competitor [name=" + name + ", permalink=" + permalink + "]";
+	}
 }

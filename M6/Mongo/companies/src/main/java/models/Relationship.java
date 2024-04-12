@@ -42,4 +42,9 @@ public class Relationship {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
+
+	@Override
+	public String toString() {
+		return "Relationship [isPast=" + isPast + ", title=" + title + ", person=" + person + "]";
+	}
 }

@@ -66,7 +66,17 @@ public class MainOperations {
 			System.out.println("Error adding Company.");
 		}
 
-		// Get Company by name
+		// Get existing Company by name
+		String getByExistingName = "Stack Exchange";
+		System.out.println("Retrieving Company with name " + getByExistingName + "...");
+		Company existingCompany = cDAO.getCompanyByName(getByExistingName);
+		if (existingCompany != null) {
+			System.out.println("Company found: " + existingCompany.toString());
+		} else {
+			System.out.println("Company not found.");
+		}
+
+		// Get added Company by name
 		String getByName = "Mongo6";
 		System.out.println("Retrieving Company with name " + getByName + "...");
 		Company retrievedCompany = cDAO.getCompanyByName(getByName);
@@ -76,7 +86,44 @@ public class MainOperations {
 			System.out.println("Company not found.");
 		}
 
+		// Get non-existing Company by name (causes error)
+		String getByWrongName = "Banano6";
+		System.out.println("Retrieving Company with name " + getByWrongName + "...");
+		Company retrievedWrongCompany = cDAO.getCompanyByName(getByWrongName);
+		if (retrievedWrongCompany != null) {
+			System.out.println("Company found: " + retrievedWrongCompany.toString());
+		} else {
+			System.out.println("Company not found.");
+		}
+
 		// Update Company
+		System.out.println("Updating overview of Company " + retrievedCompany.getName() + "...");
+		System.out.println("Current overview: " + retrievedCompany.getOverview());
+		retrievedCompany.setOverview("We must find out if the updateCompany method works correctly.");
+		retrievedCompany = cDAO.updateCompany(retrievedCompany);
+		if (retrievedCompany != null) {
+			System.out.println("Company updated. New overview: " + retrievedCompany.getOverview());
+			System.out.println("Full Company data, for reference: " + retrievedCompany.toString());
+		} else {
+			System.out.println("Error updating Company. (maybe it doesn't exist?)");
+		}
+
+		// Update non-existing Company (causes error)
+		System.out.println("Updating overview of Company " + getByWrongName + "...");
+		retrievedWrongCompany = cDAO.updateCompany(retrievedWrongCompany);
+		if (retrievedWrongCompany != null) {
+			System.out.println("Company updated. New overview: " + retrievedWrongCompany.getOverview());
+		} else {
+			System.out.println("Error updating Company. (maybe it doesn't exist?)");
+		}
+
+		// Delete Company by name
+		System.out.println("Deleting Company " + retrievedCompany.getName() + "...");
+		cDAO.deleteCompany(getByName);
+
+		// Delete non-existing Company by name (nothing happens)
+		System.out.println("Deleting Company " + getByWrongName + "...");
+		cDAO.deleteCompany(getByWrongName);
 
 		ConnectionManager.closeConnection();
 	}
