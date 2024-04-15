@@ -12,4 +12,4 @@ def codif(txt, clau):
     return txt_cod
 
 
-print(codif('Comprimint línees de codi... Èxit!', 3))
+print(codif('Comprimint línees de codi... Èxit!', -1))

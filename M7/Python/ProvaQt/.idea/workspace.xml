@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PyQt_03.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p15_DGR_xifrat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/p15_dgr_xifrat.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/GómezDavidM10UF2P4.odt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/GómezDavidM10UF2P4.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PyQt_03.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyQt_03.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PyQt_02.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            <state relative-caret-position="150">
+              <caret line="16" column="54" lean-forward="true" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -34,10 +49,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PyQt_03.py">
+        <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+            <state relative-caret-position="199">
+              <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,6 +80,7 @@
         <option value="$PROJECT_DIR$/ui/PyQt_02.ui" />
         <option value="$PROJECT_DIR$/PyQt_02.py" />
         <option value="$PROJECT_DIR$/PyQt_03.py" />
+        <option value="$PROJECT_DIR$/p15_DGR_xifrat.py" />
       </list>
     </option>
   </component>
@@ -77,7 +96,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,6 +117,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -123,7 +142,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyQt_03">
+  <component name="RunManager" selected="Python.p15_DGR_xifrat">
     <configuration name="PyQt_01" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProvaQt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -187,10 +206,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="p15_DGR_xifrat" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ProvaQt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/p15_DGR_xifrat.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.PyQt_03" />
+        <item itemvalue="Python.p15_DGR_xifrat" />
         <item itemvalue="Python.PyQt_02" />
+        <item itemvalue="Python.PyQt_03" />
         <item itemvalue="Python.PyQt_01" />
       </list>
     </recent_temporary>
@@ -224,7 +265,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50031704" side_tool="true" weight="0.32960895" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32960895" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -235,13 +276,18 @@
     <entry file="file://$PROJECT_DIR$/venv/pyvenv.cfg">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
+    <entry file="file://$PROJECT_DIR$/p13_DGR_saludar.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="31" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-207" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/p15_DGR_xifrat.ui">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PyQt_03.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -252,10 +298,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyQt_03.py">
+    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+          <caret line="16" column="54" lean-forward="true" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
