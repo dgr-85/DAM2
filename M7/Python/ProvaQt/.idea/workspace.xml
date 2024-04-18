@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/p15_DGR_xifrat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/p15_dgr_xifrat.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/GómezDavidM10UF2P4.odt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/GómezDavidM10UF2P4.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/p4_aplicació/app09.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/p16_dgr_calcul.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PyQt_03.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyQt_03.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p15_DGR_xifrat.py" beforeDir="false" afterPath="$PROJECT_DIR$/p15_DGR_xifrat.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PyQt_02.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="16" column="54" lean-forward="true" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+            <state relative-caret-position="195">
+              <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -51,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+            <state relative-caret-position="188">
+              <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -96,6 +83,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -117,7 +105,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,9 +268,7 @@
         <state relative-caret-position="-207" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/p15_DGR_xifrat.ui">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/p15_DGR_xifrat.ui" />
     <entry file="file://$PROJECT_DIR$/PyQt_03.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -300,8 +285,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PyQt_02.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="54" lean-forward="true" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        <state relative-caret-position="195">
+          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
@@ -310,8 +295,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        <state relative-caret-position="188">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>

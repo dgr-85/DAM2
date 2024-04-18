@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>250</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>250</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>250</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>350</width>
+    <height>250</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="bt_calcular">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>220</y>
+      <width>491</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Calcular</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>10</y>
+      <width>120</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Tipus</string>
+    </property>
+    <widget class="QRadioButton" name="rb_enter">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>100</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>enter</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">bg_tipus</string>
+     </attribute>
+    </widget>
+    <widget class="QRadioButton" name="rb_decimal">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>100</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>decimal</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">bg_tipus</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>10</y>
+      <width>351</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>GroupBox</string>
+    </property>
+    <widget class="QLineEdit" name="le_num2">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>100</y>
+       <width>113</width>
+       <height>23</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="rb_resta">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>100</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">bg_operacio</string>
+     </attribute>
+    </widget>
+    <widget class="QRadioButton" name="rb_producte">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>100</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>*</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">bg_operacio</string>
+     </attribute>
+    </widget>
+    <widget class="QRadioButton" name="rb_suma">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>100</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>+</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">bg_operacio</string>
+     </attribute>
+    </widget>
+    <widget class="QRadioButton" name="rb_divisio">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>100</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>/</string>
+     </property>
+     <attribute name="buttonGroup">
+      <string notr="true">bg_operacio</string>
+     </attribute>
+    </widget>
+    <widget class="QLineEdit" name="le_num1">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>40</y>
+       <width>113</width>
+       <height>23</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>311</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_resultat">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>160</y>
+       <width>311</width>
+       <height>23</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="bg_tipus"/>
+  <buttongroup name="bg_operacio"/>
+ </buttongroups>
+</ui>
