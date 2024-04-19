@@ -2,27 +2,49 @@ package files;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class PracticaFiles {
 
 	public static void main(String[] args) throws IOException {
 		File file = new File("Documents/Exercicis_M6/datos.txt");
+		System.out.println("Searching file " + file.getPath() + "...");
 		if (file.exists()) {
-			System.out.println(file.getPath());
-			System.out.println(file.getAbsolutePath());
-			System.out.println(file.getCanonicalPath());
-			System.out.println(file.length());
+			System.out.println("File found.");
+			printFileStats(file);
 		} else {
-			System.out.println("File not found.");
+			System.out.println("File not found. Creating...");
+			String[] routeSteps = String.valueOf(file).split("/");
+			String lastStep = routeSteps[routeSteps.length - 1];
+			String directoriesRoute = String.join(File.separator, Arrays.copyOf(routeSteps, routeSteps.length - 1));
+			Files.createDirectories(Paths.get(directoriesRoute));
+			directoriesRoute += (File.separator + lastStep);
 			if (file.createNewFile()) {
 				System.out.println("File created.");
-				System.out.println(file.getPath());
-				System.out.println(file.getAbsolutePath());
-				System.out.println(file.getCanonicalPath());
-				System.out.println(file.length());
+				printFileStats(file);
+			} else {
+				System.out.println("Error while creating file.");
 			}
-
 		}
+		System.out.println("Listing contents of current directory...");
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("."))) {
+			for (Path dirFile : stream) {
+				System.out.println(dirFile.getFileName());
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	}
+
+	public static void printFileStats(File file) throws IOException {
+		System.out.println("Path: " + file.getPath());
+		System.out.println("Absolute Path: " + file.getAbsolutePath());
+		System.out.println("Canonical Path: " + file.getCanonicalPath());
+		System.out.println("Size: " + file.length() + " bytes");
 	}
 
 }

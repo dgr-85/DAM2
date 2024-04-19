@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnClear = findViewById(R.id.btnClear);
 
         Button btnSave = findViewById(R.id.btnSave);
-        Button btnPhone=findViewById(R.id.btnPhone);
+        Button btnPhone = findViewById(R.id.btnPhone);
         EditText etName = findViewById(R.id.etName);
         EditText etPhone = findViewById(R.id.etPhone);
 
@@ -33,15 +33,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnPhone.setOnClickListener(view -> {
-            getPhoneNumber(etName.getText().toString(),etPhone);
+            getPhoneNumber(etName.getText().toString(), etPhone);
         });
     }
 
     private void validateForm(String name, String phone) {
 
         //El camp per al nom és buit
-        if (name==null || name.length() == 0) {
-            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        if (name == null || name.length() == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.alertTitleCantSavePhone));
             builder.setMessage(getString(R.string.alertTextEmptyField, getString(R.string.etName)));
             builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity {
             });
             builder.show();
 
-        //El camp per al telèfon és buit
-        } else if (phone==null || phone.length() == 0) {
+            //El camp per al telèfon és buit
+        } else if (phone == null || phone.length() == 0) {
 
-            SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor=prefs.edit();
+            SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
 
             //El nom introduït no existeix a l'agenda -> no hi ha res a guardar
-            if(prefs.getString(name,"none").equals("none")){
-                AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            if (prefs.getString(name, "none").equals("none")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleCantDeletePhone));
                 builder.setMessage(getString(R.string.alertTextNonExistingEntry, name));
                 builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
@@ -71,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
                 });
                 builder.show();
 
-            //El nom existeix -> esborrar entrada?
-            }else {
-                AlertDialog.Builder builder=new AlertDialog.Builder(this);
+                //El nom existeix -> esborrar entrada?
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleWarning));
                 builder.setMessage(getString(R.string.alertTextDeleteEntry, name));
                 builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
@@ -93,21 +93,21 @@ public class MainActivity extends AppCompatActivity {
                 builder.show();
             }
 
-        //Nom i telèfon estan emplenats
+            //Nom i telèfon estan emplenats
         } else {
 
-            SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor=prefs.edit();
+            SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
 
             //El nom introduït ja existeix -> sobrescriure telèfon?
-            if(!prefs.getString(name,"none").equals("none")){
-                AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            if (!prefs.getString(name, "none").equals("none")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleWarning));
-                builder.setMessage(getString(R.string.alertTextOverwriteUser,name));
+                builder.setMessage(getString(R.string.alertTextOverwriteUser, name));
                 builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        updateEntry(name,phone);
+                        updateEntry(name, phone);
                     }
                 });
                 builder.setNegativeButton(getString(R.string.alertButtonCancel), new DialogInterface.OnClickListener() {
@@ -119,21 +119,22 @@ public class MainActivity extends AppCompatActivity {
 
                 builder.show();
 
-            //El nom no existeix a l'agenda -> gravar entrada nova
-            }else {
+                //El nom no existeix a l'agenda -> gravar entrada nova
+            } else {
                 saveNewEntry(name, phone);
             }
         }
     }
+
     private void saveNewEntry(String name, String phone) {
 
-        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=prefs.edit();
+        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
 
-        editor.putString(name,phone);
+        editor.putString(name, phone);
         editor.apply();
 
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.alertTitleSuccess));
         builder.setMessage(getString(R.string.alertTextNewEntrySaved));
         builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
@@ -148,15 +149,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateEntry(String name, String phone) {
 
-        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=prefs.edit();
+        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
 
-        editor.putString(name,phone);
+        editor.putString(name, phone);
         editor.apply();
 
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.alertTitleSuccess));
-        builder.setMessage(getString(R.string.alertTextEntryUpdated,name));
+        builder.setMessage(getString(R.string.alertTextEntryUpdated, name));
         builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -167,17 +168,17 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void deleteEntry(String name){
+    private void deleteEntry(String name) {
 
-        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=prefs.edit();
+        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
 
         editor.remove(name);
         editor.apply();
 
-        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.alertTitleSuccess));
-        builder.setMessage(getString(R.string.alertTextEntryDeleted,name));
+        builder.setMessage(getString(R.string.alertTextEntryDeleted, name));
         builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -187,13 +188,13 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void getPhoneNumber(String name,EditText etPhone){
+    private void getPhoneNumber(String name, EditText etPhone) {
 
         //El camp per al nom és buit -> no es pot recuperar res
-        if(name==null || name.length()==0){
-            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        if (name == null || name.length() == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.alertTitleCantGetPhone));
-            builder.setMessage(getString(R.string.alertTextEmptyField,getString(R.string.etName)));
+            builder.setMessage(getString(R.string.alertTextEmptyField, getString(R.string.etName)));
             builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -201,14 +202,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
             builder.show();
-        }else{
+        } else {
 
-            SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor=prefs.edit();
+            SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
 
             //El nom introduït no existeix a l'agenda -> no hi ha res a recuperar
-            if(prefs.getString(name,"none").equals("none")){
-                AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            if (prefs.getString(name, "none").equals("none")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleCantGetPhone));
                 builder.setMessage(getString(R.string.alertTextNonExistingEntry, name));
                 builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
@@ -219,14 +220,14 @@ public class MainActivity extends AppCompatActivity {
                 });
                 builder.show();
 
-            //El nom existeix -> mostrar telèfon en alert i en camp per al telèfon
-            }else{
+                //El nom existeix -> mostrar telèfon en alert i en camp per al telèfon
+            } else {
 
-                String phone=prefs.getString(name,"none");
+                String phone = prefs.getString(name, "none");
 
-                AlertDialog.Builder builder=new AlertDialog.Builder(this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleSuccess));
-                builder.setMessage(getString(R.string.alertTextEntryRetrieved,name,phone));
+                builder.setMessage(getString(R.string.alertTextEntryRetrieved, name, phone));
                 builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
