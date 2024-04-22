@@ -3,19 +3,18 @@ package com.example.retrofit;
 import com.google.gson.annotations.SerializedName;
 
 public class RetroUsers {
-    @SerializedName("name")
-    private String name;
 
-    public RetroUsers(String name) {
-        this.name = name;
+    private String municipi;
 
+    public RetroUsers(String municipi) {
+        this.municipi = municipi;
     }
 
     public String getUser() {
-        return name;
+        return municipi;
     }
 
     public void setUser(String name) {
-        this.name = name;
+        this.municipi = name;
     }
 }

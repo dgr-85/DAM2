@@ -23,7 +23,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
         CustomViewHolder(View itemView) {
             super(itemView);
             myView = itemView;
-
             textUser = myView.findViewById(R.id.user);
         }
     }

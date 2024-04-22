@@ -65,7 +65,6 @@ public class CompaniesDAOImpl implements CompaniesDAO {
 		} catch (Exception e) {
 			System.out.println("Error deleting Company " + name + ".");
 		}
-
 	}
 
 }
