@@ -36,6 +36,7 @@ public class MoviesDAOImpl implements MoviesDAO {
 			MongoCollection<Movie> movies = db.getCollection("movies", Movie.class);
 			return movies.find(Filters.eq("title", title)).first();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -51,6 +52,7 @@ public class MoviesDAOImpl implements MoviesDAO {
 					.returnDocument(ReturnDocument.AFTER);
 			return movies.findOneAndReplace(filterByMovieTitle, movie, returnDocAfterReplace);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -7,17 +7,17 @@ public class Rating {
 		super();
 	}
 
-	public String get$numberDouble() {
+	public String getNumberDouble() {
 		return $numberDouble;
 	}
 
-	public void set$numberDouble(String $numberDouble) {
+	public void setNumberDouble(String $numberDouble) {
 		this.$numberDouble = $numberDouble;
 	}
 
 	@Override
 	public String toString() {
-		return "Rating [$numberDouble=" + $numberDouble + "]";
+		return "Rating [numberDouble=" + $numberDouble + "]";
 	}
 
 }

@@ -1,5 +1,8 @@
 package main;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.mongodb.client.result.InsertOneResult;
 
 import dao.MoviesDAO;
@@ -21,24 +24,24 @@ public class MainOperations {
 		Movie newMovie = new Movie();
 		newMovie.setTitle("The Great Exam Carnage");
 
-		String[] actors = { "Christine Now, Alex Ruralhouse, Andrew Johnson, Tony Tanned" };
+		List<String> actors = Arrays.asList("Christine Now, Alex Ruralhouse, Andrew Johnson, Tony Tanned");
 		newMovie.setActors(actors);
 
 		Imdb imdb = new Imdb();
 		imdb.setId("rip2024");
 		Rating rating = new Rating();
-		rating.set$numberDouble("4.9");
+		rating.setNumberDouble("4.9");
 		imdb.setRating(rating);
 		imdb.setVotes(4);
 		newMovie.setImdb(imdb);
 
 		Tomato tomato = new Tomato();
 		tomato.setConsensus("Great movie");
-		rating.set$numberDouble("5.5");
+		rating.setNumberDouble("5.5");
 		tomato.setRating(rating);
 
 		UserRating userRating = new UserRating();
-		userRating.set$numberDouble("1.2");
+		userRating.setNumberDouble("1.2");
 		tomato.setUserRating(userRating);
 		newMovie.setTomato(tomato);
 
@@ -80,8 +83,8 @@ public class MainOperations {
 		}
 
 		// Update Movie
-		System.out.println("Updating overview of Movie " + retrievedMovie.getTitle() + "...");
-		newMovie.setPlot(
+		System.out.println("Updating plot of Movie " + retrievedMovie.getTitle() + "...");
+		retrievedMovie.setPlot(
 				"A group of cruel teachers have decided to kill an entire classroom's future. Will they succeed?");
 		retrievedMovie = mDAO.updateMovie(retrievedMovie);
 		if (retrievedMovie != null) {
@@ -92,9 +95,7 @@ public class MainOperations {
 		}
 
 		// Update non-existing Movie (causes error)
-		System.out.println("Updating overview of Movie " + getByWrongTitle + "...");
-		newMovie.setPlot(
-				"A group of kind teachers have decided to promote an entire classroom's future. Will they succeed?");
+		System.out.println("Updating plot of Movie " + getByWrongTitle + "...");
 		retrievedWrongMovie = mDAO.updateMovie(retrievedWrongMovie);
 		if (retrievedWrongMovie != null) {
 			System.out.println("Movie updated. New plot: " + retrievedWrongMovie.getPlot());

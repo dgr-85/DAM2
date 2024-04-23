@@ -1,25 +1,26 @@
 package models;
 
+import java.util.List;
+
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 public class Movie {
 	private ObjectId id;
 	private String title;
-	private int year;
+	private Integer year;
 	private String rated;
 	private Integer runtime;
-	private String[] countries;
-	private String[] genres;
+	private List<String> countries;
+	private List<String> genres;
 	private String director;
-	private String[] writers;
-	private String[] actors;
+	private List<String> writers;
+	private List<String> actors;
 	private String plot;
 	private String poster;
 	private Imdb imdb;
 	private Tomato tomato;
-	private Rating rating;
-	private int metacritic;
+	private Integer metacritic;
 	@BsonProperty(value = "awards")
 	private Award award;
 	private String type;
@@ -68,19 +69,19 @@ public class Movie {
 		this.runtime = runtime;
 	}
 
-	public String[] getCountries() {
+	public List<String> getCountries() {
 		return countries;
 	}
 
-	public void setCountries(String[] countries) {
+	public void setCountries(List<String> countries) {
 		this.countries = countries;
 	}
 
-	public String[] getGenres() {
+	public List<String> getGenres() {
 		return genres;
 	}
 
-	public void setGenres(String[] genres) {
+	public void setGenres(List<String> genres) {
 		this.genres = genres;
 	}
 
@@ -92,19 +93,19 @@ public class Movie {
 		this.director = director;
 	}
 
-	public String[] getWriters() {
+	public List<String> getWriters() {
 		return writers;
 	}
 
-	public void setWriters(String[] writers) {
+	public void setWriters(List<String> writers) {
 		this.writers = writers;
 	}
 
-	public String[] getActors() {
+	public List<String> getActors() {
 		return actors;
 	}
 
-	public void setActors(String[] actors) {
+	public void setActors(List<String> actors) {
 		this.actors = actors;
 	}
 
@@ -140,14 +141,6 @@ public class Movie {
 		this.tomato = tomato;
 	}
 
-	public Rating getRating() {
-		return rating;
-	}
-
-	public void setRating(Rating rating) {
-		this.rating = rating;
-	}
-
 	public Integer getMetacritic() {
 		return metacritic;
 	}
@@ -177,7 +170,6 @@ public class Movie {
 		return "Movie [_id=" + id + ", title=" + title + ", year=" + year + ", rated=" + rated + ", runtime=" + runtime
 				+ ", countries=" + countries + ", genres=" + genres + ", director=" + director + ", writers=" + writers
 				+ ", actors=" + actors + ", plot=" + plot + ", poster=" + poster + ", imdb=" + imdb + ", tomato="
-				+ tomato + ", rating=" + rating + ", metacritic=" + metacritic + ", award=" + award + ", type=" + type
-				+ "]";
+				+ tomato + ", metacritic=" + metacritic + ", award=" + award + ", type=" + type + "]";
 	}
 }

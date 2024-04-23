@@ -45,10 +45,10 @@ public class CompaniesDAOImpl implements CompaniesDAO {
 			MongoClient mongoClient = managers.ConnectionManager.getConnection();
 			MongoDatabase db = mongoClient.getDatabase("companies");
 			MongoCollection<Company> companies = db.getCollection("companies", Company.class);
-			Document filterByCompanyname = new Document("_id", company.getId());
+			Document filterByCompanyName = new Document("_id", company.getId());
 			FindOneAndReplaceOptions returnDocAfterReplace = new FindOneAndReplaceOptions()
 					.returnDocument(ReturnDocument.AFTER);
-			return companies.findOneAndReplace(filterByCompanyname, company, returnDocAfterReplace);
+			return companies.findOneAndReplace(filterByCompanyName, company, returnDocAfterReplace);
 		} catch (Exception e) {
 			return null;
 		}
