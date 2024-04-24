@@ -16,20 +16,28 @@ public class MainProcess {
 	static byte[] decryptedData = null;
 
 	public static void main(String[] args) {
-		String encodedMessage = "0xB3, 0xF9, 0xB2, 0x72, 0xA9, 0x07, 0x1F, 0xA4, 0x91, 0xA0, 0x1B, 0x48, 0x0D, 0x4F, 0xEC, 0xA0, 0x56, 0x54, 0x4A, 0xBB, 0x3C, 0xF1, 0xFF, 0x4F, 0xD0, 0x7F, 0xA6, 0x9B, 0x8F, 0x74, 0xF6, 0x8F";
+		int[] encodedMessage = { 0xB3, 0xF9, 0xB2, 0x72, 0xA9, 0x07, 0x1F, 0xA4, 0x91, 0xA0, 0x1B, 0x48, 0x0D, 0x4F,
+				0xEC, 0xA0, 0x56, 0x54, 0x4A, 0xBB, 0x3C, 0xF1, 0xFF, 0x4F, 0xD0, 0x7F, 0xA6, 0x9B, 0x8F, 0x74, 0xF6,
+				0x8F };
 		int password = 0;
 		String salt = "128";
 		Boolean eureka = false;
 
-		while (!eureka) {
+		System.out.println("Searching...");
+		while (!eureka && password < 99999) {
 			SecretKey sKey = generateSecretKey(String.format("%05d", password), salt);
 			eureka = decryptData(sKey, encodedMessage.getBytes());
 			password++;
-			System.out.println(String.format("%05d", password));
+			// System.out.println(String.format("%05d", password));
 		}
 
 		try {
-			System.out.println(new String(decryptedData, "UTF-8"));
+			if (password == 99999) {
+				System.out.println("99999 has been reached. Code cracking has failed.");
+			} else {
+				System.out.println(new String(decryptedData, "UTF-8"));
+			}
+
 		} catch (UnsupportedEncodingException e) {
 			System.out.println("Error transforming bytes to string.");
 		}
