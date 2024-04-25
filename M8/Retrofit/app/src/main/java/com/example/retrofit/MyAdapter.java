@@ -7,12 +7,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> {
-    private List<RetroUsers> dataList;
+    private Municipi dataList;
 
-    public MyAdapter(List<RetroUsers> dataList) {
+    public MyAdapter(Municipi dataList) {
 
         this.dataList = dataList;
     }
@@ -36,12 +34,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
-        holder.textUser.setText(dataList.get(position).getUser());
+        holder.textUser.setText((CharSequence) dataList.getElements());
 
     }
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return 1;
     }
 }
 

@@ -11,8 +11,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     private MyAdapter myAdapter;
@@ -25,23 +23,25 @@ public class MainActivity extends AppCompatActivity {
 
         GetData service = RetrofitClient.getRetrofitInstance().create(GetData.class);
 
-        Call<List<RetroUsers>> call = service.getAllUsers();
+        Call<Municipi> call = service.getAllUsers();
 
-        call.enqueue(new Callback<List<RetroUsers>>() {
+        call.enqueue(new Callback<Municipi>() {
             @Override
-            public void onResponse(Call<List<RetroUsers>> call, Response<List<RetroUsers>> response) {
+            public void onResponse(Call<Municipi> call, Response<Municipi> response) {
                 loadDataList(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<RetroUsers>> call, Throwable throwable) {
-                Toast.makeText(MainActivity.this, "Unable to load users", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Municipi> call, Throwable throwable) {
+                Toast.makeText(MainActivity.this, "Unable to load elements", Toast.LENGTH_SHORT).show();
             }
         });
     }
-    private void loadDataList(List<RetroUsers> usersList) {
+    private void loadDataList(Municipi municipi) {
         myRecyclerView = findViewById(R.id.myRecyclerView);
-        myAdapter = new MyAdapter(usersList);
+        myAdapter = new MyAdapter(municipi);
+
+
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         myRecyclerView.setLayoutManager(layoutManager);
