@@ -16,8 +16,8 @@ public class ScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        listView = findViewById(R.id.listView);
-        ScoreRowAdapter adapter=new ScoreRowAdapter(getApplicationContext(),players,scores);
+        listView = findViewById(R.id.list);
+        ScoreRowAdapter adapter = new ScoreRowAdapter(getApplicationContext(), players, scores);
         listView.setAdapter(adapter);
     }
 }

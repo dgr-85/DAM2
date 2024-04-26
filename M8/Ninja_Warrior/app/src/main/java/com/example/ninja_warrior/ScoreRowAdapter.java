@@ -27,7 +27,7 @@ public class ScoreRowAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return players.length;
     }
 
     @Override
@@ -37,12 +37,14 @@ public class ScoreRowAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = inflater.inflate(R.layout.score_list, null);
+        if(convertView==null) {
+            convertView = inflater.inflate(R.layout.activity_score, null);
+        }
         TextView tvName = convertView.findViewById(R.id.tvName);
         TextView tvScore = convertView.findViewById(R.id.tvScore);
         tvName.setText(players[position]);
