@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GetData service = RetrofitClient.getRetrofitInstance().create(GetData.class);
+        ApiService service = ApiAdapter.getApiServiceInstance().create(ApiService.class);
 
-        Call<Municipi> call = service.getAllUsers();
+        Call<Municipi> call = service.getAllMunicipis();
 
         call.enqueue(new Callback<Municipi>() {
             @Override

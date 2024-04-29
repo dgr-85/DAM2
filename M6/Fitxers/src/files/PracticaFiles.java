@@ -6,9 +6,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class PracticaFiles {
@@ -35,27 +33,11 @@ public class PracticaFiles {
 			}
 		}
 		System.out.println("Listing contents of current directory...");
-		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("."))) {
-			for (Path dirFile : stream) {
-				File pathFile = new File(dirFile.toString());
-				System.out.print(pathFile.getName() + " - ");
-				checkFileType(pathFile);
-			}
-		} catch (Exception e) {
-			System.err.println(e);
-		}
+		checkDirectory(".");
 		System.out.println("Enter an absolute path to a directory:");
 		String customDirectory = sc.nextLine();
 		System.out.println("Listing contents of directory " + customDirectory + "...");
-		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(customDirectory))) {
-			for (Path dirFile : stream) {
-				File pathFile = new File(dirFile.toString());
-				System.out.print(pathFile.getName() + " - ");
-				checkFileType(pathFile);
-			}
-		} catch (Exception e) {
-			System.out.println("Directory " + customDirectory + " not found.");
-		}
+		checkDirectory(customDirectory);
 	}
 
 	public static void printFileStats(File file) throws IOException {
@@ -76,10 +58,17 @@ public class PracticaFiles {
 		System.out.print(System.lineSeparator());
 	}
 
-	public List<File> recursiveSubCheck(File file){
-		List<File> subFiles=new ArrayList<>();
-		Files.
-		return subFiles;				
+	public static void checkDirectory(String path) {
+		String absolutePath = new File(path).getAbsolutePath();
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(absolutePath))) {
+			for (Path dirFile : stream) {
+				File pathFile = new File(dirFile.toString());
+				System.out.print(pathFile.getName() + " - ");
+				checkFileType(pathFile);
+			}
+		} catch (Exception e) {
+			System.out.println("Directory " + path + " not found.");
+		}
 	}
 
 }
