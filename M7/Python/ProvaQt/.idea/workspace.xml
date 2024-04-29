@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/main/MainOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/main/MainOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/models/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/models/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/models/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/models/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/models/UserRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/src/main/java/models/UserRating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/META-INF/maven/cat.institutmarianao/movies/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/META-INF/maven/cat.institutmarianao/movies/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/main/MainOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/main/MainOperations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/models/Movie.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/models/Movie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/models/Rating.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/models/Rating.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/models/UserRating.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/ExamenUF3/target/classes/models/UserRating.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/dao/impl/CompaniesDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/src/main/java/dao/impl/CompaniesDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/META-INF/maven/cat.institutmarianao/companies/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/META-INF/maven/cat.institutmarianao/companies/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/dao/impl/CompaniesDAOImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Mongo/companies/target/classes/dao/impl/CompaniesDAOImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p16_DGR_calcul.py" beforeDir="false" afterPath="$PROJECT_DIR$/p16_DGR_calcul.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/p16_dgr_calcul.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/p16_dgr_calcul.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../exersM07_01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../exersM07_01/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,12 +90,16 @@
       </list>
     </option>
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="200" />
     <option name="y" value="29" />
     <option name="width" value="1400" />
     <option name="height" value="847" />
   </component>
+  <component name="ProjectId" id="2fgnXeEbBuWV23NomJ4feRpoG18" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -128,27 +125,24 @@
       </pane>
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/david85/Escritorio/Curs DAM/M7/Python/ProvaQt",
+    "settings.editor.selected.configurable": "configurable.group.project"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/ui" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.p16_DGR_calcul">
     <configuration name="PyQt_01" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -266,6 +260,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

@@ -27,6 +27,7 @@ class Calculadora(QMainWindow):
         self.rb_decimal.clicked.connect(self.format_decimal)
         self.rb_enter.clicked.connect(self.format_enter)
         self.le_resultat.setReadOnly(True)
+        self.bt_calcular.clicked.connect(self.validar_operands)
         self.show()
 
     def format_decimal(self):
@@ -36,8 +37,10 @@ class Calculadora(QMainWindow):
     def format_enter(self):
         self.le_num1.setValidator(Calculadora.val_enters)
         self.le_num2.setValidator(Calculadora.val_enters)
-        self.le_num1.setText(str(round(locale.atof(self.le_num1.text()))))
-        self.le_num2.setText(str(round(locale.atof(self.le_num2.text()))))
+        if self.le_num1.text():
+            self.le_num1.setText(str(round(locale.atoi(self.le_num1.text()))))
+        if self.le_num2.text():
+            self.le_num2.setText(str(round(locale.atoi(self.le_num2.text()))))
 
     def validar_operands(self):
         num1 = 0
@@ -62,15 +65,19 @@ class Calculadora(QMainWindow):
         self.operar(num1, num2, self.rb_enter.isChecked)
 
     def operar(self, num1, num2, enter):
+        if enter:
+            format_sortida = "d"
+        else:
+            format_sortida = "g"
         if self.rb_suma.isChecked():
-            self.le_resultat.setText(locale.format_string("%f", num1 + num2))
+            self.le_resultat.setText(locale.format_string("%"+format_sortida, num1 + num2))
         elif self.rb_resta.isChecked():
-            self.le_resultat.setText(locale.format_string("%f", num1 - num2))
+            self.le_resultat.setText(locale.format_string("%"+format_sortida, num1 - num2))
         elif self.rb_producte.isChecked():
-            self.le_resultat.setText(locale.format_string("%f", num1 * num2))
+            self.le_resultat.setText(locale.format_string("%"+format_sortida, num1 * num2))
         else:
             try:
-                self.le_resultat.setText(locale.format_string("%f", num1 / num2))
+                self.le_resultat.setText(locale.format_string("%"+format_sortida, num1 / num2))
             except ZeroDivisionError:
                 self.finestra_error("No es pot dividir por 0.")
 

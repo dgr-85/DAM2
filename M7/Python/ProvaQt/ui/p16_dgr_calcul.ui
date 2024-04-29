@@ -45,10 +45,10 @@
           <widget class="QWidget" name="layoutWidget">
            <property name="geometry">
             <rect>
-             <x>12</x>
-             <y>30</y>
-             <width>75</width>
-             <height>161</height>
+             <x>1</x>
+             <y>20</y>
+             <width>91</width>
+             <height>171</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -159,8 +159,4 @@
  </widget>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="bg_operacio"/>
-  <buttongroup name="bg_tipus"/>
- </buttongroups>
 </ui>

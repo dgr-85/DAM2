@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Carrera_part1/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Carrera_part1/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Carrera_part1/src/cat/institutmarianao/part1/Pilot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Carrera_part1/src/cat/institutmarianao/part1/Pilot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Carrera_part1/src/cat/institutmarianao/part1/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Carrera_part1/src/cat/institutmarianao/part1/Race.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Carrera_part1/src/cat/institutmarianao/part1/RaceStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Carrera_part1/src/cat/institutmarianao/part1/RaceStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Comandes/bin/cat/institutmarianao/comandes/TaulerComandes.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Comandes/bin/cat/institutmarianao/comandes/TaulerComandes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Cursa/bin/cat/institutmarianao/cursa/Cursa.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Cursa/bin/cat/institutmarianao/cursa/Cursa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Temperatures/bin/temps/Temperatura.class" afterDir="false" />
-    </list>
+    <list default="true" id="1b34e3db-6e16-4af0-92d5-76bc2d705b09" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,11 +149,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/david85/Escritorio/Curs DAM/M7/Python/ProvaQt"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
