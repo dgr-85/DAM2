@@ -18,12 +18,4 @@ public class Municipi {
         return elements;
     }
 
-    public class Element{
-        @SerializedName("municipi_nom")
-        private String municipiNom;
-
-        public String getMunicipiNom() {
-            return municipiNom;
-        }
-    }
 }

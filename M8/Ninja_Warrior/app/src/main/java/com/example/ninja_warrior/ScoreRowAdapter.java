@@ -9,30 +9,32 @@ import android.widget.BaseAdapter;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.Inflater;
 
 public class ScoreRowAdapter extends BaseAdapter {
 
-    Context context;
-    String[] players;
-    int[] scores;
     LayoutInflater inflater;
+    private Context applicationContext;
+    private Map<String, Integer> playersScores;
+    private String[] names;
 
-    public ScoreRowAdapter(Context applicationContext, String[] players, int[] scores) {
-        this.context = context;
-        this.players = players;
-        this.scores = scores;
+    public ScoreRowAdapter(Context applicationContext, Map<String, Integer> playersScores) {
+        this.applicationContext = applicationContext;
+        this.playersScores = playersScores;
+        this.names = playersScores.keySet().toArray(new String[playersScores.size()]);
         inflater = LayoutInflater.from(applicationContext);
     }
 
     @Override
     public int getCount() {
-        return players.length;
+        return playersScores.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return playersScores.get(names[position]);
     }
 
     @Override
@@ -42,13 +44,14 @@ public class ScoreRowAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView==null) {
-            convertView = inflater.inflate(R.layout.activity_score, null);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.score_list, null);
         }
         TextView tvName = convertView.findViewById(R.id.tvName);
         TextView tvScore = convertView.findViewById(R.id.tvScore);
-        tvName.setText(players[position]);
-        tvScore.setText(scores[position]);
+
+        tvName.setText(names[position]);
+        tvScore.setText(getItem(position).toString());
         return convertView;
     }
 }

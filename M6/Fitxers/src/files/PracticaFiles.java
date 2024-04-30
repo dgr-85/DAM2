@@ -6,7 +6,9 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class PracticaFiles {
@@ -32,12 +34,18 @@ public class PracticaFiles {
 				System.out.println("Error while creating file.");
 			}
 		}
-		System.out.println("Listing contents of current directory...");
-		checkDirectory(".");
-		System.out.println("Enter an absolute path to a directory:");
+		// System.out.println("Listing contents of current directory...");
+		// checkDirectory(".");
+		System.out.println("Enter a directory name:");
 		String customDirectory = sc.nextLine();
 		System.out.println("Listing contents of directory " + customDirectory + "...");
-		checkDirectory(customDirectory);
+		List<File> directories = checkDirectoryTree(customDirectory);
+		System.out.println("Directories named " + customDirectory + ": " + directories.size());
+		if (directories.size() > 0) {
+			for (File f : directories) {
+				System.out.println(f.getName());
+			}
+		}
 	}
 
 	public static void printFileStats(File file) throws IOException {
@@ -58,17 +66,40 @@ public class PracticaFiles {
 		System.out.print(System.lineSeparator());
 	}
 
-	public static void checkDirectory(String path) {
+	public static void checkDirectory(String path, List<File> matchingDirectories, String searchingDirectory) {
 		String absolutePath = new File(path).getAbsolutePath();
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(absolutePath))) {
 			for (Path dirFile : stream) {
 				File pathFile = new File(dirFile.toString());
-				System.out.print(pathFile.getName() + " - ");
-				checkFileType(pathFile);
+				// System.out.print(pathFile.getName() + " - ");
+				// checkFileType(pathFile);
+				if (pathFile.isDirectory()) {
+					if (pathFile.getName().equals(searchingDirectory)) {
+						matchingDirectories.add(pathFile);
+					}
+					checkDirectory(pathFile.getPath(), matchingDirectories, searchingDirectory);
+				}
 			}
 		} catch (Exception e) {
 			System.out.println("Directory " + path + " not found.");
 		}
+	}
+
+	public static List<File> checkDirectoryTree(String directory) {
+		List<File> matchingDirectories = new ArrayList<>();
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("/"))) {
+			for (Path path : stream) {
+				File file = new File(path.toString());
+				if (file.isDirectory() && file.getName().equals(directory)) {
+					matchingDirectories.add(file);
+				}
+				System.out.println(file.getName());
+				checkDirectory(file.getName(), matchingDirectories, directory);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return matchingDirectories;
 	}
 
 }
