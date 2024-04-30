@@ -13,17 +13,16 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MyAdapter myAdapter;
-    private RecyclerView myRecyclerView;
+    private MunicipiAdapter municipiAdapter;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ApiService service = ApiAdapter.getApiServiceInstance().create(ApiService.class);
-
-        Call<Municipi> call = service.getAllMunicipis();
+        ApiService service = ApiAdapter.getApiServiceInstance();
+        Call<Municipi> call = service.getMunicipi();
 
         call.enqueue(new Callback<Municipi>() {
             @Override
@@ -38,14 +37,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void loadDataList(Municipi municipi) {
-        myRecyclerView = findViewById(R.id.myRecyclerView);
-        myAdapter = new MyAdapter(municipi);
-
-
+        recyclerView = findViewById(R.id.myRecyclerView);
+        municipiAdapter = new MunicipiAdapter(municipi);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
-        myRecyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
-        myRecyclerView.setAdapter(myAdapter);
+        recyclerView.setAdapter(municipiAdapter);
     }
 }

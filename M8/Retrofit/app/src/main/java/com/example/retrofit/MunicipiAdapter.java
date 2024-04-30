@@ -7,21 +7,21 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> {
-    private Municipi dataList;
+public class MunicipiAdapter extends RecyclerView.Adapter<MunicipiAdapter.CustomViewHolder> {
+    private Municipi municipi;
 
-    public MyAdapter(Municipi dataList) {
-
-        this.dataList = dataList;
+    public MunicipiAdapter(Municipi municipi) {
+        this.municipi = municipi;
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
         public final View myView;
-        TextView textUser;
+        TextView tvMunicipi;
+
         CustomViewHolder(View itemView) {
             super(itemView);
             myView = itemView;
-            textUser = myView.findViewById(R.id.user);
+            tvMunicipi = myView.findViewById(R.id.user);
         }
     }
 
@@ -34,12 +34,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.CustomViewHolder> 
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
-        holder.textUser.setText((CharSequence) dataList.getElements());
-
+        holder.tvMunicipi.setText(municipi.getElements().get(position).getMunicipiNom());
     }
+
     @Override
     public int getItemCount() {
-        return 1;
+        return municipi.getElements().size();
     }
 }
 

@@ -11,7 +11,6 @@ public class ApiAdapter {
     private static final String BASE_URL = "https://do.diba.cat/api/dataset/";
 
     public static ApiService getApiServiceInstance() {
-
         // Creamos un interceptor y le indicamos el log level a usar
         final HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -24,10 +23,10 @@ public class ApiAdapter {
             Retrofit retrofitSingleton = new retrofit2.Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    /*.client()*/
+                    .client(httpClient.build())
                     .build();
-            apiService=retrofitSingleton.create(ApiService.class);
+            apiService = retrofitSingleton.create(ApiService.class);
         }
-
+        return apiService;
     }
 }

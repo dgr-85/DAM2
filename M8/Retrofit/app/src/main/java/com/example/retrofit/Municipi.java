@@ -8,18 +8,22 @@ import java.util.ArrayList;
 public class Municipi {
 
     @SerializedName("elements")
-    @Expose
-    private ArrayList elements;
+    private ArrayList<Element> elements;
 
-    public Municipi(ArrayList elements) {
+    public Municipi(ArrayList<Element> elements) {
         this.elements = elements;
     }
 
-    public ArrayList getElements() {
+    public ArrayList<Element> getElements() {
         return elements;
     }
 
-    public void setElements(ArrayList elements) {
-        this.elements = elements;
+    public class Element{
+        @SerializedName("municipi_nom")
+        private String municipiNom;
+
+        public String getMunicipiNom() {
+            return municipiNom;
+        }
     }
 }
