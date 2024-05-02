@@ -6,7 +6,7 @@ import sys
 class Enxampa(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("ui/p17_dgr_enxampa.ui")
+        uic.loadUi('ui/p17_dgr_enxampa.ui',self)
         self.setWindowTitle("Enxampa'm")
         self.show()
 

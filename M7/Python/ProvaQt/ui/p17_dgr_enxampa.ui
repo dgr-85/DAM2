@@ -24,7 +24,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tauler">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -267,7 +267,31 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="configuracio"/>
+      <widget class="QWidget" name="configuracio">
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>10</y>
+          <width>79</width>
+          <height>23</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>10</y>
+          <width>59</width>
+          <height>15</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="quanta"/>
      </widget>
     </item>
