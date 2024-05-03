@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
             });
             builder.show();
         }
+        if(item.getItemId()==R.id.menu_config){
+            startActivity(new Intent(this, PreferencesActivity.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 

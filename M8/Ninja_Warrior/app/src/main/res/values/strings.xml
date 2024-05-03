@@ -1,13 +1,23 @@
 <resources>
     <string name="app_name">Ninja_Warrior</string>
-    <string name="title">Ninja Warrior</string>
+    <string name="title_main">Ninja Warrior</string>
+    <string name="title_score">Game Score</string>
+    <string name="title_preferences">Preferences</string>
     <string name="menu_config">Configuration</string>
     <string name="menu_info">Information</string>
     <string name="main_play">Play</string>
     <string name="main_score">Score</string>
     <string name="main_quit">Quit</string>
     <string name="info_title">How To Play</string>
-    <string name="info_instructions">· Shoot to kill enemy ninjas.\n· Move to avoid enemy attacks.\n· If you get shot, you lose!\n</string>
+    <string name="info_instructions">· Shoot to kill enemy ninjas.\n· Move to avoid enemy attacks.\n· If you get hit, you lose!\n</string>
     <string name="info_made_by"><small><i>Made by David Gómez</i></small></string>
     <string name="info_ok">OK</string>
+    <string name="pref_checkbox_music_title">Music</string>
+    <string name="pref_checkbox_music_summary">Play background music during the game</string>
+    <string name="pref_list_ninjas_title">Ninja</string>
+    <string name="pref_list_ninjas_summary">Click here to change your appearance</string>
+    <string name="pref_list_ninjas_dialog_title">Choose your Ninja</string>
+    <string name="pref_text_enemies_title">Starting Enemies</string>
+    <string name="pref_text_enemies_summary">Choose how many enemies will spawn at start</string>
+    <string name="pref_text_enemies_dialog_title">Choose a number</string>
 </resources>

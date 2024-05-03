@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 public class PracticaFiles {
 
+	private static List<File> allDirectories = new ArrayList<>();
+
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		File file = new File("Documents/Exercicis_M6/datos.txt");
@@ -34,8 +36,11 @@ public class PracticaFiles {
 				System.out.println("Error while creating file.");
 			}
 		}
-		// System.out.println("Listing contents of current directory...");
-		// checkDirectory(".");
+		System.out.println("Listing contents of current directory...");
+		checkDir(".");
+		for (File file2 : allDirectories) {
+			System.out.println(file2.getName());
+		}
 		System.out.println("Enter a directory name:");
 		String customDirectory = sc.nextLine();
 		System.out.println("Listing contents of directory " + customDirectory + "...");
@@ -45,6 +50,9 @@ public class PracticaFiles {
 			for (File f : directories) {
 				System.out.println(f.getName());
 			}
+		}
+		for (File file3 : allDirectories) {
+			System.out.println(file3.getName());
 		}
 	}
 
@@ -71,13 +79,14 @@ public class PracticaFiles {
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(absolutePath))) {
 			for (Path dirFile : stream) {
 				File pathFile = new File(dirFile.toString());
+				allDirectories.clear();
 				// System.out.print(pathFile.getName() + " - ");
 				// checkFileType(pathFile);
 				if (pathFile.isDirectory()) {
 					if (pathFile.getName().equals(searchingDirectory)) {
 						matchingDirectories.add(pathFile);
 					}
-					checkDirectory(pathFile.getPath(), matchingDirectories, searchingDirectory);
+					checkDir(pathFile.getName());
 				}
 			}
 		} catch (Exception e) {
@@ -91,15 +100,28 @@ public class PracticaFiles {
 			for (Path path : stream) {
 				File file = new File(path.toString());
 				if (file.isDirectory() && file.getName().equals(directory)) {
-					matchingDirectories.add(file);
+					// matchingDirectories.add(file);
+					checkDir(file.getName());
 				}
-				System.out.println(file.getName());
-				checkDirectory(file.getName(), matchingDirectories, directory);
+				// System.out.println(file.getName());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return matchingDirectories;
+	}
+
+	public static void checkDir(String dir) throws IOException {
+		File file = new File(dir);
+		if (file.isDirectory()) {
+			allDirectories.add(file);
+			File[] subFiles = file.listFiles();
+			for (File f : subFiles) {
+				if (f.isDirectory()) {
+					checkDir(f.getCanonicalPath());
+				}
+			}
+		}
 	}
 
 }

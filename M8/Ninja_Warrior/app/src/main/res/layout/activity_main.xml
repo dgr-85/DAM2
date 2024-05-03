@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/shojumaru"
-                android:text="@string/title"
+                android:text="@string/title_main"
                 android:textSize="34sp" />
 
             <Button
