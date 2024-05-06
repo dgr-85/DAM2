@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="ca">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>punt module &#8212; PuntDGR 1.0 documentació</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=18fa4af9"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/translations.js?v=d8dd923b"></script>
+    <link rel="index" title="Índex" href="genindex.html" />
+    <link rel="search" title="Cerca" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-punt">
+<span id="punt-module"></span><h1>punt module<a class="headerlink" href="#module-punt" title="Enllaç permanent a aquesta capçalera">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="punt.Punt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">punt.</span></span><span class="sig-name descname"><span class="pre">Punt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#punt.Punt" title="Enllaç permanent a aquesta definició">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>[Summary]</p>
+<p>Aquesta classe parteix del concepte matemàtic de punt com a ubicació en un espai de dues dimensions.
+Inclou una sèrie de mètodes que permeten definir les coordenades d’un punt qualsevol i calculen algunes
+relacions que es poden establir amb l’origen de coordenades, és a dir, el punt (0, 0).</p>
+<p>El mètode __init__ defineix el constructor bàsic d’un punt definit per l’usuari. Els paràmetres són:</p>
+<blockquote>
+<div><p>x: Número enter que representa la coordenada horitzontal. Per defecte és 0, si no s’introdueix cap valor.</p>
+<p>y: Número enter que representa la coordenada vertical. Per defecte és 0, si no s’introdueix cap valor.</p>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="punt.Punt.coeficients_recta">
+<span class="sig-name descname"><span class="pre">coeficients_recta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altre</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#punt.Punt.coeficients_recta" title="Enllaç permanent a aquesta definició">¶</a></dt>
+<dd><p>[Summary]</p>
+<p>Mètode que rep les coordenades d’un punt, en traça una recta que l’uneix amb el punt de l’usuari, i en calcula
+el coeficients m i n necessaris per a trobar l’equació y = mx + n que defineix la recta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paràmetres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>altre</strong> (<em>Tupla</em>) – Punt a ajuntar amb el de l’usuari per a traçar la recta.</p>
+</dd>
+<dt class="field-even">Llença<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ZeroDivisionError</strong> – El paràmetre m és el pendent de la recta, de manera que si la recta és vertical,
+no es «desplaça» al llarg de l’eix horitzonal i significa que el seu pendent és infinit, cosa que es
+reflecteix en el seu càlcul perquè implica dividir entre 0.</p>
+</dd>
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Els paràmetres m i n de l’equació de la recta.</p>
+</dd>
+<dt class="field-even">Tipus de retorn<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tupla.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="punt.Punt.distancia_origen">
+<span class="sig-name descname"><span class="pre">distancia_origen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#punt.Punt.distancia_origen" title="Enllaç permanent a aquesta definició">¶</a></dt>
+<dd><p>[Summary]</p>
+<p>Mètode que calcula la distància del punt a l’origen de coordenades (0, 0).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unitats totals que separen els dos punts.</p>
+</dd>
+<dt class="field-even">Tipus de retorn<span class="colon">:</span></dt>
+<dd class="field-even"><p>Número enter positiu.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="punt.Punt.pendent_al_origen">
+<span class="sig-name descname"><span class="pre">pendent_al_origen</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#punt.Punt.pendent_al_origen" title="Enllaç permanent a aquesta definició">¶</a></dt>
+<dd><p>[Summary]</p>
+<p>Mètode que traça una recta unint l’origen de coordenades (0,0) i el punt de l’usuari i en calcula el pendent.
+El pendent és la tangent de l’angle que la recta forma amb l’eix horitzontal positiu, de manera que pot ser
+positiu o negatiu segons la inclinació de la recta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Llença<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ZeroDivisionError</strong> – Si x és 0 la recta és vertical, no es «desplaça» al llarg de l’eix horitzonal i
+significa que el seu pendent és infinit, cosa que es reflecteix en el seu càlcul perquè implica dividir
+entre 0.</p>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p>El valor del pendent de la recta.</p>
+</dd>
+<dt class="field-odd">Tipus de retorn<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Número enter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="punt.Punt.punt_intermedi">
+<span class="sig-name descname"><span class="pre">punt_intermedi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">altre</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#punt.Punt.punt_intermedi" title="Enllaç permanent a aquesta definició">¶</a></dt>
+<dd><p>[Summary]</p>
+<p>Mètode que rep les coordenades d’un punt i les compara amb les del punt definit per l’usuari per a
+obtenir les coordenades del punt situat al centre de la distància que els separa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paràmetres<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>altre</strong> (<em>Tupla</em>) – Punt a comparar amb el de l’usuari.</p>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p>Punt situat al mig de la distància que separa el punt de l’usuari i el punt altre.</p>
+</dd>
+<dt class="field-odd">Tipus de retorn<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tupla</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PuntDGR</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegació</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Cerca ràpida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ves a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024, David Gómez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/punt.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

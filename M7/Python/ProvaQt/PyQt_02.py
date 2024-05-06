@@ -11,7 +11,7 @@ class Exemple2(QMainWindow):
     def __init__(self, pos):
         super().__init__()
         self.pos = pos
-        uic.loadUi('ui/mainwindow.ui', self)
+        uic.loadUi('ui/saludar.ui', self)
         self.setWindowTitle('Salutacions')
         self.lbl_salutacio.setText(self.valors[self.pos])
         self.btn_saludar.clicked.connect(self.saludar)

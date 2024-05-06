@@ -27,8 +27,8 @@ class Calculadora(QMainWindow):
         self.le_num2.setAlignment(Qt.AlignRight)
         self.le_resultat.setMaxLength(Calculadora.caracters_maxims)
         self.le_resultat.setAlignment(Qt.AlignRight)
-        self.rb_decimal.clicked.connect(self.format_decimal)
-        self.rb_enter.clicked.connect(self.format_enter)
+        self.rb_decimal.toggled.connect(self.format_decimal)
+        self.rb_enter.toggled.connect(self.format_enter)
         self.le_resultat.setReadOnly(True)
         self.bt_calcular.clicked.connect(self.validar_operands)
         self.show()
@@ -73,7 +73,7 @@ class Calculadora(QMainWindow):
             try:
                 resultat = locale.format_string("%" + format_sortida, num1 / num2)
             except ZeroDivisionError:
-                self.finestra_error("No es pot dividir por 0.")
+                self.finestra_error("No es pot dividir per 0.")
         else:
             self.finestra_error("No s'ha seleccionat cap operació? Això no hauria de ser possible...")
         if len(resultat) > Calculadora.caracters_maxims:

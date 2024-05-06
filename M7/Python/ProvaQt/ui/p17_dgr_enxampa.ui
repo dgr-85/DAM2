@@ -22,9 +22,9 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QStackedWidget" name="stackedWidget">
+     <widget class="QStackedWidget" name="qStackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tauler">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -143,6 +143,12 @@
             </property>
             <property name="text">
              <string/>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -311,7 +317,7 @@
      <string>Fitxer</string>
     </property>
     <addaction name="actionTauler"/>
-    <addaction name="actionConfiguraci"/>
+    <addaction name="actionConfiguracio"/>
     <addaction name="actionSortir"/>
    </widget>
    <widget class="QMenu" name="menuAjuda">
@@ -344,7 +350,7 @@
     <string>Tauler</string>
    </property>
   </action>
-  <action name="actionConfiguraci">
+  <action name="actionConfiguracio">
    <property name="text">
     <string>Configuració</string>
    </property>

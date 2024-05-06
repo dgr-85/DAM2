@@ -1,6 +1,7 @@
 package files;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -41,6 +42,7 @@ public class PracticaFiles {
 		for (File file2 : allDirectories) {
 			System.out.println(file2.getName());
 		}
+		allDirectories.clear();
 		System.out.println("Enter a directory name:");
 		String customDirectory = sc.nextLine();
 		System.out.println("Listing contents of directory " + customDirectory + "...");
@@ -79,7 +81,6 @@ public class PracticaFiles {
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(absolutePath))) {
 			for (Path dirFile : stream) {
 				File pathFile = new File(dirFile.toString());
-				allDirectories.clear();
 				// System.out.print(pathFile.getName() + " - ");
 				// checkFileType(pathFile);
 				if (pathFile.isDirectory()) {
@@ -98,10 +99,10 @@ public class PracticaFiles {
 		List<File> matchingDirectories = new ArrayList<>();
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get("/"))) {
 			for (Path path : stream) {
-				File file = new File(path.toString());
-				if (file.isDirectory() && file.getName().equals(directory)) {
-					// matchingDirectories.add(file);
-					checkDir(file.getName());
+				File file = path.toFile();
+				if (file.isDirectory()) {
+					matchingDirectories.add(file);
+					checkDir(file.getAbsolutePath());
 				}
 				// System.out.println(file.getName());
 			}
@@ -112,15 +113,24 @@ public class PracticaFiles {
 	}
 
 	public static void checkDir(String dir) throws IOException {
+		FileFilter filter = new FileFilter() {
+			@Override
+			public boolean accept(File pathname) {
+				return pathname.isDirectory();
+			}
+		};
 		File file = new File(dir);
 		if (file.isDirectory()) {
 			allDirectories.add(file);
-			File[] subFiles = file.listFiles();
-			for (File f : subFiles) {
-				if (f.isDirectory()) {
-					checkDir(f.getCanonicalPath());
+			File[] subFiles = file.listFiles(filter);
+			if (subFiles != null && subFiles.length > 0) {
+				for (File f : subFiles) {
+					if (f.isDirectory()) {
+						checkDir(f.getAbsolutePath());
+					}
 				}
 			}
+
 		}
 	}
 

@@ -5,10 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../PythonDocs/.idea/PythonDocs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PythonDocs/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PythonDocs/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PythonDocs/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PythonDocs/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PythonDocs/punt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Fitxers/bin/files/PracticaFiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Fitxers/bin/files/PracticaFiles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Fitxers/src/files/PracticaFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Fitxers/src/files/PracticaFiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/Factorial.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/Factorial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/class-use/Factorial.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/class-use/Factorial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/src/exemple/Factorial.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/src/exemple/Factorial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ExamenUF1/Examen.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ExamenUF1/Examen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/haunting.png" beforeDir="false" afterPath="$PROJECT_DIR$/ui/haunting.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgs/snake-tongue.png" beforeDir="false" afterPath="$PROJECT_DIR$/ui/snake-tongue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PyQt_02.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyQt_02.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p13_DGR_saludar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/p13_DGR_saludar.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p16_DGR_calcul.py" beforeDir="false" afterPath="$PROJECT_DIR$/p16_DGR_calcul.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p17_DGR_enxampa.py" beforeDir="false" afterPath="$PROJECT_DIR$/p17_DGR_enxampa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/saludar.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
@@ -23,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="218">
+              <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="40" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -35,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+            <state relative-caret-position="-690">
+              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -47,8 +73,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+            <state relative-caret-position="330">
+              <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,6 +109,7 @@
         <option value="$PROJECT_DIR$/PyQt_03.py" />
         <option value="$PROJECT_DIR$/p15_DGR_xifrat.py" />
         <option value="$PROJECT_DIR$/p16_DGR_calcul.py" />
+        <option value="$PROJECT_DIR$/p13_DGR_saludar.txt" />
         <option value="$PROJECT_DIR$/p17_DGR_enxampa.py" />
       </list>
     </option>
@@ -274,7 +304,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="852" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -298,12 +328,21 @@
     <entry file="file://$PROJECT_DIR$/venv/pyvenv.cfg">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/ui/p15_DGR_xifrat.ui" />
     <entry file="file://$PROJECT_DIR$/p13_DGR_saludar.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-207" />
+        <state relative-caret-position="150">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ui/p15_DGR_xifrat.ui" />
+    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PyQt_03.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -318,37 +357,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="92" column="25" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
+        <state relative-caret-position="-690">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+        <state relative-caret-position="330">
+          <caret line="22" column="50" lean-forward="true" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

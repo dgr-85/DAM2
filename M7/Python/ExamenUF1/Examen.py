@@ -101,20 +101,3 @@ def triangle(n):
     return llista_de_llistes
 
 
-def _validacio_num_document(doc_num):
-    letters = 'TRWAGMYFPDXBNJZSQVHLCKE'
-    letters_nie = 'XYZ'
-    if doc_num[:1] in letters_nie:
-        first = doc_num[:1]
-        last = str(letters_nie.find(doc_num[:1]))
-        doc_num = doc_num.replace(first, last)
-    num = int(doc_num[:-1])
-    char = doc_num[-1:]
-    mod = num % 23
-    if letters[mod] != char:
-        raise ValueError('La lletra per a aquest número de document és incorrecta.')
-    else:
-        print('Tot és correcte.')
-
-
-_validacio_num_document('47660167G')
