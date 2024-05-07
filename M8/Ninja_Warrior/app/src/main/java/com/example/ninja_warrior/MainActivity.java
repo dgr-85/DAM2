@@ -25,15 +25,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TextView tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.startAnimation(AnimationUtils.loadAnimation(this, R.anim.title_animation));
+        tvTitle.startAnimation(AnimationUtils.loadAnimation(this, R.anim.main_menu_title_animation));
 
         Button btnPlay = findViewById(R.id.btnPlay);
         Button btnScore = findViewById(R.id.btnScore);
         Button btnQuit = findViewById(R.id.btnQuit);
 
-        btnPlay.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_animation));
-        btnScore.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_animation));
-        btnQuit.startAnimation(AnimationUtils.loadAnimation(this, R.anim.button_animation));
+        btnPlay.startAnimation(AnimationUtils.loadAnimation(this, R.anim.main_menu_button_animation));
+        btnScore.startAnimation(AnimationUtils.loadAnimation(this, R.anim.main_menu_button_animation));
+        btnQuit.startAnimation(AnimationUtils.loadAnimation(this, R.anim.main_menu_button_animation));
 
         btnScore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId()==R.id.menu_info){
-            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_info) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.info_title));
-            builder.setMessage(getString(R.string.info_instructions)+System.lineSeparator()+getString(R.string.info_made_by));
+            builder.setMessage(getString(R.string.info_instructions) + System.lineSeparator() + getString(R.string.info_made_by));
             builder.setPositiveButton(getString(R.string.info_ok), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -63,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
             });
             builder.show();
         }
-        if(item.getItemId()==R.id.menu_config){
+        if (item.getItemId() == R.id.menu_config) {
             startActivity(new Intent(this, PreferencesActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void showScoreList(){
+    public void showScoreList() {
         startActivity(new Intent(this, ScoreActivity.class));
     }
 }

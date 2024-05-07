@@ -16,6 +16,13 @@ public class PracticaFiles {
 
 	private static List<File> allDirectories = new ArrayList<>();
 
+	private static FileFilter filter = new FileFilter() {
+		@Override
+		public boolean accept(File pathname) {
+			return pathname.isDirectory();// && pathname.getName().equals(providedName);
+		}
+	};
+
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		File file = new File("Documents/Exercicis_M6/datos.txt");
@@ -38,7 +45,7 @@ public class PracticaFiles {
 			}
 		}
 		System.out.println("Listing contents of current directory...");
-		checkDir(".");
+		// checkDirectory(".");
 		for (File file2 : allDirectories) {
 			System.out.println(file2.getName());
 		}
@@ -56,6 +63,8 @@ public class PracticaFiles {
 		for (File file3 : allDirectories) {
 			System.out.println(file3.getName());
 		}
+
+		sc.close();
 	}
 
 	public static void printFileStats(File file) throws IOException {
@@ -87,7 +96,6 @@ public class PracticaFiles {
 					if (pathFile.getName().equals(searchingDirectory)) {
 						matchingDirectories.add(pathFile);
 					}
-					checkDir(pathFile.getName());
 				}
 			}
 		} catch (Exception e) {
@@ -102,7 +110,7 @@ public class PracticaFiles {
 				File file = path.toFile();
 				if (file.isDirectory()) {
 					matchingDirectories.add(file);
-					checkDir(file.getAbsolutePath());
+					checkDir(file.getAbsolutePath(), directory);
 				}
 				// System.out.println(file.getName());
 			}
@@ -112,26 +120,16 @@ public class PracticaFiles {
 		return matchingDirectories;
 	}
 
-	public static void checkDir(String dir) throws IOException {
-		FileFilter filter = new FileFilter() {
-			@Override
-			public boolean accept(File pathname) {
-				return pathname.isDirectory();
-			}
-		};
+	public static void checkDir(String dir, String providedName) throws IOException {
 		File file = new File(dir);
-		if (file.isDirectory()) {
+		if (file.isDirectory() && file.getName().equals(providedName)) {
 			allDirectories.add(file);
-			File[] subFiles = file.listFiles(filter);
-			if (subFiles != null && subFiles.length > 0) {
-				for (File f : subFiles) {
-					if (f.isDirectory()) {
-						checkDir(f.getAbsolutePath());
-					}
-				}
+		}
+		File[] subFiles = file.listFiles(filter);
+		if (subFiles != null && subFiles.length > 0) {
+			for (File f : subFiles) {
+				checkDir(f.getAbsolutePath(), providedName);
 			}
-
 		}
 	}
-
 }
