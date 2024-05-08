@@ -61,9 +61,24 @@ public class MainProcess {
 		try {
 			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 			cipher.init(Cipher.DECRYPT_MODE, key);
-			decryptedData = cipher.doFinal(data);
+			decryptedData = new byte[0];
+			int buffer = 1024;
+			for (int i = 0; i < data.length; i += buffer) {
+				int fragmentLength = Math.min(buffer, data.length - i);
+				byte[] fragment = cipher.update(data, i, fragmentLength);
+				decryptedData = concatByteArrays(decryptedData, fragment);
+			}
+			decryptedData = concatByteArrays(decryptedData, cipher.doFinal());
+			// decryptedData = cipher.doFinal(data);
 			decryptedString = new String(decryptedData, StandardCharsets.UTF_8);
 		} catch (Exception ex) {
 		}
+	}
+
+	private static byte[] concatByteArrays(byte[] a, byte[] b) {
+		byte[] result = new byte[a.length + b.length];
+		System.arraycopy(a, 0, result, 0, a.length);
+		System.arraycopy(b, 0, result, a.length, b.length);
+		return result;
 	}
 }
