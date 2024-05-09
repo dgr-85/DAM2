@@ -3,6 +3,8 @@ package secret.encode;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -20,8 +22,7 @@ public class MainProcess {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println(System.getProperty("user.dir"));
-		System.out.println("Enter file name:");
+		System.out.println("Enter file route:");
 		String fileName = sc.nextLine();
 		File initialFile = createFileFromName(fileName);
 		if (initialFile == null) {
@@ -38,6 +39,12 @@ public class MainProcess {
 			}
 			if (processedFile != null) {
 				System.out.println("File processed succesfully. Location: " + processedFile.getPath());
+				try (FileWriter fw = new FileWriter(initialFile)) {
+					fw.write("");
+				} catch (IOException e) {
+				}
+				initialFile.delete();
+				initialFile = null;
 			} else {
 				System.out.println("File processing aborted.");
 			}
@@ -70,9 +77,9 @@ public class MainProcess {
 	private static File processFile(SecretKey sKey, File fileToProcess, int mode) {
 		File processedFile;
 		if (mode == Cipher.ENCRYPT_MODE) {
-			processedFile = new File(fileToProcess.getName() + ".aes");
+			processedFile = new File(fileToProcess.getAbsolutePath() + ".aes");
 		} else {
-			processedFile = new File(fileToProcess.getName().replace(".aes", ""));
+			processedFile = new File(fileToProcess.getAbsolutePath().replace(".aes", ""));
 		}
 		try (FileInputStream in = new FileInputStream(fileToProcess);
 				FileOutputStream out = new FileOutputStream(processedFile)) {
@@ -93,6 +100,10 @@ public class MainProcess {
 			}
 		} catch (BadPaddingException ex) {
 			System.out.println("Incorrect password.");
+			try (FileWriter fw = new FileWriter(processedFile)) {
+				fw.write("");
+			} catch (IOException e) {
+			}
 			processedFile.delete();
 			processedFile = null;
 		} catch (Exception ex) {

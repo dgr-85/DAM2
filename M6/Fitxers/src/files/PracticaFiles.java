@@ -14,12 +14,12 @@ import java.util.Scanner;
 
 public class PracticaFiles {
 
-	private static List<File> allDirectories = new ArrayList<>();
+	private static List<File> matchingDirectories = new ArrayList<>();
 
 	private static FileFilter filter = new FileFilter() {
 		@Override
 		public boolean accept(File pathname) {
-			return pathname.isDirectory();// && pathname.getName().equals(providedName);
+			return pathname.isDirectory() && !Files.isSymbolicLink(pathname.toPath());
 		}
 	};
 
@@ -44,24 +44,21 @@ public class PracticaFiles {
 				System.out.println("Error while creating file.");
 			}
 		}
+
+		/* ========================================================================= */
 		System.out.println("Listing contents of current directory...");
 		// checkDirectory(".");
-		for (File file2 : allDirectories) {
+		for (File file2 : matchingDirectories) {
 			System.out.println(file2.getName());
 		}
-		allDirectories.clear();
+		matchingDirectories.clear();
 		System.out.println("Enter a directory name:");
 		String customDirectory = sc.nextLine();
 		System.out.println("Listing contents of directory " + customDirectory + "...");
-		List<File> directories = checkDirectoryTree(customDirectory);
-		System.out.println("Directories named " + customDirectory + ": " + directories.size());
-		if (directories.size() > 0) {
-			for (File f : directories) {
-				System.out.println(f.getName());
-			}
-		}
-		for (File file3 : allDirectories) {
-			System.out.println(file3.getName());
+		searchDirectoryByName(Paths.get(System.getProperty("user.dir")).getRoot().toString(), customDirectory);
+		System.out.println("Contents in matchingDirectories:");
+		for (File file3 : matchingDirectories) {
+			System.out.println(file3.getAbsolutePath());
 		}
 
 		sc.close();
@@ -85,7 +82,7 @@ public class PracticaFiles {
 		System.out.print(System.lineSeparator());
 	}
 
-	public static void checkDirectory(String path, List<File> matchingDirectories, String searchingDirectory) {
+	public static void checkDirectoryContents(String path, List<File> matchingDirectories, String searchingDirectory) {
 		String absolutePath = new File(path).getAbsolutePath();
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Paths.get(absolutePath))) {
 			for (Path dirFile : stream) {
@@ -110,9 +107,8 @@ public class PracticaFiles {
 				File file = path.toFile();
 				if (file.isDirectory()) {
 					matchingDirectories.add(file);
-					checkDir(file.getAbsolutePath(), directory);
+					searchDirectoryByName(file.getAbsolutePath(), directory);
 				}
-				// System.out.println(file.getName());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,15 +116,15 @@ public class PracticaFiles {
 		return matchingDirectories;
 	}
 
-	public static void checkDir(String dir, String providedName) throws IOException {
-		File file = new File(dir);
-		if (file.isDirectory() && file.getName().equals(providedName)) {
-			allDirectories.add(file);
+	public static void searchDirectoryByName(String directory, String name) throws IOException {
+		File file = new File(directory);
+		if (file.isDirectory() && !Files.isSymbolicLink(file.toPath()) && file.getName().equals(name)) {
+			matchingDirectories.add(file);
 		}
 		File[] subFiles = file.listFiles(filter);
 		if (subFiles != null && subFiles.length > 0) {
 			for (File f : subFiles) {
-				checkDir(f.getAbsolutePath(), providedName);
+				searchDirectoryByName(f.getCanonicalPath(), name);
 			}
 		}
 	}
