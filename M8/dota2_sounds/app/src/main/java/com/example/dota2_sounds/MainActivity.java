@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnPlay;
     ImageView[] imgs;
     TextView[] texts;
-    boolean toastIsShowing=false;
-    boolean soundHasBeenPlayed=false;
+    boolean toastIsShowing = false;
+    boolean soundHasBeenPlayed = false;
     MediaPlayer mp;
 
     @Override
     protected void onStop() {
         super.onStop();
-        if(mp!=null && mp.isPlaying()){
+        if (mp != null && mp.isPlaying()) {
             mp.stop();
             try {
                 mp.prepare();
@@ -88,31 +88,31 @@ public class MainActivity extends AppCompatActivity {
         imgs = new ImageView[]{img1, img2, img3};
         texts = new TextView[]{tv1, tv2, tv3};
         listElements = new ArrayList<>();
-        for(Field f:R.raw.class.getFields()){
-            if(!f.getName().equals("win") && !f.getName().equals("fail")){
+        for (Field f : R.raw.class.getFields()) {
+            if (!f.getName().equals("win") && !f.getName().equals("fail")) {
                 listElements.add(f);
             }
         }
-        elementCooldowns =new int[listElements.size()];
-        for(int i = 0; i < elementCooldowns.length; i++){
+        elementCooldowns = new int[listElements.size()];
+        for (int i = 0; i < elementCooldowns.length; i++) {
             elementCooldowns[i] = 0;
         }
         newRound();
     }
 
     public void newRound() {
-        for(int i = 0; i < elementCooldowns.length; i++){
-            if(elementCooldowns[i] > 0){
+        for (int i = 0; i < elementCooldowns.length; i++) {
+            if (elementCooldowns[i] > 0) {
                 elementCooldowns[i]--;
             }
         }
-        soundHasBeenPlayed=false;
+        soundHasBeenPlayed = false;
         setImages();
         selectSound(btnPlay);
     }
 
     //Elige 3 nombres al azar entre los ficheros raw y asigna sus imágenes y textos a sus respectivas views
-    public void setImages(){
+    public void setImages() {
         int totalElements = listElements.size();
         int randomNumber = (int) (Math.random() * totalElements);
 
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 selectedElements.set(i, randomNumber);
             }
             //Número de turnos en que este elemento no volverá a salir
-            elementCooldowns[randomNumber]=21;
+            elementCooldowns[randomNumber] = 21;
 
             Field numberElem = listElements.get(randomNumber);
             String elemName = numberElem.getName();
@@ -138,39 +138,41 @@ public class MainActivity extends AppCompatActivity {
             imgs[i].setImageDrawable(getDrawable(getResources().getIdentifier(elemName, "drawable", getPackageName())));
         }
     }
+
     //Elige un elemento al azar de entre los 3 elegidos y asigna su sonido a btnPlay
-    public void selectSound(ImageButton btnPlay){
-        int randomSound=(int)(Math.random()*selectedElements.size());
-        randomSound=selectedElements.get(randomSound);
-        String soundName=listElements.get(randomSound).getName();
-        mp=MediaPlayer.create(getApplicationContext(),getResources().getIdentifier(soundName,"raw",getPackageName()));
+    public void selectSound(ImageButton btnPlay) {
+        int randomSound = (int) (Math.random() * selectedElements.size());
+        randomSound = selectedElements.get(randomSound);
+        String soundName = listElements.get(randomSound).getName();
+        mp = MediaPlayer.create(getApplicationContext(), getResources().getIdentifier(soundName, "raw", getPackageName()));
         btnPlay.setOnClickListener(v -> {
-            if(toastIsShowing){
+            if (toastIsShowing) {
                 return;
             }
-            soundHasBeenPlayed=true;
-            if(mp.isPlaying()){
+            soundHasBeenPlayed = true;
+            if (mp.isPlaying()) {
                 mp.stop();
                 try {
                     mp.prepare();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }else {
+            } else {
                 mp.start();
             }
         });
-        mapSoundResult(soundName,mp);
+        mapSoundResult(soundName, mp);
     }
 
     //Asigna guessCorrect o guessWrong a cada ImageView según el sonido asignado a btnPlay
-    public void mapSoundResult(String soundName, MediaPlayer mpSelected){
-        for(ImageView iv:imgs){
+    public void mapSoundResult(String soundName, MediaPlayer mpSelected) {
+        for (ImageView iv : imgs) {
             iv.setOnClickListener(v -> {
-                if(toastIsShowing){
+                if (toastIsShowing) {
                     return;
-                }if(!soundHasBeenPlayed){
-                    AlertDialog.Builder builder=new AlertDialog.Builder(this);
+                }
+                if (!soundHasBeenPlayed) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage(getString(R.string.no_sound_played));
                     builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         @Override
@@ -181,37 +183,38 @@ public class MainActivity extends AppCompatActivity {
                     builder.show();
                     return;
                 }
-                if(iv.getTag().toString().equals(soundName)){
+                if (iv.getTag().toString().equals(soundName)) {
                     guessCorrect(mpSelected);
-                }else{
+                } else {
                     guessWrong();
                 }
             });
         }
     }
 
-    public void guessCorrect(MediaPlayer mpSelected){
-        toastIsShowing=true;
-        Toast toast=Toast.makeText(MainActivity.this,getString(R.string.correct),Toast.LENGTH_SHORT);
+    public void guessCorrect(MediaPlayer mpSelected) {
+        toastIsShowing = true;
+        Toast toast = Toast.makeText(MainActivity.this, getString(R.string.correct), Toast.LENGTH_SHORT);
         toast.show();
-        MediaPlayer mp=MediaPlayer.create(MainActivity.this,R.raw.win);
+        MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.win);
         mp.start();
-        mp.setOnCompletionListener(v->{
-            toastIsShowing=false;
+        mp.setOnCompletionListener(v -> {
+            toastIsShowing = false;
             mpSelected.stop();
             mpSelected.release();
             mp.release();
             newRound();
         });
     }
-    public void guessWrong(){
-        toastIsShowing=true;
-        Toast toast=Toast.makeText(MainActivity.this,getString(R.string.wrong),Toast.LENGTH_SHORT);
+
+    public void guessWrong() {
+        toastIsShowing = true;
+        Toast toast = Toast.makeText(MainActivity.this, getString(R.string.wrong), Toast.LENGTH_SHORT);
         toast.show();
-        MediaPlayer mp=MediaPlayer.create(MainActivity.this,R.raw.fail);
+        MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.fail);
         mp.start();
-        mp.setOnCompletionListener(v->{
-            toastIsShowing=false;
+        mp.setOnCompletionListener(v -> {
+            toastIsShowing = false;
             mp.release();
         });
     }

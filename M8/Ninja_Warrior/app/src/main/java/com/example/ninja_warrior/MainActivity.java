@@ -35,12 +35,9 @@ public class MainActivity extends AppCompatActivity {
         btnScore.startAnimation(AnimationUtils.loadAnimation(this, R.anim.main_menu_button_animation));
         btnQuit.startAnimation(AnimationUtils.loadAnimation(this, R.anim.main_menu_button_animation));
 
-        btnScore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showScoreList();
-            }
-        });
+        btnPlay.setOnClickListener(v -> startGame());
+
+        btnScore.setOnClickListener(v -> showScoreList());
     }
 
     @Override
@@ -72,4 +69,6 @@ public class MainActivity extends AppCompatActivity {
     public void showScoreList() {
         startActivity(new Intent(this, ScoreActivity.class));
     }
+
+    public void startGame(){startActivity(new Intent(this, GameActivity.class)); }
 }

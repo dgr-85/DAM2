@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="internal">
-        <item>ninja_one</item>
-        <item>ninja_two</item>
-        <item>ninja_three</item>
+        <item>ninja01</item>
+        <item>ninja02</item>
+        <item>ninja03</item>
     </string-array>
     <string-array name="display">
         <item>Ninja 1</item>

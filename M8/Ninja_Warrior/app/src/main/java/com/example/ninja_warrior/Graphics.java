@@ -7,21 +7,21 @@ import android.view.View;
 public class Graphics {
     private Drawable drawable; //Imatge que dibuixarem
     private double posX, posY; //Posicio
-    private double incX, incY; //Velocitat desplacament
-    private int angle, rotacio; //Angle i velocitat rotacio
-    private int amplada, altura; //Dimensions de la imatge
-    private int radiColisio; //Per determinar col.lisio
+    private double speedX, speedY; //Velocitat desplacament
+    private int angle, rotation; //Angle i velocitat rotacio
+    private int width, height; //Dimensions de la imatge
+    private int collisionRadius; //Per determinar col.lisio
     //On dibuixem el grafic (utilitzat en view.invalidate)
     private View view;
     // Per a determinar l'espai a esborrar (view.invalidate)
-    public static final int MAX_VELOCITAT = 20;
+    public static final int MAX_SPEED = 20;
 
     public Graphics(View view, Drawable drawable) {
         this.view = view;
         this.drawable = drawable;
-        amplada = drawable.getIntrinsicWidth();
-        altura = drawable.getIntrinsicHeight();
-        radiColisio = (altura + amplada) / 4;
+        width = drawable.getIntrinsicWidth();
+        height = drawable.getIntrinsicHeight();
+        collisionRadius = (height + width) / 4;
     }
 
     public Drawable getDrawable() {
@@ -48,20 +48,20 @@ public class Graphics {
         this.posY = posY;
     }
 
-    public double getIncX() {
-        return incX;
+    public double getSpeedX() {
+        return speedX;
     }
 
-    public void setIncX(double incX) {
-        this.incX = incX;
+    public void setSpeedX(double speedX) {
+        this.speedX = speedX;
     }
 
-    public double getIncY() {
-        return incY;
+    public double getSpeedY() {
+        return speedY;
     }
 
-    public void setIncY(double incY) {
-        this.incY = incY;
+    public void setSpeedY(double speedY) {
+        this.speedY = speedY;
     }
 
     public int getAngle() {
@@ -72,36 +72,36 @@ public class Graphics {
         this.angle = angle;
     }
 
-    public int getRotacio() {
-        return rotacio;
+    public int getRotation() {
+        return rotation;
     }
 
-    public void setRotacio(int rotacio) {
-        this.rotacio = rotacio;
+    public void setRotation(int rotation) {
+        this.rotation = rotation;
     }
 
-    public int getAmplada() {
-        return amplada;
+    public int getWidth() {
+        return width;
     }
 
-    public void setAmplada(int amplada) {
-        this.amplada = amplada;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
-    public int getAltura() {
-        return altura;
+    public int getHeight() {
+        return height;
     }
 
-    public void setAltura(int altura) {
-        this.altura = altura;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public int getRadiColisio() {
-        return radiColisio;
+    public int getCollisionRadius() {
+        return collisionRadius;
     }
 
-    public void setRadiColisio(int radiColisio) {
-        this.radiColisio = radiColisio;
+    public void setCollisionRadius(int collisionRadius) {
+        this.collisionRadius = collisionRadius;
     }
 
     public View getView() {
@@ -112,40 +112,43 @@ public class Graphics {
         this.view = view;
     }
 
-    public void dibuixaGrafic(Canvas canvas) {
+    public void drawGraphic(Canvas canvas) {
         canvas.save();
-        int x = (int) (posX + amplada / 2);
-        int y = (int) (posY + altura / 2);
+        int x = (int) (posX + width / 2);
+        int y = (int) (posY + height / 2);
         canvas.rotate((float) angle, (float) x, (float) y);
         drawable.setBounds((int) posX, (int) posY,
-                (int) posX + amplada, (int) posY + altura);
+                (int) posX + width, (int) posY + height);
         drawable.draw(canvas);
         canvas.restore();
-        int rInval = (int) Math.hypot(amplada, altura) / 2 + MAX_VELOCITAT;
-        view.invalidate(x - rInval, y - rInval, x + rInval, y + rInval);
+        /*
+        int invalidRadius = (int) Math.hypot(width, height) / 2 + MAX_SPEED;
+        view.invalidate(x - invalidRadius, y - invalidRadius, x + invalidRadius, y + invalidRadius);
+        */
+        view.invalidate();
     }
-    public void incrementaPos(double factor) {
-        posX += incX * factor;
+    public void increasePos(double factor) {
+        posX += speedX * factor;
         // Si sortim de la pantalla, corregim posició
-        if (posX < -amplada / 2) {
-            posX = view.getWidth() - amplada / 2;
+        if (posX < -width / 2) {
+            posX = view.getWidth() - width / 2;
         }
-        if (posX > view.getWidth() - amplada / 2) {
-            posX = -amplada / 2;
+        if (posX > view.getWidth() - width / 2) {
+            posX = -width / 2;
         }
-        posY += incY * factor;
-        if (posY < -altura / 2) {
-            posY = view.getHeight() - altura / 2;
+        posY += speedY * factor;
+        if (posY < -height / 2) {
+            posY = view.getHeight() - height / 2;
         }
-        if (posY > view.getHeight() - altura / 2) {
-            posY = -altura / 2;
+        if (posY > view.getHeight() - height / 2) {
+            posY = -height / 2;
         }
-        angle += rotacio * factor; //Actualitzem angle
+        angle += rotation * factor; //Actualitzem angle
     }
-    public double distancia(Graphics g) {
+    public double distance(Graphics g) {
         return Math.hypot(posX-g.posX, posY-g.posY);
     }
-    public boolean verificaColision(Graphics g) {
-        return(distancia(g) < (radiColisio+g.radiColisio));
+    public boolean verifyCollision(Graphics g) {
+        return(distance(g) < (collisionRadius +g.collisionRadius));
     }
 }
