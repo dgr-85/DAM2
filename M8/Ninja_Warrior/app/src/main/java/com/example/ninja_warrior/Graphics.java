@@ -112,6 +112,8 @@ public class Graphics {
         this.view = view;
     }
 
+
+
     public void drawGraphic(Canvas canvas) {
         canvas.save();
         int x = (int) (posX + width / 2);

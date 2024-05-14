@@ -2,30 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f54c22-a474-4b12-aec5-d141039175ae" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/PythonDocs.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/punt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Fitxers/bin/files/PracticaFiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Fitxers/bin/files/PracticaFiles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M6/Fitxers/src/files/PracticaFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Fitxers/src/files/PracticaFiles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allclasses-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/allpackages-index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/deprecated-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/Factorial.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/Factorial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/class-use/Factorial.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/class-use/Factorial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-summary.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/exemple/package-use.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/help-doc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index-files/index-3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/doc/overview-tree.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Factorial/src/exemple/Factorial.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Factorial/src/exemple/Factorial.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ProvaQt/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ProvaQt/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProvaQt/p17_DGR_enxampa.py" beforeDir="false" afterPath="$PROJECT_DIR$/../ProvaQt/p17_DGR_enxampa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/doctrees/punt.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/doctrees/punt.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/punt.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/punt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/punt.py" beforeDir="false" afterPath="$PROJECT_DIR$/punt.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,11 +17,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/conf.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="300">
               <caret line="21" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#203#212#0" expanded="true" />
@@ -50,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/punt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+            <state relative-caret-position="675">
+              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -132,7 +115,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -163,13 +146,9 @@
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="852" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" sideWeight="0.49968293" visible="true" weight="0.32960895" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.50031704" side_tool="true" weight="0.32960895" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32960895" />
@@ -177,6 +156,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49968293" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50031704" side_tool="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -185,7 +168,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/docs/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="300">
           <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#203#212#0" expanded="true" />
@@ -198,8 +181,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/punt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+        <state relative-caret-position="675">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
         </state>
       </provider>
     </entry>

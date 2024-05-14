@@ -22,7 +22,7 @@ class Punt:
         Mètode que calcula la distància del punt a l'origen de coordenades (0, 0).
 
         :return: Unitats totals que separen els dos punts.
-        :rtype: Número enter positiu.
+        :rtype: Float positiu.
         """
         return ((self.x ** 2) + (self.y ** 2)) ** 0.5
 
@@ -45,7 +45,7 @@ class Punt:
         :param altre: Punt a comparar amb el de l'usuari.
         :type altre: Tupla
         :return: Punt situat al mig de la distància que separa el punt de l'usuari i el punt altre.
-        :rtype: Tupla
+        :rtype: Objecte de classe Punt.
         """
         mx = (self.x + altre.x) / 2
         my = (self.y + altre.y) / 2
@@ -58,11 +58,11 @@ class Punt:
         El pendent és la tangent de l'angle que la recta forma amb l'eix horitzontal positiu, de manera que pot ser
         positiu o negatiu segons la inclinació de la recta.
 
-        :raises ZeroDivisionError: Si x és 0 la recta és vertical, no es "desplaça" al llarg de l'eix horitzonal i
+        :raises Exception: Si x és 0 la recta és vertical, no es "desplaça" al llarg de l'eix horitzonal i
             significa que el seu pendent és infinit, cosa que es reflecteix en el seu càlcul perquè implica dividir
             entre 0.
         :return: El valor del pendent de la recta.
-        :rtype: Número enter.
+        :rtype: Float.
         """
         try:
             m = self.y / self.x
@@ -78,11 +78,11 @@ class Punt:
 
         :param altre: Punt a ajuntar amb el de l'usuari per a traçar la recta.
         :type altre: Tupla
-        :raises ZeroDivisionError: El paràmetre m és el pendent de la recta, de manera que si la recta és vertical,
+        :raises Exception: El paràmetre m és el pendent de la recta, de manera que si la recta és vertical,
             no es "desplaça" al llarg de l'eix horitzonal i significa que el seu pendent és infinit, cosa que es
             reflecteix en el seu càlcul perquè implica dividir entre 0.
         :return: Els paràmetres m i n de l'equació de la recta.
-        :rtype: Tupla.
+        :rtype: Tupla (Float, Float).
         """
         try:
             m = (altre.y - self.y) / (altre.x - self.x)

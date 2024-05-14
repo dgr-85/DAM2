@@ -56,7 +56,7 @@ el coeficients m i n necessaris per a trobar l’equació y = mx + n que definei
 <dd class="field-odd"><p><strong>altre</strong> (<em>Tupla</em>) – Punt a ajuntar amb el de l’usuari per a traçar la recta.</p>
 </dd>
 <dt class="field-even">Llença<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ZeroDivisionError</strong> – El paràmetre m és el pendent de la recta, de manera que si la recta és vertical,
+<dd class="field-even"><p><strong>Exception</strong> – El paràmetre m és el pendent de la recta, de manera que si la recta és vertical,
 no es «desplaça» al llarg de l’eix horitzonal i significa que el seu pendent és infinit, cosa que es
 reflecteix en el seu càlcul perquè implica dividir entre 0.</p>
 </dd>
@@ -64,7 +64,7 @@ reflecteix en el seu càlcul perquè implica dividir entre 0.</p>
 <dd class="field-odd"><p>Els paràmetres m i n de l’equació de la recta.</p>
 </dd>
 <dt class="field-even">Tipus de retorn<span class="colon">:</span></dt>
-<dd class="field-even"><p>Tupla.</p>
+<dd class="field-even"><p>Tupla (Float, Float).</p>
 </dd>
 </dl>
 </dd></dl>
@@ -79,7 +79,7 @@ reflecteix en el seu càlcul perquè implica dividir entre 0.</p>
 <dd class="field-odd"><p>Unitats totals que separen els dos punts.</p>
 </dd>
 <dt class="field-even">Tipus de retorn<span class="colon">:</span></dt>
-<dd class="field-even"><p>Número enter positiu.</p>
+<dd class="field-even"><p>Float positiu.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -93,7 +93,7 @@ El pendent és la tangent de l’angle que la recta forma amb l’eix horitzonta
 positiu o negatiu segons la inclinació de la recta.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Llença<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ZeroDivisionError</strong> – Si x és 0 la recta és vertical, no es «desplaça» al llarg de l’eix horitzonal i
+<dd class="field-odd"><p><strong>Exception</strong> – Si x és 0 la recta és vertical, no es «desplaça» al llarg de l’eix horitzonal i
 significa que el seu pendent és infinit, cosa que es reflecteix en el seu càlcul perquè implica dividir
 entre 0.</p>
 </dd>
@@ -101,7 +101,7 @@ entre 0.</p>
 <dd class="field-even"><p>El valor del pendent de la recta.</p>
 </dd>
 <dt class="field-odd">Tipus de retorn<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Número enter.</p>
+<dd class="field-odd"><p>Float.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -120,7 +120,7 @@ obtenir les coordenades del punt situat al centre de la distància que els separ
 <dd class="field-even"><p>Punt situat al mig de la distància que separa el punt de l’usuari i el punt altre.</p>
 </dd>
 <dt class="field-odd">Tipus de retorn<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Tupla</p>
+<dd class="field-odd"><p>Objecte de classe Punt.</p>
 </dd>
 </dl>
 </dd></dl>

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../M10/DockerDev/Entrenament/Entrenament.odt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M10/DockerDev/Entrenament/Entrenament.odt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p17_DGR_enxampa.py" beforeDir="false" afterPath="$PROJECT_DIR$/p17_DGR_enxampa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PythonDocs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonDocs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PythonDocs/docs/_build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonDocs/docs/_build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PythonDocs/docs/_build/doctrees/punt.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonDocs/docs/_build/doctrees/punt.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PythonDocs/docs/_build/html/punt.html" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonDocs/docs/_build/html/punt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PythonDocs/docs/_build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonDocs/docs/_build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PythonDocs/punt.py" beforeDir="false" afterPath="$PROJECT_DIR$/../PythonDocs/punt.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1012">
+            <state relative-caret-position="75">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
@@ -43,8 +50,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state relative-caret-position="469">
+              <caret line="36" column="69" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,6 +129,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PythonDocs" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -138,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.p16_DGR_calcul">
+  <component name="RunManager" selected="Python.p17_DGR_enxampa">
     <configuration name="PyQt_02" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProvaQt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -246,8 +257,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.p16_DGR_calcul" />
         <item itemvalue="Python.p17_DGR_enxampa" />
+        <item itemvalue="Python.p16_DGR_calcul" />
         <item itemvalue="Python.p15_DGR_xifrat" />
         <item itemvalue="Python.PyQt_02" />
         <item itemvalue="Python.PyQt_03" />
@@ -336,7 +347,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1012">
+        <state relative-caret-position="75">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
@@ -346,8 +357,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        <state relative-caret-position="469">
+          <caret line="36" column="69" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
