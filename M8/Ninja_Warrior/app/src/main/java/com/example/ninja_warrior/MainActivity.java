@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         btnPlay.setOnClickListener(v -> startGame());
 
         btnScore.setOnClickListener(v -> showScoreList());
+
+        btnQuit.setOnClickListener(v-> finish());
     }
 
     @Override

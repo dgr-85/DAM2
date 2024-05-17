@@ -9,7 +9,7 @@
     <string name="main_score">Score</string>
     <string name="main_quit">Quit</string>
     <string name="info_title">How To Play</string>
-    <string name="info_instructions">· Shoot to kill enemy ninjas.\n· Move to avoid enemy attacks.\n· If you get hit, you lose!\n</string>
+    <string name="info_instructions">· Shoot to kill enemy ninjas.\n· Click and drag to turn around.\n· If you get hit, you lose!\n</string>
     <string name="info_made_by"><small><i>Made by David Gómez</i></small></string>
     <string name="info_ok">OK</string>
     <string name="pref_checkbox_music_title">Music</string>

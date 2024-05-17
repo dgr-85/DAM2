@@ -14,34 +14,29 @@ import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GameView extends View {
-    // Increment estàndard de gir i acceleració
     private static final int INC_TURN_RATE = 5;
     private static final float INC_ACCEL = 0.5f;
-    //Cada quant temps volem processar canvis (ms)
-    private static int PROCESS_INTERVAL = 50;
-    private static int INC_KNIFE_SPEED = 12;
+    private static final int PROCESS_INTERVAL = 50;
+    private static final int INC_KNIFE_SPEED = 12;
     private List<Graphics> targets;
     private Drawable drawableNinja, drawableKnife, drawableEnemy;
     private Graphics ninja;// Gràfic del ninja
     private int ninjaTurnRate; // Increment de direcció
     private float ninjaAccel; // augment de velocitat
     private GameThread thread = new GameThread();
-    // Quan es va realitzar l'últim procés
     private long lastProcess = 0;
     private float mX = 0, mY = 0;
-    private boolean knifeThrown = false;
-    // //// LLANÇAMENT //////
-    private Graphics knife;
-    private boolean knifeIsActive = false;
-    private int knifeTime;
+    private List<Knife> knifeStash;
+    private int nextKnife = 0;
     private Drawable drawableTarget[] = new Drawable[8];
-    private MediaPlayer mpThrow,mpExplosion;
+    private MediaPlayer mpThrow, mpExplosion;
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         String selectedNinja = prefs.getString("list_ninjas", "ninja01");
         Integer ninjaId = getResources().getIdentifier(selectedNinja, "drawable", context.getPackageName());
@@ -64,7 +59,11 @@ public class GameView extends View {
         }
 
         drawableKnife = context.getResources().getDrawable(R.drawable.ganivet, null);
-        knife = new Graphics(this, drawableKnife);
+        knifeStash = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            knifeStash.add(new Knife(this, drawableKnife, false, 0, false));
+        }
+
 
         drawableTarget[0] = context.getResources().
                 getDrawable(R.drawable.cap_ninja, null); //cap
@@ -73,8 +72,8 @@ public class GameView extends View {
         drawableTarget[2] = context.getResources().
                 getDrawable(R.drawable.cua_ninja, null);
 
-        mpThrow=MediaPlayer.create(context,R.raw.llancament);
-        mpExplosion=MediaPlayer.create(context,R.raw.explosio);
+        mpThrow = MediaPlayer.create(context, R.raw.llancament);
+        mpExplosion = MediaPlayer.create(context, R.raw.explosio);
     }
 
     // Obtenim ample i alt de la pantalla
@@ -90,7 +89,10 @@ public class GameView extends View {
         ninja.setPosX(width / 2);
         ninja.setPosY(height / 2);
         lastProcess = System.currentTimeMillis();
-        thread.start();
+        if(!thread.isAlive()){
+            thread.start();
+        }
+
     }
 
     // Mètode que dibuixa la vista
@@ -101,8 +103,10 @@ public class GameView extends View {
             target.drawGraphic(canvas);
         }
         ninja.drawGraphic(canvas);
-        if (knifeIsActive) {
-            knife.drawGraphic(canvas);
+        for (Knife knife : knifeStash) {
+            if (knife.isActive()) {
+                knife.drawGraphic(canvas);
+            }
         }
     }
 
@@ -132,21 +136,23 @@ public class GameView extends View {
         for (Graphics target : targets) {
             target.increasePos(delay);
         }
-
-        // Actualitzem posició de ganivet
-        if (knifeIsActive) {
-            knife.increasePos(delay);
-            knifeTime -= delay;
-            if (knifeTime < 0) {
-                knifeIsActive = false;
-            } else {
-                for (int i = 0; i < targets.size(); i++)
-                    if (knife.verifyCollision(targets.get(i))) {
-                        destroyTarget(i);
-                        break;
+        for (Knife knife : knifeStash) {
+            if (knife.isActive()) {
+                knife.increasePos(delay);
+                knife.setTime((int) (knife.getTime() - delay));
+                if (knife.getTime() < 0) {
+                    knife.setActive(false);
+                } else {
+                    for (int i = 0; i < targets.size(); i++) {
+                        if (knife.verifyCollision((targets.get(i)))) {
+                            destroyTarget(i, knife);
+                            break;
+                        }
                     }
+                }
             }
         }
+
     }
 
     @Override
@@ -156,24 +162,27 @@ public class GameView extends View {
         float y = event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                knifeThrown = true;
+                //knifeThrown = true;
+                knifeStash.get(nextKnife).setThrown(true);
                 break;
             case MotionEvent.ACTION_MOVE:
                 float dx = Math.abs(x - mX);
                 float dy = Math.abs(y - mY);
                 if (dy < 6 && dx > 6) {
                     ninjaTurnRate = Math.round((x - mX) / 2);
-                    knifeThrown = false;
+                    //knifeThrown = false;
+                    knifeStash.get(nextKnife).setThrown(false);
                 } else if (dx < 6 && dy > 6) {
                     ninjaAccel = Math.round((mY - y) / 25);
-                    knifeThrown = false;
+                    //knifeThrown = false;
+                    knifeStash.get(nextKnife).setThrown(false);
                 }
                 break;
             case MotionEvent.ACTION_UP:
                 ninjaTurnRate = 0;
                 ninjaAccel = 0;
-                if (knifeThrown) {
-                    throwKnife();
+                if (knifeStash.get(nextKnife).isThrown()) {
+                    throwKnife(knifeStash.get(nextKnife));
                 }
                 break;
         }
@@ -202,7 +211,7 @@ public class GameView extends View {
                 break;
             case KeyEvent.KEYCODE_DPAD_CENTER:
             case KeyEvent.KEYCODE_ENTER:
-                throwKnife();
+                throwKnife(knifeStash.get(nextKnife));
                 break;
             default:
                 // Si estem aquí, no hi ha pulsació que ens interessi
@@ -227,33 +236,33 @@ public class GameView extends View {
                 ninjaTurnRate = 0;
                 break;
             default:
-            // Si estem aquí, no hi ha pulsació que ens interessi
+                // Si estem aquí, no hi ha pulsació que ens interessi
                 processed = false;
                 break;
         }
         return processed;
     }
 
-    private void destroyTarget(int i) {
+    private void destroyTarget(int i, Knife knife) {
         mpExplosion.start();
         int numParts = 3;
-        if(targets.get(i).getDrawable()== drawableEnemy){
-            for(int n = 0; n < numParts; n++){
+        if (targets.get(i).getDrawable() == drawableEnemy) {
+            for (int n = 0; n < numParts; n++) {
                 Graphics target = new Graphics(this, drawableTarget[n]);
                 target.setPosX(targets.get(i).getPosX());
                 target.setPosY(targets.get(i).getPosY());
-                target.setSpeedX(Math.random()*7-3);
-                target.setSpeedY(Math.random()*7-3);
-                target.setAngle((int)(Math.random()*360));
-                target.setRotation((int)(Math.random()*8-4));
+                target.setSpeedX(Math.random() * 7 - 3);
+                target.setSpeedY(Math.random() * 7 - 3);
+                target.setAngle((int) (Math.random() * 360));
+                target.setRotation((int) (Math.random() * 8 - 4));
                 targets.add(target);
             }
         }
         targets.remove(i);
-        knifeIsActive = false;
+        knife.setActive(false);
     }
 
-    private void throwKnife() {
+    private void throwKnife(Knife knife) {
         mpThrow.start();
         knife.setPosX(ninja.getPosX() + ninja.getWidth() / 2 - knife.getWidth() / 2);
         knife.setPosY(ninja.getPosY() + ninja.getHeight() / 2 - knife.getHeight() / 2);
@@ -262,9 +271,10 @@ public class GameView extends View {
                 INC_KNIFE_SPEED);
         knife.setSpeedY(Math.sin(Math.toRadians(knife.getAngle())) *
                 INC_KNIFE_SPEED);
-        knifeTime = (int) Math.min(this.getWidth() / Math.abs(knife.getSpeedX()),
-                this.getHeight() / Math.abs(knife.getSpeedY())) - 2;
-        knifeIsActive = true;
+        knife.setTime((int) Math.min(this.getWidth() / Math.abs(knife.getSpeedX()),
+                this.getHeight() / Math.abs(knife.getSpeedY())) - 2);
+        knife.setActive(true);
+        nextKnife = (nextKnife + 1) % knifeStash.size();
     }
 
     class GameThread extends Thread {

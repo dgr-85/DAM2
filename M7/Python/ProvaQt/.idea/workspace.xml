@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p17_DGR_enxampa.py" beforeDir="false" afterPath="$PROJECT_DIR$/p17_DGR_enxampa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M8/Ninja_Warrior/app/src/main/java/com/example/ninja_warrior/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M8/Ninja_Warrior/app/src/main/java/com/example/ninja_warrior/GameView.java" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/venv/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,10 +17,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="229">
               <caret line="25" column="40" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="40" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
@@ -40,14 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="36" column="69" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
-              <folding>
-                <element signature="e#0#53#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="510">
+              <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -84,10 +82,6 @@
       </list>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 8
-}]]></component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="200" />
     <option name="y" value="29" />
@@ -124,16 +118,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "master"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ui" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.p17_DGR_enxampa">
     <configuration name="PyQt_02" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -251,7 +255,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -268,7 +272,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="852" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -321,16 +325,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="25" column="40" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -343,8 +337,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="36" column="69" selection-start-line="36" selection-start-column="69" selection-end-line="36" selection-end-column="69" />
+        <state relative-caret-position="510">
+          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/p15_DGR_xifrat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="40" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
