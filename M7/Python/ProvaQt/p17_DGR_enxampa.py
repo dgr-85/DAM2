@@ -1,4 +1,6 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow
+import random
+
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from PyQt5 import uic, QtGui, QtCore
 from PyQt5.QtGui import QPixmap
 import sys
@@ -18,6 +20,7 @@ class Enxampa(QMainWindow):
         self.actionQuant_a.triggered.connect(self.canvi_pantalla)
         self.comboBox.currentIndexChanged.connect(self.canvi_imatge_config)
         self.dimensions_botons(self.gridLayout)
+        self.primer_boto(self.gridLayout)
         self.show()
 
     def canvi_pantalla(self):
@@ -36,6 +39,17 @@ class Enxampa(QMainWindow):
         if self.comboBox.currentIndex() == 1:
             self.lbl_imatge.setPixmap(QPixmap('ui/snake-tongue.png'))
 
+    def dimensions_botons(self, grid):
+        for i in range(grid.rowCount()):
+            for j in range(grid.columnCount()):
+                grid.itemAtPosition(i, j).widget().setMinimumHeight(100)
+                grid.itemAtPosition(i, j).widget().setMinimumWidth(100)
+
+    def primer_boto(self, grid):
+        x = random.randint(0, grid.rowCount())
+        y = random.randint(0, grid.columnCount())
+        grid.itemAtPosition(x, y).widget().setIcon(QtGui.QIcon('ui/snake-tongue.png'))
+        grid.itemAtPosition(x, y).widget().setIconSize(QtCore.QSize(100, 100))
 
 
 app = QApplication(sys.argv)
