@@ -1,7 +1,6 @@
 package base64.message;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,7 +19,8 @@ import java.security.cert.CertificateException;
 import java.util.Base64;
 import java.util.Scanner;
 
-public class Signatory {
+public class Validator {
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String alias = "fitxers";
@@ -28,23 +28,29 @@ public class Signatory {
 		KeyStore ks;
 		if ((ks = loadKeyStore("src/key.jks", password)) != null) {
 			Key key = getKeyFromKeyStore(ks, alias, password);
+			Certificate cert = null;
 			if (key != null && key instanceof PrivateKey) {
-				Certificate cert;
 				if ((cert = getCertificateFromKeyStore(ks, alias)) != null) {
 					System.out.println("Certificate obtained successfully: " + System.lineSeparator() + cert);
 					PublicKey publicKey = cert.getPublicKey();
 					System.out.println("Public key obtained successfully: " + System.lineSeparator() + publicKey);
-					System.out.println("Please, enter the path to the directory whose contents you wish to sign:");
-					File directory = getDirectoryFromUser(sc);
-					printSignaturesFromDirectoryContents(directory, key);
+					System.out.println("Please, enter the path to the file you wish to validate:");
+					File file = getFileFromUser(sc);
+					System.out.println("Please, enter the base64 signature associated to this file:");
+					String signature = sc.nextLine();
+					if (checkFileAndSignature(file, signature, cert)) {
+						System.out.println("File " + file.getName() + " verified. Signature is valid.");
+					} else {
+						System.out.println("Incorrect signature for file " + file.getName() + ".");
+					}
 				} else {
 					System.out.println("Error while obtaining certificate. Alias might be wrong.");
 				}
 			} else {
-				System.out.println("Error while obtaining key. Alias and/or password might be wrong.");
+				System.out.println("Error while obtaning key. Alias and/or password might be wrong.");
 			}
 		} else {
-			System.out.println("Error while loading KeyStore.");
+			System.out.println("Error while loading the KeyStore.");
 		}
 		sc.close();
 	}
@@ -80,41 +86,36 @@ public class Signatory {
 		}
 	}
 
-	public static File getDirectoryFromUser(Scanner sc) {
+	public static File getFileFromUser(Scanner sc) {
 		while (true) {
-			String dir = sc.nextLine();
-			File directory = new File(dir);
-			if (directory.exists() && directory.isDirectory()) {
-				return directory;
+			String str = sc.nextLine();
+			File file = new File(str);
+			if (file.exists() && file.isFile()) {
+				return file;
 			} else {
-				System.out.println("Directory " + directory.getName() + " not found.");
+				System.out.println("File " + file.getName() + " not found.");
 			}
 		}
 	}
 
-	public static void printSignaturesFromDirectoryContents(File directory, Key key) {
-		FileFilter filter = new FileFilter() {
-			@Override
-			public boolean accept(File pathname) {
-				return pathname.isFile() && !Files.isSymbolicLink(pathname.toPath());
-			}
-		};
-		System.out.println("Directory " + directory.getName() + " found. Number of files among contents: "
-				+ directory.listFiles(filter).length);
-		for (File file : directory.listFiles(filter)) {
-			try {
-				byte[] fileContent = Files.readAllBytes(file.toPath());
-				Signature signature = Signature.getInstance("SHA256withRSA");
-				signature.initSign((PrivateKey) key);
-				signature.update(fileContent);
-				byte[] digitalSignature = signature.sign();
-				String base64Signature = Base64.getEncoder().encodeToString(digitalSignature);
-				System.out.println("File: " + file.getName());
-				System.out.println("Signature: " + base64Signature);
-			} catch (IOException | NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
-				e.printStackTrace();
-			}
+	public static boolean checkFileAndSignature(File file, String strSignature, Certificate certificate) {
+		try {
+			byte[] fileToBytes = Files.readAllBytes(file.toPath());
+			byte[] signatureToBytes = Base64.getDecoder().decode(strSignature);
+			Signature signature = Signature.getInstance("SHA256withRSA");
+			signature.initVerify(certificate.getPublicKey());
+			signature.update(fileToBytes);
+			return signature.verify(signatureToBytes);
+		} catch (IOException e) {
+			System.out.println("Error while translating file to byte array.");
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println(
+					"Error while obtaining signature. The specified algorithm might be wrong or lack providers implementing a signature for it.");
+		} catch (InvalidKeyException e) {
+			System.out.println("Error while verifying signature. The provided public key might be invalid.");
+		} catch (SignatureException e) {
+			System.out.println("Error while updating file. Signature might not have been initialized correctly.");
 		}
+		return false;
 	}
-
 }

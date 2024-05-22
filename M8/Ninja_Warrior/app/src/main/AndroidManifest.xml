@@ -15,15 +15,18 @@
         <activity
             android:name=".GameActivity"
             android:configChanges="orientation|screenSize"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".ScoreActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".PreferencesActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

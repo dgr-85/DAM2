@@ -28,11 +28,11 @@ public class Cua {
 
 	public void encuar(int element) throws Exception {
 		checkRep();
-		if (mida == MIDA_MAX) {
+		if (esPlena()) {
 			throw new Exception("La cua és plena");
 		}
 		elements[darrer] = element;
-		mida = (mida + 1) % MIDA_MAX;
+		mida++;
 		darrer++;
 		if (darrer == MIDA_MAX) {
 			darrer = 0;
@@ -41,7 +41,7 @@ public class Cua {
 
 	public int desencuar() throws Exception {
 		checkRep();
-		if (mida == 0) {
+		if (esBuida()) {
 			throw new Exception("La cua és buida");
 		}
 		int element = elements[primer];
@@ -58,7 +58,7 @@ public class Cua {
 		if (primer < darrer) {
 			assert mida == darrer - primer;
 		} else if (primer > darrer) {
-			assert mida == MIDA_MAX - primer - darrer;
+			assert mida == MIDA_MAX - (primer - darrer);
 		} else {
 			assert mida == 0 || mida == MIDA_MAX;
 		}

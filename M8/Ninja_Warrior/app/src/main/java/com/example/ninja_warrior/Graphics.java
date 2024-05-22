@@ -123,10 +123,6 @@ public class Graphics {
                 (int) posX + width, (int) posY + height);
         drawable.draw(canvas);
         canvas.restore();
-        /*
-        int invalidRadius = (int) Math.hypot(width, height) / 2 + MAX_SPEED;
-        view.invalidate(x - invalidRadius, y - invalidRadius, x + invalidRadius, y + invalidRadius);
-        */
         view.invalidate();
     }
     public void increasePos(double factor) {
