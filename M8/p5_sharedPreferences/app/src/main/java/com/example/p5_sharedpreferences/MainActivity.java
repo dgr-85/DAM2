@@ -44,12 +44,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.alertTitleCantSavePhone));
             builder.setMessage(getString(R.string.alertTextEmptyField, getString(R.string.etName)));
-            builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+            builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> dialog.cancel());
             builder.show();
 
             //El camp per al telèfon és buit
@@ -63,12 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleCantDeletePhone));
                 builder.setMessage(getString(R.string.alertTextNonExistingEntry, name));
-                builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> dialog.cancel());
                 builder.show();
 
                 //El nom existeix -> esborrar entrada?
@@ -76,20 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleWarning));
                 builder.setMessage(getString(R.string.alertTextDeleteEntry, name));
-                builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        deleteEntry(name);
-                    }
-                });
-                builder.setNegativeButton(getString(R.string.alertButtonCancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.cancel();
-                    }
-                });
+                builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> deleteEntry(name));
+                builder.setNegativeButton(getString(R.string.alertButtonCancel), (dialog, which) -> dialog.cancel());
                 builder.show();
             }
 
@@ -104,18 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleWarning));
                 builder.setMessage(getString(R.string.alertTextOverwriteUser, name));
-                builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        updateEntry(name, phone);
-                    }
-                });
-                builder.setNegativeButton(getString(R.string.alertButtonCancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> updateEntry(name, phone));
+                builder.setNegativeButton(getString(R.string.alertButtonCancel), (dialog, which) -> dialog.cancel());
 
                 builder.show();
 
@@ -137,12 +105,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.alertTitleSuccess));
         builder.setMessage(getString(R.string.alertTextNewEntrySaved));
-        builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> dialog.cancel());
 
         builder.show();
     }
@@ -158,12 +121,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.alertTitleSuccess));
         builder.setMessage(getString(R.string.alertTextEntryUpdated, name));
-        builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> dialog.cancel());
 
         builder.show();
     }
@@ -179,12 +137,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.alertTitleSuccess));
         builder.setMessage(getString(R.string.alertTextEntryDeleted, name));
-        builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> dialog.cancel());
         builder.show();
     }
 
@@ -195,12 +148,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.alertTitleCantGetPhone));
             builder.setMessage(getString(R.string.alertTextEmptyField, getString(R.string.etName)));
-            builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
+            builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> dialog.cancel());
             builder.show();
         } else {
 
@@ -212,12 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleCantGetPhone));
                 builder.setMessage(getString(R.string.alertTextNonExistingEntry, name));
-                builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> dialog.cancel());
                 builder.show();
 
                 //El nom existeix -> mostrar telèfon en alert i en camp per al telèfon
@@ -228,12 +171,9 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.alertTitleSuccess));
                 builder.setMessage(getString(R.string.alertTextEntryRetrieved, name, phone));
-                builder.setPositiveButton(getString(R.string.alertButtonOK), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        etPhone.setText(phone);
-                        dialog.cancel();
-                    }
+                builder.setPositiveButton(getString(R.string.alertButtonOK), (dialog, which) -> {
+                    etPhone.setText(phone);
+                    dialog.cancel();
                 });
 
                 builder.show();
