@@ -27,6 +27,7 @@ class Enxampa(QMainWindow):
         self.actionQuant_a.triggered.connect(self.canvi_pantalla)
         self.comboBox.currentIndexChanged.connect(self.canvi_imatge_config)
         self.dimensions_botons(self.gridLayout)
+        self.canvi_imatge_config()
         self.btn01.clicked.connect(lambda: self.imatge_boto(self.gridLayout, self.btn01))
         self.btn02.clicked.connect(lambda: self.imatge_boto(self.gridLayout, self.btn02))
         self.btn03.clicked.connect(lambda: self.imatge_boto(self.gridLayout, self.btn03))

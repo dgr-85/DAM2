@@ -20,20 +20,16 @@ public class Prova {
 			q2.encuar(3);
 			q2.encuar(4);
 			q2.encuar(5);
-			q2.encuar(9);
-			q2.desencuar();
-			q2.desencuar();
+			System.out.println(q2.desencuar());
+			System.out.println(q2.desencuar());
 			q2.encuar(6);
 			q2.encuar(7);
-			q2.desencuar();
-			q2.desencuar();
-			q2.desencuar();
-			q2.desencuar();
-			q2.desencuar();
-			q2.desencuar();
-			q2.desencuar();
+			System.out.println(q2.desencuar());
+			System.out.println(q2.desencuar());
+			System.out.println(q2.desencuar());
+			System.out.println(q2.desencuar());
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 	}
 }
