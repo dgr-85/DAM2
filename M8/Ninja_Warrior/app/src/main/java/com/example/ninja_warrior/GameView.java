@@ -24,18 +24,21 @@ import android.widget.ImageView;
 
 import androidx.preference.PreferenceManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameView extends View {
     private static final int INC_TURN_RATE = 5;
     private static final float INC_ACCEL = 0.5f;
     private static final int PROCESS_INTERVAL = 50;
-    private static final int INC_KNIFE_SPEED = 12;
+    private static final int INC_KNIFE_SPEED = 18;
+    private final Object lock = new Object();
     private List<Graphics> targets, totalLives;
-    private Drawable drawableNinja, drawableKnife, drawableEnemy, drawableBlood, drawableGibBlood, drawableKatana, drawableSlash, drawableHeart, drawableSmoke;
-    private Graphics ninja, smoke;
+    private Drawable drawableNinja, drawableNinjaAlive, drawableKnife, drawableEnemy, drawableBlood, drawableGibBlood, drawableKatana, drawableSlash, drawableHeart, drawableSmoke;
+    private Graphics ninja, smoke, characterBlood, gibBlood;
     private int ninjaTurnRate, nextKnife = 0;
     private float ninjaAccel, mX = 0, mY = 0;
     private GameThread thread = new GameThread();
@@ -44,7 +47,7 @@ public class GameView extends View {
     private Drawable[] drawableTarget = new Drawable[8];
     private MediaPlayer mpIntro, mpLoop;
     private SoundPool soundPool;
-    private int idEnemyDeath, idGibDeath, idThrowKnife, idPlayerDeath, idPlayerSpawn, idKatanaReady, idKatanaCinematics, idKatanaDraw, idKatanaSheathe, idKatanaClimax;
+    private int idEnemyDeath, idGibDeath, idThrowKnife, idPlayerDeath, idPlayerSpawn, idKatanaReady, idKatanaCinematics, idKatanaDraw, idKatanaCut, idKatanaSheathe, idKatanaClimax;
     private boolean playerIsDead = false, gameIsPaused = false, respawnTimerIsRunning = false;
     private Activity parent;
     private CountDownTimer timer;
@@ -60,6 +63,7 @@ public class GameView extends View {
         String selectedNinja = prefs.getString("list_ninjas", "ninja01");
         Integer ninjaId = getResources().getIdentifier(selectedNinja, "drawable", context.getPackageName());
         drawableNinja = context.getResources().getDrawable(ninjaId, null);
+        drawableNinjaAlive = drawableNinja;
         drawableBlood = context.getResources().getDrawable(R.drawable.blood_splat, null);
         drawableGibBlood = context.getResources().getDrawable(R.drawable.gib_splat, null);
         drawableKatana = context.getResources().getDrawable(R.drawable.katana, null);
@@ -67,20 +71,27 @@ public class GameView extends View {
         drawableEnemy = context.getResources().getDrawable(R.drawable.ninja_enemic, null);
         drawableHeart = context.getResources().getDrawable(R.drawable.heart, null);
         drawableSmoke = context.getResources().getDrawable(R.drawable.smoke, null);
+        drawableKnife = context.getResources().getDrawable(R.drawable.ganivet, null);
 
-        totalLives = new ArrayList<>(Arrays.asList(new Graphics(this, drawableHeart), new Graphics(this, drawableHeart), new Graphics(this, drawableHeart)));
+        totalLives = new LinkedList<>(Arrays.asList(new Graphics(this, drawableHeart), new Graphics(this, drawableHeart), new Graphics(this, drawableHeart)));
         for (Graphics heart : totalLives) {
             heart.setHeight(50);
             heart.setWidth(50);
         }
         ninja = new Graphics(this, drawableNinja);
         smoke = new Graphics(this, drawableSmoke);
-        smoke.setHeight(200);
-        smoke.setWidth(200);
+        characterBlood = new Graphics(this, drawableBlood);
+        gibBlood = new Graphics(this, drawableGibBlood);
+        smoke.setHeight(ninja.getHeight() * 2);
+        smoke.setWidth(ninja.getWidth() * 2);
         smoke.setAngle(0);
-        smoke.setPosX(-1);
-        smoke.setPosY(-1);
-        targets = new ArrayList<>();
+        characterBlood.setHeight(ninja.getHeight());
+        characterBlood.setWidth(ninja.getWidth());
+        characterBlood.setAngle(0);
+        gibBlood.setHeight(ninja.getHeight());
+        gibBlood.setWidth(ninja.getWidth());
+        gibBlood.setAngle(0);
+        targets = new LinkedList<>();
         Integer numTargets = Integer.parseInt(prefs.getString("text_num_enemies", prefs.getString("defaultValue", "3")));
         for (int i = 0; i < numTargets; i++) {
             Graphics target = new Graphics(this, drawableEnemy);
@@ -91,7 +102,6 @@ public class GameView extends View {
             targets.add(target);
         }
 
-        drawableKnife = context.getResources().getDrawable(R.drawable.ganivet, null);
         knifeStash = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             knifeStash.add(new Knife(this, drawableKnife, false, 0, false));
@@ -112,6 +122,7 @@ public class GameView extends View {
         idKatanaReady = soundPool.load(context, R.raw.katana_ready, 2);
         idKatanaCinematics = soundPool.load(context, R.raw.katana_cinematics, 1);
         idKatanaDraw = soundPool.load(context, R.raw.katana_draw, 1);
+        idKatanaCut = soundPool.load(context, R.raw.katana_cut, 1);
         idKatanaSheathe = soundPool.load(context, R.raw.katana_sheathe, 1);
         idKatanaClimax = soundPool.load(context, R.raw.katana_climax, 1);
 
@@ -119,11 +130,22 @@ public class GameView extends View {
     }
 
     private void setBackGroundMusic() {
-        mpIntro.start();
-        mpIntro.setOnCompletionListener(mediaPlayer -> {
-            mpLoop.start();
-            mpLoop.setOnCompletionListener(mediaPlayer1 -> mediaPlayer1.start());
-        });
+        if (MainActivity.checkMusicCheckbox()) {
+            mpIntro.start();
+            mpIntro.setOnCompletionListener(mediaPlayer -> {
+                mpLoop.start();
+                mpLoop.setOnCompletionListener(mediaPlayer1 -> mediaPlayer1.start());
+            });
+        } else {
+            if (mpIntro.isPlaying()) {
+                mpIntro.stop();
+                mpIntro.release();
+            }
+            if (mpLoop.isPlaying()) {
+                mpLoop.stop();
+                mpLoop.release();
+            }
+        }
     }
 
     public void pauseState(boolean state) {
@@ -147,6 +169,11 @@ public class GameView extends View {
         }
         ninja.setPosX(width / 2);
         ninja.setPosY(height / 2);
+
+        smoke.setPosX(ninja.getPosX());
+        smoke.setPosY(ninja.getPosY());
+
+
         for (int i = 0; i < totalLives.size(); i++) {
             totalLives.get(i).setPosX(10 * (i + 1) + (50 * i));
             totalLives.get(i).setPosY(height - 50);
@@ -163,7 +190,17 @@ public class GameView extends View {
     synchronized protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         for (Graphics target : targets) {
+            if (target.isDead()) {
+                if (target.getDrawable().equals(drawableEnemy)) {
+                    target.setDrawable(drawableBlood);
+                } else {
+                    target.setDrawable(drawableGibBlood);
+                }
+            }
             target.drawGraphic(canvas);
+        }
+        if (ninja.isDead()) {
+            ninja.setDrawable(drawableBlood);
         }
         ninja.drawGraphic(canvas);
         for (Graphics life : totalLives) {
@@ -174,60 +211,61 @@ public class GameView extends View {
                 knife.drawGraphic(canvas);
             }
         }
-        if (smoke.getPosX() != -1 && smoke.getPosY() != -1) {
-            smoke.drawGraphic(canvas);
-        }
     }
 
     synchronized protected void updateMovement() {
-        if (!gameIsPaused && !playerIsDead) {
-            Log.d("View", "updateMovement");
-            long currentInstant = System.currentTimeMillis();
-            // No facis res si el període de procés no s'ha complert.
-            if (lastProcess + PROCESS_INTERVAL > currentInstant) {
-                return;
+        if (gameIsPaused || ninja.isDead()) {
+            return;
+        }
+        Log.d("View", "updateMovement");
+        long currentInstant = System.currentTimeMillis();
+        // No facis res si el període de procés no s'ha complert.
+        if (lastProcess + PROCESS_INTERVAL > currentInstant) {
+            return;
+        }
+        // Per una execució en temps real calculem retard
+        double delay = (currentInstant - lastProcess) / PROCESS_INTERVAL;
+        lastProcess = currentInstant; // Per a la propera vegada
+        // Actualitzem velocitat i direcció del personatge Ninja a partir de
+        // girNinja i acceleracioNinja (segons l'entrada del jugador)
+        ninja.setAngle((int) (ninja.getAngle() + ninjaTurnRate * delay));
+        double nIncX = ninja.getPosX() + ninjaAccel *
+                Math.cos(Math.toRadians(ninja.getAngle())) * delay;
+        double nIncY = ninja.getPosY() + ninjaAccel *
+                Math.sin(Math.toRadians(ninja.getAngle())) * delay;
+        // Actualitzem si el módul de la velocitat no és més gran que el màxim
+        if (Math.hypot(nIncX, nIncY) <= Graphics.MAX_SPEED) {
+            ninja.setPosX(nIncX);
+            ninja.setPosY(nIncY);
+        }
+        // Actualitzem posicions X i Y
+        ninja.increasePos(delay);
+        for (Graphics target : targets) {
+            target.increasePos(delay);
+            if (target.verifyCollision(ninja)) {
+                ninja.setDead(true);
+                destroyPlayer();
+                break;
             }
-            // Per una execució en temps real calculem retard
-            double delay = (currentInstant - lastProcess) / PROCESS_INTERVAL;
-            lastProcess = currentInstant; // Per a la propera vegada
-            // Actualitzem velocitat i direcció del personatge Ninja a partir de
-            // girNinja i acceleracioNinja (segons l'entrada del jugador)
-            ninja.setAngle((int) (ninja.getAngle() + ninjaTurnRate * delay));
-            double nIncX = ninja.getPosX() + ninjaAccel *
-                    Math.cos(Math.toRadians(ninja.getAngle())) * delay;
-            double nIncY = ninja.getPosY() + ninjaAccel *
-                    Math.sin(Math.toRadians(ninja.getAngle())) * delay;
-            // Actualitzem si el módul de la velocitat no és més gran que el màxim
-            if (Math.hypot(nIncX, nIncY) <= Graphics.MAX_SPEED) {
-                ninja.setPosX(nIncX);
-                ninja.setPosY(nIncY);
-            }
-            // Actualitzem posicions X i Y
-            ninja.increasePos(delay);
-            for (Graphics target : targets) {
-                target.increasePos(delay);
-                if (target.verifyCollision(ninja)) {
-                    destroyPlayer();
-                    break;
-                }
-            }
-            for (Knife knife : knifeStash) {
-                if (knife.isActive()) {
-                    knife.increasePos(delay);
-                    knife.setTime((int) (knife.getTime() - delay));
-                    if (knife.getTime() < 0) {
-                        knife.setActive(false);
-                    } else {
-                        for (int i = 0; i < targets.size(); i++) {
-                            if (knife.verifyCollision((targets.get(i)))) {
-                                destroyTarget(i, knife);
-                                break;
-                            }
+        }
+        for (Knife knife : knifeStash) {
+            if (knife.isActive()) {
+                knife.increasePos(delay);
+                knife.setTime((int) (knife.getTime() - delay));
+                if (knife.getTime() < 0) {
+                    knife.setActive(false);
+                } else {
+                    for (int i = 0; i < targets.size(); i++) {
+                        if (knife.verifyCollision((targets.get(i)))) {
+                            targets.get(i).setDead(true);
+                            destroyTarget(i, knife);
+                            break;
                         }
                     }
                 }
             }
         }
+
     }
 
     @Override
@@ -327,8 +365,12 @@ public class GameView extends View {
     private void destroyTarget(int i, Knife knife) {
         soundPool.play(idEnemyDeath, 1, 1, 0, 0, 1);
         int numParts = 3;
-        if (targets.get(i).getDrawable() == drawableEnemy) {
-            targets.get(i).setDrawable(drawableBlood);
+        targets.get(i).setSpeedX(0);
+        targets.get(i).setSpeedY(0);
+        targets.get(i).setAngle(0);
+        targets.get(i).setRotation(0);
+        targets.get(i).setCollisionRadius(0);
+        if (targets.get(i).getDrawable().equals(drawableEnemy)) {
             for (int n = 0; n < numParts; n++) {
                 Graphics target = new Graphics(this, drawableTarget[n]);
                 target.setPosX(targets.get(i).getPosX());
@@ -339,33 +381,27 @@ public class GameView extends View {
                 target.setRotation((int) (Math.random() * 8 - 4));
                 targets.add(target);
             }
-        } else {
-            targets.get(i).setDrawable(drawableGibBlood);
+            targets.remove(i);
+            if (knife != null) {
+                knife.setActive(false);
+            }
         }
-        targets.remove(i);
-        if (knife != null) {
-            knife.setActive(false);
-        }
-
     }
 
     private void destroyPlayer() {
-        playerIsDead = true;
         soundPool.play(idPlayerDeath, 0.7F, 0.7F, 0, 0, 1);
         ninja.setAngle(0);
         ninjaAccel = 0;
         ninjaTurnRate = 0;
-        Drawable alive = ninja.getDrawable();
-        ninja.setDrawable(drawableBlood);
         for (int x = 0; x < targets.size(); x++) {
             if (targets.get(x).distance(ninja) < 100) {
                 targets.remove(x);
             }
         }
-        fadeOutAnimation(ninja, alive);
+        fadeOutAnimation(ninja);
     }
 
-    private void fadeOutAnimation(Graphics graphics, Drawable alive) {
+    private void fadeOutAnimation(Graphics graphics) {
         fadeOut = ObjectAnimator.ofInt(graphics.getDrawable(), "alpha", 255, 0);
         fadeOut.setDuration(3000);
         fadeOut.addListener(new AnimatorListenerAdapter() {
@@ -373,7 +409,7 @@ public class GameView extends View {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 if (playerIsDead && totalLives.size() > 0) {
-                    respawnPlayer(alive);
+                    respawnPlayer();
                 }
             }
         });
@@ -381,14 +417,14 @@ public class GameView extends View {
         t.run();
     }
 
-    private void respawnPlayer(Drawable alive) {
+    private void respawnPlayer() {
         smoke.setPosX(ninja.getPosX());
         smoke.setPosY(ninja.getPosY());
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.gameview_smoke_bomb);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                ninja.setDrawable(alive);
+                ninja.setDrawable(drawableNinjaAlive);
                 ninja.getView().setVisibility(VISIBLE);
                 totalLives.remove(totalLives.size() - 1);
                 playerIsDead = false;

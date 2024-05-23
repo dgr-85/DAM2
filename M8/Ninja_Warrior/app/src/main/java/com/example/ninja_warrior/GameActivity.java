@@ -14,7 +14,6 @@ import java.net.ContentHandler;
 public class GameActivity extends AppCompatActivity {
 
     private GameView gameView;
-    private boolean musicPlays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +23,6 @@ public class GameActivity extends AppCompatActivity {
 
         gameView = findViewById(R.id.GameView);
         gameView.setParent(this);
-
-        SharedPreferences prefs=getPreferences(Context.MODE_PRIVATE);
-        musicPlays = prefs.getBoolean("checkbox_music", true);
     }
 
     @Override

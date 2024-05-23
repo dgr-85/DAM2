@@ -4,7 +4,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,39 +27,43 @@ public class MainActivity extends AppCompatActivity {
     private static MediaPlayer mpLoop;
     private static Animation animTitle;
     private TextView tvTitle;
-    private static boolean firstTime=true;
+    private static boolean firstTime = true;
     private static Button btnPlay, btnScore, btnQuit;
+    private static SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("Main","onCreate");
+        Log.d("Main", "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mpIntro=MediaPlayer.create(MainActivity.this,R.raw.bgm_title_intro);
-        mpLoop=MediaPlayer.create(MainActivity.this,R.raw.bgm_title_loop);
+        mpIntro = MediaPlayer.create(MainActivity.this, R.raw.bgm_title_intro);
+        mpLoop = MediaPlayer.create(MainActivity.this, R.raw.bgm_title_loop);
 
         tvTitle = findViewById(R.id.tvTitle);
-        animTitle=AnimationUtils.loadAnimation(this, R.anim.main_menu_title_animation);
+        animTitle = AnimationUtils.loadAnimation(this, R.anim.main_menu_title_animation);
         animTitle.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
             }
+
             @Override
             public void onAnimationEnd(Animation animation) {
-                shakeTitleScreen(findViewById(R.id.cLayout),10,10);
+                shakeTitleScreen(findViewById(R.id.cLayout), 10, 10);
             }
+
             @Override
             public void onAnimationRepeat(Animation animation) {
             }
         });
-        if(firstTime){
+        if (firstTime) {
             tvTitle.startAnimation(animTitle);
         }
 
+        prefs = getPreferences(Context.MODE_PRIVATE);
 
         btnPlay = findViewById(R.id.btnPlay);
         btnScore = findViewById(R.id.btnScore);
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnScore.setOnClickListener(v -> showScoreList());
 
-        btnQuit.setOnClickListener(v-> finish());
+        btnQuit.setOnClickListener(v -> finish());
     }
 
     @Override
@@ -94,17 +100,28 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static void setBackgroundMusic(){
-        mpIntro.start();
-        mpIntro.setOnCompletionListener(mediaPlayer -> {
-            mpLoop.start();
-            mpLoop.setOnCompletionListener(mediaPlayer1 -> mediaPlayer1.start());
-        });
+    public static void setBackgroundMusic() {
+        if (checkMusicCheckbox()) {
+            mpIntro.start();
+            mpIntro.setOnCompletionListener(mediaPlayer -> {
+                mpLoop.start();
+                mpLoop.setOnCompletionListener(mediaPlayer1 -> mediaPlayer1.start());
+            });
+        } else {
+            if (mpIntro.isPlaying()) mpIntro.stop();
+            if (mpLoop.isPlaying()) mpLoop.stop();
+            mpIntro.release();
+            mpLoop.release();
+        }
+    }
+
+    public static boolean checkMusicCheckbox() {
+        return prefs.getBoolean("checkbox_music", true);
     }
 
     public void shakeTitleScreen(View view, int duration, int offset) {
         setBackgroundMusic();
-        Animation anim = new TranslateAnimation(0,0,-offset,offset);
+        Animation anim = new TranslateAnimation(0, 0, -offset, offset);
         anim.setDuration(duration);
         anim.setRepeatMode(Animation.REVERSE);
         anim.setRepeatCount(20);
@@ -129,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         view.startAnimation(anim);
-        firstTime=false;
+        firstTime = false;
     }
 
     @Override
@@ -140,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(!firstTime){
+        if (!firstTime) {
             setBackgroundMusic();
         }
     }
@@ -158,14 +175,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, ScoreActivity.class));
     }
 
-    public void startGame(){
-        mpIntro.stop();
-        mpLoop.stop();
+    public void startGame() {
         try {
-            mpIntro.prepare();
-            mpLoop.prepare();
+            if (mpIntro.isPlaying()) {
+                mpIntro.stop();
+                mpIntro.prepare();
+            }
+            if (mpLoop.isPlaying()) {
+                mpLoop.stop();
+                mpLoop.prepare();
+            }
         } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         startActivity(new Intent(this, GameActivity.class));
     }
