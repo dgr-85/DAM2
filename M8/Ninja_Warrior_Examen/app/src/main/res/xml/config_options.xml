@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="@string/title_preferences">
+        <CheckBoxPreference
+            android:key="checkbox_music_main_screen"
+            android:title="@string/pref_checkbox_music_title_main"
+            android:summary="@string/pref_checkbox_music_summary_main"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="checkbox_music_game"
+            android:title="@string/pref_checkbox_music_title_game"
+            android:summary="@string/pref_checkbox_music_summary_game"
+            android:defaultValue="true" />
+        <ListPreference
+            android:key="list_ninjas"
+            android:title="@string/pref_list_ninjas_title"
+            android:summary="@string/pref_list_ninjas_summary"
+            android:dialogTitle="@string/pref_list_ninjas_dialog_title"
+            android:entries="@array/display"
+            android:entryValues="@array/internal"
+            android:defaultValue="ninja01"/>
+        <EditTextPreference
+            android:key="text_num_enemies"
+            android:title="@string/pref_text_enemies_title"
+            android:summary="@string/pref_text_enemies_summary"
+            android:inputType="number"
+            android:dialogTitle="@string/pref_text_enemies_dialog_title"
+            android:defaultValue="5"/>
+        <EditTextPreference
+            android:key="text_num_enemies_small"
+            android:title="@string/pref_text_enemies_title_small"
+            android:summary="@string/pref_text_enemies_summary_small"
+            android:inputType="number"
+            android:dialogTitle="@string/pref_text_enemies_dialog_title"
+            android:defaultValue="3"/>
+    </PreferenceCategory>
+</PreferenceScreen>
