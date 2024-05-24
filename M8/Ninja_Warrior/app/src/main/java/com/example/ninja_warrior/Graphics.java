@@ -23,6 +23,7 @@ public class Graphics {
         width = drawable.getIntrinsicWidth();
         height = drawable.getIntrinsicHeight();
         collisionRadius = (height + width) / 4;
+        isDead = false;
     }
 
     public Drawable getDrawable() {

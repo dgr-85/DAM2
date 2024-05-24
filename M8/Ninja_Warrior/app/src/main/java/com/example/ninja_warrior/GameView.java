@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 public class GameView extends View {
     private static final int INC_TURN_RATE = 5;
@@ -73,7 +74,7 @@ public class GameView extends View {
         drawableSmoke = context.getResources().getDrawable(R.drawable.smoke, null);
         drawableKnife = context.getResources().getDrawable(R.drawable.ganivet, null);
 
-        totalLives = new LinkedList<>(Arrays.asList(new Graphics(this, drawableHeart), new Graphics(this, drawableHeart), new Graphics(this, drawableHeart)));
+        totalLives = new ArrayList<>(Arrays.asList(new Graphics(this, drawableHeart), new Graphics(this, drawableHeart), new Graphics(this, drawableHeart)));
         for (Graphics heart : totalLives) {
             heart.setHeight(50);
             heart.setWidth(50);
@@ -91,7 +92,7 @@ public class GameView extends View {
         gibBlood.setHeight(ninja.getHeight());
         gibBlood.setWidth(ninja.getWidth());
         gibBlood.setAngle(0);
-        targets = new LinkedList<>();
+        targets = new ArrayList<>();
         Integer numTargets = Integer.parseInt(prefs.getString("text_num_enemies", prefs.getString("defaultValue", "3")));
         for (int i = 0; i < numTargets; i++) {
             Graphics target = new Graphics(this, drawableEnemy);
@@ -191,9 +192,9 @@ public class GameView extends View {
         super.onDraw(canvas);
         for (Graphics target : targets) {
             if (target.isDead()) {
-                if (target.getDrawable().equals(drawableEnemy)) {
+                if (target.getDrawable() == drawableEnemy) {
                     target.setDrawable(drawableBlood);
-                } else {
+                } else if (target.getDrawable() != drawableBlood) {
                     target.setDrawable(drawableGibBlood);
                 }
             }
@@ -213,7 +214,7 @@ public class GameView extends View {
         }
     }
 
-    synchronized protected void updateMovement() {
+    protected void updateMovement() {
         if (gameIsPaused || ninja.isDead()) {
             return;
         }
@@ -363,14 +364,17 @@ public class GameView extends View {
     }
 
     private void destroyTarget(int i, Knife knife) {
-        soundPool.play(idEnemyDeath, 1, 1, 0, 0, 1);
         int numParts = 3;
         targets.get(i).setSpeedX(0);
         targets.get(i).setSpeedY(0);
         targets.get(i).setAngle(0);
         targets.get(i).setRotation(0);
         targets.get(i).setCollisionRadius(0);
-        if (targets.get(i).getDrawable().equals(drawableEnemy)) {
+        if (knife != null) {
+            knife.setActive(false);
+        }
+        if (targets.get(i).getDrawable() == drawableEnemy) {
+            soundPool.play(idEnemyDeath, 1, 1, 0, 0, 1);
             for (int n = 0; n < numParts; n++) {
                 Graphics target = new Graphics(this, drawableTarget[n]);
                 target.setPosX(targets.get(i).getPosX());
@@ -381,14 +385,18 @@ public class GameView extends View {
                 target.setRotation((int) (Math.random() * 8 - 4));
                 targets.add(target);
             }
-            targets.remove(i);
-            if (knife != null) {
-                knife.setActive(false);
-            }
+        } else {
+            soundPool.play(idGibDeath, 1, 1, 0, 0, 1);
         }
+        CountDownLatch latch = new CountDownLatch(1);
+        fadeOutAnimation(targets.get(i), false, () ->{
+            latch.countDown();
+        });
+        //targets.remove(i);
     }
 
     private void destroyPlayer() {
+        invalidate();
         soundPool.play(idPlayerDeath, 0.7F, 0.7F, 0, 0, 1);
         ninja.setAngle(0);
         ninjaAccel = 0;
@@ -398,36 +406,78 @@ public class GameView extends View {
                 targets.remove(x);
             }
         }
-        fadeOutAnimation(ninja);
+        CountDownLatch latch=new CountDownLatch(2);
+        fadeOutAnimation(ninja, true, () -> {
+            respawnPlayer(() -> {
+                latch.countDown();
+            });
+            latch.countDown();
+        });
+        new Thread(() -> {
+            try {
+                latch.await();
+                resumeGame();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
-    private void fadeOutAnimation(Graphics graphics) {
+    private void fadeOutAnimation(Graphics graphics, boolean isPlayer, Runnable onEnd) {
         fadeOut = ObjectAnimator.ofInt(graphics.getDrawable(), "alpha", 255, 0);
         fadeOut.setDuration(3000);
         fadeOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                if (playerIsDead && totalLives.size() > 0) {
-                    respawnPlayer();
+                if (isPlayer) {
+                    if (totalLives.size() > 0) {
+                    onEnd.run();
+                    } else {
+                        parent.finish();
+                    }
+                } else {
+                    targets.remove(targets.indexOf(graphics));
                 }
             }
         });
-        Thread t = new Thread(() -> fadeOut.start());
-        t.run();
+        fadeOut.start();
     }
 
-    private void respawnPlayer() {
+    private void respawnPlayer(Runnable onEnd) {
         smoke.setPosX(ninja.getPosX());
         smoke.setPosY(ninja.getPosY());
-        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.gameview_smoke_bomb);
+        post(()->{
+                    ObjectAnimator fadeIn = ObjectAnimator.ofInt(smoke.getDrawable(), "alpha", 0, 255);
+                    fadeIn.setDuration(1000);
+                    fadeIn.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            ObjectAnimator fadeOut = ObjectAnimator.ofInt(smoke.getDrawable(), "alpha", 255, 0);
+                            fadeOut.setDuration(2000);
+                            fadeOut.addListener(new AnimatorListenerAdapter() {
+                                @Override
+                                public void onAnimationEnd(Animator animation) {
+                                    // Reset player state
+                                    ninja.setDead(false);
+                                    postInvalidate();
+                                    onEnd.run();
+                                }
+                            });
+                            fadeOut.start();
+                        }
+                    });
+                    fadeIn.start();
+                });
+
+        /*Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.gameview_smoke_bomb);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 ninja.setDrawable(drawableNinjaAlive);
                 ninja.getView().setVisibility(VISIBLE);
                 totalLives.remove(totalLives.size() - 1);
-                playerIsDead = false;
+                ninja.setDead(false);
                 gameIsPaused = false;
                 resumeGame();
             }
@@ -440,7 +490,7 @@ public class GameView extends View {
             public void onAnimationRepeat(Animation animation) {
             }
         });
-        smoke.getView().startAnimation(animation);
+        smoke.getView().startAnimation(animation);*/
     }
 
     private void throwKnife(Knife knife) {
@@ -471,9 +521,15 @@ public class GameView extends View {
     }
 
     public void resumeGame() {
-        Log.d("View", "resumeGame");
+        /*Log.d("View", "resumeGame");
         synchronized (thread) {
             thread.notify();
+        }*/
+        synchronized (lock) {
+            post(() -> {
+                gameIsPaused = false;
+                invalidate();
+            });
         }
     }
 
@@ -488,7 +544,7 @@ public class GameView extends View {
             Log.d("View", "thread.run");
             Looper.prepare();
             while (totalLives.size() > 0) {
-                if (gameIsPaused) {
+                /*if (gameIsPaused || ninja.isDead()) {
                     synchronized (this) {
                         try {
                             Log.d("View", "thread.wait");
@@ -497,7 +553,7 @@ public class GameView extends View {
                             throw new RuntimeException(e);
                         }
                     }
-                }
+                }*/
                 updateMovement();
             }
             Looper.loop();
