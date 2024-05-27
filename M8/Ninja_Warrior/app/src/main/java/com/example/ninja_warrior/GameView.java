@@ -2,7 +2,9 @@ package com.example.ninja_warrior;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -20,8 +23,11 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 
 import java.io.IOException;
@@ -38,21 +44,21 @@ public class GameView extends View {
     private static final int INC_KNIFE_SPEED = 18;
     private final Object lock = new Object();
     private List<Graphics> targets, totalLives;
-    private Drawable drawableNinja, drawableNinjaAlive, drawableKnife, drawableEnemy, drawableBlood, drawableGibBlood, drawableKatana, drawableSlash, drawableHeart, drawableSmoke;
+    private Drawable drawableNinja, drawableKnife, drawableEnemy, drawableBlood, drawableGibBlood, drawableKatana, drawableSlash, drawableHeart, drawableSmoke;
     private Graphics ninja, smoke, characterBlood, gibBlood;
     private int ninjaTurnRate, nextKnife = 0;
     private float ninjaAccel, mX = 0, mY = 0;
     private GameThread thread = new GameThread();
-    private long lastProcess = 0;
+    private long lastProcess = 0, pausedInstant = 0;
     private List<Knife> knifeStash;
     private Drawable[] drawableTarget = new Drawable[8];
     private MediaPlayer mpIntro, mpLoop;
     private SoundPool soundPool;
     private int idEnemyDeath, idGibDeath, idThrowKnife, idPlayerDeath, idPlayerSpawn, idKatanaReady, idKatanaCinematics, idKatanaDraw, idKatanaCut, idKatanaSheathe, idKatanaClimax;
-    private boolean playerIsDead = false, gameIsPaused = false, respawnTimerIsRunning = false;
+    private boolean playerIsDead = false, gameIsPaused = false, smokeIsReady = false;
     private Activity parent;
-    private CountDownTimer timer;
     private ObjectAnimator fadeOut;
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -64,7 +70,6 @@ public class GameView extends View {
         String selectedNinja = prefs.getString("list_ninjas", "ninja01");
         Integer ninjaId = getResources().getIdentifier(selectedNinja, "drawable", context.getPackageName());
         drawableNinja = context.getResources().getDrawable(ninjaId, null);
-        drawableNinjaAlive = drawableNinja;
         drawableBlood = context.getResources().getDrawable(R.drawable.blood_splat, null);
         drawableGibBlood = context.getResources().getDrawable(R.drawable.gib_splat, null);
         drawableKatana = context.getResources().getDrawable(R.drawable.katana, null);
@@ -131,7 +136,7 @@ public class GameView extends View {
     }
 
     private void setBackGroundMusic() {
-        if (MainActivity.checkMusicCheckbox()) {
+        if (MainActivity.checkMusicCheckboxGame()) {
             mpIntro.start();
             mpIntro.setOnCompletionListener(mediaPlayer -> {
                 mpLoop.start();
@@ -170,21 +175,16 @@ public class GameView extends View {
         }
         ninja.setPosX(width / 2);
         ninja.setPosY(height / 2);
-
-        smoke.setPosX(ninja.getPosX());
-        smoke.setPosY(ninja.getPosY());
-
-
+        smoke.setPosX(ninja.getPosX() - (ninja.getWidth()/2));
+        smoke.setPosY(ninja.getPosY() - (ninja.getHeight()/2));
         for (int i = 0; i < totalLives.size(); i++) {
             totalLives.get(i).setPosX(10 * (i + 1) + (50 * i));
             totalLives.get(i).setPosY(height - 50);
         }
-
         lastProcess = System.currentTimeMillis();
         if (!thread.isAlive()) {
             thread.start();
         }
-
     }
 
     @Override
@@ -202,6 +202,8 @@ public class GameView extends View {
         }
         if (ninja.isDead()) {
             ninja.setDrawable(drawableBlood);
+        }else{
+            ninja.setDrawable(drawableNinja);
         }
         ninja.drawGraphic(canvas);
         for (Graphics life : totalLives) {
@@ -212,34 +214,31 @@ public class GameView extends View {
                 knife.drawGraphic(canvas);
             }
         }
+        if(gameIsPaused && smokeIsReady) {
+            smoke.drawGraphic(canvas);
+        }
     }
 
     protected void updateMovement() {
-        if (gameIsPaused || ninja.isDead()) {
-            return;
-        }
-        Log.d("View", "updateMovement");
         long currentInstant = System.currentTimeMillis();
-        // No facis res si el període de procés no s'ha complert.
+        Log.d("View", "updateMovement");
         if (lastProcess + PROCESS_INTERVAL > currentInstant) {
             return;
         }
-        // Per una execució en temps real calculem retard
         double delay = (currentInstant - lastProcess) / PROCESS_INTERVAL;
-        lastProcess = currentInstant; // Per a la propera vegada
-        // Actualitzem velocitat i direcció del personatge Ninja a partir de
-        // girNinja i acceleracioNinja (segons l'entrada del jugador)
+        lastProcess = currentInstant;
+        if (gameIsPaused) {
+            return;
+        }
         ninja.setAngle((int) (ninja.getAngle() + ninjaTurnRate * delay));
         double nIncX = ninja.getPosX() + ninjaAccel *
                 Math.cos(Math.toRadians(ninja.getAngle())) * delay;
         double nIncY = ninja.getPosY() + ninjaAccel *
                 Math.sin(Math.toRadians(ninja.getAngle())) * delay;
-        // Actualitzem si el módul de la velocitat no és més gran que el màxim
         if (Math.hypot(nIncX, nIncY) <= Graphics.MAX_SPEED) {
             ninja.setPosX(nIncX);
             ninja.setPosY(nIncY);
         }
-        // Actualitzem posicions X i Y
         ninja.increasePos(delay);
         for (Graphics target : targets) {
             target.increasePos(delay);
@@ -257,8 +256,7 @@ public class GameView extends View {
                     knife.setActive(false);
                 } else {
                     for (int i = 0; i < targets.size(); i++) {
-                        if (knife.verifyCollision((targets.get(i)))) {
-                            targets.get(i).setDead(true);
+                        if (knife.verifyCollision((targets.get(i))) && !targets.get(i).isDead()) {
                             destroyTarget(i, knife);
                             break;
                         }
@@ -271,96 +269,104 @@ public class GameView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!playerIsDead) {
-            super.onTouchEvent(event);
-            float x = event.getX();
-            float y = event.getY();
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    knifeStash.get(nextKnife).setThrown(true);
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    float dx = Math.abs(x - mX);
-                    float dy = Math.abs(y - mY);
-                    if (dy < 6 && dx > 6) {
-                        ninjaTurnRate = Math.round((x - mX) / 2);
-                        knifeStash.get(nextKnife).setThrown(false);
-                    } else if (dx < 6 && dy > 6) {
-                        ninjaAccel = Math.round((mY - y) / 25);
-                        knifeStash.get(nextKnife).setThrown(false);
-                    }
-                    break;
-                case MotionEvent.ACTION_UP:
-                    ninjaTurnRate = 0;
-                    ninjaAccel = 0;
-                    if (knifeStash.get(nextKnife).isThrown()) {
-                        throwKnife(knifeStash.get(nextKnife));
-                    }
-                    break;
-            }
-            mX = x;
-            mY = y;
-            return true;
+        if (ninja.isDead()) {
+            return false;
         }
-        return false;
+        super.onTouchEvent(event);
+        float x = event.getX();
+        float y = event.getY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                knifeStash.get(nextKnife).setThrown(true);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float dx = Math.abs(x - mX);
+                float dy = Math.abs(y - mY);
+                if (dy < 6 && dx > 6) {
+                    ninjaTurnRate = Math.round((x - mX) / 2);
+                    knifeStash.get(nextKnife).setThrown(false);
+                } else if (dx < 6 && dy > 6) {
+                    ninjaAccel = Math.round((mY - y) / 25);
+                    knifeStash.get(nextKnife).setThrown(false);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                ninjaTurnRate = 0;
+                ninjaAccel = 0;
+                if (knifeStash.get(nextKnife).isThrown()) {
+                    throwKnife(knifeStash.get(nextKnife));
+                }
+                break;
+        }
+        mX = x;
+        mY = y;
+        return true;
+
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (!playerIsDead) {
-            super.onKeyDown(keyCode, event);
-            // Suposem que processarem la pulsació
-            boolean processed = true;
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    ninjaAccel = +INC_ACCEL;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    ninjaAccel = -INC_ACCEL;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                    ninjaTurnRate = -INC_TURN_RATE;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    ninjaTurnRate = +INC_TURN_RATE;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_CENTER:
-                case KeyEvent.KEYCODE_ENTER:
-                    throwKnife(knifeStash.get(nextKnife));
-                    break;
-                default:
-                    // Si estem aquí, no hi ha pulsació que ens interessi
-                    processed = false;
-                    break;
-            }
-            return processed;
+        if (ninja.isDead()) {
+            return false;
         }
-        return false;
+        super.onKeyDown(keyCode, event);
+        // Suposem que processarem la pulsació
+        boolean processed = true;
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_UP:
+                ninjaAccel = +INC_ACCEL;
+                break;
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                ninjaAccel = -INC_ACCEL;
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                ninjaTurnRate = -INC_TURN_RATE;
+                break;
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                ninjaTurnRate = +INC_TURN_RATE;
+                break;
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+            case KeyEvent.KEYCODE_ENTER:
+                throwKnife(knifeStash.get(nextKnife));
+                break;
+            default:
+                // Si estem aquí, no hi ha pulsació que ens interessi
+                processed = false;
+                break;
+        }
+        return processed;
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        if (!playerIsDead) {
-            super.onKeyUp(keyCode, event);
-            // Suposem que processarem la pulsació
-            boolean processed = true;
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_DPAD_UP:
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    ninjaAccel = 0;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_LEFT:
-                case KeyEvent.KEYCODE_DPAD_RIGHT:
-                    ninjaTurnRate = 0;
-                    break;
-                default:
-                    // Si estem aquí, no hi ha pulsació que ens interessi
-                    processed = false;
-                    break;
-            }
-            return processed;
+        if (ninja.isDead()) {
+            return false;
         }
-        return false;
+        super.onKeyUp(keyCode, event);
+        boolean processed = true;
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_UP:
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                ninjaAccel = 0;
+                break;
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                ninjaTurnRate = 0;
+                break;
+            default:
+                // Si estem aquí, no hi ha pulsació que ens interessi
+                processed = false;
+                break;
+        }
+        return processed;
+    }
+
+    private void animateScreenShake(View view, int duration, int offset) {
+        Animation anim = new TranslateAnimation((float) (Math.random()*(-offset)), (float) (Math.random()*offset), (float) (Math.random()*(-offset)), (float) (Math.random()*offset));
+        anim.setDuration(duration);
+        anim.setRepeatMode(Animation.RESTART);
+        anim.setRepeatCount(10);
+        view.startAnimation(anim);
     }
 
     private void destroyTarget(int i, Knife knife) {
@@ -369,7 +375,7 @@ public class GameView extends View {
         targets.get(i).setSpeedY(0);
         targets.get(i).setAngle(0);
         targets.get(i).setRotation(0);
-        targets.get(i).setCollisionRadius(0);
+        targets.get(i).setDead(true);
         if (knife != null) {
             knife.setActive(false);
         }
@@ -388,51 +394,40 @@ public class GameView extends View {
         } else {
             soundPool.play(idGibDeath, 1, 1, 0, 0, 1);
         }
-        CountDownLatch latch = new CountDownLatch(1);
-        fadeOutAnimation(targets.get(i), false, () ->{
-            latch.countDown();
-        });
-        //targets.remove(i);
+        handler.post(() -> fadeOutAnimation(targets.get(i), false));
     }
 
     private void destroyPlayer() {
-        invalidate();
         soundPool.play(idPlayerDeath, 0.7F, 0.7F, 0, 0, 1);
         ninja.setAngle(0);
         ninjaAccel = 0;
         ninjaTurnRate = 0;
         for (int x = 0; x < targets.size(); x++) {
-            if (targets.get(x).distance(ninja) < 100) {
+            if (targets.get(x).verifyCollision(ninja)) {
                 targets.remove(x);
             }
         }
-        CountDownLatch latch=new CountDownLatch(2);
-        fadeOutAnimation(ninja, true, () -> {
-            respawnPlayer(() -> {
-                latch.countDown();
-            });
-            latch.countDown();
-        });
-        new Thread(() -> {
-            try {
-                latch.await();
-                resumeGame();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
+        if (totalLives.size() > 0) {
+            totalLives.remove(totalLives.size() - 1);
+        }
+        onPlayerDeath();
     }
 
-    private void fadeOutAnimation(Graphics graphics, boolean isPlayer, Runnable onEnd) {
+    private void onPlayerDeath() {
+        animateScreenShake(this,1,25);
+        gameIsPaused = true;
+        handler.post(() -> fadeOutAnimation(ninja, true));
+    }
+
+     private void fadeOutAnimation(@NonNull Graphics graphics, boolean isPlayer) {
         fadeOut = ObjectAnimator.ofInt(graphics.getDrawable(), "alpha", 255, 0);
-        fadeOut.setDuration(3000);
+        fadeOut.setDuration(1500);
         fadeOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
                 if (isPlayer) {
                     if (totalLives.size() > 0) {
-                    onEnd.run();
+                        animateSmokePuff();
                     } else {
                         parent.finish();
                     }
@@ -444,53 +439,20 @@ public class GameView extends View {
         fadeOut.start();
     }
 
-    private void respawnPlayer(Runnable onEnd) {
-        smoke.setPosX(ninja.getPosX());
-        smoke.setPosY(ninja.getPosY());
-        post(()->{
-                    ObjectAnimator fadeIn = ObjectAnimator.ofInt(smoke.getDrawable(), "alpha", 0, 255);
-                    fadeIn.setDuration(1000);
-                    fadeIn.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            ObjectAnimator fadeOut = ObjectAnimator.ofInt(smoke.getDrawable(), "alpha", 255, 0);
-                            fadeOut.setDuration(2000);
-                            fadeOut.addListener(new AnimatorListenerAdapter() {
-                                @Override
-                                public void onAnimationEnd(Animator animation) {
-                                    // Reset player state
-                                    ninja.setDead(false);
-                                    postInvalidate();
-                                    onEnd.run();
-                                }
-                            });
-                            fadeOut.start();
-                        }
-                    });
-                    fadeIn.start();
-                });
-
-        /*Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.gameview_smoke_bomb);
-        animation.setAnimationListener(new Animation.AnimationListener() {
+    private void animateSmokePuff() {
+        smokeIsReady = true;
+        soundPool.play(idPlayerSpawn,1,1,0,0,1);
+        ObjectAnimator fadeOut = ObjectAnimator.ofInt(smoke.getDrawable(), "alpha", 255, 0);
+        fadeOut.setDuration(750);
+        fadeOut.addListener(new AnimatorListenerAdapter() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                ninja.setDrawable(drawableNinjaAlive);
-                ninja.getView().setVisibility(VISIBLE);
-                totalLives.remove(totalLives.size() - 1);
-                ninja.setDead(false);
+            public void onAnimationEnd(Animator animation) {
                 gameIsPaused = false;
-                resumeGame();
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
+                smokeIsReady = false;
             }
         });
-        smoke.getView().startAnimation(animation);*/
+        ninja.setDead(false);
+        fadeOut.start();
     }
 
     private void throwKnife(Knife knife) {
@@ -521,15 +483,9 @@ public class GameView extends View {
     }
 
     public void resumeGame() {
-        /*Log.d("View", "resumeGame");
-        synchronized (thread) {
-            thread.notify();
-        }*/
         synchronized (lock) {
-            post(() -> {
-                gameIsPaused = false;
-                invalidate();
-            });
+            gameIsPaused = false;
+            ninja.setDead(false);
         }
     }
 
@@ -544,16 +500,6 @@ public class GameView extends View {
             Log.d("View", "thread.run");
             Looper.prepare();
             while (totalLives.size() > 0) {
-                /*if (gameIsPaused || ninja.isDead()) {
-                    synchronized (this) {
-                        try {
-                            Log.d("View", "thread.wait");
-                            wait();
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }*/
                 updateMovement();
             }
             Looper.loop();

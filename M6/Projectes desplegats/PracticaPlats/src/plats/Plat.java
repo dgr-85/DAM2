@@ -5,6 +5,7 @@ public class Plat {
 	private String codi;
 	private Integer preu;
 	private String tipus;
+	private String grup;
 	private String idGrup;
 	private String descripcioGrup;
 	private String tipusGrup;
@@ -13,13 +14,14 @@ public class Plat {
 		super();
 	}
 
-	public Plat(String descripcio, String codi, Integer preu, String tipus, String idGrup, String descripcioGrup,
-			String tipusGrup) {
+	public Plat(String descripcio, String codi, Integer preu, String tipus, String grup, String idGrup,
+			String descripcioGrup, String tipusGrup) {
 		super();
 		this.descripcio = descripcio;
 		this.codi = codi;
 		this.preu = preu;
 		this.tipus = tipus;
+		this.grup = grup;
 		this.idGrup = idGrup;
 		this.descripcioGrup = descripcioGrup;
 		this.tipusGrup = tipusGrup;
@@ -57,6 +59,14 @@ public class Plat {
 		this.tipus = tipus;
 	}
 
+	public String getGrup() {
+		return grup;
+	}
+
+	public void setGrup(String grup) {
+		this.grup = grup;
+	}
+
 	public String getIdGrup() {
 		return idGrup;
 	}
@@ -81,4 +91,9 @@ public class Plat {
 		this.tipusGrup = tipusGrup;
 	}
 
+	@Override
+	public String toString() {
+		return "Plat [descripcio=" + descripcio + ", codi=" + codi + ", preu=" + preu + ", tipus=" + tipus + ", grup="
+				+ grup + ", idGrup=" + idGrup + ", descripcioGrup=" + descripcioGrup + ", tipusGrup=" + tipusGrup + "]";
+	}
 }

@@ -5,10 +5,15 @@
     <PreferenceCategory
         android:title="@string/title_preferences">
         <CheckBoxPreference
-            android:key="checkbox_music"
-            android:title="@string/pref_checkbox_music_title"
-            android:summary="@string/pref_checkbox_music_summary"
-            android:defaultValue="true"/>
+            android:key="checkbox_music_main_screen"
+            android:title="@string/pref_checkbox_music_title_main"
+            android:summary="@string/pref_checkbox_music_summary_main"
+            android:defaultValue="true" />
+        <CheckBoxPreference
+            android:key="checkbox_music_game"
+            android:title="@string/pref_checkbox_music_title_game"
+            android:summary="@string/pref_checkbox_music_summary_game"
+            android:defaultValue="true" />
         <ListPreference
             android:key="list_ninjas"
             android:title="@string/pref_list_ninjas_title"

@@ -3,6 +3,7 @@ package com.example.ninja_warrior;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             tvTitle.startAnimation(animTitle);
         }
 
-        prefs = getPreferences(Context.MODE_PRIVATE);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         btnPlay = findViewById(R.id.btnPlay);
         btnScore = findViewById(R.id.btnScore);
@@ -101,22 +102,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void setBackgroundMusic() {
-        if (checkMusicCheckbox()) {
+        if (checkMusicCheckboxMain()) {
             mpIntro.start();
             mpIntro.setOnCompletionListener(mediaPlayer -> {
                 mpLoop.start();
                 mpLoop.setOnCompletionListener(mediaPlayer1 -> mediaPlayer1.start());
             });
-        } else {
-            if (mpIntro.isPlaying()) mpIntro.stop();
-            if (mpLoop.isPlaying()) mpLoop.stop();
-            mpIntro.release();
-            mpLoop.release();
         }
     }
 
-    public static boolean checkMusicCheckbox() {
-        return prefs.getBoolean("checkbox_music", true);
+    public static boolean checkMusicCheckboxMain() {
+        return prefs.getBoolean("checkbox_music_main_screen", true);
+    }
+
+    public static boolean checkMusicCheckboxGame() {
+        return prefs.getBoolean("checkbox_music_game", true);
     }
 
     public void shakeTitleScreen(View view, int duration, int offset) {
@@ -177,11 +177,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startGame() {
         try {
-            if (mpIntro.isPlaying()) {
+            if (checkMusicCheckboxMain()) {
                 mpIntro.stop();
                 mpIntro.prepare();
-            }
-            if (mpLoop.isPlaying()) {
                 mpLoop.stop();
                 mpLoop.prepare();
             }

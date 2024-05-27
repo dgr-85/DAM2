@@ -112,11 +112,10 @@ public class ParserDOM {
 
 	protected Plat processarPlat(Node n) {
 		Node ntemp = null;
-		Plat llibre = new Plat();
+		Plat plat = new Plat();
 
 		// De la lista de atributos que tiene el nodo selecciona el primero
-		// (en nuestro ejemplo solo hay un atributo)
-		llibre.setAnyPublicacio(Integer.valueOf(n.getAttributes().item(0).getNodeValue()));
+		// (en nuestro ejemplo no hay atributos)
 
 		// Obtiene los hijos del Libro (titulo y autor)
 		NodeList nodos = n.getChildNodes();
@@ -134,14 +133,24 @@ public class ParserDOM {
 			if (ntemp.getNodeType() == Node.ELEMENT_NODE) {
 				// IMPORTANTE: para obtener el texto con el título accede al nodo
 				// TEXT hijo de ntemp y saca su valor.
-				if (ntemp.getNodeName() == "Titulo") {
-					llibre.setTitol(ntemp.getChildNodes().item(0).getNodeValue());
-				} else {
-					llibre.setAutor(ntemp.getChildNodes().item(0).getNodeValue());
+				switch (ntemp.getNodeName()) {
+				case "Descripcio":
+					plat.setDescripcio(ntemp.getChildNodes().item(0).getNodeValue());
+					plat.setCodi(ntemp.getAttributes().item(0).getNodeValue());
+					break;
+				case "Tipus":
+					plat.setTipus(ntemp.getChildNodes().item(0).getNodeValue());
+					break;
+				case "Grup":
+					plat.setGrup(ntemp.getChildNodes().item(0).getNodeValue());
+					plat.setIdGrup(ntemp.getAttributes().item(0).getNodeValue());
+					break;
+				default:
+					System.out.println("Algo no cuadra...");
 				}
 			}
 		}
-		return llibre;
+		return plat;
 	}
 
 	public int guardarDOMaFileTransformer(File destino) {
@@ -169,11 +178,13 @@ public class ParserDOM {
 			String tipus = ((Element) n).getElementsByTagName("Tipus").item(0).getTextContent();
 			String grup = ((Element) n).getElementsByTagName("Grup").item(0).getTextContent();
 			String grupId = ((Element) n).getElementsByTagName("Grup").item(0).getAttributes().item(0).getNodeValue();
-			plat.setAnyPublicacio(anyPublicacio);
-			plat.setAutor(autor);
-			plat.setTitol(titol);
+			plat.setDescripcio(descripcio);
+			plat.setCodi(codi);
+			plat.setPreu(preu);
+			plat.setTipus(tipus);
+			plat.setGrup(grup);
+			plat.setIdGrup(grupId);
 			System.out.println(plat.toString());
-
 		}
 	}
 

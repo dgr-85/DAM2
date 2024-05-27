@@ -12,9 +12,7 @@ public class Graphics {
     private int width, height; //Dimensions de la imatge
     private int collisionRadius; //Per determinar col.lisio
     private boolean isDead;
-    //On dibuixem el grafic (utilitzat en view.invalidate)
     private View view;
-    // Per a determinar l'espai a esborrar (view.invalidate)
     public static final int MAX_SPEED = 20;
 
     public Graphics(View view, Drawable drawable) {
