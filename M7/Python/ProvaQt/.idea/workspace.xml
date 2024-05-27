@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dd6c5a5-d327-4fc6-9e76-3d68d4e59ea9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Junit/bin/junit/cua/Prova.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Junit/bin/junit/cua/Prova.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JavaDoc/Junit/src/junit/cua/Prova.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../JavaDoc/Junit/src/junit/cua/Prova.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pe4_DGR_examen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/bin/plats/ParserDOM.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/bin/plats/ParserDOM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/bin/plats/Plat.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/bin/plats/Plat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/src/plats/ParserDOM.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/src/plats/ParserDOM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/src/plats/Plat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M6/Projectes desplegats/PracticaPlats/src/plats/Plat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p17_DGR_enxampa.py" beforeDir="false" afterPath="$PROJECT_DIR$/p17_DGR_enxampa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Base64/bin/base64/message/Signatory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Base64/bin/base64/message/Signatory$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Base64/bin/base64/message/Signatory.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Base64/bin/base64/message/Signatory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Base64/bin/base64/message/Validator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Base64/bin/base64/message/Validator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../M9/Base64/src/base64/message/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../M9/Base64/src/base64/message/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" beforeDir="false" afterPath="$PROJECT_DIR$/ui/p17_dgr_enxampa.ui" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,25 +36,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
+        <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="45">
+              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
               <folding>
-                <element signature="e#0#66#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="40" column="89" lean-forward="true" selection-start-line="40" selection-start-column="89" selection-end-line="40" selection-end-column="89" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="57" selection-start-column="57" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pe4_DGR_examen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="79" column="54" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -88,6 +94,9 @@
         <option value="$PROJECT_DIR$/p16_DGR_calcul.py" />
         <option value="$PROJECT_DIR$/p13_DGR_saludar.txt" />
         <option value="$PROJECT_DIR$/p17_DGR_enxampa.py" />
+        <option value="$PROJECT_DIR$/p3_DGR_examen.py" />
+        <option value="$PROJECT_DIR$/pe3_DGR_examen.py" />
+        <option value="$PROJECT_DIR$/pe4_DGR_examen.py" />
       </list>
     </option>
   </component>
@@ -148,7 +157,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.p17_DGR_enxampa">
+  <component name="RunManager" selected="Python.p3_DGR_examen">
     <configuration name="PyQt_02" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ProvaQt" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,27 +171,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyQt_02.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="PyQt_03" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ProvaQt" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyQt_03.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -254,13 +242,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="p3_DGR_examen" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ProvaQt" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pe4_DGR_examen.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.p3_DGR_examen" />
         <item itemvalue="Python.p17_DGR_enxampa" />
         <item itemvalue="Python.p15_DGR_xifrat" />
         <item itemvalue="Python.p16_DGR_calcul" />
         <item itemvalue="Python.PyQt_02" />
-        <item itemvalue="Python.PyQt_03" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +290,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1600" height="852" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24984147" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -313,10 +322,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
+    <entry file="file://$PROJECT_DIR$/PyQt_01.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -327,10 +336,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyQt_01.py">
+    <entry file="file://$PROJECT_DIR$/PyQt_02.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        <state relative-caret-position="-75">
+          <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -344,23 +353,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
+    <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="45">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding>
-            <element signature="e#0#66#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/p17_DGR_enxampa.py">
+    <entry file="file://$PROJECT_DIR$/p16_DGR_calcul.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="40" column="89" lean-forward="true" selection-start-line="40" selection-start-column="89" selection-end-line="40" selection-end-column="89" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="57" selection-start-column="57" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pe4_DGR_examen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="79" column="54" selection-start-line="79" selection-start-column="54" selection-end-line="79" selection-end-column="54" />
         </state>
       </provider>
     </entry>

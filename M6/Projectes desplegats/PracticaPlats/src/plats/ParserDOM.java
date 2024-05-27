@@ -137,13 +137,29 @@ public class ParserDOM {
 				case "Descripcio":
 					plat.setDescripcio(ntemp.getChildNodes().item(0).getNodeValue());
 					plat.setCodi(ntemp.getAttributes().item(0).getNodeValue());
+					plat.setPreu(Integer.valueOf(ntemp.getAttributes().item(1).getNodeValue()));
 					break;
 				case "Tipus":
 					plat.setTipus(ntemp.getChildNodes().item(0).getNodeValue());
 					break;
 				case "Grup":
-					plat.setGrup(ntemp.getChildNodes().item(0).getNodeValue());
 					plat.setIdGrup(ntemp.getAttributes().item(0).getNodeValue());
+					NodeList nChildren = ntemp.getChildNodes();
+					for (int j = 0; j < nChildren.getLength(); j++) {
+						Node nChild = nChildren.item(j);
+						if (nChild.getNodeType() == Node.ELEMENT_NODE) {
+							switch (nChild.getNodeName()) {
+							case "Descripcio":
+								plat.setDescripcioGrup(nChild.getChildNodes().item(0).getNodeValue());
+								break;
+							case "Tipus":
+								plat.setTipusGrup(nChild.getChildNodes().item(0).getNodeValue());
+								break;
+							default:
+								System.out.println("Algo sigue sin cuadrar...");
+							}
+						}
+					}
 					break;
 				default:
 					System.out.println("Algo no cuadra...");
@@ -176,13 +192,11 @@ public class ParserDOM {
 			String codi = n.getAttributes().item(0).getNodeValue();
 			Integer preu = Integer.parseInt(n.getAttributes().item(1).getNodeValue());
 			String tipus = ((Element) n).getElementsByTagName("Tipus").item(0).getTextContent();
-			String grup = ((Element) n).getElementsByTagName("Grup").item(0).getTextContent();
 			String grupId = ((Element) n).getElementsByTagName("Grup").item(0).getAttributes().item(0).getNodeValue();
 			plat.setDescripcio(descripcio);
 			plat.setCodi(codi);
 			plat.setPreu(preu);
 			plat.setTipus(tipus);
-			plat.setGrup(grup);
 			plat.setIdGrup(grupId);
 			System.out.println(plat.toString());
 		}
