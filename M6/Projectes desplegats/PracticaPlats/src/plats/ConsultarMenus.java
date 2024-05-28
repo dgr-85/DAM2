@@ -7,6 +7,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.List;
 
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 public class ConsultarMenus {
 
 	public static void main(String[] args) {
@@ -16,10 +19,6 @@ public class ConsultarMenus {
 		if (fitxer.exists()) {
 			ParserDOM parser = new ParserDOM(fitxer);
 			if (parser.generarDOM()) {
-//				System.out.println("Recórrer i mostrar DOM:");
-//				parser.recorrerIMostrarDOM();
-//				System.out.println("Recerca per tag:");
-//				parser.recercaByTag("Descripcio", "Macarrons");
 				System.out.println("Recollint informació dels plats del fitxer XML...");
 				List<Plat> plats = parser.crearLlistaPlats();
 				StringBuilder sb = new StringBuilder();
@@ -34,6 +33,7 @@ public class ConsultarMenus {
 				} catch (Exception e) {
 					System.out.println("Error en escriure al fitxer ResumPlats.txt.");
 				}
+				System.out.println("Fitxer ResumPlats.txt creat amb èxit.");
 
 				System.out.println("Llegint el contingut del fitxer ResumPlats.txt...");
 				try (BufferedReader bufferedReader = new BufferedReader(new FileReader("ResumPlats.txt"))) {
@@ -57,6 +57,23 @@ public class ConsultarMenus {
 				parser.afegirNode(plat);
 				File xml2 = new File("PlatsXML2.xml");
 				parser.guardarDOMaFileTransformer(xml2);
+				System.out.println("Plat nou afegit. Creat document PlatsXML2.xml.");
+
+				System.out.println("Aplicant parser SAX...");
+				SAXParserFactory factory = SAXParserFactory.newInstance();
+				try {
+					SAXParser saxParser = factory.newSAXParser();
+					HandlerSAX hl = new HandlerSAX();
+					saxParser.parse(fitxer, hl);
+					System.out.println("Llistant plats...");
+					List<Plat> plats2 = hl.recollirPlats();
+					for (Plat p : plats2) {
+						System.out.println(p.toString());
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
 			}
 		} else {
 			System.out.println("No s'ha trobat un fitxer XML per a recórrer.");

@@ -134,35 +134,27 @@ public class ParserDOM {
 			ntemp = nodos.item(i);
 			if (ntemp.getNodeType() == Node.ELEMENT_NODE) {
 				switch (ntemp.getNodeName()) {
-				case "Descripcio":
+				case "Descripcio" -> {
 					plat.setDescripcio(ntemp.getChildNodes().item(0).getNodeValue());
 					plat.setCodi(ntemp.getAttributes().item(0).getNodeValue());
 					plat.setPreu(Integer.valueOf(ntemp.getAttributes().item(1).getNodeValue()));
-					break;
-				case "Tipus":
-					plat.setTipus(ntemp.getChildNodes().item(0).getNodeValue());
-					break;
-				case "Grup":
+				}
+				case "Tipus" -> plat.setTipus(ntemp.getChildNodes().item(0).getNodeValue());
+				case "Grup" -> {
 					plat.setIdGrup(ntemp.getAttributes().item(0).getNodeValue());
 					NodeList nChildren = ntemp.getChildNodes();
 					for (int j = 0; j < nChildren.getLength(); j++) {
 						Node nChild = nChildren.item(j);
 						if (nChild.getNodeType() == Node.ELEMENT_NODE) {
 							switch (nChild.getNodeName()) {
-							case "Descripcio":
-								plat.setDescripcioGrup(nChild.getChildNodes().item(0).getNodeValue());
-								break;
-							case "Tipus":
-								plat.setTipusGrup(nChild.getChildNodes().item(0).getNodeValue());
-								break;
-							default:
-								System.out.println("Algo sigue sin cuadrar...");
+							case "Descripcio" -> plat.setDescripcioGrup(nChild.getChildNodes().item(0).getNodeValue());
+							case "Tipus" -> plat.setTipusGrup(nChild.getChildNodes().item(0).getNodeValue());
+							default -> System.out.println("Algo sigue sin cuadrar...");
 							}
 						}
 					}
-					break;
-				default:
-					System.out.println("Algo no cuadra...");
+				}
+				default -> System.out.println("Algo no cuadra...");
 				}
 			}
 		}
