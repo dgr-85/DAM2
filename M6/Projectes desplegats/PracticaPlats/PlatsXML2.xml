@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="MenuEsquema.xsd">
+              
+          <Plat>
+                            
+                    <Descripcio codi="A01" preu="10">Macarrons</Descripcio>
+                            
+                    <Tipus>Plat Principal</Tipus>
+                          	
+                    <Grup id="01">
+                                    		
+                              <Descripcio>Aliments farinosos</Descripcio>
+                                    		
+                              <Tipus>Pasta</Tipus>
+                                    	
+                    </Grup>
+                      
+    
+          </Plat>
+              
+          <Plat>
+                            
+                    <Descripcio codi="A35" preu="3">Macedònia</Descripcio>
+                            
+                    <Tipus>Postre</Tipus>
+                          	
+                    <Grup id="03">
+                                    		
+                              <Descripcio>Origen vegetal</Descripcio>
+                                    		
+                              <Tipus>Fruita</Tipus>
+                                    	
+                    </Grup>
+                        
+          </Plat>
+              
+          <Plat>
+                            
+                    <Descripcio codi="A24" preu="6">Pastís de formatge</Descripcio>
+                            
+                    <Tipus>Postre</Tipus>
+                            
+                    <Grup id="04">
+                                    		
+                              <Descripcio>Lactis</Descripcio>
+                                    		
+                              <Tipus>Dolços</Tipus>
+                                    	
+                    </Grup>
+                        
+          </Plat>
+              
+          <Plat>
+                            
+                    <Descripcio codi="A56" preu="12">Vedella amb bolets</Descripcio>
+                     		
+                    <Tipus>Plat Principal</Tipus>
+                            
+      	
+                    <Grup id="02">
+                                    		
+                              <Descripcio>Origen animal</Descripcio>
+                                    		
+                              <Tipus>Carn</Tipus>
+                                    	
+                    </Grup>
+                        
+          </Plat>
+          
+          <Plat codi="A44" preu="14">
+                    Bacallà a la llauna
+                    <Tipus>Plat Principal</Tipus>
+                    <Grup id="02">
+                              <Descripcio>Origen Animal</Descripcio>
+                              <Tipus>Peix</Tipus>
+                    </Grup>
+          </Plat>
+</Menu>

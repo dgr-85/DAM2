@@ -2,6 +2,8 @@ package plats;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -61,6 +63,20 @@ public class ParserDOM {
 		}
 	}
 
+	public List<Plat> crearLlistaPlats() {
+		List<Plat> plats = new ArrayList<Plat>();
+		Node node;
+		Node arrel = doc.getFirstChild();
+		NodeList nodelist = arrel.getChildNodes();
+		for (int i = 0; i < nodelist.getLength(); i++) {
+			node = nodelist.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				plats.add(processarPlat(node));
+			}
+		}
+		return plats;
+	}
+
 	public void recercaByTag(String tag, String valor) {
 		Node node;
 		NodeList llistaTag = doc.getElementsByTagName(tag);
@@ -113,26 +129,10 @@ public class ParserDOM {
 	protected Plat processarPlat(Node n) {
 		Node ntemp = null;
 		Plat plat = new Plat();
-
-		// De la lista de atributos que tiene el nodo selecciona el primero
-		// (en nuestro ejemplo no hay atributos)
-
-		// Obtiene los hijos del Libro (titulo y autor)
 		NodeList nodos = n.getChildNodes();
-
 		for (int i = 0; i < nodos.getLength(); i++) {
 			ntemp = nodos.item(i);
-			// Se debe comprobar el tipo de nodo que se quiere tratar porque es
-			// posible que haya nodos tipo TEXT que contengan retornos de carro al cambiar
-			// de l�nea
-			// en el XML.
-			// En este ejemplo, cuando detecta un nodo que no es tipo ELEMENT_NODE
-			// es porque es tipo TEXT y contiene los retornos de carro "\n" que se incluyen
-			// en el fichero
-			// de texto al crear el XML.
 			if (ntemp.getNodeType() == Node.ELEMENT_NODE) {
-				// IMPORTANTE: para obtener el texto con el título accede al nodo
-				// TEXT hijo de ntemp y saca su valor.
 				switch (ntemp.getNodeName()) {
 				case "Descripcio":
 					plat.setDescripcio(ntemp.getChildNodes().item(0).getNodeValue());

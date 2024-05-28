@@ -83,7 +83,10 @@ public class Plat {
 
 	@Override
 	public String toString() {
-		return "Plat [descripcio=" + descripcio + ", codi=" + codi + ", preu=" + preu + ", tipus=" + tipus + ", idGrup="
-				+ idGrup + ", descripcioGrup=" + descripcioGrup + ", tipusGrup=" + tipusGrup + "]";
+		StringBuilder sb = new StringBuilder();
+		sb.append("Plat: " + codi + " " + descripcio + " (" + tipus + ")" + System.lineSeparator());
+		sb.append("Grup: " + idGrup + " " + descripcioGrup + "(" + tipusGrup + ")" + System.lineSeparator());
+		sb.append("Preu: " + preu + "€" + System.lineSeparator() + System.lineSeparator());
+		return sb.toString();
 	}
 }

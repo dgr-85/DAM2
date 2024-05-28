@@ -1,0 +1,16 @@
+Plat: A01 Macarrons (Plat Principal)
+Grup: 01 Aliments farinosos(Pasta)
+Preu: 10€
+
+Plat: A35 Macedònia (Postre)
+Grup: 03 Origen vegetal(Fruita)
+Preu: 3€
+
+Plat: A24 Pastís de formatge (Postre)
+Grup: 04 Lactis(Dolços)
+Preu: 6€
+
+Plat: A56 Vedella amb bolets (Plat Principal)
+Grup: 02 Origen animal(Carn)
+Preu: 12€
+
