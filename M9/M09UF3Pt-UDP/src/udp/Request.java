@@ -88,8 +88,8 @@ public class Request {
 		ByteArrayOutputStream arrayOut = new ByteArrayOutputStream();
 		DataOutputStream dataOut = new DataOutputStream(arrayOut);
 
+		dataOut.write(operation);
 		dataOut.writeShort(op1);
-		dataOut.writeByte(operation);
 		dataOut.writeShort(op2);
 		bytes = arrayOut.toByteArray();
 

@@ -1,0 +1,124 @@
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class ChatServer {
+    private static final int PORT = 12345;
+    private static Set<PrintWriter> clientWriters = new HashSet<>();
+
+    public static void main(String[] args) {
+        System.out.println("Chat server started...");
+        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+            while (true) {
+                new ClientHandler(serverSocket.accept()).start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static class ClientHandler extends Thread {
+        private Socket socket;
+        private PrintWriter out;
+        private BufferedReader in;
+
+        public ClientHandler(Socket socket) {
+            this.socket = socket;
+        }
+
+        public void run() {
+            try {
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                out = new PrintWriter(socket.getOutputStream(), true);
+                synchronized (clientWriters) {
+                    clientWriters.add(out);
+                }
+
+                String message;
+                while ((message = in.readLine()) != null) {
+                    System.out.println("Received: " + message);
+                    synchronized (clientWriters) {
+                        for (PrintWriter writer : clientWriters) {
+                            writer.println(message);
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                synchronized (clientWriters) {
+                    clientWriters.remove(out);
+                }
+            }
+        }
+    }
+}
+
+import java.io.*;
+import java.net.*;
+
+public class ChatClient {
+    private static final String SERVER_ADDRESS = "localhost";
+    private static final int SERVER_PORT = 12345;
+
+    public static void main(String[] args) {
+        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
+
+            Thread receiveThread = new Thread(() -> {
+                String receivedMessage;
+                try {
+                    while ((receivedMessage = in.readLine()) != null) {
+                        System.out.println("Received: " + receivedMessage);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            receiveThread.start();
+
+            String userInput;
+            while ((userInput = stdIn.readLine()) != null) {
+                out.println(userInput);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+How to Run the Example
+
+    Start the Server:
+        Compile and run the ChatServer class.
+        The server will start and listen on port 12345.
+
+    Start the Client(s):
+        Compile and run the ChatClient class.
+        Connect to the server using the specified server address (localhost) and port (12345).
+
+    Chat:
+        Type messages in the client console. The messages will be sent to the server and relayed to all connected clients.
+        Each connected client will display received messages from other clients.
+
+Explanation
+
+    ChatServer:
+        The server listens on a specified port and accepts incoming client connections.
+        For each client connection, a new ClientHandler thread is started.
+        The server maintains a list of PrintWriter objects for all connected clients to broadcast messages.
+        The ClientHandler class handles communication with a single client, reading incoming messages and broadcasting them to all other clients.
+
+    ChatClient:
+        The client connects to the server and starts a thread to listen for incoming messages from the server.
+        The main thread reads user input from the console and sends it to the server.
+
+This example provides a simple implementation of a chat application using TCP, demonstrating how to handle multiple clients and broadcast messages between them.

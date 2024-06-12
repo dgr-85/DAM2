@@ -1,0 +1,39 @@
+What is TCP?
+
+TCP (Transmission Control Protocol) is one of the main protocols in the Internet protocol suite (TCP/IP). It operates at the transport layer (Layer 4) of the OSI model and provides reliable, ordered, and error-checked delivery of data between applications running on hosts communicating over an IP network.
+Key Features of TCP:
+
+    Connection-Oriented: TCP establishes a connection between two hosts before data exchange begins. This connection is maintained until all data transmission is completed.
+
+    Reliability: TCP ensures reliable delivery of data by using acknowledgments and retransmissions. When a sender transmits data, it waits for acknowledgment from the receiver. If an acknowledgment is not received within a certain time, the sender retransmits the data.
+
+    Ordered Data Transmission: TCP ensures that data is delivered in the same order in which it was sent. This is achieved through sequence numbers assigned to each segment of data.
+
+    Flow Control: TCP employs flow control mechanisms to prevent a fast sender from overwhelming a slow receiver. It uses a sliding window mechanism to control the rate of data transmission.
+
+    Congestion Control: TCP helps to avoid network congestion by adjusting the transmission rate based on network conditions. It uses algorithms like Slow Start, Congestion Avoidance, and Fast Retransmit to manage congestion.
+
+    Full Duplex Communication: TCP supports full-duplex communication, allowing data to be transmitted in both directions simultaneously.
+
+How TCP Works:
+
+    Connection Establishment (Three-Way Handshake):
+        Before data transfer begins, TCP establishes a connection using a three-way handshake. This involves the SYN, SYN-ACK, and ACK messages exchanged between the client and server.
+
+    Data Transfer:
+        Once the connection is established, data transfer occurs in both directions. Data is divided into segments and transmitted over the network.
+
+    Acknowledgment and Retransmission:
+        After sending each segment, the sender waits for an acknowledgment (ACK) from the receiver. If an ACK is not received within a specified timeout period, the sender retransmits the segment.
+
+    Connection Termination (Four-Way Handshake):
+        When data exchange is complete, TCP terminates the connection using a four-way handshake. This involves FIN, FIN-ACK, and ACK messages exchanged between the client and server to close the connection gracefully.
+
+Applications of TCP:
+
+    Web Browsing: TCP is widely used for web browsing, allowing reliable and ordered delivery of HTTP requests and responses.
+    Email: Protocols like SMTP (Simple Mail Transfer Protocol) and IMAP (Internet Message Access Protocol) use TCP for sending and receiving emails.
+    File Transfer: TCP is used for reliable file transfer protocols like FTP (File Transfer Protocol) and SFTP (SSH File Transfer Protocol).
+    Remote Login: Protocols like SSH (Secure Shell) and Telnet use TCP for remote login sessions.
+
+In summary, TCP is a connection-oriented protocol that provides reliable, ordered, and error-checked delivery of data over IP networks. It ensures data integrity, flow control, and congestion control, making it suitable for a wide range of applications requiring guaranteed delivery of data.

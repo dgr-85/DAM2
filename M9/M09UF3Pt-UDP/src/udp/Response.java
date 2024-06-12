@@ -1,6 +1,8 @@
 package udp;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
@@ -57,12 +59,12 @@ public class Response {
 	}
 
 	private void bytesToData() throws IOException {
-		ByteArrayOutputStream arrayOut = new ByteArrayOutputStream();
-		DataOutputStream dataOut = new DataOutputStream(arrayOut);
+		ByteArrayInputStream arrayIn = new ByteArrayInputStream(bytes);
+		DataInputStream dataIn = new DataInputStream(arrayIn);
 
-		setResult(result);
+		setErrorCode(dataIn.readByte());
+		setResult(dataIn.readLong());
 
-		dataOut.close();
+		dataIn.close();
 	}
-
 }

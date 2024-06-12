@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class ConsoleInterface {
 	public static final int DO_NOT_CHANGE = 0;
-	public static final int TO_UPPER_CASE = 2;
+	public static final int TO_UPPPER_CASE = 2;
 	public static final int TO_LOWER_CASE = 1;
 	BufferedReader reader = null;
 
@@ -28,8 +28,8 @@ public class ConsoleInterface {
 	}
 
 	/**
-	 * Constructor que permet introduir una sequencia de caràcters simualnt la
-	 * pulsació de tecles. La sequencia de text pot ser tan llarga com sigui
+	 * Constructor que permet introduir una seqüència de caràcters simulant la
+	 * pulsació de tecles. La seqüència de text pot ser tan llarga com sigui
 	 * necessari i incorporar tantes lectures separades per retorns de línia com
 	 * calgui.
 	 * 
@@ -94,11 +94,11 @@ public class ConsoleInterface {
 	/**
 	 * Mostrarà per pantalla el missatge rebut com a primer paràmetre i esperarà la
 	 * introducció d'un caràcter des del teclat. Si l'usuari entra un caràcter igual
-	 * al segon paràmetre, es retornarà cert. En cas contrari es retornnrà fals. El
-	 * tercer paràmetre permet indicar si es desitja fer un canvi a màjuscules o
-	 * minúscules de la tecla premuda per lusuari. El valor TO_UPPER_CASE (2)
+	 * al segon paràmetre, es retornarà cert. En cas contrari es retornarà fals. El
+	 * tercer paràmetre permet indicar si es desitja fer un canvi a majúscules o
+	 * minúscules de la tecla premuda per l'usuari. El valor TO_UPPER_CASE (2)
 	 * canviarà sempre el valor introduït a majúscules abans de fer la comparació.
-	 * El valor TO_LOWER_CASE (1)pasarà el valor a minúscules i qualsevol altre
+	 * El valor TO_LOWER_CASE (1) passarà el valor a minúscules i qualsevol altre
 	 * valor no realitzarà cap canvi.
 	 * 
 	 * @param message     Missatge a mostrar per la pantalla abans de demanar el
@@ -126,7 +126,7 @@ public class ConsoleInterface {
 			}
 		} while (!correct);
 
-		if (changeCase == TO_UPPER_CASE) {
+		if (changeCase == TO_UPPPER_CASE) {
 			ret = line.toUpperCase().charAt(0);
 		} else if (changeCase == TO_LOWER_CASE) {
 			ret = line.toLowerCase().charAt(0);
@@ -195,9 +195,9 @@ public class ConsoleInterface {
 	}
 
 	/**
-	 * LLegeix un caracter del teclat quan estigui disposnible i el retorna.
+	 * LLegeix un caràcter del teclat quan estigui disponible i el retorna.
 	 * 
-	 * @return la tecla polsada just despres de la darrera lectura.
+	 * @return La tecla polsada just després de la darrera lectura.
 	 */
 	public char read() {
 		char character = 0;
